@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct BOOKBBANGApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             SearchBook()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
