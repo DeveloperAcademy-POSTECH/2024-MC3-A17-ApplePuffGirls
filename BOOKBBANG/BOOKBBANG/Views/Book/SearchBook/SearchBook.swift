@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SearchBook: View {
     var body: some View {
         Text("Search Books")
+            .font(.bookk15)
     }
 }
 
