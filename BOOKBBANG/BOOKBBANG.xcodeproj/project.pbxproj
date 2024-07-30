@@ -102,6 +102,7 @@
 		B977DF0D2C58AA6300EC0186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B977DF1F2C58B39D00EC0186 /* Phrase */,
 				B977DF1E2C58ACD700EC0186 /* Onboarding */,
 				B977DF1D2C58ACD300EC0186 /* Setting */,
 				B977DF1B2C58ACC600EC0186 /* Recipt */,
@@ -217,6 +218,37 @@
 			children = (
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B977DF1F2C58B39D00EC0186 /* Phrase */ = {
+			isa = PBXGroup;
+			children = (
+				B977DF222C58B3B000EC0186 /* DetailPhrase */,
+				B977DF212C58B3A800EC0186 /* EditPhrase */,
+				B977DF202C58B3A200EC0186 /* AddPhrase */,
+			);
+			path = Phrase;
+			sourceTree = "<group>";
+		};
+		B977DF202C58B3A200EC0186 /* AddPhrase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddPhrase;
+			sourceTree = "<group>";
+		};
+		B977DF212C58B3A800EC0186 /* EditPhrase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditPhrase;
+			sourceTree = "<group>";
+		};
+		B977DF222C58B3B000EC0186 /* DetailPhrase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailPhrase;
 			sourceTree = "<group>";
 		};
 		B9AE11732C5897270082C1DE = {
@@ -499,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -556,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
