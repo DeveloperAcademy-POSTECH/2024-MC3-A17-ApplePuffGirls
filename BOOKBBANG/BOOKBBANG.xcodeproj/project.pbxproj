@@ -18,11 +18,13 @@
 		B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */; };
 		B9AE11842C5897280082C1DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AE11832C5897280082C1DE /* Assets.xcassets */; };
 		B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AE11862C5897280082C1DE /* Preview Assets.xcassets */; };
-		B9AE11892C5897280082C1DE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE11882C5897280082C1DE /* Persistence.swift */; };
 		B9AE118C2C5897280082C1DE /* BOOKBBANG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B9AE118A2C5897280082C1DE /* BOOKBBANG.xcdatamodeld */; };
 		B9AE11962C5897280082C1DE /* BOOKBBANGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE11952C5897280082C1DE /* BOOKBBANGTests.swift */; };
 		B9AE11A02C5897280082C1DE /* BOOKBBANGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE119F2C5897280082C1DE /* BOOKBBANGUITests.swift */; };
 		B9AE11A22C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE11A12C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift */; };
+		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
+		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
+		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
 		D6584D592C58B39B00792DF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6584D582C58B39B00792DF7 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,13 +55,17 @@
 		B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGApp.swift; sourceTree = "<group>"; };
 		B9AE11832C5897280082C1DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9AE11862C5897280082C1DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B9AE11882C5897280082C1DE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B9AE118B2C5897280082C1DE /* BOOKBBANG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BOOKBBANG.xcdatamodel; sourceTree = "<group>"; };
 		B9AE11912C5897280082C1DE /* BOOKBBANGTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOOKBBANGTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AE11952C5897280082C1DE /* BOOKBBANGTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGTests.swift; sourceTree = "<group>"; };
 		B9AE119B2C5897280082C1DE /* BOOKBBANGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOOKBBANGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AE119F2C5897280082C1DE /* BOOKBBANGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGUITests.swift; sourceTree = "<group>"; };
 		B9AE11A12C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
+		B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenre.swift; sourceTree = "<group>"; };
+		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
+		B9F6F3A02C58CA7600E7DD4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BOOKBBANG.entitlements; sourceTree = "<group>"; };
 		D6584D582C58B39B00792DF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,8 +105,10 @@
 		B977DF0A2C58AA4E00EC0186 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9AE11882C5897280082C1DE /* Persistence.swift */,
 				B9AE118A2C5897280082C1DE /* BOOKBBANG.xcdatamodeld */,
+				B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */,
+				B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */,
+				B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +307,7 @@
 		B9AE117E2C5897270082C1DE /* BOOKBBANG */ = {
 			isa = PBXGroup;
 			children = (
+				B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */,
 				B910CC262C590386000FFAA7 /* Info.plist */,
 				B977DF122C58AB4400EC0186 /* App */,
 				B977DF0D2C58AA6300EC0186 /* Views */,
@@ -468,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
 				B9AE11892C5897280082C1DE /* Persistence.swift in Sources */,
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
@@ -475,6 +485,8 @@
 				B9AE118C2C5897280082C1DE /* BOOKBBANG.xcdatamodeld in Sources */,
 				D6584D592C58B39B00792DF7 /* HomeView.swift in Sources */,
 				B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */,
+				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
+				B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BOOKBBANG/BOOKBBANG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
@@ -647,8 +660,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,6 +671,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seoyeonchoi.BOOKBBANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -668,6 +685,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BOOKBBANG/BOOKBBANG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
@@ -678,8 +696,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -688,6 +707,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seoyeonchoi.BOOKBBANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
