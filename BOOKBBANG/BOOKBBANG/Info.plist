@@ -6,5 +6,9 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>부크크명조_얇은글씨.ttf</string>
+	</array>
 </dict>
 </plist>
