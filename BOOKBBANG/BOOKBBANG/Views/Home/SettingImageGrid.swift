@@ -52,7 +52,7 @@ struct SettingImageGrid {
                 spacing: 12,
                 padding: .init(),
                 scrollDirection: scrollDirection,
-                showsIndicators: true,
+                showsIndicators: false,
                 animation: .default,
                 animationSpeed: 1
             )

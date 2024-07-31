@@ -32,6 +32,7 @@ struct Home: View {
                     .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                 }
             }
+            .scrollIndicators(.hidden)
             .padding(.horizontal,2)
         }
     }

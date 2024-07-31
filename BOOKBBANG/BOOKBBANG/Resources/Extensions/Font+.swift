@@ -16,7 +16,7 @@ extension Font {
     
     // 구절 카드
     static let phraseTop: Font = .system(size: 16, weight: .bold) // 구절 위의 날짜, 책제목 등 (초록 형광펜)
-    static let phraseBottom: Font = .system(size: 12) // 구절 밑의 책 제목 또는 날짜
+    static let phraseBottom: Font = .system(size: 12, weight: .regular) // 구절 밑의 책 제목 또는 날짜
     
     // 메인화면 책별/클립별 탭바
     static let segment: Font = .system(size: 16, weight: .regular)

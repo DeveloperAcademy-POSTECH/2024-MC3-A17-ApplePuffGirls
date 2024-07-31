@@ -34,10 +34,10 @@ struct PhraseCard: View {
             // 구절
             Text(phrase)
                 .font(.bookk15)
-                .lineSpacing(13)
+                .lineSpacing(15)
                 .foregroundStyle(.typo80)
                 .padding(.top, 7)
-                .padding(.bottom, 18)
+                .padding(.bottom, 13)
             
             // 책 제목, 페이지
             Text("\(title), \(page)페이지에서")
