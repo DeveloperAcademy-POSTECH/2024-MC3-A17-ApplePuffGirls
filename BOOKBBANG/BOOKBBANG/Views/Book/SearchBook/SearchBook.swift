@@ -48,7 +48,14 @@ struct SearchBook: View {
                         Spacer()
                         
                         NavigationLink(destination: {
-                            fetchImage(url: "https://i.pinimg.com/564x/88/cd/0b/88cd0beb38989c7f9418f0f06449fc32.jpg")
+                            VStack {
+                                Text("쨔자잔")
+                                    .bold()
+                                
+                                Image(.gentlemangyodong)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
                         }, label: {
                             DirectRegisterBookButton()
                         })
@@ -61,6 +68,7 @@ struct SearchBook: View {
             }
             .background(.backLighter)
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
