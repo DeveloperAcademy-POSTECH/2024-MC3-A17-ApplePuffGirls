@@ -26,9 +26,11 @@ struct Home: View {
                         
                         switch selected {
                         case .book : BookList()
+                                .padding(.horizontal, 22)
                         case .clip : ClipList()
                         }
                     }
+    
                     .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                 }
             }

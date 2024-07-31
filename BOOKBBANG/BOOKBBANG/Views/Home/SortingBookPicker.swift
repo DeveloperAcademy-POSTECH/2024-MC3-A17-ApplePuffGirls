@@ -33,7 +33,7 @@ struct SortingBookPicker: View {
                     .font(.title3)
                     .labelStyle(.iconOnly)
             }
-            .padding()
+            //.padding()
         }
         .frame(height: 60)
     }

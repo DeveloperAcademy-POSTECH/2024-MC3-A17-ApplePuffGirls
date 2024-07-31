@@ -30,22 +30,7 @@ struct SettingImageGrid {
         animation != nil
     }
     
-    static func `default`(for screen: Screen, scrollDirection: Axis = .vertical) -> SettingImageGrid {
-        switch screen {
-
-//        case .rectangles:
-//            return Settings(
-//                columnsInPortrait: 4,
-//                columnsInLandscape: 5,
-//                spacing: 8,
-//                padding: .init(top: 8, leading: 8, bottom: 8, trailing: 8),
-//                scrollDirection: scrollDirection,
-//                showsIndicators: true,
-//                animation: .default,
-//                animationSpeed: 1
-//            )
-
-        case .images:
+    static func `default`(scrollDirection: Axis = .vertical) -> SettingImageGrid {
             return SettingImageGrid(
                 columnsInPortrait: 3,
                 columnsInLandscape: 4,
@@ -56,19 +41,5 @@ struct SettingImageGrid {
                 animation: .default,
                 animationSpeed: 1
             )
-
-        case .cards:
-            return SettingImageGrid(
-                columnsInPortrait: 2,
-                columnsInLandscape: 4,
-                spacing: 8,
-                padding: .init(top: 8, leading: 8, bottom: 8, trailing: 8),
-                scrollDirection: scrollDirection,
-                showsIndicators: true,
-                animation: .default,
-                animationSpeed: 1
-            )
-        }
-        
     }
 }

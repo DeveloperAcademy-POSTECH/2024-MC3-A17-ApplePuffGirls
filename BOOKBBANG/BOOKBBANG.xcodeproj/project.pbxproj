@@ -32,7 +32,6 @@
 		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
 		D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75B2C5A4E820095CAFF /* Home.swift */; };
 		D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */; };
-		D6DBF7682C5A4E830095CAFF /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75D2C5A4E820095CAFF /* Screen.swift */; };
 		D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */; };
 		D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75F2C5A4E820095CAFF /* ClipList.swift */; };
 		D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */; };
@@ -84,7 +83,6 @@
 		D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingClipPicker.swift; sourceTree = "<group>"; };
 		D6DBF75B2C5A4E820095CAFF /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBox.swift; sourceTree = "<group>"; };
-		D6DBF75D2C5A4E820095CAFF /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseCard.swift; sourceTree = "<group>"; };
 		D6DBF75F2C5A4E820095CAFF /* ClipList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipList.swift; sourceTree = "<group>"; };
 		D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingImageGrid.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				D6DBF75B2C5A4E820095CAFF /* Home.swift */,
 				D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */,
 				D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */,
-				D6DBF75D2C5A4E820095CAFF /* Screen.swift */,
 				D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */,
 				D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */,
 				D6DBF7612C5A4E830095CAFF /* SortingBookPicker.swift */,
@@ -529,7 +526,6 @@
 				D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */,
 				D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */,
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
-				D6DBF7682C5A4E830095CAFF /* Screen.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
