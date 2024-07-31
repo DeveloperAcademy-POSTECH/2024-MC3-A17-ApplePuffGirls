@@ -9,6 +9,8 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
+    @State private var isSelected: Bool = false
+    
     var body: some View {
         VStack(spacing: 0) {
             SearchBookHeader()
@@ -19,14 +21,13 @@ struct SearchBook: View {
             
             SearchBookSearchBar()
                 .padding(.horizontal, 22)
-            
-            Spacer()
+                .padding(.bottom, 30)
             
             ScrollView {
-                Spacer().frame(height: 40)
+                Spacer().frame(height: 20)
                 
                 ForEach(0..<5) { _ in
-                    SearchBookListRow()
+                    SearchBookListRow(isSelected: $isSelected)
                         .padding(.bottom, 25)
                         .padding(.leading, 20)
                     

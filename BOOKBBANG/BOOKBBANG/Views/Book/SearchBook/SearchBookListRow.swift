@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchBookListRow: View {
+    @Binding var isSelected: Bool
+    
     var body: some View {
         HStack {
             fetchImage(url: "https://i.pinimg.com/564x/85/db/a0/85dba0c3a6bea2c19360aafe5e4cab29.jpg")
@@ -52,10 +54,21 @@ struct SearchBookListRow: View {
             .padding(.vertical, 15)
             
             Spacer()
-            
-            Circle()
-                .stroke(.typo25, lineWidth: 1.0)
-                .frame(width: 23)
+ 
+            if isSelected {
+                SelectedCircle()
+                    .onTapGesture {
+                        isSelected.toggle()
+                    }
+            }
+            else {
+                Circle()
+                    .stroke(.typo25, lineWidth: 1.0)
+                    .frame(width: 23)
+                    .onTapGesture {
+                        isSelected.toggle()
+                    }
+            }
             
             Spacer().frame(width: 23)
             
@@ -64,6 +77,19 @@ struct SearchBookListRow: View {
     }
 }
 
+struct SelectedCircle: View {
+    var body: some View {
+        Circle()
+            .stroke(.greenMain100, lineWidth: 2.0)
+            .frame(width: 23)
+            .overlay {
+                Circle()
+                    .fill(.greenMain100)
+                    .frame(width: 11)
+            }
+    }
+}
+
 #Preview {
-    SearchBookListRow()
+    SearchBookListRow(isSelected: .constant(true))
 }
