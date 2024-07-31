@@ -11,7 +11,8 @@ import SwiftUI
 struct BOOKBBANGApp: App {
     var body: some Scene {
         WindowGroup {
-            Home()
+            DetailClip(clipData: ClipData())
+                //.environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
