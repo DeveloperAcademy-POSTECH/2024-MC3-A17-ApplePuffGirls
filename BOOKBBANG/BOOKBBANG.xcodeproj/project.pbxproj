@@ -26,6 +26,18 @@
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
 		D6584D592C58B39B00792DF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6584D582C58B39B00792DF7 /* HomeView.swift */; };
+		D6DBF7572C5A4E720095CAFF /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = D6DBF7562C5A4E720095CAFF /* WaterfallGrid */; };
+		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
+		D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */; };
+		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
+		D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75B2C5A4E820095CAFF /* Home.swift */; };
+		D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */; };
+		D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */; };
+		D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75F2C5A4E820095CAFF /* ClipList.swift */; };
+		D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */; };
+		D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7612C5A4E830095CAFF /* SortingBookPicker.swift */; };
+		D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */; };
+		D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF76E2C5A4E9D0095CAFF /* ImagesContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,9 +76,19 @@
 		B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
 		B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenre.swift; sourceTree = "<group>"; };
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
-		B9F6F3A02C58CA7600E7DD4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BOOKBBANG.entitlements; sourceTree = "<group>"; };
 		D6584D582C58B39B00792DF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D6DBF7582C5A4E820095CAFF /* BookList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookList.swift; sourceTree = "<group>"; };
+		D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesGrid.swift; sourceTree = "<group>"; };
+		D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingClipPicker.swift; sourceTree = "<group>"; };
+		D6DBF75B2C5A4E820095CAFF /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBox.swift; sourceTree = "<group>"; };
+		D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhraseCard.swift; sourceTree = "<group>"; };
+		D6DBF75F2C5A4E820095CAFF /* ClipList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipList.swift; sourceTree = "<group>"; };
+		D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingImageGrid.swift; sourceTree = "<group>"; };
+		D6DBF7612C5A4E830095CAFF /* SortingBookPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingBookPicker.swift; sourceTree = "<group>"; };
+		D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedBar.swift; sourceTree = "<group>"; };
+		D6DBF76E2C5A4E9D0095CAFF /* ImagesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6DBF7572C5A4E720095CAFF /* WaterfallGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +194,18 @@
 		B977DF132C58AC2D00EC0186 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D6DBF7582C5A4E820095CAFF /* BookList.swift */,
+				D6DBF75F2C5A4E820095CAFF /* ClipList.swift */,
+				D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */,
+				D6DBF75B2C5A4E820095CAFF /* Home.swift */,
+				D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */,
+				D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */,
+				D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */,
+				D6DBF7602C5A4E820095CAFF /* SettingImageGrid.swift */,
+				D6DBF7612C5A4E830095CAFF /* SortingBookPicker.swift */,
+				D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */,
 				D6584D582C58B39B00792DF7 /* HomeView.swift */,
+				D6DBF76E2C5A4E9D0095CAFF /* ImagesContainer.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -360,6 +394,9 @@
 			dependencies = (
 			);
 			name = BOOKBBANG;
+			packageProductDependencies = (
+				D6DBF7562C5A4E720095CAFF /* WaterfallGrid */,
+			);
 			productName = BOOKBBANG;
 			productReference = B9AE117C2C5897270082C1DE /* BOOKBBANG.app */;
 			productType = "com.apple.product-type.application";
@@ -432,6 +469,9 @@
 				Base,
 			);
 			mainGroup = B9AE11732C5897270082C1DE;
+			packageReferences = (
+				D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+			);
 			productRefGroup = B9AE117D2C5897270082C1DE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -478,9 +518,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
-				B9AE11892C5897280082C1DE /* Persistence.swift in Sources */,
+				D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */,
+				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
+				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
+				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
+				D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */,
+				D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */,
+				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
+				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
+				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
+				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,
+				D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */,
 				084E81F82C58B40E00323377 /* Onboarding.swift in Sources */,
 				B9AE118C2C5897280082C1DE /* BOOKBBANG.xcdatamodeld in Sources */,
 				D6584D592C58B39B00792DF7 /* HomeView.swift in Sources */,
@@ -832,6 +882,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D6DBF7562C5A4E720095CAFF /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B9AE118A2C5897280082C1DE /* BOOKBBANG.xcdatamodeld */ = {
