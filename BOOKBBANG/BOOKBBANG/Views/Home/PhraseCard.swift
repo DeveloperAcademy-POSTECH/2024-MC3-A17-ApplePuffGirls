@@ -47,7 +47,15 @@ struct PhraseCard: View {
         .padding(.horizontal, 35)
         .padding(.vertical, 30)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+        .background(.backDarker)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        
+        .overlay(
+        RoundedRectangle(cornerRadius: 20)
+            .stroke(.typo25)
+        
+        )
+        
     }
     
     // 날짜를 문자열 형식으로 보여줍니다.

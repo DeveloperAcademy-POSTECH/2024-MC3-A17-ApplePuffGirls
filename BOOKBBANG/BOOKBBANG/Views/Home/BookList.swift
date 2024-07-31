@@ -9,14 +9,13 @@
 import SwiftUI
 
 struct BookList: View {
-    @State var sort: SortBookBy = .Added
+    @State var sort: SortBookBy = .recentRegister
     
     var body: some View {
         VStack(spacing: 0) {
             // 정렬 버튼
             SortingBookPicker(sort: $sort)
             
-//            EmptyBox(width: 105, height: 155)
             ImagesContainer()
         }
     }

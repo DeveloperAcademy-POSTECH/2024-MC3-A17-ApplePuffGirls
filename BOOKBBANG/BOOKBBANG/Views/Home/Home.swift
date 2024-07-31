@@ -12,30 +12,33 @@ struct Home: View {
     
     var body: some View {
         NavigationStack {
-            // 상단 바
-            TopBar()
-            
-            ScrollView {
-                VStack(spacing: 2) {
-                    // 오늘의 문장(빵)
-                    PhraseCard()
-                    
-                    // 리스트
-                    VStack {
-                        SegmentedBar(selected: $selected)
+            VStack {
+                // 상단 바
+                TopBar()
+                
+                ScrollView {
+                    VStack(spacing: 2) {
+                        // 오늘의 문장(빵)
+                        PhraseCard()
                         
-                        switch selected {
-                        case .book : BookList()
-                                .padding(.horizontal, 22)
-                        case .clip : ClipList()
+                        // 리스트
+                        VStack {
+                            SegmentedBar(selected: $selected)
+                            
+                            switch selected {
+                            case .book : BookList()
+                                    .padding(.horizontal, 22)
+                            case .clip : ClipList()
+                            }
                         }
+                        
+                        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                     }
-    
-                    .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                 }
+                .scrollIndicators(.hidden)
+                .padding(.horizontal,2)
             }
-            .scrollIndicators(.hidden)
-            .padding(.horizontal,2)
+            .background(.backLighter)
         }
     }
 }

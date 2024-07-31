@@ -26,7 +26,7 @@ struct ClipList: View {
                 
                 
                 // 클립 리스트
-                ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
+                ForEach(0 ..< 5) { item in
                     Divider()
                     ClipView()
                 }

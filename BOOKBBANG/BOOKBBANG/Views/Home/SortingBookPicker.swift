@@ -9,9 +9,9 @@ import SwiftUI
 
 
 enum SortBookBy: String, CaseIterable {
-    case Added = "최근 등록 순"
-    case Read = "최근 읽은 순"
-    case AddedPhrase = "구절 등록 순"
+    case recentRegister = "최근 등록 순"
+    case recentRead = "최근 읽은 순"
+    case registerPhrase = "구절 등록 순"
 }
 
 struct SortingBookPicker: View {
