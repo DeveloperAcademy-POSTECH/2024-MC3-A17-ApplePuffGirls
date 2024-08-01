@@ -33,7 +33,6 @@ class SearchRouter: ObservableObject {
                     self?.book = book
                     self?.bookList = book.documents
                     print(book)
-                    print(self?.apiKey)
                 }
             }
             catch {
