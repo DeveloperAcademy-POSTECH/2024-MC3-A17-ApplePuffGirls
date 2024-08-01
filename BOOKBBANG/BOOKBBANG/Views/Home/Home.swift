@@ -19,7 +19,7 @@ struct Home: View {
                 ScrollView {
                     VStack(spacing: 2) {
                         // 오늘의 문장(빵)
-                        PhraseCard()
+                        PhraseCard(display: .todaysBread)
                         
                         // 리스트
                         VStack {

@@ -24,4 +24,10 @@ extension Font {
     
     // 클립 리스트
     static let listTitle: Font = .system(size: 16, weight: .semibold)
+    
+    // 책 상세정보
+    static let bookTitle: Font = .system(size: 20, weight: .bold)
+    static let bookCaption: Font = .system(size: 13, weight: .regular)
+    static let bookCaptionBold: Font = .system(size: 13, weight: .bold)
+    static let readStateButton: Font = .system(size: 10, weight: .medium)
 }
