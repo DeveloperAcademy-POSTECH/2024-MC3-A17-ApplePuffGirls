@@ -38,4 +38,5 @@ extension Font {
     static let teamMemberTitle: Font = .system(size: 24, weight: .semibold)
     static let memberName: Font = .system(size: 17, weight: .semibold)
     static let memberComment: Font = .system(size: 12, weight: .regular)
+
 }
