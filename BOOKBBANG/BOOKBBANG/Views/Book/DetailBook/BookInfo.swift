@@ -31,11 +31,12 @@ struct BookInfo: View {
         HStack {
             VStack(alignment: .leading, spacing: 39) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("\(name)")
+                    Text(name)
                         .font(.bookTitle)
+                        .kerning(-1)
                         .foregroundStyle(.typo100)
                     
-                    Text("\(author)")
+                    Text(author)
                         .font(.bookCaption)
                         .foregroundStyle(.typo80)
                 }
@@ -61,11 +62,11 @@ struct BookInfo: View {
                             Spacer()
                         }
                         .frame(width: 67)
-                        Text("\(formattedDate)")
+                        Text(formattedDate)
                             .font(.bookCaptionBold)
                             .foregroundStyle(.typo80)
                         
-                        Text("\(readStatus.description)")
+                        Text(readStatus.description)
                             .font(.readStateButton)
                             .frame(width: 43, height: 19)
                             .background(Capsule().stroke())
@@ -75,10 +76,11 @@ struct BookInfo: View {
             }
             Spacer()
             
-            Image("fish_1")
+            Image("fish_2")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 92)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
         .padding(.horizontal, 26)
         .padding(.vertical, 25)

@@ -46,6 +46,7 @@ struct DetailBook: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Text("수정")
+                    .font(.cancel)
                     .foregroundStyle(.greenMain100)
             }
         }
