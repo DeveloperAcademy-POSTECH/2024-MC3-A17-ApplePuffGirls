@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		084E81F82C58B40E00323377 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F72C58B40E00323377 /* Onboarding.swift */; };
+		084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F92C5B5C5C00323377 /* DetailClip.swift */; };
 		B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
 		B910CC292C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
 		B910CC2A2C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		084E81F72C58B40E00323377 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		084E81F92C5B5C5C00323377 /* DetailClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClip.swift; sourceTree = "<group>"; };
 		B910CC262C590386000FFAA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "부크크명조_얇은글씨.ttf"; sourceTree = "<group>"; };
 		B910CC2C2C59047E000FFAA7 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		B977DF182C58AC7800EC0186 /* DetailClip */ = {
 			isa = PBXGroup;
 			children = (
+				084E81F92C5B5C5C00323377 /* DetailClip.swift */,
 			);
 			path = DetailClip;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
 				B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */,
 				B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */,
+				084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
