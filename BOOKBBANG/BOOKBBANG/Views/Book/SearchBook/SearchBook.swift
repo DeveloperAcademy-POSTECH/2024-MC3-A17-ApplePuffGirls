@@ -10,13 +10,14 @@ import UIKit
 
 struct SearchBook: View {
     @StateObject var router = SearchRouter()
-    @State private var isSelected: Bool = false
     @State private var searchText: String = ""
+    @State private var selectedBookID: String? = nil
+    @State private var bookSelected: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                SearchBookHeader()
+                SearchBookHeader(bookSelected: $bookSelected)
                 
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
@@ -32,7 +33,8 @@ struct SearchBook: View {
                     LazyVStack {
                         if let bookList = router.bookList {
                             ForEach(bookList, id: \.self) { book in
-                                SearchBookListRow(isSelected: $isSelected, book: book)
+                                SearchBookListRow(selectedBookID: $selectedBookID,
+                                                  book: book)
                                     .padding(.bottom, 10)
                                     .padding(.leading, 20)
                                 

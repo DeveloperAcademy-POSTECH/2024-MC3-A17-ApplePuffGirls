@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchBookListRow: View {
-    @Binding var isSelected: Bool
+    @Binding var selectedBookID: String?
     var book: Documents
     
     var body: some View {
@@ -59,11 +59,11 @@ struct SearchBookListRow: View {
             .padding(.vertical, 15)
             
             Spacer()
- 
-            if isSelected {
+            
+            if selectedBookID == book.isbn {
                 SelectedCircle()
                     .onTapGesture {
-                        isSelected.toggle()
+                        selectedBookID = nil
                     }
             }
             else {
@@ -71,7 +71,7 @@ struct SearchBookListRow: View {
                     .stroke(.typo25, lineWidth: 1.0)
                     .frame(width: 23)
                     .onTapGesture {
-                        isSelected.toggle()
+                        selectedBookID = book.isbn
                     }
             }
             
