@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SearchBookSearchBar: View {
+    @Binding var searchText: String
+    var searchRouter: SearchRouter
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("빵을 골라볼까요?")
@@ -20,14 +23,15 @@ struct SearchBookSearchBar: View {
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 20)
             
-            CustomSearchBar()
+            CustomSearchBar(searchText: $searchText, searchRouter: searchRouter)
             
         }
     }
 }
 
 struct CustomSearchBar: View {
-    @State private var searchText: String = ""
+    @Binding var searchText: String
+    var searchRouter: SearchRouter
     
     var body: some View {
         VStack {}
@@ -36,9 +40,11 @@ struct CustomSearchBar: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 HStack {
-                    TextField("책을 검색해보세요", text: $searchText)
-                        .foregroundStyle(.typo80)
-                        .font(.system(size: 15, weight: .regular))
+                    TextField("책을 검색해보세요", text: $searchText, onCommit: {
+                        searchRouter.fetch(searchText: searchText)
+                    })
+                    .foregroundStyle(.typo80)
+                    .font(.system(size: 15, weight: .regular))
                     
                     Spacer()
                     
@@ -50,10 +56,10 @@ struct CustomSearchBar: View {
                 .padding(.leading, 15)
                 .padding(.trailing, 13)
             }
-            
+        
     }
 }
 
 #Preview {
-    SearchBookSearchBar()
+    SearchBookSearchBar(searchText: .constant(""), searchRouter: SearchRouter())
 }

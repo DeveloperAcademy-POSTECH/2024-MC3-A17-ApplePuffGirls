@@ -9,23 +9,28 @@ import SwiftUI
 
 struct SearchBookListRow: View {
     @Binding var isSelected: Bool
+    var book: Documents
     
     var body: some View {
         HStack {
-            fetchImage(url: "https://i.pinimg.com/564x/85/db/a0/85dba0c3a6bea2c19360aafe5e4cab29.jpg")
+            fetchImage(url: book.thumbnail)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Spacer().frame(width: 12)
             
             VStack(alignment: .leading ,spacing: 0) {
-                Text("한교동이 누군가를 죽였다")
+                Text(book.title)
                     .foregroundStyle(.typo100)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 17, weight: .bold))
                     .kerning(-1)
                 
-                Text("구리스(지은이), 이진토(엮은이)")
-                    .foregroundStyle(.typo50)
-                    .font(.system(size: 13, weight: .regular))
+                HStack {
+                    ForEach(book.authors, id: \.self) { author in
+                        Text(author)
+                            .foregroundStyle(.typo50)
+                            .font(.system(size: 13, weight: .regular))
+                    }
+                }
                 
                 Spacer()
                 
@@ -35,7 +40,7 @@ struct SearchBookListRow: View {
                         .font(.system(size: 13, weight: .regular))
                         .kerning(-0.4)
                     
-                    Text("애플 디벨로퍼 아카데미")
+                    Text(book.publisher)
                         .foregroundStyle(.typo80)
                         .font(.system(size: 13, weight: .regular))
                 }
@@ -46,7 +51,7 @@ struct SearchBookListRow: View {
                         .font(.system(size: 13, weight: .regular))
                         .kerning(-0.4)
                     
-                    Text("2024.10.03")
+                    Text(formatISO8601Date(dateStr: book.datetime))
                         .foregroundStyle(.typo80)
                         .font(.system(size: 13, weight: .regular))
                 }
@@ -90,6 +95,15 @@ struct SelectedCircle: View {
     }
 }
 
-#Preview {
-    SearchBookListRow(isSelected: .constant(true))
+func formatISO8601Date(dateStr: String) -> String {
+    let isoFormatter = ISO8601DateFormatter()
+    isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+    guard let date = isoFormatter.date(from: dateStr) else {
+        return "Invalid date"
+    }
+    
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy.MM.dd."
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    return formatter.string(from: date)
 }

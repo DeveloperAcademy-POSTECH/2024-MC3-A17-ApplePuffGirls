@@ -9,7 +9,9 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
+    @StateObject var router = SearchRouter()
     @State private var isSelected: Bool = false
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack {
@@ -17,29 +19,32 @@ struct SearchBook: View {
                 SearchBookHeader()
                 
                 SearchBookProgressBar()
-                    .padding(.bottom, 77)
-                
-                
-                SearchBookSearchBar()
-                    .padding(.horizontal, 22)
                     .padding(.bottom, 30)
+                
+                
+                SearchBookSearchBar(searchText: $searchText, searchRouter: router)
+                    .padding(.horizontal, 22)
+                    .padding(.bottom, 20)
                 
                 ScrollView {
                     Spacer().frame(height: 20)
                     
-                    ForEach(0..<5) { _ in
-                        SearchBookListRow(isSelected: $isSelected)
-                            .padding(.bottom, 25)
-                            .padding(.leading, 20)
-                        
-                        VStack{}
-                            .frame(maxWidth: UIScreen.main.bounds.width)
-                            .frame(height: 0.5)
-                            .background(.divider)
-                            .padding(.bottom, 25)
-                            .padding(.horizontal, 14)
+                    LazyVStack {
+                        if let bookList = router.bookList {
+                            ForEach(bookList, id: \.self) { book in
+                                SearchBookListRow(isSelected: $isSelected, book: book)
+                                    .padding(.bottom, 10)
+                                    .padding(.leading, 20)
+                                
+                                VStack{}
+                                    .frame(maxWidth: UIScreen.main.bounds.width)
+                                    .frame(height: 0.5)
+                                    .background(.divider)
+                                    .padding(.bottom, 10)
+                                    .padding(.horizontal, 14)
+                            }
+                        }
                     }
-                    
                     HStack {
                         Text("혹시 원하는 책이 없나요?")
                             .foregroundStyle(.typo50)
