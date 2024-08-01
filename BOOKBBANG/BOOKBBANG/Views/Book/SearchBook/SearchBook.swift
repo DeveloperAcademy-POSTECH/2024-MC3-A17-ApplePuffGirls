@@ -35,8 +35,8 @@ struct SearchBook: View {
                             ForEach(bookList, id: \.self) { book in
                                 SearchBookListRow(selectedBookID: $selectedBookID,
                                                   book: book)
-                                    .padding(.bottom, 10)
-                                    .padding(.leading, 20)
+                                .padding(.bottom, 10)
+                                .padding(.leading, 20)
                                 
                                 VStack{}
                                     .frame(maxWidth: UIScreen.main.bounds.width)
@@ -76,6 +76,9 @@ struct SearchBook: View {
             .background(.backLighter)
         }
         .navigationBarBackButtonHidden()
+        .onChange(of: selectedBookID) { newValue in
+            bookSelected = newValue != nil
+        }
     }
 }
 
