@@ -7,3 +7,6 @@ xcuserdata/
 *.xccheckout
 
 .DS_Store
+
+*.xcconfig
+

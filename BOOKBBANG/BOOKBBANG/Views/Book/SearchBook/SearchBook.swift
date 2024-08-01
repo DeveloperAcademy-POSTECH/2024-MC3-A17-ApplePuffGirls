@@ -9,37 +9,44 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
-    @State private var isSelected: Bool = false
+    @StateObject var router = SearchRouter()
+    @State private var searchText: String = ""
+    @State private var selectedBookID: String? = nil
+    @State private var bookSelected: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                SearchBookHeader()
+                SearchBookHeader(bookSelected: $bookSelected)
                 
                 SearchBookProgressBar()
-                    .padding(.bottom, 77)
-                
-                
-                SearchBookSearchBar()
-                    .padding(.horizontal, 22)
                     .padding(.bottom, 30)
+                
+                
+                SearchBookSearchBar(searchText: $searchText, searchRouter: router)
+                    .padding(.horizontal, 22)
+                    .padding(.bottom, 20)
                 
                 ScrollView {
                     Spacer().frame(height: 20)
                     
-                    ForEach(0..<5) { _ in
-                        SearchBookListRow(isSelected: $isSelected)
-                            .padding(.bottom, 25)
-                            .padding(.leading, 20)
-                        
-                        VStack{}
-                            .frame(maxWidth: UIScreen.main.bounds.width)
-                            .frame(height: 0.5)
-                            .background(.divider)
-                            .padding(.bottom, 25)
-                            .padding(.horizontal, 14)
+                    LazyVStack {
+                        if let bookList = router.bookList {
+                            ForEach(bookList, id: \.self) { book in
+                                SearchBookListRow(selectedBookID: $selectedBookID,
+                                                  book: book)
+                                .padding(.bottom, 10)
+                                .padding(.leading, 20)
+                                
+                                VStack{}
+                                    .frame(maxWidth: UIScreen.main.bounds.width)
+                                    .frame(height: 0.5)
+                                    .background(.divider)
+                                    .padding(.bottom, 10)
+                                    .padding(.horizontal, 14)
+                            }
+                        }
                     }
-                    
                     HStack {
                         Text("혹시 원하는 책이 없나요?")
                             .foregroundStyle(.typo50)
@@ -69,6 +76,9 @@ struct SearchBook: View {
             .background(.backLighter)
         }
         .navigationBarBackButtonHidden()
+        .onChange(of: selectedBookID) { newValue in
+            bookSelected = newValue != nil
+        }
     }
 }
 

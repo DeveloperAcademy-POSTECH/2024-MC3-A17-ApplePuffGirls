@@ -26,6 +26,10 @@
 		B9AE11962C5897280082C1DE /* BOOKBBANGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE11952C5897280082C1DE /* BOOKBBANGTests.swift */; };
 		B9AE11A02C5897280082C1DE /* BOOKBBANGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE119F2C5897280082C1DE /* BOOKBBANGUITests.swift */; };
 		B9AE11A22C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE11A12C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift */; };
+		B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C116772C5B6C6100E8C26E /* BookDTO.swift */; };
+		B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C116792C5B6C8300E8C26E /* SearchRouter.swift */; };
+		B9C1167C2C5B6E4600E8C26E /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B9C1167B2C5B6E4600E8C26E /* Config.xcconfig */; };
+		B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1167D2C5B6EDB00E8C26E /* Config.swift */; };
 		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
@@ -82,6 +86,10 @@
 		B9AE119B2C5897280082C1DE /* BOOKBBANGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BOOKBBANGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AE119F2C5897280082C1DE /* BOOKBBANGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGUITests.swift; sourceTree = "<group>"; };
 		B9AE11A12C5897280082C1DE /* BOOKBBANGUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B9C116772C5B6C6100E8C26E /* BookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDTO.swift; sourceTree = "<group>"; };
+		B9C116792C5B6C8300E8C26E /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		B9C1167B2C5B6E4600E8C26E /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		B9C1167D2C5B6EDB00E8C26E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
 		B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenre.swift; sourceTree = "<group>"; };
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 				B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */,
 				B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */,
 				B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */,
+				B9C116772C5B6C6100E8C26E /* BookDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				B92946282C5A8A9400C25EDB /* AsyncImage.swift */,
+				B9C116792C5B6C8300E8C26E /* SearchRouter.swift */,
+				B9C1167D2C5B6EDB00E8C26E /* Config.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -364,6 +375,7 @@
 				B977DF0A2C58AA4E00EC0186 /* Models */,
 				B9AE11832C5897280082C1DE /* Assets.xcassets */,
 				B9AE11852C5897280082C1DE /* Preview Content */,
+				B9C1167B2C5B6E4600E8C26E /* Config.xcconfig */,
 			);
 			path = BOOKBBANG;
 			sourceTree = "<group>";
@@ -503,6 +515,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C1167C2C5B6E4600E8C26E /* Config.xcconfig in Resources */,
 				B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */,
 				B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
 				B9AE11842C5897280082C1DE /* Assets.xcassets in Resources */,
@@ -535,6 +548,7 @@
 				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
 				D6DBF7732C5A967C0095CAFF /* DetailBook.swift in Sources */,
 				D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */,
+				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
@@ -544,6 +558,8 @@
 				D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */,
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
+				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
+				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
 				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,
@@ -717,6 +733,7 @@
 		};
 		B9AE11A62C5897280082C1DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C1167B2C5B6E4600E8C26E /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -753,6 +770,7 @@
 		};
 		B9AE11A72C5897280082C1DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C1167B2C5B6E4600E8C26E /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
