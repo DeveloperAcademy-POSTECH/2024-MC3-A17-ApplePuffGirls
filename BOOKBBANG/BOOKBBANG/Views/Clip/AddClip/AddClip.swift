@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AddClip: View {
-  @ObservedObject var clipData: ClipData
+  @State var name: String = ""
+  @State private var description: String = ""
+  @State private var selectedShape: Int? = 0
+  @State private var selectedColor: Int? = 0
   
   let nameLimit = 13
   let descriptionLimit = 25
@@ -31,12 +34,12 @@ struct AddClip: View {
   var body: some View {
     NavigationView {
       VStack {
-        Image(clipData.selectedShape != nil ? clipImages[clipData.selectedShape!] : "WaterDropClip")
+        Image(selectedShape != nil ? clipImages[selectedShape!] : "WaterDropClip")
           .renderingMode(.template)
           .resizable()
           .frame(width: 115, height: 110)
           .padding(.top, 40)
-          .foregroundColor(clipData.selectedColor != nil ? colors[clipData.selectedColor!] : .clipRed)
+          .foregroundColor(selectedColor != nil ? colors[selectedColor!] : .clipRed)
         
         Text("기본 정보")
           .font(.system(size: 12))
@@ -44,10 +47,10 @@ struct AddClip: View {
           .frame(maxWidth: .infinity, alignment: .leading)
           .padding(.leading, 22)
         
-        TextField("클립 제목을 입력해주세요", text: $clipData.name)
-          .onChange(of: clipData.name) { newValue in
+        TextField("클립 제목을 입력해주세요", text: $name)
+          .onChange(of: name) { newValue in
             if newValue.count > nameLimit {
-              clipData.name = String(newValue.prefix(nameLimit))
+              name = String(newValue.prefix(nameLimit))
             }
           }
           .frame(width: 330, height: 18)
@@ -55,10 +58,10 @@ struct AddClip: View {
           .background(Color.typo10)
           .cornerRadius(10)
         
-        TextField("클립에 대한 설명을 입력해주세요", text: $clipData.description)
-          .onChange(of: clipData.description) { newValue in
+        TextField("클립에 대한 설명을 입력해주세요", text: $description)
+          .onChange(of: description) { newValue in
             if newValue.count > descriptionLimit {
-              clipData.description = String(newValue.prefix(descriptionLimit))
+              description = String(newValue.prefix(descriptionLimit))
             }
           }
           .frame(width: 330, height: 18)
@@ -76,10 +79,10 @@ struct AddClip: View {
           HStack(spacing: 12) {
             ForEach(0..<4) { index in
               Button(action: {
-                clipData.selectedShape = index
+                selectedShape = index
               }) {
                 RoundedRectangle(cornerRadius: 10)
-                  .strokeBorder(clipData.selectedShape == index ? Color.greenMain100 : Color.typo10, lineWidth: clipData.selectedShape == index ? 4 : 1)
+                  .strokeBorder(selectedShape == index ? Color.greenMain100 : Color.typo10, lineWidth: selectedShape == index ? 4 : 1)
                   .background(
                     Image(shapeImages[index])
                       .resizable()
@@ -94,10 +97,10 @@ struct AddClip: View {
           HStack(spacing: 12) {
             ForEach(4..<8) { index in
               Button(action: {
-                clipData.selectedShape = index
+                selectedShape = index
               }) {
                 RoundedRectangle(cornerRadius: 10)
-                  .strokeBorder(clipData.selectedShape == index ? Color.greenMain100 : Color.typo10, lineWidth: clipData.selectedShape == index ? 4 : 1)
+                  .strokeBorder(selectedShape == index ? Color.greenMain100 : Color.typo10, lineWidth: selectedShape == index ? 4 : 1)
                   .background(
                     Image(shapeImages[index])
                       .resizable()
@@ -111,6 +114,7 @@ struct AddClip: View {
         }
         .padding(.top, 5)
         
+        
         Text("색상")
           .font(.system(size: 12))
           .padding(.top, 20)
@@ -120,7 +124,7 @@ struct AddClip: View {
         HStack(spacing: 12) {
           ForEach(0..<8) { index in
             Button(action: {
-              clipData.selectedColor = index
+              selectedColor = index
             }) {
               Rectangle()
                 .fill(colors[index])
@@ -128,11 +132,12 @@ struct AddClip: View {
                 .cornerRadius(5)
                 .overlay(
                   RoundedRectangle(cornerRadius: 5)
-                    .stroke(clipData.selectedColor == index ? Color.greenMain100 : Color.clear, lineWidth: clipData.selectedColor == index ? 4 : 0)
+                    .stroke(selectedColor == index ? Color.greenMain100 : Color.clear, lineWidth: selectedColor == index ? 4 : 0)
                 )
             }
           }
         }
+        
         
         Spacer()
       }
@@ -156,6 +161,8 @@ struct AddClip: View {
   }
 }
 
+
+
 #Preview {
-  AddClip(clipData: ClipData())
+  AddClip()
 }

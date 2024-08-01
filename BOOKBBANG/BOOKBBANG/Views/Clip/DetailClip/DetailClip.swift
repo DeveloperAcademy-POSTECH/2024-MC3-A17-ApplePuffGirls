@@ -45,6 +45,7 @@ struct DetailClip: View {
             .navigationBarTitle("클립 상세정보", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
+                    // 여기에 뒤로 가기 액션 추가 가능
                 }) {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(.greenMain100)
@@ -60,14 +61,11 @@ struct DetailClip: View {
             )
         }
         .sheet(isPresented: $showingEditClip) {
-            AddClip(clipData: clipData)
+            EditClip(clipData: clipData)
         }
     }
 }
 
-
-
-
 #Preview {
-  DetailClip(clipData: ClipData())
+    DetailClip(clipData: ClipData())
 }
