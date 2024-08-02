@@ -17,7 +17,10 @@ struct SearchBook: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                SearchBookHeader(bookSelected: $bookSelected)
+                CustomNavigationBar(isHighlighted: $bookSelected,
+                                    navigationType: .chevron,
+                                    title: "책 검색",
+                                    rightTitle: "다음")
                 
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
