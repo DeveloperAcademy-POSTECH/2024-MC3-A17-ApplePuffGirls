@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchBookHeader: View {
+    @Binding var bookSelected: Bool
+    
     var body: some View {
         HStack {
             Image(systemName: "chevron.left")
@@ -23,7 +25,7 @@ struct SearchBookHeader: View {
             Spacer()
             
             Text("다음")
-                .foregroundStyle(.typo25)
+                .foregroundStyle(bookSelected ? .greenMain100 : .typo25)
                 .font(.system(size: 17, weight: .bold))
                 .kerning(-0.4)
         }
@@ -34,5 +36,5 @@ struct SearchBookHeader: View {
 }
 
 #Preview {
-    SearchBookHeader()
+    SearchBookHeader(bookSelected: .constant(true))
 }
