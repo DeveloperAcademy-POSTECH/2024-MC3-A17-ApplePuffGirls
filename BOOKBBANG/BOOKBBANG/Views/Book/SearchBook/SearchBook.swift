@@ -25,7 +25,6 @@ struct SearchBook: View {
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
                 
-                
                 SearchBookSearchBar(searchText: $searchText, searchRouter: router)
                     .padding(.horizontal, 22)
                     .padding(.bottom, 20)
@@ -73,7 +72,6 @@ struct SearchBook: View {
                     .padding(.horizontal, 25)
                     .padding(.bottom, 40)
                 }
-                
                 .scrollIndicators(.hidden)
             }
             .background(.backLighter)
@@ -84,6 +82,7 @@ struct SearchBook: View {
         }
     }
 }
+
 
 func SearchBookProgressBar() -> some View {
     return VStack {}
