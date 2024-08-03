@@ -35,7 +35,7 @@ struct AddThoughts: View {
                     .foregroundStyle(.typo100)
                     .font(.system(size: 24, weight: .bold))
                     .padding(.bottom, 10)
-                Text("나중에 다시 문구를 저장한 이유도 확인하기 좋아요")
+                Text("나중에 확인할 때 저장한 이유를 쉽게 알 수 있어요")
                     .foregroundStyle(.typo50)
                     .font(.system(size: 13, weight: .regular))
                     .padding(.bottom, 20)
