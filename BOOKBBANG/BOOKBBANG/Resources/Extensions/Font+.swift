@@ -30,4 +30,13 @@ extension Font {
     static let bookCaption: Font = .system(size: 13, weight: .regular)
     static let bookCaptionBold: Font = .system(size: 13, weight: .bold)
     static let readStateButton: Font = .system(size: 10, weight: .medium)
+    
+    // Setting
+    static let settingCategoryTitle: Font = .system(size: 14, weight: .semibold)
+    
+    // teamInfo
+    static let teamMemberTitle: Font = .system(size: 24, weight: .semibold)
+    static let memberName: Font = .system(size: 17, weight: .semibold)
+    static let memberComment: Font = .system(size: 12, weight: .regular)
+
 }

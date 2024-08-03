@@ -1,13 +1,13 @@
 //
-//  SearchBookHeader.swift
+//  AddThoughtsHeader.swift
 //  BOOKBBANG
 //
-//  Created by Seoyeon Choi on 7/31/24.
+//  Created by kyunglimkim on 8/1/24.
 //
 
 import SwiftUI
 
-struct SearchBookHeader: View {
+struct AddThoughtsHeader: View {
     var body: some View {
         HStack {
             Image(systemName: "chevron.left")
@@ -15,7 +15,7 @@ struct SearchBookHeader: View {
             
             Spacer()
             
-            Text("책 검색")
+            Text("감상평 추가하기")
                 .foregroundStyle(.typo100)
                 .font(.system(size: 18, weight: .semibold))
                 .kerning(-0.4)
@@ -34,5 +34,5 @@ struct SearchBookHeader: View {
 }
 
 #Preview {
-    SearchBookHeader()
+    AddThoughtsHeader()
 }
