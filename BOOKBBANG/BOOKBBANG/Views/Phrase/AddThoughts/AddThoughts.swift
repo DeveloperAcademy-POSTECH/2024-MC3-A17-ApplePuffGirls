@@ -55,16 +55,10 @@ struct AddThoughts: View {
                 Spacer().frame(height: 22)
                 
                 AddThoughtsTextfield()
-                .padding(.horizontal, 22)
-                
-                
+                .padding(.horizontal, 22)   
             }
-            
-            
-            
         }
     }
-
 
 func AddThoughtsProgressBar() -> some View {
     return VStack {}
