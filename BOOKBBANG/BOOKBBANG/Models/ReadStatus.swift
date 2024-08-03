@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ReadStatus: String {
+enum ReadStatus: Int {
     case readYet
     case readIng
     case readFinished
