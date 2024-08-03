@@ -13,7 +13,7 @@ struct BOOKBBANGApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SearchTestView()
+            Home()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -32,9 +32,6 @@ struct SearchBook: View {
                     if let selectedBook = selectedBook {
                         addBook(book: selectedBook)
                     }
-                    else {
-                        print("selectedBook이 없습니다.")
-                    }
                 }, label: {
                     Image(systemName: "heart")
                 })
@@ -110,6 +107,7 @@ struct SearchBook: View {
                 newBook.publisher = selectedBook.publisher
                 newBook.publishedDate = convertToDate(from: selectedBook.datetime)
                 newBook.author = selectedBook.authors.joined(separator: ",")
+                newBook.registerDate = Date()
                 
                 print("selectedBook: \(selectedBook)")
                 print("newBook: \(newBook)")
