@@ -9,10 +9,13 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject var router = SearchRouter()
     @State private var searchText: String = ""
     @State private var selectedBookID: String? = nil
     @State private var bookSelected: Bool = false
+    @State private var selectedBook: Documents?
     
     var body: some View {
         NavigationStack {
@@ -24,6 +27,17 @@ struct SearchBook: View {
                 
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
+                
+                Button(action: {
+                    if let selectedBook = selectedBook {
+                        addBook(book: selectedBook)
+                    }
+                    else {
+                        print("selectedBook이 없습니다.")
+                    }
+                }, label: {
+                    Image(systemName: "heart")
+                })
                 
                 SearchBookSearchBar(searchText: $searchText, searchRouter: router)
                     .padding(.horizontal, 22)
@@ -78,9 +92,43 @@ struct SearchBook: View {
         }
         .navigationBarBackButtonHidden()
         .onChange(of: selectedBookID) { newValue in
+            if let newValue = newValue {
+                selectedBook = router.bookList?.first { $0.isbn == newValue }
+            } else {
+                selectedBook = nil
+            }
             bookSelected = newValue != nil
         }
     }
+    
+    private func addBook(book: Documents) {
+        withAnimation {
+            let newBook = Book(context: viewContext)
+            if let selectedBook = selectedBook {
+                newBook.name = selectedBook.title
+                newBook.thumbnail = selectedBook.thumbnail
+                newBook.publisher = selectedBook.publisher
+                newBook.publishedDate = convertToDate(from: selectedBook.datetime)
+                newBook.author = selectedBook.authors.joined(separator: ",")
+                
+                print("selectedBook: \(selectedBook)")
+                print("newBook: \(newBook)")
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+}
+
+func convertToDate(from dateString: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    return dateFormatter.date(from: dateString)
 }
 
 

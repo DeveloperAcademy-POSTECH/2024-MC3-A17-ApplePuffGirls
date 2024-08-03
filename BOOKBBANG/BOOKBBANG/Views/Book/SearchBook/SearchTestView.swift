@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SearchTestView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Book.publishedDate, ascending: true)],
+        animation: .default)
+    private var books: FetchedResults<Book>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ForEach(books) { book in
+            if let name = book.name {
+                Text(name)
+            }
+        }
     }
 }
 
 #Preview {
-    SearchTestView()
+    SearchTestView().environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
 }
