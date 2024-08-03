@@ -47,14 +47,14 @@ extension AddPhraseTextfield {
                 .padding(.bottom, 5)
                 .padding(.leading, 12)
             
-            Rectangle()
-                .fill(.typo10)
-                .frame(height: 150)
-                .cornerRadius(10)
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.typo10)
                 .overlay(alignment: .topLeading) {
-                    TextField("마음에 와닿은 문구를 적어보세요", text: $phrase)
-                        .padding(.top)
-                        .padding(.leading)
+                    TextEditor(text: $phrase)
+                        .scrollContentBackground(.hidden)
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
                 }
         }
     }
