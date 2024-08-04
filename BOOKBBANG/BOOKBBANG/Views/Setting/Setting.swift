@@ -7,79 +7,107 @@
 
 import SwiftUI
 
-enum SettingCategory {
+enum SettingCategory: CaseIterable {
     case manual
     case teamInfo
-}
-
-struct SettingDetail: Hashable {
-    var title: String
-    var image: String
-    var category: SettingCategory
+    case widget
+    case alert
+    
+    var title: String {
+        switch self {
+        case .manual: return "책빵 사용설명서"
+        case .teamInfo: return "Apple Puff Girls에 대해"
+        case .widget: return "위젯 설정"
+        case .alert: return "알림 설정"
+        }
+    }
+    
+    var image: Image {
+        switch self {
+        case .manual: return Image(.fish1)
+        case .teamInfo: return Image(.teamLogo)
+        case .widget: return Image(.fish2)
+        case .alert: return Image(.fish4)
+        }
+    }
 }
 
 struct Setting: View {
-    var settingPage: [SettingDetail] = [
-        SettingDetail(title: "책빵 사용설명서", image: "fish_1", category: .manual),
-        SettingDetail(title: "Apple Puff Girls에 대해", image: "TeamLogo", category: .teamInfo)]
+    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var settingViewModel: SettingViewModel
     
     let columns = [
         GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)
-        ]
+    ]
     
     var body: some View {
-        VStack {
-            LazyVGrid(columns: columns, spacing: 2) {
-                ForEach(settingPage, id: \.self) { page in
-                    SelectCategory(page: page)
+        ZStack {
+            VStack {
+                CustomNavigationBar(isHighlighted: .constant(true),
+                                    navigationType: .chevron,
+                                    title: "설정",
+                                    onChevron: { homeViewModel.transition(to: .home) })
+                
+                LazyVGrid(columns: columns, spacing: 2) {
+                    ForEach(SettingCategory.allCases, id: \.self) { page in
+                        SelectCategory(category: page, viewModel: settingViewModel)
+                    }
                 }
+                .padding(.top, 10)
+                
+                Spacer()
             }
+            .background(.backLighter)
             
-            Spacer()
+            switch settingViewModel.viewStatus {
+            case .setting:
+                EmptyView()
+            case .manual:
+                Manual(settingViewModel: settingViewModel)
+            case .teamInfo:
+                TeamInfo(settingViewModel: settingViewModel)
+            case .widget:
+                Text("widget")
+            case .alert:
+                Text("alert")
+            }
         }
-        .padding(2)
-        .navigationTitle("설정")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SelectCategory: View {
-    var page: SettingDetail
+    var category: SettingCategory
+    @ObservedObject var viewModel: SettingViewModel
     
     var body: some View {
-        NavigationLink {
-            switch page.category {
-            case .manual:
-                Manual()
-            case .teamInfo:
-                TeamInfo()
+        VStack(spacing: 16) {
+            category.image
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .frame(height: 143)
+            
+            HStack(spacing: 0) {
+                Text(category.title)
+                    .font(.settingCategoryTitle)
+                    .foregroundStyle(.typo100)
+                    .kerning(-1)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.typo50)
             }
-        } label: {
-            VStack(spacing: 16) {
-                Image(page.image)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(height: 143)
-                
-                HStack(spacing: 0) {
-                    Text(page.title)
-                        .font(.settingCategoryTitle)
-                        .foregroundStyle(.typo100)
-                        .kerning(-1)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(.typo50)
-                }
-            }
-            .padding(19)
-            .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+        }
+        .padding(19)
+        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+        .onTapGesture {
+            viewModel.selectCategory(category)
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        Setting()
+        Setting(homeViewModel: HomeViewModel(),
+                settingViewModel: SettingViewModel())
     }
 }

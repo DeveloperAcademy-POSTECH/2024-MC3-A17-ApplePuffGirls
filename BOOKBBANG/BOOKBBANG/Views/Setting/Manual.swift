@@ -14,6 +14,8 @@ struct ManualChapter: Hashable {
 }
 
 struct Manual: View {
+    @ObservedObject var settingViewModel: SettingViewModel
+    
     let manualChapter: [ManualChapter] = [
         ManualChapter(title: "책 반죽하기", image: "fish_1", context: "책은 우리가 만들 빵의 재료에요. 어떤 책으로 반죽을 만들어볼까요? 그 책은 어떤 맛인지 알려주세요!"),
         ManualChapter(title: "책빵 굽기", image: "fish_2", context: "책 속 좋아하는 문장으로 빵을 구워보세요! 빵 반죽에 문장을 담아 맛있는 빵을 만들어 줄게요."),
@@ -23,6 +25,11 @@ struct Manual: View {
 ]
     var body: some View {
         VStack {
+            CustomNavigationBar(isHighlighted: .constant(false),
+                                navigationType: .chevron,
+                                title: "책빵 사용 설명서",
+                                onChevron: { settingViewModel.transition(to: .setting) })
+
             TabView {
                 ManualCover()
                 
@@ -36,12 +43,6 @@ struct Manual: View {
         }
         .navigationTitle("책빵 사용설명서")
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-#Preview {
-    NavigationStack {
-        Manual()
     }
 }
 

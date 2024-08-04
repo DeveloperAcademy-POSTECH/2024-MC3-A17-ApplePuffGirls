@@ -10,67 +10,67 @@ import SwiftUI
 
 
 struct TeamInfo: View {
+    @ObservedObject var settingViewModel: SettingViewModel
     
     let columns = [
         GridItem(.flexible()), GridItem(.flexible())
         ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                
-                Image(.teamLogo)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 235, height: 163)
-                    .padding(.top, 50)
-                
-                Text("Team Members")
-                    .font(.teamMemberTitle)
-                    .foregroundStyle(.greenMain100)
-                    .padding(.top, 68)
-                    .padding(.bottom, 31)
-                
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(TeamMember.members, id: \.self) { member in
-                        MemberCard(member: member)
-                    }
-                }
-                
-                Text("Team Mentors")
-                    .font(.teamMemberTitle)
-                    .foregroundStyle(.greenMain100)
-                    .padding(.top, 68)
-                    .padding(.bottom, 31)
-                
-                LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(TeamMember.mentors, id: \.self) { member in
-                        MemberCard(member: member)
-                    }
-                }
-                
-                Image(.appleLogo)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 62)
-                    .padding(.top, 120)
-                    .padding(.bottom, 34)
-                Text("Apple Developer Academy @ POSTECH")
-                    .font(.listTitle)
-                    .foregroundStyle(.greenMain100)
-            }
-            .padding()
-        }
-        .background(.backLighter)
-        .scrollIndicators(.hidden)
-        .navigationTitle("Apple Puff Girls에 대해")
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
+        VStack {
+            CustomNavigationBar(isHighlighted: .constant(false),
+                                navigationType: .chevron,
+                                title: "Apple Puff Girls에 대해",
+                                onChevron: { settingViewModel.transition(to: .setting) })
 
-#Preview {
-    NavigationStack {
-        TeamInfo()
+            ScrollView {
+                VStack(spacing: 0) {
+                    
+                    Image(.teamLogo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 235, height: 163)
+                        .padding(.top, 50)
+                    
+                    Text("Team Members")
+                        .font(.teamMemberTitle)
+                        .foregroundStyle(.greenMain100)
+                        .padding(.top, 68)
+                        .padding(.bottom, 31)
+                    
+                    LazyVGrid(columns: columns, spacing: 12) {
+                        ForEach(TeamMember.members, id: \.self) { member in
+                            MemberCard(member: member)
+                        }
+                    }
+                    
+                    Text("Team Mentors")
+                        .font(.teamMemberTitle)
+                        .foregroundStyle(.greenMain100)
+                        .padding(.top, 68)
+                        .padding(.bottom, 31)
+                    
+                    LazyVGrid(columns: columns, spacing: 12) {
+                        ForEach(TeamMember.mentors, id: \.self) { member in
+                            MemberCard(member: member)
+                        }
+                    }
+                    
+                    Image(.appleLogo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 62)
+                        .padding(.top, 120)
+                        .padding(.bottom, 34)
+                    Text("Apple Developer Academy @ POSTECH")
+                        .font(.listTitle)
+                        .foregroundStyle(.greenMain100)
+                }
+                .padding()
+            }
+            .background(.backLighter)
+            .scrollIndicators(.hidden)
+        }
     }
 }
 
