@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var settingViewModel: SettingViewModel
+    
     @State var selected: GroupBy = .book
     
     var body: some View {
-        NavigationStack {
+        ZStack {
             VStack {
-                // 상단 바
-                TopBar()
-                
+                HomeTopBar(homeViewModel: homeViewModel)
                 ScrollView {
                     VStack(spacing: 2) {
-                        // 오늘의 문장(빵)
                         PhraseCard(display: .todaysBread)
                         
-                        // 리스트
                         VStack {
                             SegmentedBar(selected: $selected)
                             
@@ -29,14 +28,17 @@ struct Home: View {
                             case .book : VStack {
                                 BookList()
                                     .padding(.horizontal, 22)
-                                NavigationLink(destination: SearchBook(), label: {
-                                    fetchImage(url: "https://i.pinimg.com/736x/41/8f/32/418f32974d9e8bfe7ad018ce9ae31476.jpg")
+                                
+                                // 임시 버튼 - 추후 삭제 예정
+                                Button(action: {
+                                    homeViewModel.transition(to: .searchBook)
+                                }, label: {
+                                    Image(systemName: "heart")
                                 })
                             }
                             case .clip : ClipList()
                             }
                         }
-                        
                         .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                     }
                 }
@@ -44,44 +46,64 @@ struct Home: View {
                 .padding(.horizontal,2)
             }
             .background(.backLighter)
+            
+            switch homeViewModel.viewStatus {
+            case .home:
+                EmptyView()
+            case .searchBook:
+                SearchBook(homeViewModel: homeViewModel)
+            case .detailBook:
+                EmptyView()
+            case .detailClip:
+                EmptyView()
+            case .addClip:
+                EmptyView()
+            case .receipt:
+                EmptyView()
+            case .setting:
+                Setting(homeViewModel: homeViewModel,
+                        settingViewModel: settingViewModel)
+            }
         }
     }
 }
 
 
-struct TopBar : View {
+struct HomeTopBar : View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    
     var body: some View {
         HStack {
-            // App icon
             Rectangle()
                 .frame(width: 44, height: 44)
                 .foregroundStyle(.typo25)
                 .padding()
+            
             Spacer()
             
             HStack {
-                NavigationLink {
-                    Text("빵수증 뷰")
-                } label: {
+                Button(action: {
+                    homeViewModel.transition(to: .receipt)
+                }, label: {
                     Text("빵수증")
                         .padding()
-                }
+                })
                 
-                NavigationLink {
-                    Text("설정 뷰")
-                } label: {
+                Button(action: {
+                    homeViewModel.transition(to: .setting)
+                }, label: {
                     Text("설정")
                         .padding()
-                }
+                })
             }
             .foregroundStyle(.typo100)
             
         }
         .padding(.horizontal, 10)
-        .frame(height: 75)
+        .frame(height: 55)
     }
 }
 
 #Preview {
-    Home()
+    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel())
 }

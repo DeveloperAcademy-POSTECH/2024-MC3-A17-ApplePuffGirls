@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
+    @ObservedObject var homeViewModel: HomeViewModel
     @StateObject var router = SearchRouter()
     @State private var searchText: String = ""
     @State private var selectedBookID: String? = nil
@@ -20,7 +21,10 @@ struct SearchBook: View {
                 CustomNavigationBar(isHighlighted: $bookSelected,
                                     navigationType: .chevron,
                                     title: "책 검색",
-                                    rightTitle: "다음")
+                                    rightTitle: "다음",
+                                    onChevron: {
+                    homeViewModel.transition(to: .home)
+                })
                 
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
@@ -109,5 +113,5 @@ func DirectRegisterBookButton() -> some View {
 }
 
 #Preview {
-    SearchBook()
+    SearchBook(homeViewModel: HomeViewModel())
 }
