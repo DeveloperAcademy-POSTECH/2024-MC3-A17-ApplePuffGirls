@@ -54,12 +54,12 @@ struct MultipleSelectionRow: View {
             HStack {
                 Rectangle()
                     .frame(width: 55, height: 55)
-                    .foregroundStyle(Color("typo50"))
+                    .foregroundStyle(.typo50)
                 
                 VStack(alignment: .leading) {
                     Text(title)
                         .font(.listTitle)
-                        .foregroundColor(Color("typo100"))
+                        .foregroundColor(.typo100)
                         .padding(.bottom, 2)
                     
                     Text("구절 8개")
