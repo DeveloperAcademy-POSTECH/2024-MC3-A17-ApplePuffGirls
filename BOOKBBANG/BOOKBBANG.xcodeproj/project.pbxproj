@@ -196,6 +196,31 @@
 			path = SettingViewModel;
 			sourceTree = "<group>";
 		};
+		B9133FA22C5F72E8004D5864 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B9C1167D2C5B6EDB00E8C26E /* Config.swift */,
+				B9C116792C5B6C8300E8C26E /* SearchRouter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B9133FA32C5F72F3004D5864 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B9C1167F2C5C61BA00E8C26E /* CustomNavigationBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B9133FA42C5F739C004D5864 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B92946282C5A8A9400C25EDB /* AsyncImage.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		B977DF0A2C58AA4E00EC0186 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +270,9 @@
 		B977DF0E2C58AA6A00EC0186 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B92946282C5A8A9400C25EDB /* AsyncImage.swift */,
-				B9C116792C5B6C8300E8C26E /* SearchRouter.swift */,
-				B9C1167D2C5B6EDB00E8C26E /* Config.swift */,
-				B9C1167F2C5C61BA00E8C26E /* CustomNavigationBar.swift */,
+				B9133FA42C5F739C004D5864 /* Base */,
+				B9133FA32C5F72F3004D5864 /* Components */,
+				B9133FA22C5F72E8004D5864 /* Network */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
