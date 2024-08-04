@@ -39,4 +39,9 @@ extension Font {
     static let memberName: Font = .system(size: 17, weight: .semibold)
     static let memberComment: Font = .system(size: 12, weight: .regular)
 
+    // Recipt
+    static let selectedDate: Font = .system(size: 20, weight: .bold)
+    static let datePeriod: Font = .system(size: 14, weight: .regular)
+    
+
 }

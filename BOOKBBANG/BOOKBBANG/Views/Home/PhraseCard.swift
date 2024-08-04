@@ -27,17 +27,11 @@ struct PhraseCard: View {
     
     // 날짜 형식 -> 0000년 0월 00일
     var dateString: String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 M월 d일"
         
-        if let year = components.year, let month = components.month, let day = components.day {
-            return "\(year)년 \(month)월 \(day)일"
-        } else {
-            return ""
-        }
+        return formatter.string(from: Date())
     }
-    
-    var tempText = ""
     
     var phraseTop: String? {
         switch display {

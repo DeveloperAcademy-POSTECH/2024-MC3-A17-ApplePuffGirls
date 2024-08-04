@@ -51,6 +51,12 @@
 		D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7782C5B86180095CAFF /* TeamInfo.swift */; };
 		D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77A2C5B910D0095CAFF /* Manual.swift */; };
 		D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77C2C5C60900095CAFF /* TeamMember.swift */; };
+		D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */; };
+		D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */; };
+		D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */; };
+		D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */; };
+		D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */; };
+		D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78C2C5F3FB90095CAFF /* Date+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +121,12 @@
 		D6DBF7782C5B86180095CAFF /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		D6DBF77A2C5B910D0095CAFF /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		D6DBF77C2C5C60900095CAFF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptMain.swift; sourceTree = "<group>"; };
+		D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineDivider.swift; sourceTree = "<group>"; };
+		D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingBooks.swift; sourceTree = "<group>"; };
+		D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingPhrases.swift; sourceTree = "<group>"; };
+		D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineDivider.swift; sourceTree = "<group>"; };
+		D6DBF78C2C5F3FB90095CAFF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B910CC2C2C59047E000FFAA7 /* Font+.swift */,
+				D6DBF78C2C5F3FB90095CAFF /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +316,11 @@
 		B977DF1B2C58ACC600EC0186 /* Recipt */ = {
 			isa = PBXGroup;
 			children = (
+				D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */,
+				D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */,
+				D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */,
+				D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */,
+				D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */,
 			);
 			path = Recipt;
 			sourceTree = "<group>";
@@ -565,6 +583,7 @@
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
+				D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */,
 				B91E14E52C5A7CE000C73435 /* SearchBookHeader.swift in Sources */,
 				D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */,
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
@@ -572,8 +591,11 @@
 				D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */,
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
+				D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */,
+				D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */,
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
+				D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
 				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,
@@ -584,7 +606,9 @@
 				B92946252C5A866800C25EDB /* SearchBookSearchBar.swift in Sources */,
 				B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */,
 				D6DBF7752C5A97FC0095CAFF /* BookInfo.swift in Sources */,
+				D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */,
 				B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */,
+				D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */,
 				D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */,
 				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
 				B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */,
@@ -756,7 +780,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
@@ -793,7 +817,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
