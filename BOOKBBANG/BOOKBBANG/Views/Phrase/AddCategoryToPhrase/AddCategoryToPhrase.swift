@@ -11,11 +11,14 @@ struct AddCategoryToPhrase: View {
     
     @State var items: [String] = ["나의 행복한 빵먹기 생활", "행복한 문구", "힘이 되는 이야기들"]
     @State var selections: [String] = []
-    
+    @State private var clipSelected: Bool = false    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             
-            AddCategoryToPhraseHeader()
+             CustomNavigationBar(isHighlighted: $clipSelected,
+                                    navigationType: .chevron,
+                                    title: "카테고리 지정하기",
+                                    rightTitle: "다음")
             
             AddCategorytoPhraseProgressBar()
             
