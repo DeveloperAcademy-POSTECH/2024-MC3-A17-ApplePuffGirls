@@ -25,6 +25,8 @@
     <entity name="Recipt" representedClassName="Recipt" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="mostBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipt" inverseName="mostBooks" inverseEntity="Recipt"/>
+        <relationship name="mostClips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipt" inverseName="mostClips" inverseEntity="Recipt"/>
         <relationship name="rankedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipt" inverseName="rankedBooks" inverseEntity="Recipt"/>
         <relationship name="rankedPhrases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipt" inverseName="rankedPhrases" inverseEntity="Recipt"/>
     </entity>

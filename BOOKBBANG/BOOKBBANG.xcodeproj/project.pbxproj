@@ -47,12 +47,6 @@
 		D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF76E2C5A4E9D0095CAFF /* ImagesContainer.swift */; };
 		D6DBF7732C5A967C0095CAFF /* DetailBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7722C5A967C0095CAFF /* DetailBook.swift */; };
 		D6DBF7752C5A97FC0095CAFF /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7742C5A97FC0095CAFF /* BookInfo.swift */; };
-		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
-		F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */; };
-		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
-		F0E92EA62C5BC52700F04BFE /* AddThoughtsTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */; };
-		F0E92EA82C5BC54700F04BFE /* AddThoughsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */; };
-		F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */; };
 		D6DBF7772C5B79EC0095CAFF /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7762C5B79EC0095CAFF /* Setting.swift */; };
 		D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7782C5B86180095CAFF /* TeamInfo.swift */; };
 		D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77A2C5B910D0095CAFF /* Manual.swift */; };
@@ -63,6 +57,13 @@
 		D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */; };
 		D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */; };
 		D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78C2C5F3FB90095CAFF /* Date+.swift */; };
+		D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */; };
+		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
+		F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */; };
+		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
+		F0E92EA62C5BC52700F04BFE /* AddThoughtsTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */; };
+		F0E92EA82C5BC54700F04BFE /* AddThoughsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */; };
+		F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,12 +124,6 @@
 		D6DBF76E2C5A4E9D0095CAFF /* ImagesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesContainer.swift; sourceTree = "<group>"; };
 		D6DBF7722C5A967C0095CAFF /* DetailBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBook.swift; sourceTree = "<group>"; };
 		D6DBF7742C5A97FC0095CAFF /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
-		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
-		F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseHeader.swift; sourceTree = "<group>"; };
-		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
-		F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsTextfield.swift; sourceTree = "<group>"; };
-		F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughsHeader.swift; sourceTree = "<group>"; };
-		F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughts.swift; sourceTree = "<group>"; };
 		D6DBF7762C5B79EC0095CAFF /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D6DBF7782C5B86180095CAFF /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		D6DBF77A2C5B910D0095CAFF /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
@@ -139,6 +134,13 @@
 		D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingPhrases.swift; sourceTree = "<group>"; };
 		D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineDivider.swift; sourceTree = "<group>"; };
 		D6DBF78C2C5F3FB90095CAFF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecipt.swift; sourceTree = "<group>"; };
+		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
+		F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseHeader.swift; sourceTree = "<group>"; };
+		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
+		F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsTextfield.swift; sourceTree = "<group>"; };
+		F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughsHeader.swift; sourceTree = "<group>"; };
+		F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 				D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */,
 				D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */,
 				D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */,
+				D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */,
 			);
 			path = Recipt;
 			sourceTree = "<group>";
@@ -620,11 +623,11 @@
 				F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
+				D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
 				D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */,
-				B91E14E52C5A7CE000C73435 /* SearchBookHeader.swift in Sources */,
 				D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */,
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
 				D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */,

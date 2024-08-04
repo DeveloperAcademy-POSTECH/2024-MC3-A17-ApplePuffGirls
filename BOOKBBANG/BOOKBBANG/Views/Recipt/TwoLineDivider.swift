@@ -16,6 +16,7 @@ struct TwoLineDivider: View {
             Rectangle()
                 .frame(width: 365, height: 1)
         }
+        .padding(.vertical, 20)
         .foregroundStyle(.typo25)
     }
 }

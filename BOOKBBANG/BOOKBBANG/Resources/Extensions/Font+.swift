@@ -42,6 +42,6 @@ extension Font {
     // Recipt
     static let selectedDate: Font = .system(size: 20, weight: .bold)
     static let datePeriod: Font = .system(size: 14, weight: .regular)
-    
+    static let phraseAtRecipt: Font = .system(size: 15, weight: .regular)
 
 }
