@@ -11,7 +11,7 @@ import SwiftUI
 struct BOOKBBANGApp: App {
     var body: some Scene {
         WindowGroup {
-            Home()
+            Root()
         }
     }
 }
