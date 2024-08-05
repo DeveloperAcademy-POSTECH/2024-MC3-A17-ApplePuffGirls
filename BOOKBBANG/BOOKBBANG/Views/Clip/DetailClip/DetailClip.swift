@@ -61,7 +61,7 @@ struct DetailClip: View {
             )
         }
         .sheet(isPresented: $showingEditClip) {
-            EditClip(clipData: clipData)
+            EditClip()
         }
     }
 }

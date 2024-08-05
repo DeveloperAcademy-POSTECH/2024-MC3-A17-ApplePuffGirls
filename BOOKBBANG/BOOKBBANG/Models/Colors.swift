@@ -35,4 +35,3 @@ enum Colors: String, CaseIterable {
   
   static let allColorsCount: Int = 8
 }
-
