@@ -50,7 +50,8 @@ struct ClipView: View {
         HStack {
             Image(.starClip)
                 .resizable()
-                .frame(width: 55, height: 55)
+                .aspectRatio(contentMode: .fit)
+                .padding(8)
             
             VStack(alignment: .leading) {
                 Text("행복한 나의 빵 먹기 생활")
@@ -62,7 +63,6 @@ struct ClipView: View {
                     .font(.phraseBottom)
                     .foregroundStyle(.typo50)
             }
-            .padding(.leading, 15)
             
             Spacer()
             
