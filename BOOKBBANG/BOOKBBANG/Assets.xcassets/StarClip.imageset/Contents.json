@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "StarClip.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "StarClip.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
