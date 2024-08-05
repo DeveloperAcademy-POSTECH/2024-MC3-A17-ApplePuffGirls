@@ -28,6 +28,7 @@ struct BookList: View {
                 NavigationLink {
                     SearchBook()
                 } label: {
+                    // 책 api 이미지 높이를 몰라서 임시로 155로 넣음
                     EmptyBox(width: 105, height: 155)
                 }
                 ForEach(bookImages, id: \.self) { image in
@@ -37,6 +38,7 @@ struct BookList: View {
                         Image(image)
                             .resizable()
                             .scaledToFill()
+                            // 책 api 이미지 높이를 몰라서 임시로 155로 넣음
                             .frame(width: 105, height: 155)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         

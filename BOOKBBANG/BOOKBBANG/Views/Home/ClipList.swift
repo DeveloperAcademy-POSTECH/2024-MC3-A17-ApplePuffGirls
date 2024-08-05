@@ -101,7 +101,7 @@ struct NewClipButton: View {
             }
         }
         .sheet(isPresented: $showingSheet){
-            // 클립 만들기 뷰
+            AddClip()
         }
     }
 }
