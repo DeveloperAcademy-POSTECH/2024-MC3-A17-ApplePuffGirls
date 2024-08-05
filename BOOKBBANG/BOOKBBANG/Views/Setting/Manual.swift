@@ -41,8 +41,6 @@ struct Manual: View {
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .background(.backLighter)
         }
-        .navigationTitle("책빵 사용설명서")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

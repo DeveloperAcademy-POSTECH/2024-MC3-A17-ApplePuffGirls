@@ -22,6 +22,7 @@ final class HomeViewModel: ObservableObject {
 
 enum HomeViewType {
     case home
+    
     case searchBook
     case detailBook
     case detailClip

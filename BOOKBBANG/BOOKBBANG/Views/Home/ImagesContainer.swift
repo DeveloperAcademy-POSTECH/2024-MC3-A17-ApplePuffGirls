@@ -5,19 +5,41 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ImagesContainer: View {
+    @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var images = ["fish_1", "fish_2", "fish_3", "fish_4", "fish_6"]
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Book.registerDate, ascending: false)],
+        animation: .default)
+    private var books: FetchedResults<Book>
+    
+    @State private var images: [String] = []
     @State private var settings = SettingImageGrid.default()
     @State private var showSettings = false
     
     var body: some View {
-        NavigationView {
-            ImagesGrid(images: $images, settings: $settings)
-                //.padding(.horizontal, 22)
-                
-        }
+//        Rectangle()
+//            .frame(width: 106, height: 155)
+//            .foregroundStyle(.typo25)
+//            .clipShape(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1))
+//            .overlay {
+//                Image(systemName: "plus")
+//                    .font(.system(size: 24, weight: .light))
+//            }
+        
+        ImagesGrid(images: $images, settings: $settings)
+            .onAppear {
+                updateImages()
+            }
+            .onReceive(books.publisher) { _ in
+                updateImages()
+            }
+    }
+    
+    private func updateImages() {
+        images = books.compactMap { $0.thumbnail }
     }
 }
 
