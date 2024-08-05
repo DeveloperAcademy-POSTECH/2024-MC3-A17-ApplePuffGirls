@@ -55,6 +55,7 @@
 		B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1167D2C5B6EDB00E8C26E /* Config.swift */; };
 		B9C116802C5C61BA00E8C26E /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C1167F2C5C61BA00E8C26E /* CustomNavigationBar.swift */; };
 		B9D431952C613F2E00E08069 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D431942C613F2E00E08069 /* PersistenceController.swift */; };
+		B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D431962C61489B00E08069 /* SettingCategory.swift */; };
 		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
@@ -148,6 +149,7 @@
 		B9C1167D2C5B6EDB00E8C26E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B9C1167F2C5C61BA00E8C26E /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		B9D431942C613F2E00E08069 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		B9D431962C61489B00E08069 /* SettingCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCategory.swift; sourceTree = "<group>"; };
 		B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
 		B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenre.swift; sourceTree = "<group>"; };
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */,
 				D6DBF77C2C5C60900095CAFF /* TeamMember.swift */,
 				B9C116772C5B6C6100E8C26E /* BookDTO.swift */,
+				B9D431962C61489B00E08069 /* SettingCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,7 +502,6 @@
 				B9AE11942C5897280082C1DE /* BOOKBBANGTests */,
 				B9AE119E2C5897280082C1DE /* BOOKBBANGUITests */,
 				B9AE117D2C5897270082C1DE /* Products */,
-				B9D431912C613E9600E08069 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -727,6 +729,7 @@
 				6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */,
 				F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */,
 				B9133F972C5F4F06004D5864 /* Root.swift in Sources */,
+				B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
@@ -942,10 +945,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = R94YP9SKB4;
+				DEVELOPMENT_TEAM = 9SVDHQS4M3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "책빵";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -979,10 +983,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = R94YP9SKB4;
+				DEVELOPMENT_TEAM = 9SVDHQS4M3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "책빵";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
