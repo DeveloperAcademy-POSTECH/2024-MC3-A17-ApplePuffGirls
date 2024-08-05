@@ -13,7 +13,8 @@ struct AddDough: View {
   
   var body: some View {
     VStack {
-      HeaderSection(title: "구워질 빵 반죽을 선택해주세요", subtitle: "선택한 반죽 모양에 따라 다른 빵이 탄생해요")
+      HeaderSection(title: "빵 반죽을 선택해주세요",
+                    subtitle: "선택한 반죽에 따라 고유한 문구들이 담긴 빵이 구워져요")
       
       
       Image(selectedDough?.imageName ?? DoughImage.croissant.imageName)
