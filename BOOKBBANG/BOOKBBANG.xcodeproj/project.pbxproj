@@ -54,6 +54,7 @@
 		F089309A2C5F59AE000D0206 /* FinishAddingPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930982C5F59AE000D0206 /* FinishAddingPhrase.swift */; };
 		F089309D2C5F5AD8000D0206 /* DetailPhraseClipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089309C2C5F5AD8000D0206 /* DetailPhraseClipList.swift */; };
 		F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089309E2C5FC7CE000D0206 /* DetailPhrase.swift */; };
+		F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930A42C60ED00000D0206 /* EditPhrase.swift */; };
 		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
 		F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */; };
 		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
@@ -128,6 +129,7 @@
 		F089309B2C5F5A14000D0206 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F089309C2C5F5AD8000D0206 /* DetailPhraseClipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhraseClipList.swift; sourceTree = "<group>"; };
 		F089309E2C5FC7CE000D0206 /* DetailPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhrase.swift; sourceTree = "<group>"; };
+		F08930A42C60ED00000D0206 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
 		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
 		F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseHeader.swift; sourceTree = "<group>"; };
 		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 		B977DF212C58B3A800EC0186 /* EditPhrase */ = {
 			isa = PBXGroup;
 			children = (
+				F08930A42C60ED00000D0206 /* EditPhrase.swift */,
 			);
 			path = EditPhrase;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */,
+				F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
