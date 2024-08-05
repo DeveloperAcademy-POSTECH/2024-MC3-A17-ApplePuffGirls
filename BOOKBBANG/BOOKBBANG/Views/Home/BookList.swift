@@ -10,13 +10,40 @@ import SwiftUI
 
 struct BookList: View {
     @State var sort: SortBookBy = .recentRegister
+    var bookImages: [String] = [
+        "fish_1", "fish_2", "fish_3", "fish_4", "fish_6"
+    ]
+    
+    let columns = [
+        GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
+    ]
     
     var body: some View {
         VStack(spacing: 0) {
             // 정렬 버튼
             SortingBookPicker(sort: $sort)
             
-            ImagesContainer()
+            LazyVGrid(columns: columns, spacing: 12) {
+                NavigationLink {
+                    SearchBook()
+                } label: {
+                    EmptyBox(width: 105, height: 155)
+                }
+                ForEach(bookImages, id: \.self) { image in
+                    NavigationLink {
+                        Text(image)
+                    } label: {
+                        Image(image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 105, height: 155)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                    }
+                }
+                
+            }
         }
     }
 }
