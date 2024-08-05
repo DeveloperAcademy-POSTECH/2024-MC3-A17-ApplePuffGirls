@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		084E81F82C58B40E00323377 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F72C58B40E00323377 /* Onboarding.swift */; };
+		084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F92C5B5C5C00323377 /* DetailClip.swift */; };
+		6D9F064E2C5FCAE300E73D81 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */; };
+		6D9F06502C5FCF2100E73D81 /* BookGenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */; };
+		6D9F06522C5FCF4100E73D81 /*  BookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */; };
+		6D9F06542C5FCF5D00E73D81 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */; };
+		6D9F06562C5FCF8200E73D81 /* ReadStatusBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */; };
+		6D9F06582C5FD04100E73D81 /*  ClipColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */; };
+		6D9F065A2C5FD05E00E73D81 /* ClipShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */; };
+		6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */; };
+		6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */; };
+		6D9F06662C5FD1ED00E73D81 /* DoughImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06652C5FD1ED00E73D81 /* DoughImage.swift */; };
+		6D9F06682C60AF8800E73D81 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9F06672C60AF8800E73D81 /* WaterfallGrid */; };
+		6DE58EBF2C58C190009A9F2F /* AddClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EBE2C58C190009A9F2F /* AddClip.swift */; };
+		6DE58EC32C58D833009A9F2F /* EditClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC22C58D833009A9F2F /* EditClip.swift */; };
+		6DE58EC52C590778009A9F2F /* AddBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC42C590778009A9F2F /* AddBook.swift */; };
+		6DE58EC72C59234E009A9F2F /* ClipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC62C59234E009A9F2F /* ClipData.swift */; };
+		6DE58EC92C5A0C4C009A9F2F /* AddDough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC82C5A0C4C009A9F2F /* AddDough.swift */; };
+		6DE58ECF2C5B4A97009A9F2F /* AddBookFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58ECE2C5B4A97009A9F2F /* AddBookFinal.swift */; };
 		B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
 		B910CC292C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
 		B910CC2A2C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */; };
@@ -17,6 +35,7 @@
 		B92946252C5A866800C25EDB /* SearchBookSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946242C5A866800C25EDB /* SearchBookSearchBar.swift */; };
 		B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */; };
 		B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946282C5A8A9400C25EDB /* AsyncImage.swift */; };
+		B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96435BB2C6137A10045B07F /* DetailClipProfile.swift */; };
 		B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B977DF102C58AA8200EC0186 /* SearchBook.swift */; };
 		B983CA442C5E3B8E00EAFD29 /* SearchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983CA432C5E3B8E00EAFD29 /* SearchTestView.swift */; };
 		B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */; };
@@ -35,7 +54,6 @@
 		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
-		D6DBF7572C5A4E720095CAFF /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = D6DBF7562C5A4E720095CAFF /* WaterfallGrid */; };
 		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
 		D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */; };
 		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
@@ -53,6 +71,12 @@
 		D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7782C5B86180095CAFF /* TeamInfo.swift */; };
 		D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77A2C5B910D0095CAFF /* Manual.swift */; };
 		D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77C2C5C60900095CAFF /* TeamMember.swift */; };
+		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
+		F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */; };
+		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
+		F0E92EA62C5BC52700F04BFE /* AddThoughtsTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */; };
+		F0E92EA82C5BC54700F04BFE /* AddThoughsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */; };
+		F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,12 +98,30 @@
 
 /* Begin PBXFileReference section */
 		084E81F72C58B40E00323377 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		084E81F92C5B5C5C00323377 /* DetailClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClip.swift; sourceTree = "<group>"; };
+		6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenreView.swift; sourceTree = "<group>"; };
+		6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BookInfoSection.swift"; sourceTree = "<group>"; };
+		6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
+		6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatusBox.swift; sourceTree = "<group>"; };
+		6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ClipColorButton.swift"; sourceTree = "<group>"; };
+		6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipShapeButton.swift; sourceTree = "<group>"; };
+		6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTextFields.swift; sourceTree = "<group>"; };
+		6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopClipImage.swift; sourceTree = "<group>"; };
+		6D9F06652C5FD1ED00E73D81 /* DoughImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoughImage.swift; sourceTree = "<group>"; };
+		6DE58EBE2C58C190009A9F2F /* AddClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClip.swift; sourceTree = "<group>"; };
+		6DE58EC22C58D833009A9F2F /* EditClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditClip.swift; sourceTree = "<group>"; };
+		6DE58EC42C590778009A9F2F /* AddBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBook.swift; sourceTree = "<group>"; };
+		6DE58EC62C59234E009A9F2F /* ClipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipData.swift; sourceTree = "<group>"; };
+		6DE58EC82C5A0C4C009A9F2F /* AddDough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDough.swift; sourceTree = "<group>"; };
+		6DE58ECE2C5B4A97009A9F2F /* AddBookFinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookFinal.swift; sourceTree = "<group>"; };
 		B910CC262C590386000FFAA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B910CC272C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "부크크명조_얇은글씨.ttf"; sourceTree = "<group>"; };
 		B910CC2C2C59047E000FFAA7 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		B92946242C5A866800C25EDB /* SearchBookSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookSearchBar.swift; sourceTree = "<group>"; };
 		B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookListRow.swift; sourceTree = "<group>"; };
 		B92946282C5A8A9400C25EDB /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		B96435BB2C6137A10045B07F /* DetailClipProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClipProfile.swift; sourceTree = "<group>"; };
 		B977DF102C58AA8200EC0186 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		B983CA432C5E3B8E00EAFD29 /* SearchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTestView.swift; sourceTree = "<group>"; };
 		B9AE117C2C5897270082C1DE /* BOOKBBANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOOKBBANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +161,12 @@
 		D6DBF7782C5B86180095CAFF /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		D6DBF77A2C5B910D0095CAFF /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		D6DBF77C2C5C60900095CAFF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
+		F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseHeader.swift; sourceTree = "<group>"; };
+		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
+		F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsTextfield.swift; sourceTree = "<group>"; };
+		F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughsHeader.swift; sourceTree = "<group>"; };
+		F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6DBF7572C5A4E720095CAFF /* WaterfallGrid in Frameworks */,
+				6D9F06682C60AF8800E73D81 /* WaterfallGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +209,7 @@
 				B9AE118A2C5897280082C1DE /* BOOKBBANG.xcdatamodeld */,
 				B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */,
 				B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */,
+				6D9F06652C5FD1ED00E73D81 /* DoughImage.swift */,
 				B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */,
 				D6DBF77C2C5C60900095CAFF /* TeamMember.swift */,
 				B9C116772C5B6C6100E8C26E /* BookDTO.swift */,
@@ -265,6 +314,7 @@
 				B977DF182C58AC7800EC0186 /* DetailClip */,
 				B977DF172C58AC6E00EC0186 /* EditClip */,
 				B977DF162C58AC4300EC0186 /* AddClip */,
+				6DE58EC62C59234E009A9F2F /* ClipData.swift */,
 			);
 			path = Clip;
 			sourceTree = "<group>";
@@ -272,6 +322,11 @@
 		B977DF162C58AC4300EC0186 /* AddClip */ = {
 			isa = PBXGroup;
 			children = (
+				6DE58EBE2C58C190009A9F2F /* AddClip.swift */,
+				6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */,
+				6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */,
+				6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */,
+				6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */,
 			);
 			path = AddClip;
 			sourceTree = "<group>";
@@ -279,6 +334,7 @@
 		B977DF172C58AC6E00EC0186 /* EditClip */ = {
 			isa = PBXGroup;
 			children = (
+				6DE58EC22C58D833009A9F2F /* EditClip.swift */,
 			);
 			path = EditClip;
 			sourceTree = "<group>";
@@ -286,6 +342,8 @@
 		B977DF182C58AC7800EC0186 /* DetailClip */ = {
 			isa = PBXGroup;
 			children = (
+				084E81F92C5B5C5C00323377 /* DetailClip.swift */,
+				B96435BB2C6137A10045B07F /* DetailClipProfile.swift */,
 			);
 			path = DetailClip;
 			sourceTree = "<group>";
@@ -302,6 +360,13 @@
 		B977DF1A2C58ACA800EC0186 /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
+				6DE58EC42C590778009A9F2F /* AddBook.swift */,
+				6DE58EC82C5A0C4C009A9F2F /* AddDough.swift */,
+				6DE58ECE2C5B4A97009A9F2F /* AddBookFinal.swift */,
+				6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */,
+				6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */,
+				6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */,
+				6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */,
 			);
 			path = AddBook;
 			sourceTree = "<group>";
@@ -334,6 +399,8 @@
 		B977DF1F2C58B39D00EC0186 /* Phrase */ = {
 			isa = PBXGroup;
 			children = (
+				F0E92EAB2C5BCE3500F04BFE /* AddCategoryToPhrase */,
+				F0E92EA42C5BC50B00F04BFE /* AddThoughts */,
 				B977DF222C58B3B000EC0186 /* DetailPhrase */,
 				B977DF212C58B3A800EC0186 /* EditPhrase */,
 				B977DF202C58B3A200EC0186 /* AddPhrase */,
@@ -344,6 +411,9 @@
 		B977DF202C58B3A200EC0186 /* AddPhrase */ = {
 			isa = PBXGroup;
 			children = (
+				F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */,
+				F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */,
+				F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */,
 			);
 			path = AddPhrase;
 			sourceTree = "<group>";
@@ -385,6 +455,7 @@
 		B9AE117E2C5897270082C1DE /* BOOKBBANG */ = {
 			isa = PBXGroup;
 			children = (
+				6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */,
 				B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */,
 				B910CC262C590386000FFAA7 /* Info.plist */,
 				B977DF122C58AB4400EC0186 /* App */,
@@ -423,6 +494,23 @@
 			path = BOOKBBANGUITests;
 			sourceTree = "<group>";
 		};
+		F0E92EA42C5BC50B00F04BFE /* AddThoughts */ = {
+			isa = PBXGroup;
+			children = (
+				F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */,
+				F0E92EA72C5BC54700F04BFE /* AddThoughsHeader.swift */,
+				F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */,
+			);
+			path = AddThoughts;
+			sourceTree = "<group>";
+		};
+		F0E92EAB2C5BCE3500F04BFE /* AddCategoryToPhrase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddCategoryToPhrase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,7 +528,7 @@
 			);
 			name = BOOKBBANG;
 			packageProductDependencies = (
-				D6DBF7562C5A4E720095CAFF /* WaterfallGrid */,
+				6D9F06672C60AF8800E73D81 /* WaterfallGrid */,
 			);
 			productName = BOOKBBANG;
 			productReference = B9AE117C2C5897270082C1DE /* BOOKBBANG.app */;
@@ -534,6 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C1167C2C5B6E4600E8C26E /* Config.xcconfig in Resources */,
+				6D9F064E2C5FCAE300E73D81 /* Config.xcconfig in Resources */,
 				B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */,
 				B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
 				B9AE11842C5897280082C1DE /* Assets.xcassets in Resources */,
@@ -566,7 +655,15 @@
 				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
 				B9C116802C5C61BA00E8C26E /* CustomNavigationBar.swift in Sources */,
 				D6DBF7732C5A967C0095CAFF /* DetailBook.swift in Sources */,
+				F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */,
+				F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */,
+				6D9F06522C5FCF4100E73D81 /*  BookInfoSection.swift in Sources */,
+				B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */,
 				D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */,
+				F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */,
+				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
+				6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */,
+				F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
@@ -576,27 +673,43 @@
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
 				D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */,
 				D6DBF76F2C5A4E9D0095CAFF /* ImagesContainer.swift in Sources */,
+				F0E92EA62C5BC52700F04BFE /* AddThoughtsTextfield.swift in Sources */,
+				6D9F06502C5FCF2100E73D81 /* BookGenreView.swift in Sources */,
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
+				6DE58EC92C5A0C4C009A9F2F /* AddDough.swift in Sources */,
+				6D9F06582C5FD04100E73D81 /*  ClipColorButton.swift in Sources */,
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
+				6D9F06662C5FD1ED00E73D81 /* DoughImage.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
 				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,
+				F0E92EA82C5BC54700F04BFE /* AddThoughsHeader.swift in Sources */,
 				D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */,
 				084E81F82C58B40E00323377 /* Onboarding.swift in Sources */,
+				6DE58EC52C590778009A9F2F /* AddBook.swift in Sources */,
+				6D9F06562C5FCF8200E73D81 /* ReadStatusBox.swift in Sources */,
 				D6DBF7772C5B79EC0095CAFF /* Setting.swift in Sources */,
 				B9AE118C2C5897280082C1DE /* BOOKBBANG.xcdatamodeld in Sources */,
 				B983CA442C5E3B8E00EAFD29 /* SearchTestView.swift in Sources */,
 				B9E4BFD42C5DF2C300C4DE49 /* PersistentController.swift in Sources */,
+				6D9F065A2C5FD05E00E73D81 /* ClipShapeButton.swift in Sources */,
+				6DE58EBF2C58C190009A9F2F /* AddClip.swift in Sources */,
 				B92946252C5A866800C25EDB /* SearchBookSearchBar.swift in Sources */,
 				B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */,
+				6DE58EC72C59234E009A9F2F /* ClipData.swift in Sources */,
+				6DE58ECF2C5B4A97009A9F2F /* AddBookFinal.swift in Sources */,
 				D6DBF7752C5A97FC0095CAFF /* BookInfo.swift in Sources */,
 				B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */,
 				D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */,
 				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
+				6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */,
+				6D9F06542C5FCF5D00E73D81 /* HeaderSection.swift in Sources */,
 				B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */,
 				B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */,
+				084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */,
+				6DE58EC32C58D833009A9F2F /* EditClip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +877,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = R94YP9SKB4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
@@ -801,7 +914,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = R94YP9SKB4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
@@ -957,9 +1070,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D6DBF7562C5A4E720095CAFF /* WaterfallGrid */ = {
+		6D9F06672C60AF8800E73D81 /* WaterfallGrid */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
 			productName = WaterfallGrid;
 		};
 /* End XCSwiftPackageProductDependency section */

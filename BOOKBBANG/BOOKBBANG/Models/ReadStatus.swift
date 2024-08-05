@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ReadStatus: Int {
+enum ReadStatus: String, CaseIterable {
     case readYet
     case readIng
     case readFinished
@@ -19,4 +19,6 @@ enum ReadStatus: Int {
         case .readFinished: return "읽기 완료"
         }
     }
+  
+   static let allStatusCount: Int = 3
 }
