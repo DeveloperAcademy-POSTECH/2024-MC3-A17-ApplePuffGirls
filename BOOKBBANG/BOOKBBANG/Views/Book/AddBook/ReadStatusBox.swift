@@ -12,7 +12,7 @@ struct ReadStatusBox: View {
   
   var body: some View {
     VStack {
-      Text("현재 독서 상태")
+      Text("독서 상태")
         .font(.bookCaption)
         .foregroundStyle(.typo50)
         .padding(.trailing, 260)
