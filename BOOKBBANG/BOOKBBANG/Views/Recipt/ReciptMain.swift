@@ -10,14 +10,16 @@ import SwiftUI
 struct ReciptMain: View {
     var body: some View {
         VStack() {
-            CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "정기 빵수증")
+            CustomNavigationBar(isHighlighted: .constant(false),
+                                navigationType: .chevron,
+                                title: "빵수증")
             VStack(spacing: 0) {
                 
-                //StartMakeRecipt()
+                StartMakeRecipt()
                 //NoRecipt()
                 
                 // 정기 빵수증 결과
-                ShowRecipt()
+                //ShowRecipt()
                 
             }
             .frame(maxWidth: .infinity)
@@ -29,13 +31,6 @@ struct ReciptMain: View {
         .background(.backLighter)
     }
 }
-
-//func makeStartDateList() -> [Date] {
-//    let today = Date()
-//    let calendar = Calendar.current
-//
-//    return [Date()]
-//}
 
 // 빵수증 기간 선택
 struct SelectDate: View {
@@ -79,8 +74,12 @@ struct StartMakeRecipt: View {
             SelectDate()
             TwoLineDivider()
             
-            EmptyBox(width: 294, height: 305, text: "+  지금 빵수증 발급하기")
-                .padding(.top, 25)
+            NavigationLink {
+                RankingBooks()
+            } label: {
+                EmptyBox(width: 294, height: 305, text: "+  지금 빵수증 발급하기")
+                    .padding(.top, 25)
+            }
             
             Spacer()
         }
