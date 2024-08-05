@@ -12,7 +12,7 @@ struct ClipShapeButton: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text("클립 디자인")
+      Text("디자인")
         .font(.bookCaption)
         .foregroundStyle(.typo50)
         .padding(.trailing, 300)

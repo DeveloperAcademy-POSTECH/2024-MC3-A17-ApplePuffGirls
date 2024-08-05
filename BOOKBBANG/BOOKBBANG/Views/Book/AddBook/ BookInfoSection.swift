@@ -38,20 +38,33 @@ struct BookInfoSection: View {
             .font(.bookCaption)
             .foregroundStyle(.typo80)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.bottom, 10)
+            .padding(.bottom, 30)
           
-          ForEach(["장르", "독서 상태", "읽은 날짜"], id: \.self) { text in
+          ForEach(["장르", "독서 상태", "독서 날짜"], id: \.self) { text in
             HStack {
               Text(text)
                 .font(.bookCaption)
                 .foregroundStyle(.typo50)
               
-              Text(selectedGenre?.rawValue ?? "미설정")
-                .font(.system(size: 12))
-                .foregroundStyle(.typo50)
-                .frame(maxWidth: .infinity, alignment: .leading)
-              
-              
+              if text == "독서 날짜" {
+                Text("\(selectedDate, formatter: dateFormatter)")
+                  .font(.bookCaptionBold)
+                  .foregroundStyle(.typo100)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+            
+              } else if text == "장르" {
+                Text(selectedGenre?.description ?? "미설정")
+                  .font(.bookCaptionBold)
+                  .foregroundStyle(.typo100)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .padding(.leading, 26)
+                
+              } else if text == "독서 상태" {
+                Text(selectedReadStatus?.description ?? "미설정")
+                  .font(.bookCaptionBold)
+                  .foregroundStyle(.typo100)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+              }
             }
           }
         }
@@ -60,6 +73,12 @@ struct BookInfoSection: View {
       .padding(.top, 20)
     }
   }
+}
+
+var dateFormatter: DateFormatter {
+  let formatter = DateFormatter()
+  formatter.dateFormat = "yyyy.MM.dd"
+  return formatter
 }
 
 #Preview {
