@@ -10,8 +10,7 @@ import SwiftUI
 
 
 struct TeamInfo: View {
-    @ObservedObject var settingViewModel: SettingViewModel
-    
+    @Environment(\.dismiss) var dismiss
     let columns = [
         GridItem(.flexible()), GridItem(.flexible())
         ]
@@ -21,7 +20,7 @@ struct TeamInfo: View {
             CustomNavigationBar(isHighlighted: .constant(false),
                                 navigationType: .chevron,
                                 title: "Apple Puff Girls에 대해",
-                                onChevron: { settingViewModel.transition(to: .setting) })
+                                onChevron: { dismiss() })
 
             ScrollView {
                 VStack(spacing: 0) {
@@ -68,9 +67,10 @@ struct TeamInfo: View {
                 }
                 .padding()
             }
-            .background(.backLighter)
             .scrollIndicators(.hidden)
         }
+        .background(.backLighter)
+        .navigationBarBackButtonHidden()
     }
 }
 

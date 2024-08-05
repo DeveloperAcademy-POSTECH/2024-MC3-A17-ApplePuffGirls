@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct DetailBook: View {
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(true), 
+            CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
                                 title: "책 상세정보",
-                                rightTitle: "수정")
+                                rightTitle: "수정",
+                                onChevron: { dismiss() })
             
             ScrollView {
                 VStack(spacing: 2) {
@@ -49,9 +51,10 @@ struct DetailBook: View {
                 }
                 .padding(.horizontal, 2)
             }
-            
+            .scrollIndicators(.hidden)
         }
         .background(.backLighter)
+        .navigationBarBackButtonHidden()
     }
 }
 

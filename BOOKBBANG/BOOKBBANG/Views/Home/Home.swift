@@ -14,55 +14,56 @@ struct Home: View {
     @State var selected: GroupBy = .book
     
     var body: some View {
-        ZStack {
-            VStack {
-                HomeTopBar(homeViewModel: homeViewModel)
-                ScrollView {
-                    VStack(spacing: 2) {
-                        PhraseCard(display: .todaysBread)
-                        
-                        VStack {
-                            SegmentedBar(selected: $selected)
+        NavigationStack {
+            ZStack {
+                VStack {
+                    HomeTopBar(homeViewModel: homeViewModel)
+                    ScrollView {
+                        VStack(spacing: 2) {
+                            PhraseCard(display: .todaysBread)
                             
-                            switch selected {
-                            case .book : VStack {
-                                BookList()
-                                    .padding(.horizontal, 22)
+                            VStack {
+                                SegmentedBar(selected: $selected)
                                 
-                                // 임시 버튼 - 추후 삭제 예정
-                                Button(action: {
-                                    homeViewModel.transition(to: .searchBook)
-                                }, label: {
-                                    Image(systemName: "heart")
-                                })
+                                switch selected {
+                                case .book : VStack {
+                                    BookList()
+                                        .padding(.horizontal, 22)
+                                    
+                                    // 임시 버튼 - 추후 삭제 예정
+                                    Button(action: {
+                                        homeViewModel.transition(to: .searchBook)
+                                    }, label: {
+                                        Image(systemName: "heart")
+                                    })
+                                }
+                                case .clip : ClipList()
+                                }
                             }
-                            case .clip : ClipList()
-                            }
+                            .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                         }
-                        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                     }
+                    .scrollIndicators(.hidden)
+                    .padding(.horizontal,2)
                 }
-                .scrollIndicators(.hidden)
-                .padding(.horizontal,2)
-            }
-            .background(.backLighter)
-            
-            switch homeViewModel.viewStatus {
-            case .home:
-                EmptyView()
-            case .searchBook:
-                SearchBook(homeViewModel: homeViewModel)
-            case .detailBook:
-                EmptyView()
-            case .detailClip:
-                EmptyView()
-            case .addClip:
-                EmptyView()
-            case .receipt:
-                EmptyView()
-            case .setting:
-                Setting(homeViewModel: homeViewModel,
-                        settingViewModel: settingViewModel)
+                .background(.backLighter)
+                
+                switch homeViewModel.viewStatus {
+                case .home:
+                    EmptyView()
+                case .searchBook:
+                    SearchBook(homeViewModel: homeViewModel)
+                case .detailBook:
+                    EmptyView()
+                case .detailClip:
+                    EmptyView()
+                case .addClip:
+                    EmptyView()
+                case .receipt:
+                    EmptyView()
+                case .setting:
+                    Setting(homeViewModel: homeViewModel)
+                }
             }
         }
     }
@@ -74,10 +75,10 @@ struct HomeTopBar : View {
     
     var body: some View {
         HStack {
-            Rectangle()
+            Image(.logo)
+                .resizable()
                 .frame(width: 44, height: 44)
-                .foregroundStyle(.typo25)
-                .padding()
+                .padding(.leading, 10)
             
             Spacer()
             

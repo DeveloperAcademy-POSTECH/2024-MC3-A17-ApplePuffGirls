@@ -21,7 +21,12 @@ struct ImagesGrid: View {
         return
             ScrollView(scrollDirection, showsIndicators: settings.showsIndicators) {
                 WaterfallGrid((images), id: \.self) { image in
-                    fetchHomeImage(url: image)
+                    NavigationLink(destination: {
+                        DetailBook()
+                    }, label: {
+                        fetchHomeImage(url: image)
+                    })
+                    
                 }
                 .gridStyle(
                     columnsInPortrait: Int(settings.columnsInPortrait),

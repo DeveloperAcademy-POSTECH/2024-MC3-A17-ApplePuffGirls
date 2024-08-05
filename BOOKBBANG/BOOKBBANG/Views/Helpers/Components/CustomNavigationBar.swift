@@ -12,7 +12,6 @@ enum NavigationType {
 }
 
 struct CustomNavigationBar: View {
-    @Environment(\.dismiss) var dismiss
     @Binding var isHighlighted: Bool
     var navigationType: NavigationType
     var title: String
@@ -26,7 +25,7 @@ struct CustomNavigationBar: View {
         HStack {
             if navigationType == .cancel {
                 Button(action: {
-                    dismiss()
+                    onCancel?()
                 }, label: {
                     Text("취소")
                         .foregroundStyle(.greenMain100)
@@ -35,7 +34,7 @@ struct CustomNavigationBar: View {
             }
             else {
                 Button(action: {
-                    dismiss()
+                    onChevron?()
                 }, label: {
                     Image(systemName: "chevron.left")
                         .foregroundStyle(.greenMain100)
@@ -60,6 +59,7 @@ struct CustomNavigationBar: View {
                     .font(.system(size: 17, weight: .bold))
                     .kerning(-0.4)
             })
+            .disabled(!isHighlighted)
             
         }
         .padding(.horizontal, 23)
