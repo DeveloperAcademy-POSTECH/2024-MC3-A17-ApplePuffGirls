@@ -13,7 +13,7 @@ struct BookInfoSection: View {
   @Binding var selectedDate: Date
   
   var body: some View {
-    ZStack{
+    ZStack {
       RoundedRectangle(cornerRadius: 20)
         .fill(Color.backLighter)
         .frame(width: 380, height: 180)
@@ -22,14 +22,15 @@ struct BookInfoSection: View {
             .stroke(Color.typo25, lineWidth: 1)
         )
         .padding(.top, 20)
-      HStack{
+      
+      HStack {
         Image("fish_2")
           .resizable()
           .frame(width: 86, height: 140)
           .clipShape(RoundedRectangle(cornerRadius: 10))
           .padding(.leading, 35)
         
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
           Text("로셸로쉘몽쉘")
             .font(.bookTitle)
             .foregroundColor(.typo100)
@@ -40,37 +41,30 @@ struct BookInfoSection: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 30)
           
-          ForEach(["장르", "독서 상태", "독서 날짜"], id: \.self) { text in
-            HStack {
-              Text(text)
-                .font(.bookCaption)
-                .foregroundStyle(.typo50)
-              
-              if text == "독서 날짜" {
-                Text("\(selectedDate, formatter: dateFormatter)")
-                  .font(.bookCaptionBold)
-                  .foregroundStyle(.typo100)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-            
-              } else if text == "장르" {
-                Text(selectedGenre?.description ?? "미설정")
-                  .font(.bookCaptionBold)
-                  .foregroundStyle(.typo100)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .padding(.leading, 26)
-                
-              } else if text == "독서 상태" {
-                Text(selectedReadStatus?.description ?? "미설정")
-                  .font(.bookCaptionBold)
-                  .foregroundStyle(.typo100)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-              }
-            }
-          }
+          displaytext(title: "장르", value: selectedGenre?.description, defaultValue: "미설정", paddingLeading: 26)
+          
+          displaytext(title: "독서 상태", value: selectedReadStatus?.description, defaultValue: "미설정")
+          
+          let dateText = dateFormatter.string(from: selectedDate)
+          displaytext(title: "독서 날짜", value: dateText, defaultValue: "", paddingLeading: 0, isBold: true)
         }
         .padding(.leading, 15)
       }
       .padding(.top, 20)
+    }
+  }
+  
+  func displaytext(title: String, value: String?, defaultValue: String, paddingLeading: CGFloat = 0, isBold: Bool = false) -> some View {
+    let displayText = value ?? defaultValue
+    return HStack {
+      Text(title)
+        .font(.bookCaption)
+        .foregroundStyle(.typo50)
+      Text(displayText)
+        .font(displayText == defaultValue ? .bookCaption : .bookCaptionBold)
+        .foregroundStyle(.typo100)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, paddingLeading)
     }
   }
 }
@@ -84,4 +78,3 @@ var dateFormatter: DateFormatter {
 #Preview {
   BookInfoSection(selectedGenre: .constant(nil), selectedReadStatus: .constant(nil), selectedDate: .constant(Date()))
 }
-
