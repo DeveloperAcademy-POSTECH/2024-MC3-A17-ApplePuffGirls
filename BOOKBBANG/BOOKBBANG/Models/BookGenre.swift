@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BookGenre: String {
+enum BookGenre: String, CaseIterable {
     case essay, novel, liberalArts, economicManagement
     case religion, socialPolitics, selfImprovement, history, naturalScience
     case etc
@@ -26,4 +26,5 @@ enum BookGenre: String {
         case .etc: return "기타"
         }
     }
+  static let allGenreCount: Int = 10
 }
