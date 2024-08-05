@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "ShakeDough.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Dough_6.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

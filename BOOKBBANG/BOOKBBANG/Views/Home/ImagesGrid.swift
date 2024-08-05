@@ -21,13 +21,7 @@ struct ImagesGrid: View {
         return
             ScrollView(scrollDirection, showsIndicators: settings.showsIndicators) {
                 WaterfallGrid((images), id: \.self) { image in
-                    Image(image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 105)
-                        .clipShape(RoundedRectangle(cornerRadius: 13))
-                        
-                        
+                    fetchHomeImage(url: image)
                 }
                 .gridStyle(
                     columnsInPortrait: Int(settings.columnsInPortrait),

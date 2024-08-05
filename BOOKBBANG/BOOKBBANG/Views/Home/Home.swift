@@ -32,6 +32,7 @@ struct Home: View {
                                 NavigationLink(destination: SearchBook(), label: {
                                     fetchImage(url: "https://i.pinimg.com/736x/41/8f/32/418f32974d9e8bfe7ad018ce9ae31476.jpg")
                                 })
+                                    .padding(.horizontal, 22)
                             }
                             case .clip : ClipList()
                             }
