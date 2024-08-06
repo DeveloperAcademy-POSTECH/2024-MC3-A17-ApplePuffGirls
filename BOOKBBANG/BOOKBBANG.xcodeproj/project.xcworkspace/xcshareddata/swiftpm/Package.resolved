@@ -1,0 +1,15 @@
+{
+  "originHash" : "8646e25e180920a065232acf8b4ca4c4fdf4a57ffbb51e24fcf155613761b82d",
+  "pins" : [
+    {
+      "identity" : "waterfallgrid",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/paololeonardi/WaterfallGrid",
+      "state" : {
+        "revision" : "c7c08652c3540adf8e48409c351879b4caea7e89",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
