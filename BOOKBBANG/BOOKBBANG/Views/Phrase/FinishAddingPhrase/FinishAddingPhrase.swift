@@ -11,10 +11,7 @@ struct FinishAddingPhrase: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             
-             CustomNavigationBar(isHighlighted: .constant(true),
-                        navigationType: .cancel,
-                        title: "빵굽기 완료",
-                        rightTitle: "완료")
+            FinishingAddingPhraseHeader()
             
             Rectangle()
                 .frame(width: .infinity, height: 2)

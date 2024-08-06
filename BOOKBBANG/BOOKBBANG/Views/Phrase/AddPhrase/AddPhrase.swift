@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AddPhrase: View {
+    @State private var clipSelected: Bool = false
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            
-            AddPhraseHeader()
+            CustomNavigationBar(isHighlighted: $clipSelected,
+                                        navigationType: .chevron,
+                                        title: "새로운 빵 굽기",
+                                        rightTitle: "다음")
             
             AddPhraseProgressBar()
             
@@ -31,7 +34,7 @@ struct AddPhrase: View {
                 } 
                 .fixedSize()
                 
-                Text("이 책빵의 어느 부분을 잘라볼까요?")
+                Text("책의 어느 부분을 구워볼까요?")
                     .foregroundStyle(.typo100)
                     .font(.system(size: 24, weight: .bold))
                     .padding(.bottom, 10)

@@ -25,7 +25,7 @@ struct AddPhraseTextfield: View {
 extension AddPhraseTextfield {
     func createTextEditor() -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("조각 페이지")
+            Text("페이지")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 5)
@@ -41,7 +41,7 @@ extension AddPhraseTextfield {
             
             Spacer().frame(height: 22)
             
-            Text("내가 자른 조각")
+            Text("내가 구울 빵")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 5)

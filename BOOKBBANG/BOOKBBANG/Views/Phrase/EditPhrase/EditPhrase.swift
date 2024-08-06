@@ -20,13 +20,13 @@ struct EditPhrase: View {
                                 rightTitle: "저장")
             .padding(.bottom, 20)
             
-            editField(title: "나의 생각", text: $phrase)
+            editField(title: "내가 구운 빵", text: $phrase)
                 .padding(.bottom, 22)
             
-            DetailPhraseClipList()
+            EditPhraseShowClip()
                 .padding(.bottom, 22)
             
-            editField(title: "나의 생각", text: $mythought)
+            editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
         }
         .padding(.horizontal, 22)
         .background(Color.backLighter)
@@ -42,7 +42,7 @@ extension EditPhrase {
                 .padding(.bottom, 5)
                 .padding(.leading, 12)
             
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.typo10)
                 .overlay(
                     TextEditor(text: text)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailPhrase: View {
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             CustomNavigationBar(isHighlighted:.constant(true) ,
                                 navigationType: .chevron,
                                 title: "빵 상세보기",
@@ -35,9 +35,9 @@ struct DetailPhrase: View {
                 .padding(.leading, 12)
             
             Color.backDarker
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay {
-                    RoundedRectangle(cornerRadius: 20)
+                    RoundedRectangle(cornerRadius: 10)
                     .stroke(.typo25)
                 }
                 .frame(width: .infinity, height: 48)
