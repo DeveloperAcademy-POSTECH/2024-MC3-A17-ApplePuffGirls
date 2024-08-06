@@ -117,7 +117,6 @@
 		084E81F72C58B40E00323377 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		084E81F92C5B5C5C00323377 /* DetailClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClip.swift; sourceTree = "<group>"; };
 		6D6537B92C620201000EA719 /* EditBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBook.swift; sourceTree = "<group>"; };
-		6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenreView.swift; sourceTree = "<group>"; };
 		6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BookInfoSection.swift"; sourceTree = "<group>"; };
 		6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
@@ -558,7 +557,6 @@
 		B9AE117E2C5897270082C1DE /* BOOKBBANG */ = {
 			isa = PBXGroup;
 			children = (
-				6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */,
 				B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */,
 				B910CC262C590386000FFAA7 /* Info.plist */,
 				B977DF122C58AB4400EC0186 /* App */,
