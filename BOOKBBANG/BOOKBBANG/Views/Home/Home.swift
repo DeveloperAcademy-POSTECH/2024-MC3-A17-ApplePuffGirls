@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct Home: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @ObservedObject var settingViewModel: SettingViewModel
     
     @State var selected: GroupBy = .book
+    @State var selectedBook: Book?
     
     var body: some View {
         ZStack {
@@ -43,7 +45,10 @@ struct Home: View {
             case .searchBook:
                 SearchBook(homeViewModel: homeViewModel)
             case .detailBook:
-                EmptyView()
+                if let selectedBook = homeViewModel.selectedBook {
+                    DetailBook(homeViewModel: homeViewModel,
+                               book: selectedBook)
+                }
             case .receipt:
                 ReciptMain(homeViewModel: homeViewModel)
             case .setting:

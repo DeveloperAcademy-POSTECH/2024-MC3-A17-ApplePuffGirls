@@ -8,21 +8,23 @@
 
 import SwiftUI
 
+enum Display {
+    case main
+    case recipt
+}
+
 struct BookList: View {
-    
-    enum Display {
-        case main
-        case recipt
-    }
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Book.registerDate, ascending: false)],
+        animation: .default)
+    private var books: FetchedResults<Book>
     
     @ObservedObject var homeViewModel: HomeViewModel
     @State var display: Display = .main
     @State var sort: SortBookBy = .recentRegister
-    
-    var bookImages: [String] = [
-        "fish_1", "fish_2", "fish_3", "fish_4", "fish_6"
-    ]
     @State var rankedBooks: [String] = []
+    
     let columns = [
         GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2)
@@ -42,25 +44,23 @@ struct BookList: View {
                         .onTapGesture {
                             homeViewModel.transition(to: .searchBook)
                         }
-                    
                 }
                 
-                ForEach(bookImages, id: \.self) { image in
+                ForEach(books, id: \.self) { book in
                     if display == .main {
-                        NavigationLink {
-                            Text(image)
-                        } label: {
-                            BookImage(image: image)
-                        }
-                        
-                    } else {
-                        Button {
-                            if rankedBooks.count < 3 {
-                                rankedBooks.append(image)
+                        fetchHomeImage(url: book.thumbnail ?? "")
+                            .onTapGesture {
+                                homeViewModel.selectedBook = book
+                                homeViewModel.transition(to: .detailBook)
                             }
-                        } label: {
-                            BookImage(image: image)
-                        }
+                    } else {
+                        //                        Button {
+                        //                            if rankedBooks.count < 3 {
+                        //                                rankedBooks.append(image)
+                        //                            }
+                        //                        } label: {
+                        //                            fetchImage(url: image)
+                        //                        }
                     }
                 }
             }
@@ -68,20 +68,8 @@ struct BookList: View {
     }
 }
 
+
 #Preview {
     BookList(homeViewModel: HomeViewModel(), display: .recipt)
         .padding(.horizontal,2)
-}
-
-
-struct BookImage: View {
-    @State var image: String
-    var body: some View {
-        Image(image)
-            .resizable()
-            .scaledToFill()
-        // 책 api 이미지 높이를 몰라서 임시로 155로 넣음
-            .frame(width: 105, height: 155)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
 }

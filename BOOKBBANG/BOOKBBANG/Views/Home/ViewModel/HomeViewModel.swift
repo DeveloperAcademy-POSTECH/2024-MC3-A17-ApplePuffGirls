@@ -5,11 +5,12 @@
 //  Created by Seoyeon Choi on 8/4/24.
 //
 
-import Foundation
 import SwiftUI
+import CoreData
 
 final class HomeViewModel: ObservableObject {
     @Published var viewStatus: HomeViewType = .home
+    @Published var selectedBook: Book? = nil
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
