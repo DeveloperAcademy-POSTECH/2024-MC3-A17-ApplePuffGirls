@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct ReciptMain: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        VStack() {
+        VStack {
             CustomNavigationBar(isHighlighted: .constant(false),
                                 navigationType: .chevron,
-                                title: "빵수증")
+                                title: "빵수증",
+                                onChevron: { dismiss() })
+            
             VStack(spacing: 0) {
                 
                 StartMakeRecipt()
@@ -29,6 +33,7 @@ struct ReciptMain: View {
             
         }
         .background(.backLighter)
+        .navigationBarBackButtonHidden()
     }
 }
 
