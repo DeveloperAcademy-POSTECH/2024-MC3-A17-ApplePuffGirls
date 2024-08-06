@@ -7,79 +7,66 @@
 
 import SwiftUI
 
-enum SettingCategory {
-    case manual
-    case teamInfo
-}
-
-struct SettingDetail: Hashable {
-    var title: String
-    var image: String
-    var category: SettingCategory
-}
-
 struct Setting: View {
-    var settingPage: [SettingDetail] = [
-        SettingDetail(title: "책빵 사용설명서", image: "fish_1", category: .manual),
-        SettingDetail(title: "Apple Puff Girls에 대해", image: "TeamLogo", category: .teamInfo)]
+    @ObservedObject var homeViewModel: HomeViewModel
     
     let columns = [
         GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)
-        ]
+    ]
     
     var body: some View {
-        VStack {
-            LazyVGrid(columns: columns, spacing: 2) {
-                ForEach(settingPage, id: \.self) { page in
-                    SelectCategory(page: page)
+        NavigationStack {
+            VStack {
+                CustomNavigationBar(isHighlighted: .constant(true),
+                                    navigationType: .chevron,
+                                    title: "설정",
+                                    onChevron: { homeViewModel.transition(to: .home) })
+                
+                LazyVGrid(columns: columns, spacing: 2) {
+                    ForEach(SettingCategory.allCases, id: \.self) { page in
+                        NavigationLink(destination: {
+                            page.destination
+                        }, label: {
+                            SelectCategory(category: page)
+                        })
+                        
+                    }
                 }
+                .padding(.top, 10)
+                
+                Spacer()
             }
-            
-            Spacer()
+            .background(.backLighter)
         }
-        .padding(2)
-        .navigationTitle("설정")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SelectCategory: View {
-    var page: SettingDetail
+    var category: SettingCategory
     
     var body: some View {
-        NavigationLink {
-            switch page.category {
-            case .manual:
-                Manual()
-            case .teamInfo:
-                TeamInfo()
+        VStack(spacing: 16) {
+            category.image
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .frame(height: 143)
+            
+            HStack(spacing: 0) {
+                Text(category.title)
+                    .font(.settingCategoryTitle)
+                    .foregroundStyle(.typo100)
+                    .kerning(-1)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.typo50)
             }
-        } label: {
-            VStack(spacing: 16) {
-                Image(page.image)
-                    .resizable()
-                    .scaledToFit()
-                    .padding()
-                    .frame(height: 143)
-                
-                HStack(spacing: 0) {
-                    Text(page.title)
-                        .font(.settingCategoryTitle)
-                        .foregroundStyle(.typo100)
-                        .kerning(-1)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .foregroundStyle(.typo50)
-                }
-            }
-            .padding(19)
-            .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
         }
+        .padding(19)
+        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
     }
 }
 
 #Preview {
-    NavigationStack {
-        Setting()
-    }
+    Setting(homeViewModel: HomeViewModel())
 }

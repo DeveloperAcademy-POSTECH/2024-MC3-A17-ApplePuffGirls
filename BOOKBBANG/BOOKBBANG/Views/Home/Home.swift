@@ -8,77 +8,91 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var settingViewModel: SettingViewModel
+    
     @State var selected: GroupBy = .book
     
     var body: some View {
-        NavigationStack {
+        ZStack {
             VStack {
-                // 상단 바
-                TopBar()
-                
+                HomeTopBar(homeViewModel: homeViewModel)
                 ScrollView {
                     VStack(spacing: 2) {
-                        // 오늘의 문장(빵)
                         PhraseCard(display: .todaysBread)
                         
-                        // 리스트
-                        VStack {
-                            SegmentedBar(selected: $selected)
-                            
-                            switch selected {
-                            case .book : VStack {
-                                BookList()
-                                    .padding(.horizontal, 22)
-                            }
-                            case .clip : ClipList()
-                            }
-                        }
+                        SegmentedBar(selected: $selected)
                         
-                        .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+                        switch selected {
+                        case .book :
+                            BookList(homeViewModel: homeViewModel)
+                                .padding(.horizontal, 22)
+                                .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+                        case .clip:
+                            ClipList()
+                        }
                     }
+                    .scrollIndicators(.hidden)
+                    .padding(.horizontal,2)
                 }
-                .scrollIndicators(.hidden)
-                .padding(.horizontal,2)
+                .background(.backLighter)
             }
-            .background(.backLighter)
+            switch homeViewModel.viewStatus {
+            case .home:
+                EmptyView()
+            case .searchBook:
+                SearchBook(homeViewModel: homeViewModel)
+            case .detailBook:
+                EmptyView()
+            case .detailClip:
+                EmptyView()
+            case .addClip:
+                EmptyView()
+            case .receipt:
+                EmptyView()
+            case .setting:
+                Setting(homeViewModel: homeViewModel)
+            }
         }
     }
-}
-
-
-struct TopBar : View {
-    var body: some View {
-        HStack {
-            // App icon
-            Rectangle()
-                .frame(width: 44, height: 44)
-                .foregroundStyle(.typo25)
-                .padding()
-            Spacer()
-            
+    
+    
+    struct HomeTopBar : View {
+        @ObservedObject var homeViewModel: HomeViewModel
+        
+        var body: some View {
             HStack {
-                NavigationLink {
-                    Text("빵수증 화면")
-                } label: {
-                    Text("빵수증")
-                        .padding()
-                }
+                Image(.logo)
+                    .resizable()
+                    .frame(width: 44, height: 44)
+                    .padding(.leading, 10)
                 
-                NavigationLink {
-                    Setting()
-                } label: {
-                    Text("설정")
-                        .padding()
+                Spacer()
+                
+                HStack {
+                    Button(action: {
+                        homeViewModel.transition(to: .receipt)
+                    }, label: {
+                        Text("빵수증")
+                            .padding()
+                    })
+                    
+                    Button(action: {
+                        homeViewModel.transition(to: .setting)
+                    }, label: {
+                        Text("설정")
+                            .padding()
+                    })
                 }
+                .foregroundStyle(.typo100)
+                
             }
-            .foregroundStyle(.typo100)
-            
+            .padding(.horizontal, 10)
+            .frame(height: 55)
         }
-        .padding(.horizontal, 10)
-        .frame(height: 75)
     }
 }
 
 #Preview {
-    Home()
+    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel())
 }

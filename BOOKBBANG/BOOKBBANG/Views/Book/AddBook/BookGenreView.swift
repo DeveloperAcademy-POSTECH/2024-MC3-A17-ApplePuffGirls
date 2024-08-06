@@ -11,11 +11,11 @@ struct BookGenreView: View {
   @Binding var selectedGenre: BookGenre?
   
   var body: some View {
-    VStack {
-      Text("책 장르")
+    VStack(alignment: .leading) {
+      Text("장르")
         .font(.bookCaption)
         .foregroundColor(.typo50)
-        .padding(.trailing, 300)
+        .padding(.leading, 30)
         .padding(.top, 15)
       
       ZStack {

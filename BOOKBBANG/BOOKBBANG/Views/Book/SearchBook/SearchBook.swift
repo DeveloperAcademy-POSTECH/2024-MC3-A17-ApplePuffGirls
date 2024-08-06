@@ -9,10 +9,14 @@ import SwiftUI
 import UIKit
 
 struct SearchBook: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    @Environment(\.managedObjectContext) private var viewContext
     @StateObject var router = SearchRouter()
+    
     @State private var searchText: String = ""
     @State private var selectedBookID: String? = nil
     @State private var bookSelected: Bool = false
+    @State private var selectedBook: Documents?
     
     var body: some View {
         NavigationStack {
@@ -20,11 +24,20 @@ struct SearchBook: View {
                 CustomNavigationBar(isHighlighted: $bookSelected,
                                     navigationType: .chevron,
                                     title: "책 검색",
-                                    rightTitle: "다음")
+                                    rightTitle: "다음",
+                                    onChevron: { homeViewModel.transition(to: .home) },
+                                    onRightButton: { })
                 
                 SearchBookProgressBar()
                     .padding(.bottom, 30)
                 
+                Button(action: {
+                    if let selectedBook = selectedBook {
+                        addBook(book: selectedBook)
+                    }
+                }, label: {
+                    Image(systemName: "heart")
+                })
                 
                 SearchBookSearchBar(searchText: $searchText, searchRouter: router)
                     .padding(.horizontal, 22)
@@ -73,17 +86,52 @@ struct SearchBook: View {
                     .padding(.horizontal, 25)
                     .padding(.bottom, 40)
                 }
-                
                 .scrollIndicators(.hidden)
             }
             .background(.backLighter)
         }
         .navigationBarBackButtonHidden()
         .onChange(of: selectedBookID) { newValue in
+            if let newValue = newValue {
+                selectedBook = router.bookList?.first { $0.isbn == newValue }
+            } else {
+                selectedBook = nil
+            }
             bookSelected = newValue != nil
         }
     }
+    
+    private func addBook(book: Documents) {
+        withAnimation {
+            let newBook = Book(context: viewContext)
+            if let selectedBook = selectedBook {
+                newBook.name = selectedBook.title
+                newBook.thumbnail = selectedBook.thumbnail
+                newBook.publisher = selectedBook.publisher
+                newBook.publishedDate = convertToDate(from: selectedBook.datetime)
+                newBook.author = selectedBook.authors.joined(separator: ",")
+                newBook.registerDate = Date()
+                
+                print("selectedBook: \(selectedBook)")
+                print("newBook: \(newBook)")
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
 }
+
+func convertToDate(from dateString: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    return dateFormatter.date(from: dateString)
+}
+
 
 func SearchBookProgressBar() -> some View {
     return VStack {}
@@ -109,5 +157,5 @@ func DirectRegisterBookButton() -> some View {
 }
 
 #Preview {
-    SearchBook()
+    SearchBook(homeViewModel: HomeViewModel())
 }

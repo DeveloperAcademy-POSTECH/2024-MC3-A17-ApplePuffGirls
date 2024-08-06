@@ -17,7 +17,7 @@ struct AddThoughtsTextfield: View {
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 5)
-                .padding(.leading, 12)
+                .padding(.leading, 8)
             
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(.typo10)

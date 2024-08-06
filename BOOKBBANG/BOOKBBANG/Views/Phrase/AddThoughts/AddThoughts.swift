@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct AddThoughts: View {
+    @State private var clipSelected: Bool = false
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            AddThoughtsHeader()
+            CustomNavigationBar(isHighlighted: $clipSelected,
+                                navigationType: .chevron,
+                                title: "새로운 빵 굽기",
+                                rightTitle: "다음")
             
             AddThoughtsProgressBar()
             
@@ -35,7 +39,7 @@ struct AddThoughts: View {
                     .foregroundStyle(.typo100)
                     .font(.system(size: 24, weight: .bold))
                     .padding(.bottom, 10)
-                Text("나중에 확인할 때 저장한 이유를 쉽게 알 수 있어요")
+                Text("빵을 구운 이유를 나중에 쉽게 확인할 수 있어요")
                     .foregroundStyle(.typo50)
                     .font(.system(size: 13, weight: .regular))
                     .padding(.bottom, 20)
@@ -44,13 +48,14 @@ struct AddThoughts: View {
                 
                 Spacer() .frame(height: 21)
                 
-                Text("내가 자른 조각")
+                Text("내가 구운 빵")
                     .foregroundStyle(.typo50)
                     .font(.system(size: 13, weight: .regular))
-                    .padding(.bottom, 5)
-                    .padding(.leading, 12)
+                    .padding(.bottom, 8)
+                    .padding(.leading, 30)
                 
                 PhraseCard(display: .addPhrase)
+                    .padding(.horizontal, 2)
                 
                 Spacer().frame(height: 22)
                 

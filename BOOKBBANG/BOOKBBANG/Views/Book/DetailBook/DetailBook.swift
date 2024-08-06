@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct DetailBook: View {
+    @Environment(\.dismiss) var dismiss
+    @State private var isEditBookPresented: Bool = false
+    
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(true), 
+            CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
                                 title: "책 상세정보",
-                                rightTitle: "수정")
+                                rightTitle: "수정",
+                                onChevron: { dismiss() },
+                                onRightButton: { isEditBookPresented.toggle() })
             
             ScrollView {
                 VStack(spacing: 2) {
@@ -31,29 +36,42 @@ struct DetailBook: View {
                         }
                         Spacer()
                         
-                        Text("+  구절 추가하기")
-                            .font(.bookCaption)
-                            .frame(width: 118, height: 40)
-                            .foregroundStyle(.white)
-                            .background(Capsule().foregroundStyle(.greenMain100))
-                        
+                        NavigationLink(destination: {
+                            AddPhrase()
+                        }, label: {
+                            Text("+  구절 추가하기")
+                                .font(.bookCaption)
+                                .frame(width: 118, height: 40)
+                                .foregroundStyle(.white)
+                                .background(Capsule().foregroundStyle(.greenMain100))
+                        })
                     }
                     .foregroundStyle(.typo50)
                     .padding(.horizontal, 26)
                     .padding(.bottom, 27)
-                    
-                    PhraseCard()
-                    PhraseCard()
-                    PhraseCard()
-                    
+
+                    ForEach(0..<3, id: \.self) { _ in
+                        NavigationLink(destination: {
+                            DetailPhrase()
+                        }, label: {
+                            PhraseCard()
+                        })
+                    }
                 }
                 .padding(.horizontal, 2)
             }
-            
+            .scrollIndicators(.hidden)
+            .sheet(isPresented: $isEditBookPresented) {
+                EditBook(isPresented: $isEditBookPresented)
+            }
         }
+        .navigationBarBackButtonHidden()
         .background(.backLighter)
+        
     }
 }
+
+
 
 #Preview {
     NavigationStack {

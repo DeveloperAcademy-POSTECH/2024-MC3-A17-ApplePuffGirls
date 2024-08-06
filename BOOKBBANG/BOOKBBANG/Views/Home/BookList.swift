@@ -15,8 +15,8 @@ struct BookList: View {
         case recipt
     }
     
+    @ObservedObject var homeViewModel: HomeViewModel
     @State var display: Display = .main
-    
     @State var sort: SortBookBy = .recentRegister
     
     var bookImages: [String] = [
@@ -37,12 +37,12 @@ struct BookList: View {
             
             LazyVGrid(columns: columns, spacing: 12) {
                 if display == .main {
-                    NavigationLink {
-                        SearchBook()
-                    } label: {
-                        // 책 api 이미지 높이를 몰라서 임시로 155로 넣음
-                        EmptyBox(width: 105, height: 155)
-                    }
+                    
+                    EmptyBox(width: 105, height: 155)
+                        .onTapGesture {
+                            homeViewModel.transition(to: .searchBook)
+                        }
+                    
                 }
                 
                 ForEach(bookImages, id: \.self) { image in
@@ -60,7 +60,7 @@ struct BookList: View {
                             }
                         } label: {
                             BookImage(image: image)
-//                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(.greenMain100, lineWidth: 2))
+                            //                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(.greenMain100, lineWidth: 2))
                         }
                     }
                 }
@@ -70,7 +70,7 @@ struct BookList: View {
 }
 
 #Preview {
-    BookList(display: .recipt)
+    BookList(homeViewModel: HomeViewModel(), display: .recipt)
         .padding(.horizontal,2)
 }
 

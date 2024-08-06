@@ -2,70 +2,56 @@
 //  DetailClip.swift
 //  BOOKBBANG
 //
-//  Created by 이연정 on 7/30/24.
+//  Created by Seoyeon Choi on 8/6/24.
 //
 
 import SwiftUI
 
 struct DetailClip: View {
-    @ObservedObject var clipData: ClipData
-    @State private var showingEditClip = false
-    
-    let clipImages = [
-        "WaterDropClip", "TwinkleClip", "SunClip", "StarClip",
-        "AppleClip", "FlowerClip", "HeartClip", "CloverClip"
-    ]
-    
-    let colors = [
-        Color.red, Color.yellow, Color.orange,
-        Color.green, Color.blue, Color.purple, Color.pink, Color.gray
-    ]
+    @Environment(\.dismiss) var dismiss
+    @State var showingSheet: Bool = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Image(clipData.selectedShape != nil ? clipImages[clipData.selectedShape!] : "WaterDropClip")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .padding(.top, 50)
-                    .foregroundColor(clipData.selectedColor != nil ? colors[clipData.selectedColor!] : .clipRed)
-                
-                Text(clipData.name.isEmpty ? "제목을 입력하세요" : clipData.name)
-                    .font(.system(size: 24))
-                    .padding(.top, 15)
-                    .padding(.bottom, 5)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-                Text(clipData.description.isEmpty ? "설명을 입력하세요" : clipData.description)
-                    .font(.system(size: 14))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-                Spacer()
-            }
-            .navigationBarTitle("클립 상세정보", displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {
-                    // 여기에 뒤로 가기 액션 추가 가능
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(.greenMain100)
-                        .padding(.leading, 10)
-                },
-                trailing: Button(action: {
-                    showingEditClip = true
-                }) {
-                    Text("수정")
-                        .foregroundColor(.greenMain100)
-                        .padding(.trailing, 10)
+        VStack {
+            CustomNavigationBar(isHighlighted: .constant(true),
+                                navigationType: .chevron,
+                                title: "클립 상세정보",
+                                rightTitle: "수정",
+                                onChevron: { dismiss() },
+                                onRightButton: { showingSheet.toggle() })
+            
+            ScrollView {
+                VStack(spacing: 0) {
+                    DetailClipProfile()
+                        .padding(.top, 20)
+                    
+                    HStack {
+                        Text("총 2개")
+                            .font(.system(size: 13, weight: .regular))
+                            .padding(.leading, 30)
+                            .foregroundStyle(.typo50)
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom, 12)
+                    
+                    ForEach(0..<4, id: \.self) { _ in
+                        PhraseCard(display: .detailClip)
+                            .padding(.horizontal, 2)
+                            .padding(.bottom, 1)
+                    }
                 }
-            )
+            }
+            .scrollIndicators(.hidden)
         }
-        .sheet(isPresented: $showingEditClip) {
+        .background(.backLighter)
+        .navigationBarBackButtonHidden()
+        .sheet(isPresented: $showingSheet) {
             EditClip()
         }
     }
 }
 
 #Preview {
-    DetailClip(clipData: ClipData())
+    DetailClip()
 }
