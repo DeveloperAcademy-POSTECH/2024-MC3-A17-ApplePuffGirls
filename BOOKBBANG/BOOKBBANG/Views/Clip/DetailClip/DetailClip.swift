@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct DetailClip: View {
+    @Environment(\.dismiss) var dismiss
+    @State var showingSheet: Bool = false
+    
     var body: some View {
         VStack {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
                                 title: "클립 상세정보",
-                                rightTitle: "수정")
+                                rightTitle: "수정",
+                                onChevron: { dismiss() },
+                                onRightButton: { showingSheet.toggle() })
+            
             ScrollView {
                 VStack(spacing: 0) {
                     DetailClipProfile()
@@ -39,6 +45,10 @@ struct DetailClip: View {
             .scrollIndicators(.hidden)
         }
         .background(.backLighter)
+        .navigationBarBackButtonHidden()
+        .sheet(isPresented: $showingSheet) {
+            EditClip()
+        }
     }
 }
 
