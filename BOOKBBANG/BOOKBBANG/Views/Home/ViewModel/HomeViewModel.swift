@@ -25,8 +25,7 @@ enum HomeViewType {
     
     case searchBook
     case detailBook
-    case detailClip
-    case addClip
+    
     case receipt
     case setting
 }

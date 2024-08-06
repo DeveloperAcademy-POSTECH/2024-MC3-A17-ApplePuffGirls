@@ -60,7 +60,6 @@ struct BookList: View {
                             }
                         } label: {
                             BookImage(image: image)
-                            //                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(.greenMain100, lineWidth: 2))
                         }
                     }
                 }

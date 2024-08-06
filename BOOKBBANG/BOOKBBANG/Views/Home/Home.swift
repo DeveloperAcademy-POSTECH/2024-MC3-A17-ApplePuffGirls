@@ -44,12 +44,8 @@ struct Home: View {
                 SearchBook(homeViewModel: homeViewModel)
             case .detailBook:
                 EmptyView()
-            case .detailClip:
-                EmptyView()
-            case .addClip:
-                EmptyView()
             case .receipt:
-                EmptyView()
+                ReciptMain(homeViewModel: homeViewModel)
             case .setting:
                 Setting(homeViewModel: homeViewModel)
             }
