@@ -17,6 +17,7 @@ struct BookList: View {
             SortingBookPicker(sort: $sort)
             
             ImagesContainer()
+                .padding(.horizontal, 22)
         }
     }
 }
