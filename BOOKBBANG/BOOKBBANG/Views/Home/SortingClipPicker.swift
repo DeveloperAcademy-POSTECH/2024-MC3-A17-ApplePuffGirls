@@ -19,7 +19,6 @@ struct SortingClipPicker: View {
     var body: some View {
         HStack {
             Spacer()
-            
             Menu {
                 Picker("sort by", selection: $sort) {
                     ForEach(SortClipBy.allCases, id: \.self) { selection in
@@ -31,8 +30,8 @@ struct SortingClipPicker: View {
                 Label("Filter", systemImage: "line.3.horizontal.decrease")
                     .font(.title3)
                     .labelStyle(.iconOnly)
+                    .padding(.horizontal, 22)
             }
-            .padding()
         }
         .frame(height: 60)
     }

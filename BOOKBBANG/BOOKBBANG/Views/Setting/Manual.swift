@@ -23,6 +23,8 @@ struct Manual: View {
 ]
     var body: some View {
         VStack {
+            CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "책빵 사용설명서")
+            
             TabView {
                 ManualCover()
                 
@@ -30,12 +32,11 @@ struct Manual: View {
                     ShowEachChapter(chapter: chapter)
                 }
             }
+            .padding(.bottom, 40)
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .background(.backLighter)
         }
-        .navigationTitle("책빵 사용설명서")
-        .navigationBarTitleDisplayMode(.inline)
+        .background(.backLighter)
     }
 }
 

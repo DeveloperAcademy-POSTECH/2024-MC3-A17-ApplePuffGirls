@@ -39,4 +39,13 @@ extension Font {
     static let memberName: Font = .system(size: 17, weight: .semibold)
     static let memberComment: Font = .system(size: 12, weight: .regular)
 
+    // Recipt
+    static let selectedDate: Font = .system(size: 20, weight: .bold)
+    static let datePeriod: Font = .system(size: 14, weight: .regular)
+    static let phraseAtRecipt: Font = .system(size: 15, weight: .regular)
+    
+    // 책 추가
+    static let addBookTitle: Font = .system(size: 24, weight: .bold)
+    static let addBookButton: Font = .system(size: 14, weight: .regular)
+    
 }
