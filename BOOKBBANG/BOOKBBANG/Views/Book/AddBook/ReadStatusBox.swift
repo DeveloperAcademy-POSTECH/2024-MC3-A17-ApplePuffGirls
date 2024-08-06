@@ -11,11 +11,11 @@ struct ReadStatusBox: View {
   @Binding var selectedReadStatus: ReadStatus?
   
   var body: some View {
-    VStack {
+    VStack(alignment: .leading) {
       Text("독서 상태")
         .font(.bookCaption)
         .foregroundStyle(.typo50)
-        .padding(.trailing, 260)
+        .padding(.leading, 30)
         .padding(.top, 15)
       
       ZStack {
