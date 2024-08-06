@@ -14,8 +14,8 @@ struct DetailPhraseClipList: View {
             Text("빵 클립")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
-                .padding(.bottom, 5)
-                .padding(.leading, 12)
+                .padding(.bottom, 8)
+                .padding(.leading, 30)
             
             
             EditPhraseClipSmallList(

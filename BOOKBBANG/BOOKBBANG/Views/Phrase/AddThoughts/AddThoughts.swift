@@ -51,10 +51,11 @@ struct AddThoughts: View {
                 Text("내가 구운 빵")
                     .foregroundStyle(.typo50)
                     .font(.system(size: 13, weight: .regular))
-                    .padding(.bottom, 5)
-                    .padding(.leading, 12)
+                    .padding(.bottom, 8)
+                    .padding(.leading, 30)
                 
                 PhraseCard(display: .addPhrase)
+                    .padding(.horizontal, 2)
                 
                 Spacer().frame(height: 22)
                 

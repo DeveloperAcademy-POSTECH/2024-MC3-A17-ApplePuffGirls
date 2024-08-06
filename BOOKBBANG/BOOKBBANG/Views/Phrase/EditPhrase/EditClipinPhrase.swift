@@ -16,9 +16,9 @@ struct EditClipinPhrase: View {
         VStack(alignment: .leading, spacing: 0) {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
-                                title: "빵클립")
+                                title: "빵 클립")
             MultipleSelectionList(items: $items, clipImage: $clipImage, selections: $selections)
-            
+        
             NewClipButton()
             Spacer()
         }.background(Color.backLighter)

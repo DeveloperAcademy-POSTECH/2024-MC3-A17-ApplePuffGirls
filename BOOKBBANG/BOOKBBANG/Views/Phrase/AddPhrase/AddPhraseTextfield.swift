@@ -31,10 +31,10 @@ extension AddPhraseTextfield {
                 .padding(.bottom, 5)
                 .padding(.leading, 12)
             
-            TextField("예시: 1", text: $page)
+            TextField("", text: $page)
                 .padding(.horizontal,16)
                 .padding(.vertical,14)
-                .background(Color(uiColor: .typo10))
+                .background(.typo10)
                 .frame(height: 46)
                 .keyboardType(.decimalPad)
                 .cornerRadius(10)

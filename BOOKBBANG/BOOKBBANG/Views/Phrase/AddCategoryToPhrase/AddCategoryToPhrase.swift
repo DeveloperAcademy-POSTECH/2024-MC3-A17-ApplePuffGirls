@@ -38,9 +38,12 @@ struct AddCategoryToPhrase: View {
             }
             .padding(.horizontal, 22)
             
-            MultipleSelectionList(items: $items, clipImage: $clipImage, selections: $selections)
+            MultipleSelectionList(items: $items, 
+                                  clipImage: $clipImage,
+                                  selections: $selections)
             
             NewClipButton()
+            
             Spacer()
         }
     }

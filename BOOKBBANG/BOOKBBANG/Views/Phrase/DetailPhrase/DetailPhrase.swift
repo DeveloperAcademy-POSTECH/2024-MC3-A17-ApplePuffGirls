@@ -17,8 +17,8 @@ struct DetailPhrase: View {
             Text("내가 구운 빵")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
-                .padding(.bottom, 5)
-                .padding(.leading, 12)
+                .padding(.bottom, 8)
+                .padding(.leading, 30)
             
             PhraseCard(display: .detailPhrase)
             
@@ -28,11 +28,11 @@ struct DetailPhrase: View {
             
             Spacer().frame(height: 21)
             
-            Text("나의 생각")
+            Text("빵 속에 담긴 나의 생각")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
-                .padding(.bottom, 5)
-                .padding(.leading, 12)
+                .padding(.bottom, 8)
+                .padding(.leading, 30)
             
             Color.backDarker
                 .clipShape(RoundedRectangle(cornerRadius: 10))

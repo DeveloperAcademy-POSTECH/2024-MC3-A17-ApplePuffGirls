@@ -12,11 +12,11 @@ struct MultipleClipSelectList : View {
     var imageName: String
     var isSelected: Bool
     var action: () -> Void
-
+    
     var body: some View {
         Button(action: self.action) {
             HStack {
-                Image(imageName)  // Clip Image
+                Image(imageName)
                     .resizable()
                     .frame(width: 55, height: 55)
                     .cornerRadius(8)
@@ -55,7 +55,7 @@ struct MultipleSelectionList: View {
             ForEach(Array(items.enumerated()), id: \.element) { index, item in
                 MultipleClipSelectList(
                     title: item,
-                    imageName: clipImage[index], // Use corresponding image
+                    imageName: clipImage[index],
                     isSelected: selections.contains(item),
                     action: {
                         if selections.contains(item) {
