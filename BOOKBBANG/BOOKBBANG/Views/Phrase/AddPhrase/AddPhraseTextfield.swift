@@ -25,23 +25,23 @@ struct AddPhraseTextfield: View {
 extension AddPhraseTextfield {
     func createTextEditor() -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("조각 페이지")
+            Text("페이지")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 5)
                 .padding(.leading, 12)
             
-            TextField("예시: 1", text: $page)
+            TextField("", text: $page)
                 .padding(.horizontal,16)
                 .padding(.vertical,14)
-                .background(Color(uiColor: .typo10))
+                .background(.typo10)
                 .frame(height: 46)
                 .keyboardType(.decimalPad)
                 .cornerRadius(10)
             
             Spacer().frame(height: 22)
             
-            Text("내가 자른 조각")
+            Text("내가 구울 빵")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
                 .padding(.bottom, 5)
