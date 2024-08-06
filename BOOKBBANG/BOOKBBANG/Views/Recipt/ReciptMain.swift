@@ -7,8 +7,16 @@
 
 import SwiftUI
 
+enum ReciptState {
+    case startMakeRecipt
+    case noRecipt
+    case showRecipt
+}
+
 struct ReciptMain: View {
     @Environment(\.dismiss) var dismiss
+    
+    @State var reciptState: ReciptState = .showRecipt
     
     var body: some View {
         VStack {
@@ -18,13 +26,14 @@ struct ReciptMain: View {
                                 onChevron: { dismiss() })
             
             VStack(spacing: 0) {
-                
-                StartMakeRecipt()
-                //NoRecipt()
-                
-                // 정기 빵수증 결과
-                //ShowRecipt()
-                
+                switch reciptState {
+                case .startMakeRecipt:
+                    StartMakeRecipt()
+                case .noRecipt:
+                    NoRecipt()
+                case .showRecipt:
+                    ShowRecipt()
+                }
             }
             .frame(maxWidth: .infinity)
             .background(.backDarker)
@@ -37,23 +46,82 @@ struct ReciptMain: View {
     }
 }
 
+// 빵수증 기간 (시작일) 목록
+func extractDates(from startDate: Date) -> [Date] {
+    let today = Date()
+    var extractedDates: [Date] = []
+    let calendar = Calendar.current
+    
+    let startDateComponents = calendar.dateComponents([.year, .month], from: startDate)
+    guard let year = startDateComponents.year, let month = startDateComponents.month else { return [] }
+    
+    let isBeforeJune = month < 6
+    let startMonth = isBeforeJune ? 1 : 7
+    
+    var currentYear = year
+    var currentMonth = startMonth
+    
+    while true {
+        if let newDate = Date(y: currentYear, m: currentMonth, d: 1) {
+            if newDate >= today {
+                break
+            }
+            extractedDates.append(newDate)
+        }
+        
+        // 6개월 간격으로 다음 날짜 설정
+        if currentMonth == 1 {
+            currentMonth = 7
+        } else {
+            currentMonth = 1
+            currentYear += 1
+        }
+    }
+    
+    return extractedDates
+}
+
+func HalfYearToString(date: Date) -> String {
+    let calendar = Calendar.current
+    let dateComponents = calendar.dateComponents([.year, .month], from: date)
+    
+    if let year = dateComponents.year, let month = dateComponents.month {
+        return "\(year)년 \(month < 7 ? "상" : "하")반기"
+    } else {
+        return "선택하기"
+    }
+}
+
+func PeriodToString(date: Date) -> String {
+    let calendar = Calendar.current
+    let dateComponents = calendar.dateComponents([.year, .month], from: date)
+    
+    guard let year = dateComponents.year, let month = dateComponents.month else { return "" }
+    
+    if month == 1 {
+        return "\(year).\(month).1 - \(year).6.30"
+    } else {
+        return "\(year).\(month).1 - \(year).12.31"
+    }
+}
+
 // 빵수증 기간 선택
 struct SelectDate: View {
-    var dates: [String] = [ "2022년 상반기", "2022년 하반기", "2023년 상반기", "2023년 하반기", "2024년 상반기"]
-    @State private var selectedDate: String = "2024년 상반기"
+    var dates: [Date] = extractDates(from: Date(y: 2022, m: 3, d: 3) ?? Date())
+    
+    @State var selectedDate: Date = extractDates(from: Date())[0]
     
     var body: some View {
         VStack(spacing: 0) {
             Menu {
                 Picker ("Date", selection: $selectedDate) {
                     ForEach(dates, id: \.self) { date in
-                        Text(date).tag(date)
+                        Text(HalfYearToString(date: date)).tag(date)
                     }
                 }
-                
             } label: {
                 HStack(spacing: 12) {
-                    Text(selectedDate)
+                    Text(HalfYearToString(date: selectedDate))
                         .font(.selectedDate)
                         .foregroundStyle(.typo100)
                     Image(systemName: "chevron.up.chevron.down")
@@ -62,7 +130,7 @@ struct SelectDate: View {
             }
             .padding(.top, 25)
             
-            Text("2020.7.1 - 2020.12.31")
+            Text(PeriodToString(date: selectedDate))
                 .font(.datePeriod)
                 .foregroundStyle(.typo50)
         }

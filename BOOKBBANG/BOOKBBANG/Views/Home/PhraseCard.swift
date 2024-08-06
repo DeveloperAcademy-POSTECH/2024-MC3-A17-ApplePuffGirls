@@ -15,6 +15,7 @@ struct PhraseCard: View {
         case detailPhrase // 구절 상세정보
         case detailClip // 클립 상세정보의 구절 리스트
         case addPhrase // 새로운 구절 추가할 때
+        case rankPhrase // 빵수증에서 구절을 선택할 때
     }
     
     var display: displayCardAt = .todaysBread
@@ -37,7 +38,7 @@ struct PhraseCard: View {
         switch display {
         case .todaysBread:
             return "\(dateString)의 추천빵"
-        case .detailBook, .addPhrase:
+        case .detailBook, .addPhrase, .rankPhrase:
             return nil
         case .detailPhrase:
             return "\(title), \(page)페이지에서"
@@ -54,12 +55,14 @@ struct PhraseCard: View {
             return dateString
         case .addPhrase:
             return nil
+        case .rankPhrase:
+            return title
         }
     }
     
     var body: some View {
+        
         VStack(alignment: .leading) {
-            
             // 구절 위 초록 형광펜 텍스트
             if let phraseTop {
                 ZStack(alignment: .trailing) {
@@ -100,12 +103,8 @@ struct PhraseCard: View {
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.typo25)
-            
         )
-        
     }
-    
-    
 }
 
 #Preview {

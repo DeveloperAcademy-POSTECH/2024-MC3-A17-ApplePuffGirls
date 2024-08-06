@@ -24,24 +24,18 @@ struct RankingPhrases: View {
             }
             .padding(.vertical, 15)
             
+            // 책끼리 묶어서 보여주기 X, 최신 등록한 순. 책 제목을 구절 밑에 배치하는 것으로 회의 했어서 피그마랑 디자인 다릅니다
             ScrollView {
-                HStack {
-                    Text("당신이 누군가를 죽였다")
-                        .font(.listTitle)
-                        .foregroundStyle(.typo100)
-                    Spacer()
-                    Text("문장 2개")
-                        .font(.memberComment)
-                        .foregroundStyle(.typo50)
+                ForEach(0..<4) { _ in
+                    Button {
+                        
+                    } label: {
+                        PhraseCard(display: .rankPhrase)
+                    }
                 }
-                .padding(.top, 30)
-                .padding(.horizontal, 35)
-                
-                PhraseCard(display: .detailBook)
-                PhraseCard(display: .detailBook)
             }
         }
-        
+        .background(.backLighter)
     }
 }
 
