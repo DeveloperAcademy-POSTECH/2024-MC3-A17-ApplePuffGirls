@@ -14,12 +14,12 @@ struct AddBook: View {
   
   var body: some View {
     VStack {
-      HeaderSection(title: "빵에 대한 정보를 적어주세요", 
+      HeaderSection(title: "빵에 대한 정보를 적어주세요",
                     subtitle: "책을 맛있게 만들기 위해 정확한 계량을 위한 정보가 필요해요")
       
-      BookInfoSection(selectedGenre: .constant(nil), 
-                      selectedReadStatus: .constant(nil),
-                      selectedDate: .constant(Date()))
+      BookInfoSection(selectedGenre: $selectedGenre,
+                      selectedReadStatus: $selectedReadStatus,
+                      selectedDate: $selectedDate)
       
       BookGenreView(selectedGenre: $selectedGenre)
       

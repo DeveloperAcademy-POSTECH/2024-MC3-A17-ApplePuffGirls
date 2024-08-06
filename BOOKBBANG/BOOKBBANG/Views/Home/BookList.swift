@@ -35,6 +35,7 @@ struct BookList: View {
                 SortingBookPicker(sort: $sort)
             }
             
+<<<<<<< HEAD
             LazyVGrid(columns: columns, spacing: 12) {
                 if display == .main {
                     NavigationLink {
@@ -65,6 +66,10 @@ struct BookList: View {
                     }
                 }
             }
+=======
+            ImagesContainer()
+                .padding(.horizontal, 22)
+>>>>>>> main
         }
     }
 }

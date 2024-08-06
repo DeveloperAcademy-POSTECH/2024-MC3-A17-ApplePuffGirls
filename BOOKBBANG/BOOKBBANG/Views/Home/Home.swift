@@ -28,6 +28,13 @@ struct Home: View {
                             switch selected {
                             case .book : VStack {
                                 BookList()
+<<<<<<< HEAD
+=======
+                                    
+                                NavigationLink(destination: SearchBook(), label: {
+                                    fetchImage(url: "https://i.pinimg.com/736x/41/8f/32/418f32974d9e8bfe7ad018ce9ae31476.jpg")
+                                })
+>>>>>>> main
                                     .padding(.horizontal, 22)
                             }
                             case .clip : ClipList()
@@ -45,7 +52,6 @@ struct Home: View {
     }
 }
 
-
 struct TopBar : View {
     var body: some View {
         HStack {
@@ -58,7 +64,11 @@ struct TopBar : View {
             
             HStack {
                 NavigationLink {
+<<<<<<< HEAD
                     Text("빵수증 화면")
+=======
+                    ReciptMain()
+>>>>>>> main
                 } label: {
                     Text("빵수증")
                         .padding()
@@ -80,5 +90,7 @@ struct TopBar : View {
 }
 
 #Preview {
-    Home()
+    NavigationStack {
+        Home()
+    }
 }

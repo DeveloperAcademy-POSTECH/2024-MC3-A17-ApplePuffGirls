@@ -12,7 +12,7 @@ struct BookGenreView: View {
   
   var body: some View {
     VStack {
-      Text("책 장르")
+      Text("장르")
         .font(.bookCaption)
         .foregroundColor(.typo50)
         .padding(.trailing, 300)

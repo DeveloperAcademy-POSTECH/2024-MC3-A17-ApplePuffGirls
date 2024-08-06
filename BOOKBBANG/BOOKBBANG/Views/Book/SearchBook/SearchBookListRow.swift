@@ -23,14 +23,11 @@ struct SearchBookListRow: View {
                     .foregroundStyle(.typo100)
                     .font(.system(size: 17, weight: .bold))
                     .kerning(-1)
-                
-                HStack {
-                    ForEach(book.authors, id: \.self) { author in
-                        Text(author)
-                            .foregroundStyle(.typo50)
-                            .font(.system(size: 13, weight: .regular))
-                    }
-                }
+                      
+                let bookAuthors = book.authors.joined(separator: ", ")
+                Text(bookAuthors)
+                    .foregroundStyle(.typo50)
+                    .font(.system(size: 13, weight: .regular))
                 
                 Spacer()
                 

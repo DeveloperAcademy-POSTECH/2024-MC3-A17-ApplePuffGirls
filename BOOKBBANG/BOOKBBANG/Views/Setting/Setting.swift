@@ -29,6 +29,7 @@ struct Setting: View {
     
     var body: some View {
         VStack {
+            CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "설정")
             LazyVGrid(columns: columns, spacing: 2) {
                 ForEach(settingPage, id: \.self) { page in
                     SelectCategory(page: page)
@@ -38,8 +39,7 @@ struct Setting: View {
             Spacer()
         }
         .padding(2)
-        .navigationTitle("설정")
-        .navigationBarTitleDisplayMode(.inline)
+        .background(.backLighter)
     }
 }
 

@@ -9,15 +9,17 @@ import SwiftUI
 
 struct AddBookFinal: View {
   var body: some View {
+    
     VStack{
-      HeaderSection(title: "빵 굽기를 완료했습니다", 
-                    subtitle: "맛있는 빵을 만들었어요. 축하합니달라.")
+      HeaderSection(title: "책 추가를 완료했습니다",
+                    subtitle: "맛있는 빵을 만들러 가볼까요?")
+      .padding(.top, 150)
+      .padding(.bottom, 50)
       
-      // 오븐 이미지 아님, 다다가 그릴 예정
-      Image(.oven)
-        .padding(.top, 50)
-        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+      Image(.shakeDough)
+     
     }
+    Spacer()
   }
 }
 

@@ -18,7 +18,6 @@ struct ClipList: View {
                 Spacer()
                 SortingClipPicker(sort: $sort)
             }
-            .frame(height: 60)
             
             VStack {
                 // 새로운 클립 만들기

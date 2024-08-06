@@ -32,8 +32,8 @@ struct SortingBookPicker: View {
                 Label("Filter", systemImage: "line.3.horizontal.decrease")
                     .font(.title3)
                     .labelStyle(.iconOnly)
+                    .padding(.horizontal, 22)
             }
-            //.padding()
         }
         .frame(height: 60)
     }

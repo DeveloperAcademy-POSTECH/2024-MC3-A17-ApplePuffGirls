@@ -32,7 +32,6 @@ class SearchRouter: ObservableObject {
                 DispatchQueue.main.async {
                     self?.book = book
                     self?.bookList = book.documents
-                    print(book)
                 }
             }
             catch {
