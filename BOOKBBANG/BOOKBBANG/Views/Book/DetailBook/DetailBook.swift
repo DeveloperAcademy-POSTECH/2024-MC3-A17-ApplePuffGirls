@@ -36,31 +36,38 @@ struct DetailBook: View {
                         }
                         Spacer()
                         
-                        Text("+  구절 추가하기")
-                            .font(.bookCaption)
-                            .frame(width: 118, height: 40)
-                            .foregroundStyle(.white)
-                            .background(Capsule().foregroundStyle(.greenMain100))
-                        
+                        NavigationLink(destination: {
+                            AddPhrase()
+                        }, label: {
+                            Text("+  구절 추가하기")
+                                .font(.bookCaption)
+                                .frame(width: 118, height: 40)
+                                .foregroundStyle(.white)
+                                .background(Capsule().foregroundStyle(.greenMain100))
+                        })
                     }
                     .foregroundStyle(.typo50)
                     .padding(.horizontal, 26)
                     .padding(.bottom, 27)
-                    
-                    PhraseCard()
-                    PhraseCard()
-                    PhraseCard()
-                    
+
+                    ForEach(0..<3, id: \.self) { _ in
+                        NavigationLink(destination: {
+                            DetailPhrase()
+                        }, label: {
+                            PhraseCard()
+                        })
+                    }
                 }
                 .padding(.horizontal, 2)
             }
             .scrollIndicators(.hidden)
+            .sheet(isPresented: $isEditBookPresented) {
+                EditBook(isPresented: $isEditBookPresented)
+            }
         }
         .navigationBarBackButtonHidden()
         .background(.backLighter)
-        .sheet(isPresented: $isEditBookPresented) {
-            EditBook(isPresented: $isEditBookPresented)
-        }
+        
     }
 }
 
