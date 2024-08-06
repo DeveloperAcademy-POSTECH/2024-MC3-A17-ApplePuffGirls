@@ -58,14 +58,14 @@ struct TopBar : View {
             
             HStack {
                 NavigationLink {
-                    Text("빵수증 뷰")
+                    Text("빵수증 화면")
                 } label: {
                     Text("빵수증")
                         .padding()
                 }
                 
                 NavigationLink {
-                    Text("설정 뷰")
+                    Setting()
                 } label: {
                     Text("설정")
                         .padding()
