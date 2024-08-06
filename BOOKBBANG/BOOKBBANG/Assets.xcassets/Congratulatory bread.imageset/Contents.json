@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "대지 23.png",
+      "filename" : "Congratulatory bread.imageset.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "대지 23@2x.png",
+      "filename" : "Congratulatory bread.imageset@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "대지 23@3x.png",
+      "filename" : "Congratulatory bread.imageset@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
