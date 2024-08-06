@@ -1,5 +1,5 @@
 //
-//  FinishAddingPhrase.swift
+//  CompleteAddingPhrase.swift
 //  BOOKBBANG
 //
 //  Created by kyunglimkim on 8/3/24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct FinishAddingPhrase: View {
+struct CompleteAddingPhrase: View {
     var body: some View {
         VStack(spacing: 0) {
-            FinishingAddingPhraseHeader()
+            CompleteAddingPhraseHeader()
             
             Rectangle()
                 .frame(width: .infinity, height: 2)
@@ -32,5 +32,5 @@ struct FinishAddingPhrase: View {
 }
 
 #Preview {
-    FinishAddingPhrase()
+    CompleteAddingPhrase()
 }

@@ -1,5 +1,5 @@
 //
-//  AddBookFinal.swift
+//  CompleteAddingBook.swift
 //  BOOKBBANG
 //
 //  Created by 이연정 on 8/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddBookFinal: View {
+struct CompleteAddingBook: View {
   var body: some View {
     
     VStack{
@@ -24,5 +24,5 @@ struct AddBookFinal: View {
 }
 
 #Preview {
-  AddBookFinal()
+    CompleteAddingBook()
 }

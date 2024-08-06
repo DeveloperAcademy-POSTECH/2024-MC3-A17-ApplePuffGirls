@@ -1,5 +1,5 @@
 //
-//  FinishingAddingPhraseHeader.swift
+//  CompleteAddingPhraseHeader.swift
 //  BOOKBBANG
 //
 //  Created by kyunglimkim on 8/6/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FinishingAddingPhraseHeader: View {
+struct CompleteAddingPhraseHeader: View {
     var body: some View {
             HStack {
                 Text("완료")
@@ -36,5 +36,5 @@ struct FinishingAddingPhraseHeader: View {
 }
 
 #Preview {
-    FinishingAddingPhraseHeader()
+    CompleteAddingPhraseHeader()
 }
