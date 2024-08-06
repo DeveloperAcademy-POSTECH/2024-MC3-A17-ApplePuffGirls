@@ -46,7 +46,7 @@ struct ReciptMain: View {
     }
 }
 
-// 빵수증 기간 (시작일) 목록
+// 앱 설치 날짜부터 ~ 빵수증 기간(시작일) 목록 구하기
 func extractDates(from startDate: Date) -> [Date] {
     let today = Date()
     var extractedDates: [Date] = []
@@ -81,6 +81,7 @@ func extractDates(from startDate: Date) -> [Date] {
     return extractedDates
 }
 
+// 빵수증 시작 날짜 넣으면 00년 상/하반기 문자열 리턴
 func HalfYearToString(date: Date) -> String {
     let calendar = Calendar.current
     let dateComponents = calendar.dateComponents([.year, .month], from: date)
@@ -92,6 +93,7 @@ func HalfYearToString(date: Date) -> String {
     }
 }
 
+// 빵수증 날짜 기간 나타내는 문자열
 func PeriodToString(date: Date) -> String {
     let calendar = Calendar.current
     let dateComponents = calendar.dateComponents([.year, .month], from: date)
@@ -105,10 +107,13 @@ func PeriodToString(date: Date) -> String {
     }
 }
 
-// 빵수증 기간 선택
+// 빵수증 기간 선택 뷰
 struct SelectDate: View {
+    // 앱 설치 날짜 = 2022.3.3 으로 가정해둠
     var dates: [Date] = extractDates(from: Date(y: 2022, m: 3, d: 3) ?? Date())
     
+    // selectedDate = 현재 보여지는 빵수증의 시작 날짜
+    // 빵수증 데이터 중에 제일 최근 것 보여지게 해야되는데 그거 어케하는지 몰르겠음 엉~ 엉~
     @State var selectedDate: Date = extractDates(from: Date())[0]
     
     var body: some View {
@@ -137,7 +142,6 @@ struct SelectDate: View {
         .padding(.bottom, 10)
     }
 }
-
 
 
 // 기간 내 빵수증을 발급할 데이터가 있을 때 (아직 발급 안했을 때)
