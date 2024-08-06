@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		084E81F82C58B40E00323377 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F72C58B40E00323377 /* Onboarding.swift */; };
 		084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F92C5B5C5C00323377 /* DetailClip.swift */; };
+		6D6537BA2C620201000EA719 /* EditBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6537B92C620201000EA719 /* EditBook.swift */; };
 		6D9F064E2C5FCAE300E73D81 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */; };
 		6D9F06502C5FCF2100E73D81 /* BookGenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */; };
 		6D9F06522C5FCF4100E73D81 /*  BookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */; };
@@ -59,6 +60,7 @@
 		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
+		D6311E2F2C614A17004161C7 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = D6311E2E2C614A17004161C7 /* WaterfallGrid */; };
 		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
 		D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */; };
 		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
@@ -76,6 +78,13 @@
 		D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7782C5B86180095CAFF /* TeamInfo.swift */; };
 		D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77A2C5B910D0095CAFF /* Manual.swift */; };
 		D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77C2C5C60900095CAFF /* TeamMember.swift */; };
+		D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */; };
+		D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */; };
+		D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */; };
+		D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */; };
+		D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */; };
+		D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78C2C5F3FB90095CAFF /* Date+.swift */; };
+		D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */; };
 		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
 		F0E92EA02C5BC4D800F04BFE /* AddPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */; };
 		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
@@ -104,6 +113,7 @@
 /* Begin PBXFileReference section */
 		084E81F72C58B40E00323377 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		084E81F92C5B5C5C00323377 /* DetailClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClip.swift; sourceTree = "<group>"; };
+		6D6537B92C620201000EA719 /* EditBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBook.swift; sourceTree = "<group>"; };
 		6D9F064D2C5FCAE300E73D81 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenreView.swift; sourceTree = "<group>"; };
 		6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BookInfoSection.swift"; sourceTree = "<group>"; };
@@ -171,6 +181,13 @@
 		D6DBF7782C5B86180095CAFF /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		D6DBF77A2C5B910D0095CAFF /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		D6DBF77C2C5C60900095CAFF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptMain.swift; sourceTree = "<group>"; };
+		D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineDivider.swift; sourceTree = "<group>"; };
+		D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingBooks.swift; sourceTree = "<group>"; };
+		D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingPhrases.swift; sourceTree = "<group>"; };
+		D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineDivider.swift; sourceTree = "<group>"; };
+		D6DBF78C2C5F3FB90095CAFF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecipt.swift; sourceTree = "<group>"; };
 		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
 		F0E92E9F2C5BC4D800F04BFE /* AddPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseHeader.swift; sourceTree = "<group>"; };
 		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
@@ -185,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D9F06682C60AF8800E73D81 /* WaterfallGrid in Frameworks */,
+				D6311E2F2C614A17004161C7 /* WaterfallGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				B910CC2C2C59047E000FFAA7 /* Font+.swift */,
+				D6DBF78C2C5F3FB90095CAFF /* Date+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				D6DBF7722C5A967C0095CAFF /* DetailBook.swift */,
+				6D6537B92C620201000EA719 /* EditBook.swift */,
 				D6DBF7742C5A97FC0095CAFF /* BookInfo.swift */,
 			);
 			path = DetailBook;
@@ -436,6 +456,12 @@
 		B977DF1B2C58ACC600EC0186 /* Recipt */ = {
 			isa = PBXGroup;
 			children = (
+				D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */,
+				D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */,
+				D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */,
+				D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */,
+				D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */,
+				D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */,
 			);
 			path = Recipt;
 			sourceTree = "<group>";
@@ -592,6 +618,7 @@
 			name = BOOKBBANG;
 			packageProductDependencies = (
 				6D9F06672C60AF8800E73D81 /* WaterfallGrid */,
+				D6311E2E2C614A17004161C7 /* WaterfallGrid */,
 			);
 			productName = BOOKBBANG;
 			productReference = B9AE117C2C5897270082C1DE /* BOOKBBANG.app */;
@@ -666,7 +693,7 @@
 			);
 			mainGroup = B9AE11732C5897270082C1DE;
 			packageReferences = (
-				D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+				D6311E2D2C614A17004161C7 /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
 			);
 			productRefGroup = B9AE117D2C5897270082C1DE /* Products */;
 			projectDirPath = "";
@@ -732,9 +759,11 @@
 				B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
+				D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
+				D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */,
 				D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */,
 				B910CC2D2C59047E000FFAA7 /* Font+.swift in Sources */,
 				D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */,
@@ -744,10 +773,13 @@
 				6D9F06502C5FCF2100E73D81 /* BookGenreView.swift in Sources */,
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
+				D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */,
+				D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */,
 				6DE58EC92C5A0C4C009A9F2F /* AddDough.swift in Sources */,
 				6D9F06582C5FD04100E73D81 /*  ClipColorButton.swift in Sources */,
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
+				D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				6D9F06662C5FD1ED00E73D81 /* DoughImage.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
@@ -768,13 +800,16 @@
 				6DE58EC72C59234E009A9F2F /* ClipData.swift in Sources */,
 				6DE58ECF2C5B4A97009A9F2F /* AddBookFinal.swift in Sources */,
 				D6DBF7752C5A97FC0095CAFF /* BookInfo.swift in Sources */,
+				D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */,
 				B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */,
 				B9133F9E2C5F5652004D5864 /* HomeViewModel.swift in Sources */,
+				D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */,
 				D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */,
 				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
 				6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */,
 				6D9F06542C5FCF5D00E73D81 /* HeaderSection.swift in Sources */,
 				B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */,
+				6D6537BA2C620201000EA719 /* EditBook.swift in Sources */,
 				B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */,
 				084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */,
 				6DE58EC32C58D833009A9F2F /* EditClip.swift in Sources */,
@@ -1129,7 +1164,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D6DBF7552C5A4E720095CAFF /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+		D6311E2D2C614A17004161C7 /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
 			requirement = {
@@ -1142,6 +1177,11 @@
 /* Begin XCSwiftPackageProductDependency section */
 		6D9F06672C60AF8800E73D81 /* WaterfallGrid */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = WaterfallGrid;
+		};
+		D6311E2E2C614A17004161C7 /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6311E2D2C614A17004161C7 /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
 			productName = WaterfallGrid;
 		};
 /* End XCSwiftPackageProductDependency section */

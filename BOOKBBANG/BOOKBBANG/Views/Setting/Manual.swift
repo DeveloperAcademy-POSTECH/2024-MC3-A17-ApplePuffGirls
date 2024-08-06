@@ -36,6 +36,7 @@ struct Manual: View {
                     ShowEachChapter(chapter: chapter)
                 }
             }
+            .padding(.bottom, 40)
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
         }

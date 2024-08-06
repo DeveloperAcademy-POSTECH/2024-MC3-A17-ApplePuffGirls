@@ -9,13 +9,16 @@ import SwiftUI
 
 struct DetailBook: View {
     @Environment(\.dismiss) var dismiss
+    @State private var isEditBookPresented: Bool = false
+    
     var body: some View {
         VStack {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
                                 title: "책 상세정보",
                                 rightTitle: "수정",
-                                onChevron: { dismiss() })
+                                onChevron: { dismiss() },
+                                onRightButton: { isEditBookPresented.toggle() })
             
             ScrollView {
                 VStack(spacing: 2) {
@@ -53,10 +56,15 @@ struct DetailBook: View {
             }
             .scrollIndicators(.hidden)
         }
-        .background(.backLighter)
         .navigationBarBackButtonHidden()
+        .background(.backLighter)
+        .sheet(isPresented: $isEditBookPresented) {
+            EditBook(isPresented: $isEditBookPresented)
+        }
     }
 }
+
+
 
 #Preview {
     NavigationStack {
