@@ -10,16 +10,18 @@ import SwiftUI
 
 
 struct TeamInfo: View {
-    
+    @Environment(\.dismiss) var dismiss
     let columns = [
         GridItem(.flexible()), GridItem(.flexible())
         ]
     
     var body: some View {
-        
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "Apple Puff Girls에 대해")
-            
+            CustomNavigationBar(isHighlighted: .constant(false),
+                                navigationType: .chevron,
+                                title: "Apple Puff Girls에 대해",
+                                onChevron: { dismiss() })
+
             ScrollView {
                 VStack(spacing: 0) {
                     
@@ -62,19 +64,13 @@ struct TeamInfo: View {
                     Text("Apple Developer Academy @ POSTECH")
                         .font(.listTitle)
                         .foregroundStyle(.greenMain100)
-                        .padding(.bottom, 20)
                 }
                 .padding()
             }
             .scrollIndicators(.hidden)
         }
         .background(.backLighter)
-    }
-}
-
-#Preview {
-    NavigationStack {
-        TeamInfo()
+        .navigationBarBackButtonHidden()
     }
 }
 

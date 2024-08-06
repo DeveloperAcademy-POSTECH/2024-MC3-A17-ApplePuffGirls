@@ -1,19 +1,19 @@
 //
-//  PersistentController.swift
+//  PersistenceController.swift
 //  BOOKBBANG
 //
-//  Created by Seoyeon Choi on 8/3/24.
+//  Created by Seoyeon Choi on 8/6/24.
 //
 
 import Foundation
 import CoreData
 
-struct PersistentController {
-    static let shared = PersistentController()
+struct PersistentenceController {
+    static let shared = PersistentenceController()
     
     // preview에 쓰이는 container
-    static var preview: PersistentController = {
-        let result = PersistentController(inMemory: true)
+    static var preview: PersistentenceController = {
+        let result = PersistentenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = Book(context: viewContext)
@@ -50,7 +50,7 @@ struct PersistentController {
 
 //MARK: - Core Data with Book Model
 
-extension PersistentController {
+extension PersistentenceController {
     func saveBook(author: String,
                   thumbnail: String,
                   title: String,
@@ -87,7 +87,7 @@ extension PersistentController {
 
 //MARK: - Core Data with Phrase Model
 
-extension PersistentController {
+extension PersistentenceController {
     func savePhrase(content: String, thinking: String, createdDate: Date) {
         let phrase = Phrase(context: container.viewContext)
         
@@ -114,7 +114,7 @@ extension PersistentController {
 
 //MARK: - Core Data with Clip Model
 
-extension PersistentController {
+extension PersistentenceController {
     func saveClip(title: String,
                   description: String,
                   color: Int16,

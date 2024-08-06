@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct BOOKBBANGApp: App {
-    let persistenceController = PersistentController.shared
+    let persistenceController = PersistentenceController.shared
     
     var body: some Scene {
         WindowGroup {
-            Home()
+            Root()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

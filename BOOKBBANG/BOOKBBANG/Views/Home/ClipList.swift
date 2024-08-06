@@ -27,7 +27,12 @@ struct ClipList: View {
                 // 클립 리스트
                 ForEach(0 ..< 5) { item in
                     Divider()
-                    ClipView()
+                    
+                    NavigationLink(destination: {
+                        DetailClip()
+                    }, label: {
+                        ClipView()
+                    })
                 }
             }
             .padding(.horizontal, 10)
@@ -35,49 +40,43 @@ struct ClipList: View {
             
         }
         .frame(maxWidth: .infinity)
-        
     }
 }
 
 // 리스트 중 하나의 클립(NavigationLink)을 보여줍니다.
 struct ClipView: View {
     var body: some View {
-        NavigationLink {
-            Text("hi,,")
-        } label: {
-            HStack {
-                Rectangle()
-                    .frame(width: 55, height: 55)
-                    .foregroundStyle(.typo50)
+        HStack {
+            Image(.starClip)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(8)
+            
+            VStack(alignment: .leading) {
+                Text("행복한 나의 빵 먹기 생활")
+                    .font(.listTitle)
+                    .foregroundStyle(.typo100)
+                    .padding(.bottom, 2)
                 
-                VStack(alignment: .leading) {
-                    Text("행복한 나의 빵 먹기 생활")
-                        .font(.listTitle)
-                        .foregroundStyle(.typo100)
-                        .padding(.bottom, 2)
-                    
-                    Text("구절 8개")
-                        .font(.phraseBottom)
-                        .foregroundStyle(.typo50)
-                }
-                .padding(.leading, 15)
-                
-                Spacer()
-                
-                Image(systemName: "chevron.right")
+                Text("구절 8개")
+                    .font(.phraseBottom)
                     .foregroundStyle(.typo50)
             }
-            .padding(.horizontal, 13)
-            .frame(height: 70)
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .foregroundStyle(.typo50)
         }
-        
-        
+        .padding(.horizontal, 13)
+        .frame(height: 70)
     }
 }
 
 // 새로운 클립 만들기 네비게이션 버튼
 struct NewClipButton: View {
     @State var showingSheet: Bool = false
+    
     var body: some View {
         Button {
             showingSheet = true
@@ -85,7 +84,6 @@ struct NewClipButton: View {
             VStack {
                 Divider()
                 HStack {
-                    // 박스 그림
                     EmptyBox(width: 55, height: 55)
                     
                     Text("새로운 클립 만들기")
@@ -100,7 +98,7 @@ struct NewClipButton: View {
             }
         }
         .sheet(isPresented: $showingSheet){
-            // 클립 만들기 뷰
+            AddClip(navigationTitle: "새로운 클립 추가")
         }
     }
 }

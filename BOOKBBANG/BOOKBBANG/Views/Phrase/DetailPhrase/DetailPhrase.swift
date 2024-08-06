@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct DetailPhrase: View {
+    @Environment(\.dismiss) var dismiss
+    @State private var isEditPhrasePresented: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             CustomNavigationBar(isHighlighted:.constant(true) ,
                                 navigationType: .chevron,
                                 title: "빵 상세보기",
-                                rightTitle: "수정")
+                                rightTitle: "수정",
+                                onChevron: { dismiss() },
+                                onRightButton: { isEditPhrasePresented.toggle()})
             Text("내가 구운 빵")
                 .foregroundStyle(.typo50)
                 .font(.system(size: 13, weight: .regular))
@@ -38,9 +43,9 @@ struct DetailPhrase: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay {
                     RoundedRectangle(cornerRadius: 10)
-                    .stroke(.typo25)
+                        .stroke(.typo25)
                 }
-                .frame(width: .infinity, height: 48)
+                .frame(width: UIScreen.main.bounds.width, height: 48)
                 .overlay {
                     HStack {
                         Text("보노 고마워 짱 천재여자야")
@@ -48,14 +53,21 @@ struct DetailPhrase: View {
                             .font(.system(size: 15, weight: .regular))
                         
                         Spacer()
-                    }.padding(.leading, 20)
+                    }
+                    .padding(.leading, 20)
                 }
-            Spacer().frame(height: .infinity)
-        } .padding(.horizontal, 2)
-            .background(.backLighter)
-        }
-        
+            
+            Spacer()
+        } 
+        .padding(.horizontal, 2)
+        .background(.backLighter)
+        .navigationBarBackButtonHidden()
+        .sheet(isPresented: $isEditPhrasePresented, content: {
+            EditPhrase()
+        })
     }
+    
+}
 
 #Preview {
     DetailPhrase()

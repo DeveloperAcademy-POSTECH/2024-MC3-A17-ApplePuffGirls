@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct EditClip: View {
-  
-  var body: some View {
-    AddClip()
-  }
+    
+    var body: some View {
+        AddClip(navigationTitle: "클립 수정하기")
+    }
 }
 
 
 
 
 #Preview {
-  EditClip()
+    EditClip()
 }

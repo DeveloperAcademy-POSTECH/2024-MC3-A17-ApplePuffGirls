@@ -20,26 +20,22 @@ struct ImagesContainer: View {
     @State private var showSettings = false
     
     var body: some View {
-        NavigationStack {
-            NavigationLink(destination: SearchBook()) {
-                Rectangle()
-                    .frame(width: 106, height: 155)
-                    .foregroundStyle(.typo25)
-                    .clipShape(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1))
-                    .overlay {
-                        Image(systemName: "plus")
-                            .font(.system(size: 24, weight: .light))
-                    }
+//        Rectangle()
+//            .frame(width: 106, height: 155)
+//            .foregroundStyle(.typo25)
+//            .clipShape(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 1))
+//            .overlay {
+//                Image(systemName: "plus")
+//                    .font(.system(size: 24, weight: .light))
+//            }
+        
+        ImagesGrid(images: $images, settings: $settings)
+            .onAppear {
+                updateImages()
             }
-            
-            ImagesGrid(images: $images, settings: $settings)
-                .onAppear {
-                    updateImages()
-                }
-                .onReceive(books.publisher) { _ in
-                    updateImages()
-                }
-        }
+            .onReceive(books.publisher) { _ in
+                updateImages()
+            }
     }
     
     private func updateImages() {

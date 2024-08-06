@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct AddPhrase: View {
+    @Environment(\.dismiss) var dismiss
     @State private var clipSelected: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             CustomNavigationBar(isHighlighted: $clipSelected,
                                         navigationType: .chevron,
                                         title: "새로운 빵 굽기",
-                                        rightTitle: "다음")
+                                        rightTitle: "다음",
+                                        onChevron: { dismiss() })
             
             AddPhraseProgressBar()
             
@@ -55,6 +58,7 @@ struct AddPhrase: View {
             
         }
         .background(.backLighter)
+        .navigationBarBackButtonHidden()
     }
 }
 
