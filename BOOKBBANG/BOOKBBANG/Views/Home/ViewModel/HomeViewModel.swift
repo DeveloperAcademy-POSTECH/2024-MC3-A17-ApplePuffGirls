@@ -14,10 +14,12 @@ final class HomeViewModel: ObservableObject {
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
-            withAnimation(.spring(duration: 0.2, bounce: 0.3)) {
-                self.viewStatus = to
-            }
+            self.viewStatus = to
         }
+    }
+    
+    func selectBook(_ book: Book) {
+        self.selectedBook = book
     }
 }
 
@@ -25,6 +27,10 @@ enum HomeViewType {
     case home
     
     case searchBook
+    case addBook
+    case addDough
+    case addBookFinal
+    
     case detailBook
     
     case receipt

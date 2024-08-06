@@ -13,18 +13,12 @@ struct SearchBookSearchBar: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("빵을 골라볼까요?")
-                .foregroundStyle(.typo100)
-                .font(.system(size: 24, weight: .bold))
-                .padding(.bottom, 10)
+            HeaderSection(title: "어떤 책을 읽고 있나요?",
+                          subtitle: "책을 재료 삼아 빵을 구울 수 있습니다.")
+            .padding(.bottom, 20)
             
-            Text("책빵에선 책을 재료 삼아 빵으로 구울 수 있습니다.")
-                .foregroundStyle(.typo50)
-                .font(.system(size: 13, weight: .regular))
-                .padding(.bottom, 20)
-            
-            CustomSearchBar(searchText: $searchText, searchRouter: searchRouter)
-            
+            CustomSearchBar(searchText: $searchText,
+                            searchRouter: searchRouter)
         }
     }
 }
@@ -56,6 +50,7 @@ struct CustomSearchBar: View {
                 .padding(.leading, 15)
                 .padding(.trailing, 13)
             }
+            .padding(.horizontal, 22)
         
     }
 }

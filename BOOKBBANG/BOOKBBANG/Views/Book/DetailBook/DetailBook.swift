@@ -66,7 +66,8 @@ struct DetailBook: View {
                 }
                 .scrollIndicators(.hidden)
                 .sheet(isPresented: $isEditBookPresented) {
-                    EditBook(isPresented: $isEditBookPresented)
+                    EditBook(isPresented: $isEditBookPresented,
+                             book: book)
                 }
             }
             .navigationBarBackButtonHidden()

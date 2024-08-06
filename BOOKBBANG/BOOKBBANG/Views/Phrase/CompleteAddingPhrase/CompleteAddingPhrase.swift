@@ -10,7 +10,7 @@ import SwiftUI
 struct CompleteAddingPhrase: View {
     var body: some View {
         VStack(spacing: 0) {
-            CompleteAddingPhraseHeader()
+            CompleteAddingPhraseHeader(title: "새로운 빵 굽기")
             
             Rectangle()
                 .frame(width: .infinity, height: 2)

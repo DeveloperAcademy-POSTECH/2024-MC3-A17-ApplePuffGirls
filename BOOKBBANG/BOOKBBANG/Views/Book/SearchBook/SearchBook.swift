@@ -23,25 +23,16 @@ struct SearchBook: View {
             VStack(spacing: 0) {
                 CustomNavigationBar(isHighlighted: $bookSelected,
                                     navigationType: .chevron,
-                                    title: "책 검색",
+                                    title: "새로운 책 추가하기",
                                     rightTitle: "다음",
                                     onChevron: { homeViewModel.transition(to: .home) },
-                                    onRightButton: { })
+                                    onRightButton: { homeViewModel.transition(to: .addBook) })
                 
-                SearchBookProgressBar()
+                SearchBookProgressBar(process: 1)
                     .padding(.bottom, 30)
                 
-                Button(action: {
-                    if let selectedBook = selectedBook {
-                        addBook(book: selectedBook)
-                    }
-                }, label: {
-                    Image(systemName: "heart")
-                })
-                
                 SearchBookSearchBar(searchText: $searchText, searchRouter: router)
-                    .padding(.horizontal, 22)
-                    .padding(.bottom, 20)
+                    .padding(.vertical, 20)
                 
                 ScrollView {
                     Spacer().frame(height: 20)
@@ -64,7 +55,7 @@ struct SearchBook: View {
                         }
                     }
                     HStack {
-                        Text("혹시 원하는 책이 없나요?")
+                        Text("원하는 책이 없나요?")
                             .foregroundStyle(.typo50)
                             .font(.system(size: 13, weight: .regular))
                         
@@ -94,8 +85,13 @@ struct SearchBook: View {
         .onChange(of: selectedBookID) { newValue in
             if let newValue = newValue {
                 selectedBook = router.bookList?.first { $0.isbn == newValue }
+                if let selectedBook = selectedBook {
+                    let newBook = createBook(from: selectedBook)
+                    homeViewModel.selectBook(newBook)
+                }
             } else {
                 selectedBook = nil
+                homeViewModel.selectedBook = nil
             }
             bookSelected = newValue != nil
         }
@@ -123,6 +119,17 @@ struct SearchBook: View {
             }
         }
     }
+    
+    private func createBook(from document: Documents) -> Book {
+        let newBook = Book(context: viewContext)
+        newBook.name = document.title
+        newBook.thumbnail = document.thumbnail
+        newBook.publisher = document.publisher
+        newBook.publishedDate = convertToDate(from: document.datetime)
+        newBook.author = document.authors.joined(separator: ",")
+        newBook.registerDate = Date()
+        return newBook
+    }
 }
 
 func convertToDate(from dateString: String) -> Date? {
@@ -133,13 +140,13 @@ func convertToDate(from dateString: String) -> Date? {
 }
 
 
-func SearchBookProgressBar() -> some View {
+func SearchBookProgressBar(process: CGFloat) -> some View {
     return VStack {}
         .frame(width: UIScreen.main.bounds.width, height: 2)
         .background(.typo25)
         .overlay(alignment: .leading) {
             VStack{}
-                .frame(width: UIScreen.main.bounds.width / 3, height: 2)
+                .frame(width: UIScreen.main.bounds.width / 4 * process, height: 2)
                 .background(.greenMain100)
         }
 }

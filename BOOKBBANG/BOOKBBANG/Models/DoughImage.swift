@@ -16,7 +16,7 @@ enum DoughImage: String, CaseIterable {
   var imageName: String {
     switch self {
     case .croissant:
-      return "Dough_1"
+      return "Dough_6"
     case .sikpang:
       return "Dough_2"
     case .bagel:
@@ -24,13 +24,13 @@ enum DoughImage: String, CaseIterable {
     case .twistbread:
       return "Dough_4"
     case .baguette:
-      return "Dough_5"
+      return "Dough_1"
     case .sorapang:
-      return "Dough_6"
-    case .sweetbread:
       return "Dough_7"
-    case .pretzel:
+    case .sweetbread:
       return "Dough_8"
+    case .pretzel:
+      return "Dough_5"
     }
   }
   

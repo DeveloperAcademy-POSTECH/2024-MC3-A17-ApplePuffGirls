@@ -12,6 +12,8 @@ struct BookInfoSection: View {
     @Binding var selectedReadStatus: ReadStatus?
     @Binding var selectedDate: Date
     
+    var book: Book
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -24,18 +26,15 @@ struct BookInfoSection: View {
                 .padding(.top, 20)
             
             HStack {
-                Image("fish_2")
-                    .resizable()
-                    .frame(width: 86, height: 140)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                fetchHomeImage(url: book.thumbnail ?? "")
                     .padding(.leading, 35)
                 
                 VStack(alignment: .leading) {
-                    Text("로셸로쉘몽쉘")
+                    Text(book.name ?? "")
                         .font(.bookTitle)
                         .foregroundColor(.typo100)
                     
-                    Text("로셸(지은이), 몽쉘(엮은이)")
+                    Text(book.author ?? "")
                         .font(.bookCaption)
                         .foregroundStyle(.typo80)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -80,8 +79,4 @@ var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy.MM.dd"
     return formatter
-}
-
-#Preview {
-    BookInfoSection(selectedGenre: .constant(nil), selectedReadStatus: .constant(nil), selectedDate: .constant(Date()))
 }

@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct CompleteAddingBook: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    
     var body: some View {
-        
         VStack{
+            CompleteAddingPhraseHeader(title: "새로운 책 추가하기",
+                                       onComplete: { homeViewModel.transition(to: .home) })
+            
+            SearchBookProgressBar(process: 4)
+            
             HeaderSection(title: "책 추가를 완료했습니다",
                           subtitle: "맛있는 빵을 만들러 가볼까요?")
             .padding(.top, 150)
             .padding(.bottom, 50)
             
             Image(.baking2)
+            
+            Spacer()
         }
+        .background(.backLighter)
     }
 }
 
 #Preview {
-    CompleteAddingBook()
+    CompleteAddingBook(homeViewModel: HomeViewModel())
 }

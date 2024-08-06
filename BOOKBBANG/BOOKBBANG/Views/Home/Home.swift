@@ -44,6 +44,15 @@ struct Home: View {
                 EmptyView()
             case .searchBook:
                 SearchBook(homeViewModel: homeViewModel)
+            case .addBook:
+                if let selectedBook = homeViewModel.selectedBook {
+                    AddBook(homeViewModel: homeViewModel, 
+                            book: selectedBook)
+                }
+            case .addDough:
+                AddDough(homeViewModel: homeViewModel)
+            case .addBookFinal:
+                CompleteAddingBook(homeViewModel: homeViewModel)
             case .detailBook:
                 if let selectedBook = homeViewModel.selectedBook {
                     DetailBook(homeViewModel: homeViewModel,

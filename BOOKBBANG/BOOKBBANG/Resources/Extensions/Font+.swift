@@ -46,6 +46,6 @@ extension Font {
     
     // 책 추가
     static let addBookTitle: Font = .system(size: 24, weight: .bold)
-    static let addBookButton: Font = .system(size: 14, weight: .regular)
+    static let addBookButton: Font = .system(size: 13, weight: .regular)
     
 }
