@@ -23,7 +23,9 @@ struct EditBook: View {
                 CustomNavigationBar(isHighlighted: .constant(true),
                                     navigationType: .cancel,
                                     title: "책 수정하기",
-                                    rightTitle: "완료")
+                                    rightTitle: "완료",
+                                    onCancel: { isPresented.toggle() },
+                                    onRightButton: { isPresented.toggle() })
                 
                 BookInfoSection(selectedGenre: $selectedGenre,
                                 selectedReadStatus: $selectedReadStatus,

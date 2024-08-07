@@ -10,9 +10,10 @@ import SwiftUI
 struct AddDough: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
-    @State var selectedDough: DoughImage? = .croissant
     
-    var book: Book
+    @State var selectedDough: DoughImage? = .croissant
+    @Binding var book: Book
+    
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: .constant(true),
@@ -20,7 +21,7 @@ struct AddDough: View {
                                 title: "새로운 책 추가하기",
                                 rightTitle: "다음",
                                 onChevron: { homeViewModel.transition(to: .addBook) },
-                                onRightButton: { homeViewModel.transition(to: .addBookFinal) })
+                                onRightButton: { clickRightButton() })
             
             SearchBookProgressBar(process: 3)
                 .padding(.bottom, 30)
@@ -65,7 +66,6 @@ struct AddDough: View {
                                 }
                             }
                         }
-                        
                         Spacer()
                     }
                 }
@@ -77,37 +77,9 @@ struct AddDough: View {
         .background(.backLighter)
     }
     
-    private func addBook(book: Documents) {
-        withAnimation {
-            let newBook = Book(context: viewContext)
-            //if let selectedBook = selectedBook {
-                newBook.name = book.title
-                newBook.thumbnail = book.thumbnail
-                newBook.publisher = book.publisher
-                newBook.publishedDate = convertToDate(from: book.datetime)
-                newBook.author = book.authors.joined(separator: ",")
-                newBook.registerDate = Date()
-                
-                print("selectedBook: \(book)")
-                print("newBook: \(newBook)")
-            //}
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
-    func clickRightButton() {
+    private func clickRightButton() {
+        book.bread = selectedDough?.imageName
+        homeViewModel.selectBook(book)
         homeViewModel.transition(to: .addBookFinal)
-        //addBook(book: )
     }
 }
-
-//
-//#Preview {
-//    AddDough(homeViewModel: HomeViewModel())
-//}
-

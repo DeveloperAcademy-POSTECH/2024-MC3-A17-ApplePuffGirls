@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct CompleteAddingBook: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View {
         VStack{
             CompleteAddingPhraseHeader(title: "새로운 책 추가하기",
-                                       onComplete: { homeViewModel.transition(to: .home) })
+                                       onComplete: { clickRightButton() })
             
             SearchBookProgressBar(process: 4)
             
@@ -27,6 +29,15 @@ struct CompleteAddingBook: View {
             Spacer()
         }
         .background(.backLighter)
+    }
+    
+    private func clickRightButton() {
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        homeViewModel.transition(to: .home)
     }
 }
 

@@ -20,6 +20,7 @@ final class HomeViewModel: ObservableObject {
     
     func selectBook(_ book: Book) {
         self.selectedBook = book
+        print("selectedBook: \(String(describing: selectedBook))")
     }
 }
 

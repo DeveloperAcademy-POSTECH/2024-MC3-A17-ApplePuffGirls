@@ -13,7 +13,7 @@ struct AddBook: View {
     @State var selectedReadStatus: ReadStatus?
     @State var selectedDate: Date = Date()
     
-    var book: Book
+    @Binding var book: Book
     
     var body: some View {
         VStack(spacing: 0) {
@@ -22,7 +22,7 @@ struct AddBook: View {
                                 title: "새로운 책 추가하기",
                                 rightTitle: "다음",
                                 onChevron: { homeViewModel.transition(to: .searchBook) },
-                                onRightButton: { homeViewModel.transition(to: .addDough) })
+                                onRightButton: { clickRightButton() })
             
             SearchBookProgressBar(process: 2)
                 .padding(.bottom, 30)
@@ -34,7 +34,7 @@ struct AddBook: View {
                 
                 BookInfoSection(selectedGenre: $selectedGenre,
                                 selectedReadStatus: $selectedReadStatus,
-                                selectedDate: $selectedDate, 
+                                selectedDate: $selectedDate,
                                 book: book)
                 
                 BookGenreView(selectedGenre: $selectedGenre)
@@ -72,16 +72,16 @@ struct AddBook: View {
             Spacer()
         }
         .background(.backLighter)
-        .onDisappear {
-            book.genre = selectedGenre?.description
-            if let selectedReadStatus = selectedReadStatus {
-                book.readStatus = selectedReadStatus.rawValue
-            }
-            book.readDate = selectedDate
-        }
+    }
+    private func saveBookDetails() {
+        book.genre = selectedGenre?.description
+        book.readDate = selectedDate
+        book.readStatus = selectedReadStatus?.rawValue
+        homeViewModel.selectBook(book)
+    }
+    
+    private func clickRightButton() {
+        saveBookDetails()
+        homeViewModel.transition(to: .addDough)
     }
 }
-
-//#Preview {
-//    AddBook(homeViewModel: HomeViewModel())
-//}

@@ -13,7 +13,6 @@ struct Home: View {
     @ObservedObject var settingViewModel: SettingViewModel
     
     @State var selected: GroupBy = .book
-    @State var selectedBook: Book?
     
     var body: some View {
         ZStack {
@@ -28,7 +27,7 @@ struct Home: View {
                         switch selected {
                         case .book :
                             BookList(homeViewModel: homeViewModel)
-                                .padding(.horizontal, 22)
+                                .padding(22)
                                 .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                         case .clip:
                             ClipList()
@@ -47,12 +46,12 @@ struct Home: View {
             case .addBook:
                 if let selectedBook = homeViewModel.selectedBook {
                     AddBook(homeViewModel: homeViewModel, 
-                            book: selectedBook)
+                            book: .constant(selectedBook))
                 }
             case .addDough:
                 if let selectedBook = homeViewModel.selectedBook {
                     AddDough(homeViewModel: homeViewModel,
-                             book: selectedBook)
+                             book: .constant(selectedBook))
                 }
             case .addBookFinal:
                 CompleteAddingBook(homeViewModel: homeViewModel)
