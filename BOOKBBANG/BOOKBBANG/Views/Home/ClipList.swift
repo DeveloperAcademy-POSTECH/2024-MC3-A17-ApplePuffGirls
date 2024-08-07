@@ -7,24 +7,21 @@
 // 메인화면에 보이는 클립별 리스트 화면입니다.
 
 import SwiftUI
+import CoreData
 
 struct ClipList: View {
     @State var sort: SortClipBy = .updated
-    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
     private var clips: FetchedResults<Clip>
     
+    @FetchRequest(entity: Book.entity(), sortDescriptors: [])
+    private var books: FetchedResults<Book>
+    
     var body: some View {
         
         VStack {
-//            ForEach(clips) { clip in
-//                if let title = clip.title {
-//                    Text(title)
-//                }
-//            }
-            
             // 정렬 버튼
             HStack {
                 Spacer()
@@ -42,7 +39,7 @@ struct ClipList: View {
                     NavigationLink(destination: {
                         DetailClip(clip: clip)
                     }, label: {
-                        ClipView(clip: clip)
+                        ClipView(clip: clip, viewContext: viewContext)
                     })
                 }
             }
@@ -57,6 +54,11 @@ struct ClipList: View {
 // 리스트 중 하나의 클립(NavigationLink)을 보여줍니다.
 struct ClipView: View {
     @ObservedObject var clip: Clip
+    var viewContext: NSManagedObjectContext
+    
+    var phraseCount: Int {
+        countPhrasesContainingClip(clip: clip, context: viewContext)
+    }
     
     var body: some View {
         HStack {
@@ -74,7 +76,8 @@ struct ClipView: View {
                     .foregroundStyle(.typo100)
                     .padding(.bottom, 2)
                 
-                Text("구절 8개")
+                
+                Text("구절 \(phraseCount)개")
                     .font(.phraseBottom)
                     .foregroundStyle(.typo50)
             }

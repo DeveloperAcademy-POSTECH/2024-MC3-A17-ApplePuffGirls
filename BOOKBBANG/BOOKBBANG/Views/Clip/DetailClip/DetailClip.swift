@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct DetailClip: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @Environment(\.dismiss) var dismiss
     @State var showingSheet: Bool = false
     
     @ObservedObject var clip: Clip
+    
+    var phraseCount: Int {
+        countPhrasesContainingClip(clip: clip, context: viewContext)
+    }
     
     var body: some View {
         VStack {
@@ -28,7 +34,7 @@ struct DetailClip: View {
                         .padding(.top, 20)
                     
                     HStack {
-                        Text("총 2개")
+                        Text("총 \(phraseCount)개")
                             .font(.system(size: 13, weight: .regular))
                             .padding(.leading, 30)
                             .foregroundStyle(.typo50)

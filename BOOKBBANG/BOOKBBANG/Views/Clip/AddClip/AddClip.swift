@@ -21,7 +21,7 @@ struct AddClip: View {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
                                 title: navigationTitle,
-                                rightTitle: "저장", onRightButton: { saveClip() })
+                                rightTitle: "저장", onCancel: { dismiss() }, onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
             
