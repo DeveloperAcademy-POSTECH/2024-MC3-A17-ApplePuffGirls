@@ -45,15 +45,20 @@ struct BookInfo: View {
                             Spacer()
                         }
                         .frame(width: 67)
-                        Text("\(String(describing: book.readDate))")
-                            .font(.bookCaptionBold)
-                            .foregroundStyle(.typo80)
+                        if let readDate = book.readDate {
+                            Text("\(readDate, formatter: dateFormatter)")
+                                .font(.bookCaptionBold)
+                                .foregroundStyle(.typo80)
+                        }
                         
-                        Text(book.readStatus.description)
-                            .font(.readStateButton)
-                            .frame(width: 43, height: 19)
-                            .background(Capsule().stroke())
-                            .foregroundStyle(.greenMain100)
+                        if let readStatus = book.readStatus {
+                            Text(readStatus)
+                                .font(.readStateButton)
+                                .frame(width: 43, height: 19)
+                                .padding(.horizontal, 2)
+                                .background(Capsule().stroke())
+                                .foregroundStyle(.greenMain100)
+                        }
                     }
                 }
             }

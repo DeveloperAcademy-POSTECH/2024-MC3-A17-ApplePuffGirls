@@ -18,7 +18,10 @@ struct AddThoughts: View {
             
             AddThoughtsProgressBar()
             
-            Spacer() .frame(height: 132)
+            Image(.baking1)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 90)
             
             Section {
                 ZStack(alignment: .trailing) {

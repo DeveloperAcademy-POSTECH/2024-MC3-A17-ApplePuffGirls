@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct AddDough: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     @State var selectedDough: DoughImage? = .croissant
     
+    var book: Book
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: .constant(true),
@@ -74,10 +76,38 @@ struct AddDough: View {
         }
         .background(.backLighter)
     }
+    
+    private func addBook(book: Documents) {
+        withAnimation {
+            let newBook = Book(context: viewContext)
+            //if let selectedBook = selectedBook {
+                newBook.name = book.title
+                newBook.thumbnail = book.thumbnail
+                newBook.publisher = book.publisher
+                newBook.publishedDate = convertToDate(from: book.datetime)
+                newBook.author = book.authors.joined(separator: ",")
+                newBook.registerDate = Date()
+                
+                print("selectedBook: \(book)")
+                print("newBook: \(newBook)")
+            //}
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
+    func clickRightButton() {
+        homeViewModel.transition(to: .addBookFinal)
+        //addBook(book: )
+    }
 }
 
-
-#Preview {
-    AddDough(homeViewModel: HomeViewModel())
-}
+//
+//#Preview {
+//    AddDough(homeViewModel: HomeViewModel())
+//}
 

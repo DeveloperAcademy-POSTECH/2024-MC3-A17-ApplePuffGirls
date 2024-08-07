@@ -82,6 +82,7 @@ struct PhraseCard: View {
                 .foregroundStyle(.typo80)
                 .padding(.top, 7)
                 .padding(.bottom, 13)
+                .multilineTextAlignment(.leading)
             
             // 구절 밑 텍스트
             if let phraseBottom {

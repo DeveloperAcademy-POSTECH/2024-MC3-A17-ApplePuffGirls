@@ -40,7 +40,7 @@ struct DetailBook: View {
                             Spacer()
                             
                             NavigationLink(destination: {
-                                AddPhrase()
+                                AddPhrase(book: book)
                             }, label: {
                                 Text("+  구절 추가하기")
                                     .font(.bookCaption)
@@ -62,7 +62,6 @@ struct DetailBook: View {
                         }
                         .padding(.horizontal, 2)
                     }
-                    
                 }
                 .scrollIndicators(.hidden)
                 .sheet(isPresented: $isEditBookPresented) {

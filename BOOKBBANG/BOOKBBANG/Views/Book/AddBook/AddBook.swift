@@ -34,7 +34,8 @@ struct AddBook: View {
                 
                 BookInfoSection(selectedGenre: $selectedGenre,
                                 selectedReadStatus: $selectedReadStatus,
-                                selectedDate: $selectedDate, book: book)
+                                selectedDate: $selectedDate, 
+                                book: book)
                 
                 BookGenreView(selectedGenre: $selectedGenre)
                 
@@ -61,6 +62,7 @@ struct AddBook: View {
                             .datePickerStyle(CompactDatePickerStyle())
                             .frame(width: 100, alignment: .leading)
                             .padding(.leading, 30)
+                            
                             Spacer()
                         }
                     }
@@ -70,6 +72,13 @@ struct AddBook: View {
             Spacer()
         }
         .background(.backLighter)
+        .onDisappear {
+            book.genre = selectedGenre?.description
+            if let selectedReadStatus = selectedReadStatus {
+                book.readStatus = selectedReadStatus.rawValue
+            }
+            book.readDate = selectedDate
+        }
     }
 }
 

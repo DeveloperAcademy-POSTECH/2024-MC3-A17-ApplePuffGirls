@@ -97,29 +97,6 @@ struct SearchBook: View {
         }
     }
     
-    private func addBook(book: Documents) {
-        withAnimation {
-            let newBook = Book(context: viewContext)
-            if let selectedBook = selectedBook {
-                newBook.name = selectedBook.title
-                newBook.thumbnail = selectedBook.thumbnail
-                newBook.publisher = selectedBook.publisher
-                newBook.publishedDate = convertToDate(from: selectedBook.datetime)
-                newBook.author = selectedBook.authors.joined(separator: ",")
-                newBook.registerDate = Date()
-                
-                print("selectedBook: \(selectedBook)")
-                print("newBook: \(newBook)")
-            }
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
     private func createBook(from document: Documents) -> Book {
         let newBook = Book(context: viewContext)
         newBook.name = document.title

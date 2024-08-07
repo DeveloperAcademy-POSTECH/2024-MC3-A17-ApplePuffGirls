@@ -23,7 +23,10 @@ struct AddCategoryToPhrase: View {
             
             AddCategorytoPhraseProgressBar()
             
-            Spacer().frame(height: 132)
+            Image(.baking3)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 90)
             
             Section {
                 Text("빵을 어떤 클립에 담아둘까요?")

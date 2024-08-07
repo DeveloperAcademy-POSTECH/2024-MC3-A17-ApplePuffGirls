@@ -59,7 +59,7 @@ struct BookInfoSection: View {
                                                 .padding(.leading, 26)
                                             
                                         } else if text == "독서 상태" {
-                                            Text(selectedReadStatus?.description ?? "미설정")
+                                            Text(selectedReadStatus?.rawValue ?? "미설정")
                                                 .font(selectedReadStatus != nil ? .bookCaptionBold : .bookCaption)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)

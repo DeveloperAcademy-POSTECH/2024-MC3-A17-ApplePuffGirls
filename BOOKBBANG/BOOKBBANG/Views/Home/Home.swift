@@ -50,7 +50,10 @@ struct Home: View {
                             book: selectedBook)
                 }
             case .addDough:
-                AddDough(homeViewModel: homeViewModel)
+                if let selectedBook = homeViewModel.selectedBook {
+                    AddDough(homeViewModel: homeViewModel,
+                             book: selectedBook)
+                }
             case .addBookFinal:
                 CompleteAddingBook(homeViewModel: homeViewModel)
             case .detailBook:

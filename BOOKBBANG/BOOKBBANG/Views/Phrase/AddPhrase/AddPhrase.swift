@@ -11,6 +11,8 @@ struct AddPhrase: View {
     @Environment(\.dismiss) var dismiss
     @State private var clipSelected: Bool = false
     
+    var book: Book
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             CustomNavigationBar(isHighlighted: $clipSelected,
@@ -21,7 +23,10 @@ struct AddPhrase: View {
             
             AddPhraseProgressBar()
             
-            Spacer() .frame(height: 132)
+            Image(.baking2)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 90)
             
             Section {
                 ZStack(alignment: .trailing) {
@@ -30,12 +35,13 @@ struct AddPhrase: View {
                         .frame(height: 14)
                         .padding(.bottom, -10)
                     
-                    Text("\"당신이 누군가를 죽였다\"")
-                        .foregroundStyle(.typo100)
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.bottom, 3)
-                } 
-                .fixedSize()
+                    if let title = book.name {
+                        Text(title)
+                            .foregroundStyle(.typo100)
+                            .font(.system(size: 24, weight: .bold))
+                            .padding(.bottom, 3)
+                    }
+                }.fixedSize()
                 
                 Text("책의 어느 부분을 구워볼까요?")
                     .foregroundStyle(.typo100)
@@ -72,7 +78,7 @@ func AddPhraseProgressBar() -> some View {
                 .background(.greenMain100)
         }
 }
-
-#Preview {
-    AddPhrase()
-}
+//
+//#Preview {
+//    AddPhrase()
+//}
