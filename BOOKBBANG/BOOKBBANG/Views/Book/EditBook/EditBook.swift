@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct EditBook: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @Binding var isPresented: Bool
     @State var selectedGenre: BookGenre?
     @State var selectedReadStatus: ReadStatus?
     @State var selectedDate: Date = Date()
     
-    var book: Book
+    @Binding var book: Book
     
     var body: some View {
         ZStack {
@@ -25,16 +26,18 @@ struct EditBook: View {
                                     title: "책 수정하기",
                                     rightTitle: "완료",
                                     onCancel: { isPresented.toggle() },
-                                    onRightButton: { isPresented.toggle() })
+                                    onRightButton: { clickRightButton() })
                 
-                BookInfoSection(selectedGenre: $selectedGenre,
-                                selectedReadStatus: $selectedReadStatus,
-                                selectedDate: $selectedDate,
-                                book: book)
+                EditBookInfoSection(selectedGenre: $selectedGenre,
+                                    selectedReadStatus: $selectedReadStatus,
+                                    selectedDate: $selectedDate,
+                                    book: book)
                 
-                BookGenreView(selectedGenre: $selectedGenre)
+                EditBookGenreSection(selectedGenre: $selectedGenre,
+                                     book: book)
                 
-                ReadStatusBox(selectedReadStatus: $selectedReadStatus)
+                EditReadStatusSection(selectedReadStatus: $selectedReadStatus,
+                                      book: book)
                 
                 VStack(alignment: .leading) {
                     Text("독서 날짜")
@@ -65,8 +68,16 @@ struct EditBook: View {
             }
         }
     }
+    
+    private func clickRightButton() {
+        book.genre = selectedGenre?.description
+        book.readStatus = selectedReadStatus?.rawValue
+        book.readDate = selectedDate
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        isPresented.toggle()
+    }
 }
-
-//#Preview {
-//    EditBook(isPresented: .constant(true))
-//}

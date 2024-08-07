@@ -58,7 +58,7 @@ struct Home: View {
             case .detailBook:
                 if let selectedBook = homeViewModel.selectedBook {
                     DetailBook(homeViewModel: homeViewModel,
-                               book: selectedBook)
+                               book: .constant(selectedBook))
                 }
             case .receipt:
                 ReciptMain(homeViewModel: homeViewModel)

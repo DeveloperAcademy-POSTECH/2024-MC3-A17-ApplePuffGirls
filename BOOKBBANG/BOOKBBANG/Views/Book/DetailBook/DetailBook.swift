@@ -11,7 +11,7 @@ struct DetailBook: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State private var isEditBookPresented: Bool = false
     
-    var book: Book
+    @Binding var book: Book
     
     var body: some View {
         NavigationStack {
@@ -66,7 +66,7 @@ struct DetailBook: View {
                 .scrollIndicators(.hidden)
                 .sheet(isPresented: $isEditBookPresented) {
                     EditBook(isPresented: $isEditBookPresented,
-                             book: book)
+                             book: $book)
                 }
             }
             .navigationBarBackButtonHidden()
@@ -74,11 +74,3 @@ struct DetailBook: View {
         }
     }
 }
-
-
-
-//#Preview {
-//    //NavigationStack {
-//        //DetailBook()
-//    //}
-//}

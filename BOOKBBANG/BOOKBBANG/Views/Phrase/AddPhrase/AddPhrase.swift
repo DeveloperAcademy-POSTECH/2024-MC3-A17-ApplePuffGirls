@@ -14,22 +14,22 @@ struct AddPhrase: View {
     var book: Book
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: $clipSelected,
-                                        navigationType: .chevron,
-                                        title: "새로운 빵 굽기",
-                                        rightTitle: "다음",
-                                        onChevron: { dismiss() })
+                                navigationType: .chevron,
+                                title: "새로운 빵 굽기",
+                                rightTitle: "다음",
+                                onChevron: { dismiss() })
             
             AddPhraseProgressBar()
             
-            Image(.baking2)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 90)
-            
-            Section {
-                ZStack(alignment: .trailing) {
+            VStack(alignment: .leading, spacing: 0) {
+                Image(.baking2)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 90)
+                
+                ZStack() {
                     Rectangle()
                         .foregroundStyle(.greenMain40)
                         .frame(height: 14)
@@ -41,7 +41,8 @@ struct AddPhrase: View {
                             .font(.system(size: 24, weight: .bold))
                             .padding(.bottom, 3)
                     }
-                }.fixedSize()
+                }
+                .fixedSize()
                 
                 Text("책의 어느 부분을 구워볼까요?")
                     .foregroundStyle(.typo100)
@@ -53,15 +54,14 @@ struct AddPhrase: View {
                     .font(.system(size: 13, weight: .regular))
                     .padding(.bottom, 20)
                 
-                Spacer() .frame(height: 22)
-                
-                AddPhraseTextfield()
                 
             }
             .padding(.horizontal, 22)
             
-            Spacer()
+            AddPhraseTextfield()
+                .padding(.horizontal, 22)
             
+            Spacer()
         }
         .background(.backLighter)
         .navigationBarBackButtonHidden()
