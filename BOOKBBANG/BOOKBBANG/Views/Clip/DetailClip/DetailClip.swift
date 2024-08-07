@@ -55,11 +55,7 @@ struct DetailClip: View {
         .background(.backLighter)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showingSheet) {
-            //EditClip()
+            EditClip(clip: clip, navigationTitle: "클립 수정")
         }
     }
 }
-
-//#Preview {
-//    DetailClip()
-//}
