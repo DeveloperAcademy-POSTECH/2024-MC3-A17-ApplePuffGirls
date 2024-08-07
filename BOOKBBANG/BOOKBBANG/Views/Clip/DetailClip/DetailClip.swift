@@ -11,6 +11,8 @@ struct DetailClip: View {
     @Environment(\.dismiss) var dismiss
     @State var showingSheet: Bool = false
     
+    @ObservedObject var clip: Clip
+    
     var body: some View {
         VStack {
             CustomNavigationBar(isHighlighted: .constant(true),
@@ -22,7 +24,7 @@ struct DetailClip: View {
             
             ScrollView {
                 VStack(spacing: 0) {
-                    DetailClipProfile()
+                    DetailClipProfile(clip: clip)
                         .padding(.top, 20)
                     
                     HStack {
@@ -47,11 +49,11 @@ struct DetailClip: View {
         .background(.backLighter)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $showingSheet) {
-            EditClip()
+            //EditClip()
         }
     }
 }
 
-#Preview {
-    DetailClip()
-}
+//#Preview {
+//    DetailClip()
+//}

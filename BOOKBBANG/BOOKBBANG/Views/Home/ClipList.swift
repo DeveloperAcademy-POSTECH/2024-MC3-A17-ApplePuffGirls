@@ -11,8 +11,20 @@ import SwiftUI
 struct ClipList: View {
     @State var sort: SortClipBy = .updated
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
+    private var clips: FetchedResults<Clip>
+    
     var body: some View {
+        
         VStack {
+//            ForEach(clips) { clip in
+//                if let title = clip.title {
+//                    Text(title)
+//                }
+//            }
+            
             // 정렬 버튼
             HStack {
                 Spacer()
@@ -23,15 +35,14 @@ struct ClipList: View {
                 // 새로운 클립 만들기
                 NewClipButton()
                 
-                
                 // 클립 리스트
-                ForEach(0 ..< 5) { item in
+                ForEach(clips) { clip in
                     Divider()
                     
                     NavigationLink(destination: {
-                        DetailClip()
+                        DetailClip(clip: clip)
                     }, label: {
-                        ClipView()
+                        ClipView(clip: clip)
                     })
                 }
             }
@@ -45,15 +56,20 @@ struct ClipList: View {
 
 // 리스트 중 하나의 클립(NavigationLink)을 보여줍니다.
 struct ClipView: View {
+    @ObservedObject var clip: Clip
+    
     var body: some View {
         HStack {
-            Image(.starClip)
+            // 클립 이미지
+            Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+                .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .foregroundStyle(Colors.allCases[Int(clip.color)].color)
                 .padding(8)
             
             VStack(alignment: .leading) {
-                Text("행복한 나의 빵 먹기 생활")
+                Text(clip.title ?? "")
                     .font(.listTitle)
                     .foregroundStyle(.typo100)
                     .padding(.bottom, 2)

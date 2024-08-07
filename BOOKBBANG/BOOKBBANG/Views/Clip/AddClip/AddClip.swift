@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct AddClip: View {
-    @ObservedObject var clipData = ClipData(selectedShape: 0, 
-                                            selectedColor: 0)
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) private var dismiss
     
+    @ObservedObject var clipData = ClipData()
     private let nameLimit = 13
     private let descriptionLimit = 25
     var navigationTitle: String
@@ -20,7 +21,7 @@ struct AddClip: View {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
                                 title: navigationTitle,
-                                rightTitle: "저장")
+                                rightTitle: "저장", onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
             
@@ -36,6 +37,28 @@ struct AddClip: View {
             }
         }
         .background(.backLighter)
+    }
+    
+    private func saveClip() {
+        withAnimation {
+            let newClip = Clip(context: viewContext)
+            
+            if let color = clipData.selectedColor, let shape = clipData.selectedShape {
+                newClip.color = Int16(color)
+                newClip.design = Int16(shape)
+                newClip.title = clipData.name
+                newClip.clipDescription = clipData.description
+            }
+            
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+            
+            dismiss()
+        }
     }
 }
 

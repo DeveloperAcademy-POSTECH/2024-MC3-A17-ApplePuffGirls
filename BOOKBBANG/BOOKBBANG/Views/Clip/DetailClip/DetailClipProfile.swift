@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct DetailClipProfile: View {
+    @ObservedObject var clip: Clip
+    
     var body: some View {
         VStack(spacing: 0) {
-            Image(.starClip)
+            // 클립 이미지
+            Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+                .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .foregroundStyle(Colors.allCases[Int(clip.color)].color)
                 .frame(height: 100)
                 .padding(.bottom, 14)
             
-            Text("행복한 나의 빵 먹기 생활")
+            Text(clip.title ?? "")
                 .font(.system(size: 24, weight: .bold))
                 .foregroundColor(.typo100)
                 .padding(.bottom, 5)
                 .kerning(-0.7)
             
-            Text("빵을 먹을 때의 꿀팁들과 맛있는 빵 먹는 묘사들")
+            Text(clip.clipDescription ?? "")
                 .font(.system(size: 12, weight: .regular))
                 .foregroundColor(.typo50)
                 .padding(.bottom, 40)
@@ -30,6 +35,6 @@ struct DetailClipProfile: View {
     }
 }
 
-#Preview {
-    DetailClipProfile()
-}
+//#Preview {
+//    DetailClipProfile()
+//}
