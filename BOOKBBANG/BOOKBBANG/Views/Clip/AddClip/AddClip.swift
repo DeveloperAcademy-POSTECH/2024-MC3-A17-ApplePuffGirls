@@ -14,13 +14,12 @@ struct AddClip: View {
     @ObservedObject var clipData = ClipData()
     private let nameLimit = 13
     private let descriptionLimit = 25
-    var navigationTitle: String
     
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
-                                title: navigationTitle,
+                                title: "새로운 클립 추가하기",
                                 rightTitle: "저장", onCancel: { dismiss() }, onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
@@ -65,5 +64,5 @@ struct AddClip: View {
 
 
 #Preview {
-    AddClip(navigationTitle: "새로운 클립 추가")
+    AddClip()
 }

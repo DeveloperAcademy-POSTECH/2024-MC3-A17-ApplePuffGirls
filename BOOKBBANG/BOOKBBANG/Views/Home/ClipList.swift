@@ -117,7 +117,7 @@ struct NewClipButton: View {
             }
         }
         .sheet(isPresented: $showingSheet){
-            AddClip(navigationTitle: "새로운 클립 추가")
+            AddClip()
         }
     }
 }

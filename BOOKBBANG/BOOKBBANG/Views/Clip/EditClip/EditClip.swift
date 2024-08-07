@@ -16,12 +16,10 @@ struct EditClip: View {
     @ObservedObject var clipData = ClipData()
     private let nameLimit = 13
     private let descriptionLimit = 25
-    var navigationTitle: String
     
     // 처음에 clipData 객체에 core Data의 객체를 옮김. -> 저장할 때 다시 core Data에 덮어씌움.
-    init(clip: Clip, navigationTitle: String) {
+    init(clip: Clip) {
         self.clip = clip
-        self.navigationTitle = navigationTitle
         
         clipData.name = clip.title ?? ""
         clipData.description = clip.clipDescription ?? ""
@@ -32,7 +30,7 @@ struct EditClip: View {
         VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
-                                title: navigationTitle,
+                                title: "클립 수정하기",
                                 rightTitle: "저장", onCancel: { dismiss() }, onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
@@ -54,7 +52,6 @@ struct EditClip: View {
     
     private func saveClip() {
         withAnimation {
-            
             if let color = clipData.selectedColor, let shape = clipData.selectedShape {
                 clip.color = Int16(color)
                 clip.design = Int16(shape)
@@ -73,8 +70,3 @@ struct EditClip: View {
         }
     }
 }
-
-//#Preview {
-//    //AddClip(navigationTitle: "클립 수정하기")
-//    EditClip(navigationTitle: "클립 수정하기")
-//}
