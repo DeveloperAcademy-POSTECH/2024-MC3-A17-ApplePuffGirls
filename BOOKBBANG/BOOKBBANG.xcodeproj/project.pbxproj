@@ -19,7 +19,6 @@
 		6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */; };
 		6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */; };
 		6D9F06662C5FD1ED00E73D81 /* DoughImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06652C5FD1ED00E73D81 /* DoughImage.swift */; };
-		6D9F06682C60AF8800E73D81 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 6D9F06672C60AF8800E73D81 /* WaterfallGrid */; };
 		6DE58EBF2C58C190009A9F2F /* AddClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EBE2C58C190009A9F2F /* AddClip.swift */; };
 		6DE58EC32C58D833009A9F2F /* EditClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC22C58D833009A9F2F /* EditClip.swift */; };
 		6DE58EC52C590778009A9F2F /* AddBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE58EC42C590778009A9F2F /* AddBook.swift */; };
@@ -58,7 +57,6 @@
 		B9F6F39B2C58C7D500E7DD4C /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39A2C58C7D500E7DD4C /* ReadStatus.swift */; };
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
-		D6311E2F2C614A17004161C7 /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = D6311E2E2C614A17004161C7 /* WaterfallGrid */; };
 		D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */; };
 		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
 		D6DBF7642C5A4E830095CAFF /* ImagesGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7592C5A4E820095CAFF /* ImagesGrid.swift */; };
@@ -218,8 +216,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D9F06682C60AF8800E73D81 /* WaterfallGrid in Frameworks */,
-				D6311E2F2C614A17004161C7 /* WaterfallGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,8 +647,6 @@
 			);
 			name = BOOKBBANG;
 			packageProductDependencies = (
-				6D9F06672C60AF8800E73D81 /* WaterfallGrid */,
-				D6311E2E2C614A17004161C7 /* WaterfallGrid */,
 			);
 			productName = BOOKBBANG;
 			productReference = B9AE117C2C5897270082C1DE /* BOOKBBANG.app */;
@@ -1213,18 +1207,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		6D9F06672C60AF8800E73D81 /* WaterfallGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WaterfallGrid;
-		};
-		D6311E2E2C614A17004161C7 /* WaterfallGrid */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D6311E2D2C614A17004161C7 /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
-			productName = WaterfallGrid;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B9AE118A2C5897280082C1DE /* BOOKBBANG.xcdatamodeld */ = {
