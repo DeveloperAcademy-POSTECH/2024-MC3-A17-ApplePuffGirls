@@ -9,7 +9,10 @@ import SwiftUI
 
 struct DetailPhrase: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditPhrasePresented: Bool = false
+    
+    var phrase: Phrase
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -25,7 +28,7 @@ struct DetailPhrase: View {
                 .padding(.bottom, 8)
                 .padding(.leading, 30)
             
-            //PhraseCard(display: .detailPhrase)
+            PhraseCard(display: .detailPhrase, phrase: phrase)
             
             Spacer().frame(height: 21)
             
@@ -48,7 +51,7 @@ struct DetailPhrase: View {
                 .frame(width: UIScreen.main.bounds.width, height: 48)
                 .overlay {
                     HStack {
-                        Text("보노 고마워 짱 천재여자야")
+                        Text(phrase.thinking ?? "")
                             .foregroundStyle(.typo100)
                             .font(.system(size: 15, weight: .regular))
                         
@@ -69,6 +72,6 @@ struct DetailPhrase: View {
     
 }
 
-#Preview {
-    DetailPhrase()
-}
+//#Preview {
+//    DetailPhrase(detailBookViewModel: DetailBookViewModel())
+//}

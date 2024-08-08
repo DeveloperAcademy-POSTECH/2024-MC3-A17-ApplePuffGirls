@@ -56,7 +56,12 @@ struct DetailBook: View {
                             .padding(.bottom, 27)
                             
                             ForEach(book.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
-                                PhraseCard(display: .addPhrase, phrase: phrase)
+                                NavigationLink(destination: {
+                                    DetailPhrase(detailBookViewModel: detailBookViewModel,
+                                                 phrase: phrase)
+                                }, label: {
+                                    PhraseCard(display: .addPhrase, phrase: phrase)
+                                })
                             }
                             .padding(.horizontal, 2)
                         }
@@ -83,6 +88,10 @@ struct DetailBook: View {
                     AddCategoryToPhrase(detailBookViewModel: detailBookViewModel)
                 case .addClipFinal:
                     CompleteAddingPhrase(detailBookViewModel: detailBookViewModel, book: book)
+                case .detailPhrase:
+                    if let newPhrase = detailBookViewModel.newPhrase {
+                        DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: newPhrase)
+                    }
                 }
             }
         }
