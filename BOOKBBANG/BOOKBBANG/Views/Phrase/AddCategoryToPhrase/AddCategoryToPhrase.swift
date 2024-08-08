@@ -64,6 +64,8 @@ struct AddCategoryToPhrase: View {
         newPhrase.book = detailBookViewModel.newPhraseData?.book
         newPhrase.createdDate = detailBookViewModel.newPhraseData?.createdDate
         newPhrase.book?.phraseCount += 1
+        
+        detailBookViewModel.addPhrase(newPhrase)
         do {
             try viewContext.save()
         } catch {

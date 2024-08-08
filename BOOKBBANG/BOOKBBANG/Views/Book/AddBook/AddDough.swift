@@ -97,6 +97,8 @@ struct AddDough: View {
         
         newBook.bread = homeViewModel.selectedBookData?.bread
         
+        //뷰 확인을 위한 임시 코드 추가
+        homeViewModel.selectBook(newBook)
         do {
             try viewContext.save()
         } catch {

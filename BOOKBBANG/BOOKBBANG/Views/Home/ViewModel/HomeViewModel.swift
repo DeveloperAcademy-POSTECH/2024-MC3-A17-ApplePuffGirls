@@ -10,7 +10,9 @@ import CoreData
 
 final class HomeViewModel: ObservableObject {
     @Published var viewStatus: HomeViewType = .home
+    // 임시객체
     @Published var selectedBookData: BookData? = nil
+    // CoreData 연결 객체
     @Published var selectedBook: Book? = nil
     
     func transition(to: HomeViewType) {

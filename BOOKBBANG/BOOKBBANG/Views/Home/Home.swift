@@ -22,9 +22,9 @@ struct Home: View {
                     HomeTopBar(homeViewModel: homeViewModel)
                     ScrollView {
                         VStack(spacing: 2) {
-//                            if let phraseData = detailBookViewModel.newPhraseData {
-//                                PhraseCard(display: .todaysBread, phrase: phraseData)
-//                            }
+                            if let phrase = detailBookViewModel.newPhrase {
+                                PhraseCard(display: .todaysBread, phrase: phrase)
+                            }
                             
                             SegmentedBar(selected: $selected)
                             

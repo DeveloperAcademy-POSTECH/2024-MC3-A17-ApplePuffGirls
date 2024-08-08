@@ -32,6 +32,7 @@ struct AddThoughtsTextfield: View {
                         .foregroundStyle(.typo100)
                         .lineSpacing(10)
                 }
+                .frame(height: 200)
         }
         .onChange(of: thought) { _ in
             checkEmpty = !thought.isEmpty

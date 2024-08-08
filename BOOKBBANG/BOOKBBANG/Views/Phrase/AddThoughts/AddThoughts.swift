@@ -24,66 +24,74 @@ struct AddThoughts: View {
                                 onRightButton: { clickRightButton() })
             
             AddThoughtsProgressBar()
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 0) {
-                    Image(.baking1)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 90)
-                    
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .foregroundStyle(.greenMain40)
-                            .frame(height: 14)
-                            .padding(.bottom, -10)
-                        
-                        if let title = phraseData.book?.name {
-                            Text("\"\(title)\"")
+            ScrollView {
+                VStack {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Image(.baking1)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 90)
+                            
+                            ZStack(alignment: .leading) {
+                                Rectangle()
+                                    .foregroundStyle(.greenMain40)
+                                    .frame(height: 14)
+                                    .padding(.bottom, -10)
+                                
+                                if let title = phraseData.book?.name {
+                                    Text("\"\(title)\"")
+                                        .foregroundStyle(.typo100)
+                                        .font(.system(size: 24, weight: .bold))
+                                        .padding(.bottom, 3)
+                                        .frame(maxWidth: UIScreen.main.bounds.width - 46)
+                                        .lineLimit(1)
+                                }
+                            }
+                            .fixedSize()
+                            
+                            Text("이 빵에 어떤 생각을 담아볼까요?")
                                 .foregroundStyle(.typo100)
                                 .font(.system(size: 24, weight: .bold))
-                                .padding(.bottom, 3)
-                                .frame(maxWidth: UIScreen.main.bounds.width - 46)
-                                .lineLimit(1)
+                                .padding(.bottom, 10)
+                            
+                            Text("빵을 구운 이유를 나중에 쉽게 확인할 수 있어요")
+                                .foregroundStyle(.typo50)
+                                .font(.system(size: 13, weight: .regular))
+                                .padding(.bottom, 20)
                         }
+                        
+                        Spacer()
                     }
-                    .fixedSize()
-                    
-                    Text("이 빵에 어떤 생각을 담아볼까요?")
-                        .foregroundStyle(.typo100)
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.bottom, 10)
-                    
-                    Text("빵을 구운 이유를 나중에 쉽게 확인할 수 있어요")
-                        .foregroundStyle(.typo50)
-                        .font(.system(size: 13, weight: .regular))
-                        .padding(.bottom, 20)
-                }
-                
-                Spacer()
-            }
-            .padding(.top, 20)
-            .padding(.horizontal, 22)
-            
-            VStack(alignment: .leading, spacing: 0) {
-                Text("내가 구운 빵")
-                    .foregroundStyle(.typo50)
-                    .font(.system(size: 13, weight: .regular))
-                    .padding(.bottom, 8)
-                    .padding(.leading, 30)
-                
-                if let phraseData = detailBookViewModel.newPhraseData {
-                    AddThoughtsPhraseCard(phraseData: $phraseData)
-                        .padding(.horizontal, 2)
-                        .padding(.bottom, 22)
-                }
-                
-                AddThoughtsTextfield(checkEmpty: $checkEmpty, 
-                                     thought: $thought)
+                    .padding(.top, 20)
                     .padding(.horizontal, 22)
+                    
+                    VStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            Text("내가 구운 빵")
+                                .foregroundStyle(.typo50)
+                                .font(.system(size: 13, weight: .regular))
+                                .padding(.bottom, 8)
+                                .padding(.leading, 30)
+                            
+                            Spacer()
+                        }
+                        
+                        if detailBookViewModel.newPhraseData != nil {
+                            AddThoughtsPhraseCard(phraseData: $phraseData)
+                                .padding(.horizontal, 2)
+                                .padding(.bottom, 22)
+                        }
+                        
+                        AddThoughtsTextfield(checkEmpty: $checkEmpty,
+                                             thought: $thought)
+                        .padding(.horizontal, 22)
+                    }
+                }
             }
+            .background(.backLighter)
+            .scrollIndicators(.hidden)
         }
-        .background(.backLighter)
     }
     
     private func clickRightButton() {
