@@ -41,6 +41,9 @@ extension AddPhraseTextfield {
                 .frame(height: 46)
                 .keyboardType(.decimalPad)
                 .cornerRadius(10)
+                .font(.system(size: 15, weight: .regular))
+                .kerning(-0.4)
+                .foregroundStyle(.typo100)
             
             Spacer().frame(height: 22)
             
@@ -58,6 +61,9 @@ extension AddPhraseTextfield {
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
+                        .font(.system(size: 15, weight: .regular))
+                        .foregroundStyle(.typo100)
+                        .lineSpacing(10)
                 }
         }
     }

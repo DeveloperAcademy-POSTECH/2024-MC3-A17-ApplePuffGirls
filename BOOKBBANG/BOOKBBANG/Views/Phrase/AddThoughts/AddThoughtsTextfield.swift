@@ -28,7 +28,11 @@ struct AddThoughtsTextfield: View {
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
+                        .font(.system(size: 15, weight: .regular))
+                        .foregroundStyle(.typo100)
+                        .lineSpacing(10)
                 }
+                .frame(height: 200)
         }
         .onChange(of: thought) { _ in
             checkEmpty = !thought.isEmpty

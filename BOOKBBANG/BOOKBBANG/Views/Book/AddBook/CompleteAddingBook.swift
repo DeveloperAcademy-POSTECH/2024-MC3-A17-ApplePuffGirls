@@ -32,11 +32,11 @@ struct CompleteAddingBook: View {
     }
     
     private func clickRightButton() {
-        do {
-            try viewContext.save()
-        } catch {
-            fatalError("Failed to save context, \(error.localizedDescription)")
-        }
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            fatalError("Failed to save context, \(error.localizedDescription)")
+//        }
         homeViewModel.transition(to: .home)
     }
 }

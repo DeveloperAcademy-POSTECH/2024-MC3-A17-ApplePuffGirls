@@ -9,12 +9,18 @@ import Foundation
 
 final class DetailBookViewModel: ObservableObject {
     @Published var viewStatus: DetailBookViewType = .detailBook
+    @Published var newPhraseData: PhraseData? = nil
     @Published var newPhrase: Phrase? = nil
     
     func transition(to: DetailBookViewType) {
         DispatchQueue.main.async {
             self.viewStatus = to
         }
+    }
+    
+    func addPhraseData(_ phraseData: PhraseData) {
+        self.newPhraseData = phraseData
+        print("newPhraseData: \(String(describing: newPhraseData))")
     }
     
     func addPhrase(_ phrase: Phrase) {

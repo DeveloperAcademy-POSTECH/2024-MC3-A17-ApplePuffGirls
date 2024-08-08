@@ -19,7 +19,7 @@ struct CompleteAddingPhrase: View {
                                        onComplete: { clickRightButton() })
             
             Rectangle()
-                .frame(width: .infinity, height: 2)
+                .frame(width: UIScreen.main.bounds.width, height: 2)
                 .foregroundColor(.greenMain100)
             
             HeaderSection(title: "빵 굽기를 완료했습니다",
@@ -27,9 +27,9 @@ struct CompleteAddingPhrase: View {
             .padding(.top, 150)
             .padding(.bottom, 50)
             
-            Image(.oven)
+            Image(.congratulatoryBread)
                 .resizable()
-                .frame(width: 279,height: 269)
+                .frame(width: 354, height: 400)
             
             Spacer()
         }
@@ -37,12 +37,12 @@ struct CompleteAddingPhrase: View {
     }
     
     private func clickRightButton() {
-        book.phraseCount += 1
-        do {
-            try viewContext.save()
-        } catch {
-            fatalError("Failed to save context, \(error.localizedDescription)")
-        }
+        //book.phraseCount += 1
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            fatalError("Failed to save context, \(error.localizedDescription)")
+//        }
         detailBookViewModel.transition(to: .detailBook)
     }
 }

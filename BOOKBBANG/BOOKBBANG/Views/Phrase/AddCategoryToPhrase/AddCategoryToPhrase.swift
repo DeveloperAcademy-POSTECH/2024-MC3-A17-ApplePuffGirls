@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddCategoryToPhrase: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -104,6 +105,20 @@ struct AddCategoryToPhrase: View {
     }
     
     private func clickRightButton() {
+        let newPhrase = Phrase(context: viewContext)
+        newPhrase.page = detailBookViewModel.newPhraseData?.page
+        newPhrase.content = detailBookViewModel.newPhraseData?.content
+        newPhrase.thinking = detailBookViewModel.newPhraseData?.thought
+        newPhrase.book = detailBookViewModel.newPhraseData?.book
+        newPhrase.createdDate = detailBookViewModel.newPhraseData?.createdDate
+        newPhrase.book?.phraseCount += 1
+        
+        detailBookViewModel.addPhrase(newPhrase)
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
         
         detailBookViewModel.transition(to: .addClipFinal)
     }
