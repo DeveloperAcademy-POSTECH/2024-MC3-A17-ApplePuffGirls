@@ -20,7 +20,9 @@ struct AddClip: View {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
                                 title: "새로운 클립 추가하기",
-                                rightTitle: "저장", onCancel: { dismiss() }, onRightButton: { saveClip() })
+                                rightTitle: "저장",
+                                onCancel: { dismiss() },
+                                onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
             
@@ -48,7 +50,6 @@ struct AddClip: View {
                 newClip.title = clipData.name
                 newClip.clipDescription = clipData.description
             }
-            
             do {
                 try viewContext.save()
             } catch {

@@ -9,11 +9,9 @@ import SwiftUI
 
 struct DetailClip: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
     @Environment(\.dismiss) var dismiss
-    @State var showingSheet: Bool = false
-    
     @ObservedObject var clip: Clip
+    @State var showingSheet: Bool = false
     
     var phraseCount: Int {
         countPhrasesContainingClip(clip: clip, context: viewContext)

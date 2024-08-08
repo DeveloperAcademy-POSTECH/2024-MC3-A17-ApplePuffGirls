@@ -31,13 +31,14 @@ struct EditClip: View {
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
                                 title: "클립 수정하기",
-                                rightTitle: "저장", onCancel: { dismiss() }, onRightButton: { saveClip() })
+                                rightTitle: "저장",
+                                onCancel: { dismiss() },
+                                onRightButton: { saveClip() })
             
             TopClipImage(clipData: clipData)
             
             VStack(alignment: .leading) {
                 ClipTextFields(clipData: clipData)
-            
                 
                 ClipShapeButton(clipData: clipData)
                     .padding(.vertical, 5)
