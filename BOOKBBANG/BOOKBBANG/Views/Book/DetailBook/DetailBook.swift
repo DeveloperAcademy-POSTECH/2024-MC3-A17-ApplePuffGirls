@@ -60,7 +60,7 @@ struct DetailBook: View {
                                     DetailPhrase(detailBookViewModel: detailBookViewModel,
                                                  phrase: phrase)
                                 }, label: {
-                                    PhraseCard(display: .addPhrase, phrase: phrase)
+                                    PhraseCard(display: .detailBook, phrase: phrase)
                                 })
                             }
                             .padding(.horizontal, 2)

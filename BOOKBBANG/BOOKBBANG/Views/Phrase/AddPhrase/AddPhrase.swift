@@ -57,7 +57,7 @@ struct AddPhrase: View {
                         .font(.system(size: 24, weight: .bold))
                         .padding(.bottom, 10)
                     
-                    Text("책에서 마음에 와닿았던 구절을 적어주세요")
+                    Text("책에서 마음에 와닿은 구절을 적어주세요")
                         .foregroundStyle(.typo50)
                         .font(.system(size: 13, weight: .regular))
                         .padding(.bottom, 20)

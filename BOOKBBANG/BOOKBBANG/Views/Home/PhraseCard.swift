@@ -53,7 +53,7 @@ struct PhraseCard: View {
         case .detailBook, .detailPhrase, .detailClip:
             return dateString
         case .addPhrase:
-            return dateString
+            return nil
         }
     }
     

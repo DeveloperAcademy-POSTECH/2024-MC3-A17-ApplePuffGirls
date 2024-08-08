@@ -19,7 +19,7 @@ struct CompleteAddingPhrase: View {
                                        onComplete: { clickRightButton() })
             
             Rectangle()
-                .frame(width: .infinity, height: 2)
+                .frame(width: UIScreen.main.bounds.width, height: 2)
                 .foregroundColor(.greenMain100)
             
             HeaderSection(title: "빵 굽기를 완료했습니다",
