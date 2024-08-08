@@ -61,6 +61,7 @@
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
 		B9FDC4C42C62732E00AA309D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B9FDC4C32C62732E00AA309D /* Config.xcconfig */; };
+		D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */; };
 		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
 		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
 		D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75B2C5A4E820095CAFF /* Home.swift */; };
@@ -174,6 +175,7 @@
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
 		B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BOOKBBANG.entitlements; sourceTree = "<group>"; };
 		B9FDC4C32C62732E00AA309D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countBooksContainingClip.swift; sourceTree = "<group>"; };
 		D6DBF7582C5A4E820095CAFF /* BookList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookList.swift; sourceTree = "<group>"; };
 		D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingClipPicker.swift; sourceTree = "<group>"; };
 		D6DBF75B2C5A4E820095CAFF /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				B9133F9C2C5F5647004D5864 /* ViewModel */,
 				D6DBF7582C5A4E820095CAFF /* BookList.swift */,
 				D6DBF75F2C5A4E820095CAFF /* ClipList.swift */,
+				D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */,
 				D6DBF75C2C5A4E820095CAFF /* EmptyBox.swift */,
 				D6DBF75B2C5A4E820095CAFF /* Home.swift */,
 				D6DBF75E2C5A4E820095CAFF /* PhraseCard.swift */,
@@ -795,6 +798,7 @@
 				6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */,
 				F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */,
 				B9133F972C5F4F06004D5864 /* Root.swift in Sources */,
+				D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */,
 				B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
 				F08930B02C62366D000D0206 /* EditPhraseClipSmallList.swift in Sources */,

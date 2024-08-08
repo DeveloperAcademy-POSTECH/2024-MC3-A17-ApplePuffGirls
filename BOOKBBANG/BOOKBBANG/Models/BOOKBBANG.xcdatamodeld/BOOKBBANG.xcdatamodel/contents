@@ -19,6 +19,7 @@
         <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="design" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="phrases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="clips" inverseEntity="Phrase"/>
     </entity>
     <entity name="Phrase" representedClassName="Phrase" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>

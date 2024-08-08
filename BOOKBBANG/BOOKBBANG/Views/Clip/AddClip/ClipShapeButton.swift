@@ -46,7 +46,3 @@ struct ClipShapeButton: View {
     }
   }
 }
-
-#Preview {
-  ClipShapeButton()
-}
