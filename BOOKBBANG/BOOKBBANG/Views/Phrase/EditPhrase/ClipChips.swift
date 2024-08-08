@@ -45,7 +45,7 @@ public struct ChipsView: View {
             
             Text(cliptitle)
                 .foregroundStyle(.typo80)
-                .font(.system(size: 15, weight: .regular))
+                .font(.system(size: 12, weight: .regular))
         }
     }
 }

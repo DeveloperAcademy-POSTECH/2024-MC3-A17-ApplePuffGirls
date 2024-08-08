@@ -27,9 +27,9 @@ struct CompleteAddingPhrase: View {
             .padding(.top, 150)
             .padding(.bottom, 50)
             
-            Image(.oven)
+            Image(.congratulatoryBread)
                 .resizable()
-                .frame(width: 279,height: 269)
+                .frame(width: 354, height: 400)
             
             Spacer()
         }

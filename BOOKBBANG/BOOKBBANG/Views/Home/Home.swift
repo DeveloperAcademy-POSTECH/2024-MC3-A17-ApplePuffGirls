@@ -21,7 +21,9 @@ struct Home: View {
                 HomeTopBar(homeViewModel: homeViewModel)
                 ScrollView {
                     VStack(spacing: 2) {
-                        //PhraseCard(display: .todaysBread)
+                        if let phrase = detailBookViewModel.newPhrase {
+                            PhraseCard(display: .todaysBread, phrase: phrase)
+                        }
                         
                         SegmentedBar(selected: $selected)
                         

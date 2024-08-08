@@ -44,7 +44,7 @@ struct DetailBook: View {
                                 Button(action: {
                                     detailBookViewModel.transition(to: .addPhrase)
                                 }, label: {
-                                    Text("+  구절 추가하기")
+                                    Text("+  빵 추가하기")
                                         .font(.bookCaption)
                                         .frame(width: 118, height: 40)
                                         .foregroundStyle(.white)
