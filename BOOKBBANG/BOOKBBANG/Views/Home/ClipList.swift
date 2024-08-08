@@ -81,14 +81,15 @@ struct ClipView: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 25) {
             // 클립 이미지
             Image(ClipItem.allCases[Int(clip.design)].clipImageName)
                 .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: 55, height: 55)
                 .foregroundStyle(Colors.allCases[Int(clip.color)].color)
-                .padding(8)
+                
             
             VStack(alignment: .leading) {
                 Text(clip.title ?? "")

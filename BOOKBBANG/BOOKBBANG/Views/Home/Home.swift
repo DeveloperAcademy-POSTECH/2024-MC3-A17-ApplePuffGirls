@@ -25,7 +25,6 @@ struct Home: View {
                             if let phrase = detailBookViewModel.newPhrase {
                                 PhraseCard(display: .todaysBread, phrase: phrase)
                             }
-                            //PhraseCard(display: .todaysBread)
                             
                             SegmentedBar(selected: $selected)
                             
@@ -50,17 +49,13 @@ struct Home: View {
                     SearchBook(homeViewModel: homeViewModel)
                 case .addBook:
                     if let selectedBookData = homeViewModel.selectedBookData {
-                    if let selectedBook = homeViewModel.selectedBook {
                         AddBook(homeViewModel: homeViewModel,
                                 bookData: .constant(selectedBookData))
-                                book: .constant(selectedBook))
                     }
                 case .addDough:
                     if let selectedBookData = homeViewModel.selectedBookData {
-                    if let selectedBook = homeViewModel.selectedBook {
                         AddDough(homeViewModel: homeViewModel,
                                  bookData: .constant(selectedBookData))
-                                 book: .constant(selectedBook))
                     }
                 case .addBookFinal:
                     CompleteAddingBook(homeViewModel: homeViewModel)
@@ -69,7 +64,6 @@ struct Home: View {
                         DetailBook(homeViewModel: homeViewModel,
                                    detailBookViewModel: detailBookViewModel,
                                    book: selectedBook)
-                                   book: .constant(selectedBook))
                     }
                 case .receipt:
                     ReciptMain(homeViewModel: homeViewModel)

@@ -11,7 +11,7 @@ struct AddCategoryToPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
-    @Environment(\.managedObjectContext) private var viewContext
+    //@Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
     private var clips: FetchedResults<Clip>
