@@ -12,7 +12,7 @@ struct AddThoughts: View {
     @State private var checkEmpty: Bool = false
     @State private var thought: String = ""
     
-    @Binding var phrase: Phrase
+    @Binding var phraseData: PhraseData
     
     var body: some View {
         VStack(spacing: 0) {
@@ -38,7 +38,7 @@ struct AddThoughts: View {
                             .frame(height: 14)
                             .padding(.bottom, -10)
                         
-                        if let title = phrase.book?.name {
+                        if let title = phraseData.book?.name {
                             Text("\"\(title)\"")
                                 .foregroundStyle(.typo100)
                                 .font(.system(size: 24, weight: .bold))
@@ -48,7 +48,6 @@ struct AddThoughts: View {
                         }
                     }
                     .fixedSize()
-                    
                     
                     Text("이 빵에 어떤 생각을 담아볼까요?")
                         .foregroundStyle(.typo100)
@@ -73,12 +72,11 @@ struct AddThoughts: View {
                     .padding(.bottom, 8)
                     .padding(.leading, 30)
                 
-                if let phrase = detailBookViewModel.newPhrase {
-                    PhraseCard(display: .addPhrase, phrase: phrase)
+                if let phraseData = detailBookViewModel.newPhraseData {
+                    AddThoughtsPhraseCard(phraseData: $phraseData)
                         .padding(.horizontal, 2)
+                        .padding(.bottom, 22)
                 }
-                
-                Spacer().frame(height: 22)
                 
                 AddThoughtsTextfield(checkEmpty: $checkEmpty, 
                                      thought: $thought)
@@ -89,9 +87,9 @@ struct AddThoughts: View {
     }
     
     private func clickRightButton() {
-        phrase.thinking = thought
-        phrase.createdDate = .now
-        detailBookViewModel.addPhrase(phrase)
+        phraseData.thought = thought
+        phraseData.createdDate = .now
+        detailBookViewModel.addPhraseData(phraseData)
         
         detailBookViewModel.transition(to: .addClipToPhrase)
     }

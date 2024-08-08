@@ -35,3 +35,19 @@ final class BookData: ObservableObject {
         self.bread = bread
     }
 }
+
+final class PhraseData: ObservableObject {
+    @Published var page: String
+    @Published var content: String
+    @Published var thought: String
+    @Published var book: Book?
+    @Published var createdDate: Date
+    
+    init(page: String = "", content: String = "", thought: String = "", book: Book? = nil, createdDate: Date = Date()) {
+        self.page = page
+        self.content = content
+        self.thought = thought
+        self.book = book
+        self.createdDate = createdDate
+    }
+}

@@ -97,6 +97,12 @@ struct AddDough: View {
         
         newBook.bread = homeViewModel.selectedBookData?.bread
         
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        
         homeViewModel.transition(to: .addBookFinal)
     }
 }

@@ -17,6 +17,8 @@ struct AddPhrase: View {
     
     var book: Book
     
+    @ObservedObject var phraseData: PhraseData = PhraseData()
+    
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationBar(isHighlighted: $checkEmpty,
@@ -80,12 +82,11 @@ struct AddPhrase: View {
     }
     
     private func clickRightButton() {
-        let newPhrase = Phrase(context: viewContext)
-        newPhrase.book = book
-        newPhrase.content = phrase
-        newPhrase.page = page
-        book.phrases?.adding(newPhrase)
-        detailBookViewModel.addPhrase(newPhrase)
+        let newPhraseData = PhraseData()
+        newPhraseData.book = book
+        newPhraseData.content = phrase
+        newPhraseData.page = page
+        detailBookViewModel.addPhraseData(newPhraseData)
         
         detailBookViewModel.transition(to: .addThoughts)
     }

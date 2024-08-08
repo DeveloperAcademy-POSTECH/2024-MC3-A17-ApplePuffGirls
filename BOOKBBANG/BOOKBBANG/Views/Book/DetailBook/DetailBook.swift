@@ -13,8 +13,7 @@ struct DetailBook: View {
     @State private var isEditBookPresented: Bool = false
     
     @Binding var book: Book
-    //@Binding var book: Book
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -82,8 +81,8 @@ struct DetailBook: View {
                 case .addPhrase:
                     AddPhrase(detailBookViewModel: detailBookViewModel, book: book)
                 case .addThoughts:
-                    if let newPhrase = detailBookViewModel.newPhrase {
-                        AddThoughts(detailBookViewModel: detailBookViewModel, phrase: .constant(newPhrase))
+                    if let newPhraseData = detailBookViewModel.newPhraseData {
+                        AddThoughts(detailBookViewModel: detailBookViewModel, phraseData: .constant(newPhraseData))
                     }
                 case .addClipToPhrase:
                     AddCategoryToPhrase(detailBookViewModel: detailBookViewModel)

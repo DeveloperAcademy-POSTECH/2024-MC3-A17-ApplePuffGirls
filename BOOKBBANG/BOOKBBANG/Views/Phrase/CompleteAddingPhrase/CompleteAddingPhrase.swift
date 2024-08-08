@@ -37,12 +37,12 @@ struct CompleteAddingPhrase: View {
     }
     
     private func clickRightButton() {
-        book.phraseCount += 1
-        do {
-            try viewContext.save()
-        } catch {
-            fatalError("Failed to save context, \(error.localizedDescription)")
-        }
+        //book.phraseCount += 1
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            fatalError("Failed to save context, \(error.localizedDescription)")
+//        }
         detailBookViewModel.transition(to: .detailBook)
     }
 }
