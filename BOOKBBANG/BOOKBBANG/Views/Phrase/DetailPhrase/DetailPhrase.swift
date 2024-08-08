@@ -25,7 +25,7 @@ struct DetailPhrase: View {
                 .padding(.bottom, 8)
                 .padding(.leading, 30)
             
-            PhraseCard(display: .detailPhrase)
+            //PhraseCard(display: .detailPhrase)
             
             Spacer().frame(height: 21)
             

@@ -10,16 +10,19 @@ import SwiftUI
 
 
 struct AddPhraseTextfield: View {
-    @State var page: String = ""
-    @State var phrase: String = ""
+    @Binding var checkEmpty: Bool
+    @Binding var page: String
+    @Binding var phrase: String
     
     var body: some View {
         createTextEditor()
+            .onChange(of: page) { _ in
+                validateFields()
+            }
+            .onChange(of: phrase) { _ in
+                validateFields()
+            }
     }
-}
-
-#Preview {
-    AddPhraseTextfield()
 }
 
 extension AddPhraseTextfield {
@@ -57,5 +60,9 @@ extension AddPhraseTextfield {
                         .padding(.vertical, 10)
                 }
         }
+    }
+    
+    private func validateFields() {
+        checkEmpty = !page.isEmpty && !phrase.isEmpty
     }
 }

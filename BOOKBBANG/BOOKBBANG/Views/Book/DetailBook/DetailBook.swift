@@ -9,68 +9,82 @@ import SwiftUI
 
 struct DetailBook: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditBookPresented: Bool = false
     
     @Binding var book: Book
     
     var body: some View {
         NavigationStack {
-            VStack {
-                CustomNavigationBar(isHighlighted: .constant(true),
-                                    navigationType: .chevron,
-                                    title: "책 상세정보",
-                                    rightTitle: "수정",
-                                    onChevron: { homeViewModel.transition(to: .home) },
-                                    onRightButton: { isEditBookPresented.toggle() })
-                
-                ScrollView {
-                    VStack(spacing: 2) {
-                        BookInfo(book: book)
-                        
-                        HStack(alignment: .bottom, spacing: 0) {
+            ZStack {
+                VStack {
+                    CustomNavigationBar(isHighlighted: .constant(true),
+                                        navigationType: .chevron,
+                                        title: "책 상세정보",
+                                        rightTitle: "수정",
+                                        onChevron: { homeViewModel.transition(to: .home) },
+                                        onRightButton: { isEditBookPresented.toggle() })
+                    
+                    ScrollView {
+                        VStack(spacing: 2) {
+                            BookInfo(book: book)
                             
-                            HStack(spacing: 0) {
-                                Text("총 ")
-                                    .font(.bookCaption)
-                                Text("\(book.phraseCount)")
-                                    .font(.bookCaptionBold)
-                                Text("개")
-                                    .font(.bookCaption)
+                            HStack(alignment: .bottom, spacing: 0) {
+                                
+                                HStack(spacing: 0) {
+                                    Text("총 ")
+                                        .font(.bookCaption)
+                                    Text("\(book.phraseCount)")
+                                        .font(.bookCaptionBold)
+                                    Text("개")
+                                        .font(.bookCaption)
+                                }
+                                Spacer()
+                                
+                                Button(action: {
+                                    detailBookViewModel.transition(to: .addPhrase)
+                                }, label: {
+                                    Text("+  구절 추가하기")
+                                        .font(.bookCaption)
+                                        .frame(width: 118, height: 40)
+                                        .foregroundStyle(.white)
+                                        .background(Capsule().foregroundStyle(.greenMain100))
+                                })
                             }
-                            Spacer()
+                            .foregroundStyle(.typo50)
+                            .padding(.horizontal, 26)
+                            .padding(.bottom, 27)
                             
-                            NavigationLink(destination: {
-                                AddPhrase(book: book)
-                            }, label: {
-                                Text("+  구절 추가하기")
-                                    .font(.bookCaption)
-                                    .frame(width: 118, height: 40)
-                                    .foregroundStyle(.white)
-                                    .background(Capsule().foregroundStyle(.greenMain100))
-                            })
+                            ForEach(book.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
+                                PhraseCard(display: .addPhrase, phrase: phrase)
+                            }
+                            .padding(.horizontal, 2)
                         }
-                        .foregroundStyle(.typo50)
-                        .padding(.horizontal, 26)
-                        .padding(.bottom, 27)
-                        
-                        ForEach(0..<3, id: \.self) { _ in
-                            NavigationLink(destination: {
-                                DetailPhrase()
-                            }, label: {
-                                PhraseCard()
-                            })
-                        }
-                        .padding(.horizontal, 2)
+                    }
+                    .scrollIndicators(.hidden)
+                    .sheet(isPresented: $isEditBookPresented) {
+                        EditBook(isPresented: $isEditBookPresented,
+                                 book: $book)
                     }
                 }
-                .scrollIndicators(.hidden)
-                .sheet(isPresented: $isEditBookPresented) {
-                    EditBook(isPresented: $isEditBookPresented,
-                             book: $book)
+                .navigationBarBackButtonHidden()
+                .background(.backLighter)
+                
+                switch detailBookViewModel.viewStatus {
+                case .detailBook:
+                    EmptyView()
+                case .addPhrase:
+                    AddPhrase(detailBookViewModel: detailBookViewModel, book: book)
+                case .addThoughts:
+                    if let newPhrase = detailBookViewModel.newPhrase {
+                        AddThoughts(detailBookViewModel: detailBookViewModel, phrase: .constant(newPhrase))
+                    }
+                case .addClipToPhrase:
+                    AddCategoryToPhrase(detailBookViewModel: detailBookViewModel)
+                case .addClipFinal:
+                    CompleteAddingPhrase(detailBookViewModel: detailBookViewModel, book: book)
                 }
             }
-            .navigationBarBackButtonHidden()
-            .background(.backLighter)
         }
     }
 }

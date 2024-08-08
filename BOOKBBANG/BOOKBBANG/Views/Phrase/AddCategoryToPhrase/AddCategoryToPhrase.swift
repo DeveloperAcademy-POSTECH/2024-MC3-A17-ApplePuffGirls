@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct AddCategoryToPhrase: View {
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
     @State var items: [String] = ["나의 행복한 빵먹기 생활", "행복한 문구", "힘이 되는 이야기들"]
     @State var selections: [String] = []
-    @State private var clipSelected: Bool = false
+    @State private var checkEmpty: Bool = false
     @State private var clipImage: [String] = ["fish_1", "fish_2", "fish_3"]
 
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            CustomNavigationBar(isHighlighted: $clipSelected,
+            CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .chevron,
                                 title: "새로운 빵 굽기",
-                                rightTitle: "다음")
+                                rightTitle: "다음",
+                                onChevron: { detailBookViewModel.transition(to: .addThoughts) },
+                                onRightButton: { clickRightButton() })
             
             AddCategorytoPhraseProgressBar()
             
@@ -33,6 +35,7 @@ struct AddCategoryToPhrase: View {
                     .foregroundStyle(.typo100)
                     .font(.system(size: 24, weight: .bold))
                     .padding(.bottom, 10)
+                
                 Text("빵에 어울리는 클립을 선택해보세요. (복수 선택 가능)")
                     .foregroundStyle(.typo50)
                     .font(.system(size: 13, weight: .regular))
@@ -49,13 +52,14 @@ struct AddCategoryToPhrase: View {
             
             Spacer()
         }
+        .background(.backLighter)
+    }
+    
+    private func clickRightButton() {
+        
+        detailBookViewModel.transition(to: .addClipFinal)
     }
 }
-
-#Preview {
-    AddCategoryToPhrase()
-}
-
 
 func AddCategorytoPhraseProgressBar() -> some View {
     return VStack {}
@@ -63,11 +67,11 @@ func AddCategorytoPhraseProgressBar() -> some View {
         .background(.typo25)
         .overlay(alignment: .leading) {
             VStack{}
-                .frame(width: UIScreen.main.bounds.width / 3 * 2 , height: 2)
+                .frame(width: UIScreen.main.bounds.width / 4 * 3 , height: 2)
                 .background(.greenMain100)
         }
 }
 
-#Preview {
-    AddCategoryToPhrase()
-}
+//#Preview {
+//    AddCategoryToPhrase()
+//}

@@ -11,6 +11,7 @@ import CoreData
 struct Home: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @ObservedObject var settingViewModel: SettingViewModel
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @State var selected: GroupBy = .book
     
@@ -20,7 +21,7 @@ struct Home: View {
                 HomeTopBar(homeViewModel: homeViewModel)
                 ScrollView {
                     VStack(spacing: 2) {
-                        PhraseCard(display: .todaysBread)
+                        //PhraseCard(display: .todaysBread)
                         
                         SegmentedBar(selected: $selected)
                         
@@ -58,6 +59,7 @@ struct Home: View {
             case .detailBook:
                 if let selectedBook = homeViewModel.selectedBook {
                     DetailBook(homeViewModel: homeViewModel,
+                               detailBookViewModel: detailBookViewModel,
                                book: .constant(selectedBook))
                 }
             case .receipt:
@@ -106,5 +108,5 @@ struct Home: View {
 }
 
 #Preview {
-    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel())
+    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel(), detailBookViewModel: DetailBookViewModel())
 }

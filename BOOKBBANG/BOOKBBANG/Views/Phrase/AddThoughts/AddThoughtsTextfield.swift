@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AddThoughtsTextfield: View {
-    @State var thought: String = ""
+    @Binding var checkEmpty: Bool
+    @Binding var thought: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -29,9 +30,12 @@ struct AddThoughtsTextfield: View {
                         .padding(.vertical, 10)
                 }
         }
+        .onChange(of: thought) { _ in
+            checkEmpty = !thought.isEmpty
+        }
     }
 }
 
-#Preview {
-    AddThoughtsTextfield()
-}
+//#Preview {
+//    AddThoughtsTextfield(checkEmpty: .constant(true))
+//}
