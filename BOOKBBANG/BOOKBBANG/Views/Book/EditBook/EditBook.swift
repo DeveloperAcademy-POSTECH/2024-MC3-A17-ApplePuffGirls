@@ -9,12 +9,20 @@ import SwiftUI
 
 struct EditBook: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Binding var isPresented: Bool
-    @State var selectedGenre: BookGenre?
-    @State var selectedReadStatus: ReadStatus?
-    @State var selectedDate: Date = Date()
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var book: Book
+    @ObservedObject var bookData: BookData = BookData()
     
-    @Binding var book: Book
+    init(book: Book) {
+        self.book = book
+        bookData.thumbnail = book.thumbnail ?? ""
+        bookData.title = book.name ?? ""
+        bookData.authors = book.author ?? ""
+        
+        bookData.genre = book.genre
+        bookData.readStatus = book.readStatus
+        bookData.readDate = book.readDate ?? .now
+    }
     
     var body: some View {
         ZStack {
@@ -25,19 +33,14 @@ struct EditBook: View {
                                     navigationType: .cancel,
                                     title: "책 수정하기",
                                     rightTitle: "완료",
-                                    onCancel: { isPresented.toggle() },
+                                    onCancel: { dismiss() },
                                     onRightButton: { clickRightButton() })
                 
-                EditBookInfoSection(selectedGenre: $selectedGenre,
-                                    selectedReadStatus: $selectedReadStatus,
-                                    selectedDate: $selectedDate,
-                                    book: book)
+                EditBookInfoSection(book: bookData)
                 
-                EditBookGenreSection(selectedGenre: $selectedGenre,
-                                     book: book)
+                EditBookGenreSection(book: bookData)
                 
-                EditReadStatusSection(selectedReadStatus: $selectedReadStatus,
-                                      book: book)
+                EditReadStatusSection(book: bookData)
                 
                 VStack(alignment: .leading) {
                     Text("독서 날짜")
@@ -54,7 +57,7 @@ struct EditBook: View {
                         HStack {
                             DatePicker(
                                 "",
-                                selection: $selectedDate,
+                                selection: $bookData.readDate,
                                 displayedComponents: .date
                             )
                             .datePickerStyle(CompactDatePickerStyle())
@@ -70,14 +73,15 @@ struct EditBook: View {
     }
     
     private func clickRightButton() {
-        book.genre = selectedGenre?.description
-        book.readStatus = selectedReadStatus?.rawValue
-        book.readDate = selectedDate
+        book.genre = bookData.genre
+        book.readStatus = bookData.readStatus
+        book.readDate = bookData.readDate
+        
         do {
             try viewContext.save()
         } catch {
             fatalError("Failed to save context, \(error.localizedDescription)")
         }
-        isPresented.toggle()
+        dismiss()
     }
 }

@@ -8,28 +8,52 @@
 import SwiftUI
 
 struct EditPhrase: View {
-    @State private var phrase: String = ""
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject var phrase: Phrase
+    
+    @State private var myPhrase: String = ""
     @State private var mythought: String = ""
+    @Binding var showEditSheet: Bool
+    
+    init(phrase: Phrase, showEditSheet: Binding<Bool>) {
+        _phrase = ObservedObject(wrappedValue: phrase)
+        _myPhrase = State(initialValue: phrase.content ?? "")
+        _mythought = State(initialValue: phrase.thinking ?? "")
+        _showEditSheet = showEditSheet
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            
             CustomNavigationBar(isHighlighted: .constant(true),
                                 navigationType: .cancel,
                                 title: "빵 수정하기",
-                                rightTitle: "저장")
-            .padding(.bottom, 20)
-            
-            editField(title: "내가 구운 빵", text: $phrase)
-                .padding(.bottom, 22)
-            
-            EditPhraseShowClip()
-                .padding(.bottom, 22)
-            
-            editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+                                rightTitle: "저장",
+                                onCancel: { showEditSheet.toggle() },
+                                onRightButton: { clickRightButton() })
+            VStack {
+                editField(title: "내가 구운 빵", text: $myPhrase)
+                    .padding(.bottom, 22)
+                
+                EditPhraseShowClip()
+                    .padding(.bottom, 22)
+                
+                editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+            }
+            .padding(.horizontal, 22)
         }
-        .padding(.horizontal, 22)
         .background(Color.backLighter)
+    }
+    
+    private func clickRightButton() {
+        phrase.content = myPhrase
+        phrase.thinking = mythought
+        
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        showEditSheet.toggle()
     }
 }
 
@@ -49,11 +73,10 @@ extension EditPhrase {
                         .scrollContentBackground(.hidden)
                         .multilineTextAlignment(.leading)
                         .padding(10)
+                        .font(.system(size: 15, weight: .regular))
+                        .foregroundStyle(.typo80)
+                        .lineSpacing(10)
                 )
         }
     }
-}
-
-#Preview {
-    EditPhrase()
 }

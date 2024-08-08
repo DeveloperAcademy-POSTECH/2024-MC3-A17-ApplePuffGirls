@@ -40,7 +40,11 @@ struct PhraseCard: View {
         case .detailBook, .addPhrase:
             return nil
         case .detailPhrase:
-            return "\(title), \(page)페이지에서"
+            if let bookName = phrase.book?.name, let page = phrase.page {
+                return "\(bookName), \(page)페이지에서"
+            } else {
+                return "책 정보가 없거나 페이지 번호가 없습니다."
+            }
         case .detailClip:
             return title
         }
@@ -49,11 +53,15 @@ struct PhraseCard: View {
     var phraseBottom: String? {
         switch display {
         case .todaysBread:
-            return "\(title), \(page)페이지에서"
+            if let bookName = phrase.book?.name, let page = phrase.page {
+                return "\(bookName), \(page)페이지에서"
+            } else {
+                return "책 정보가 없거나 페이지 번호가 없습니다."
+            }
         case .detailBook, .detailPhrase, .detailClip:
             return dateString
         case .addPhrase:
-            return dateString
+            return nil
         }
     }
     
@@ -62,17 +70,15 @@ struct PhraseCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             // 구절 위 초록 형광펜 텍스트
-            if let phraseTop {
+            if let phraseTop = phraseTop {
                 ZStack(alignment: .trailing) {
                     Rectangle()
                         .foregroundStyle(.greenMain40)
                         .frame(height: 14)
                         .padding(.bottom, -10)
-                    if let createdDate = phrase.createdDate {
-                        Text("\(formattedDate(createdDate))의 추천빵")
-                            .font(.phraseTop)
-                            .foregroundStyle(.typo100)
-                    }
+                    Text(phraseTop)
+                        .font(.phraseTop)
+                        .foregroundStyle(.typo100)
                 }
                 .fixedSize()
             }
@@ -98,12 +104,10 @@ struct PhraseCard: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.backDarker)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        
-        .overlay(
+        .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.typo25)
-            
-        )
+        }
     }
     
     private func formattedDate(_ date: Date) -> String {

@@ -12,7 +12,7 @@ struct BookInfoSection: View {
     @Binding var selectedReadStatus: ReadStatus?
     @Binding var selectedDate: Date
     
-    var book: Book
+    var book: BookData
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
@@ -23,16 +23,16 @@ struct BookInfoSection: View {
                     .stroke(Color.typo25, lineWidth: 1)
                     .overlay {
                         HStack {
-                            fetchHomeImage(url: book.thumbnail ?? "")
+                            fetchHomeImage(url: book.thumbnail)
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text(book.name ?? "")
+                                Text(book.title)
                                     .font(.bookTitle)
                                     .foregroundColor(.typo100)
                                     .kerning(-1)
                                     .padding(.bottom, 3)
                                 
-                                Text(book.author ?? "")
+                                Text(book.authors)
                                     .font(.bookCaption)
                                     .foregroundStyle(.typo80)
                                     .frame(maxWidth: .infinity, alignment: .leading)

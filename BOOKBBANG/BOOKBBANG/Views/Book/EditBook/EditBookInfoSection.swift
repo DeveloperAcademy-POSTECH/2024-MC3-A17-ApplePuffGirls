@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EditBookInfoSection: View {
-    @Binding var selectedGenre: BookGenre?
-    @Binding var selectedReadStatus: ReadStatus?
-    @Binding var selectedDate: Date
-    var book: Book
+//    @Binding var selectedGenre: BookGenre?
+//    @Binding var selectedReadStatus: ReadStatus?
+//    @Binding var selectedDate: Date
+    @ObservedObject var book: BookData
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
@@ -22,16 +22,16 @@ struct EditBookInfoSection: View {
                     .stroke(Color.typo25, lineWidth: 1)
                     .overlay {
                         HStack {
-                            fetchHomeImage(url: book.thumbnail ?? "")
+                            fetchHomeImage(url: book.thumbnail)
                             
                             VStack(alignment: .leading, spacing: 0) {
-                                Text(book.name ?? "")
+                                Text(book.title)
                                     .font(.bookTitle)
                                     .foregroundColor(.typo100)
                                     .kerning(-1)
                                     .padding(.bottom, 3)
                                 
-                                Text(book.author ?? "")
+                                Text(book.authors)
                                     .font(.bookCaption)
                                     .foregroundStyle(.typo80)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -45,21 +45,21 @@ struct EditBookInfoSection: View {
                                             .padding(.trailing, 5)
                                         
                                         if text == "독서 날짜" {
-                                            Text("\(selectedDate, formatter: dateFormatter)")
+                                            Text("\(book.readDate, formatter: dateFormatter)")
                                                 .font(.bookCaptionBold)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                             
                                         } else if text == "장르" {
-                                            Text(selectedGenre?.description ?? book.genre ?? "미설정")
+                                            Text(book.genre ?? "미설정")
                                                 .font(book.genre != nil ? .bookCaptionBold : .bookCaption)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.leading, 26)
                                             
                                         } else if text == "독서 상태" {
-                                            Text(selectedReadStatus?.rawValue ?? book.readStatus ?? "미설정")
-                                                .font(selectedReadStatus?.rawValue != nil ? .bookCaptionBold : .bookCaption)
+                                            Text(book.readStatus ?? "미설정")
+                                                .font(book.readStatus != nil ? .bookCaptionBold : .bookCaption)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                         }
@@ -74,9 +74,6 @@ struct EditBookInfoSection: View {
                     }
             )
             .padding(.top, 20)
-            .onAppear {
-                selectedDate = book.readDate ?? Date()
-            }
     }
     
     private var dateFormatter: DateFormatter {

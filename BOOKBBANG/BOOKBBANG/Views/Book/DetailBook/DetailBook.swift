@@ -12,8 +12,8 @@ struct DetailBook: View {
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditBookPresented: Bool = false
     
-    @Binding var book: Book
-    
+    @ObservedObject var book: Book
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -44,7 +44,7 @@ struct DetailBook: View {
                                 Button(action: {
                                     detailBookViewModel.transition(to: .addPhrase)
                                 }, label: {
-                                    Text("+  구절 추가하기")
+                                    Text("+  빵 추가하기")
                                         .font(.bookCaption)
                                         .frame(width: 118, height: 40)
                                         .foregroundStyle(.white)
@@ -60,7 +60,7 @@ struct DetailBook: View {
                                     DetailPhrase(detailBookViewModel: detailBookViewModel,
                                                  phrase: phrase)
                                 }, label: {
-                                    PhraseCard(display: .addPhrase, phrase: phrase)
+                                    PhraseCard(display: .detailBook, phrase: phrase)
                                 })
                             }
                             .padding(.horizontal, 2)
@@ -68,8 +68,7 @@ struct DetailBook: View {
                     }
                     .scrollIndicators(.hidden)
                     .sheet(isPresented: $isEditBookPresented) {
-                        EditBook(isPresented: $isEditBookPresented,
-                                 book: $book)
+                        EditBook(book: book)
                     }
                 }
                 .navigationBarBackButtonHidden()
@@ -81,8 +80,8 @@ struct DetailBook: View {
                 case .addPhrase:
                     AddPhrase(detailBookViewModel: detailBookViewModel, book: book)
                 case .addThoughts:
-                    if let newPhrase = detailBookViewModel.newPhrase {
-                        AddThoughts(detailBookViewModel: detailBookViewModel, phrase: .constant(newPhrase))
+                    if let newPhraseData = detailBookViewModel.newPhraseData {
+                        AddThoughts(detailBookViewModel: detailBookViewModel, phraseData: .constant(newPhraseData))
                     }
                 case .addClipToPhrase:
                     AddCategoryToPhrase(detailBookViewModel: detailBookViewModel)

@@ -16,56 +16,60 @@ struct Home: View {
     @State var selected: GroupBy = .book
     
     var body: some View {
-        ZStack {
-            VStack {
-                HomeTopBar(homeViewModel: homeViewModel)
-                ScrollView {
-                    VStack(spacing: 2) {
-                        //PhraseCard(display: .todaysBread)
-                        
-                        SegmentedBar(selected: $selected)
-                        
-                        switch selected {
-                        case .book :
-                            BookList(homeViewModel: homeViewModel)
-                                .padding(22)
-                                .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
-                        case .clip:
-                            ClipList()
+        NavigationStack {
+            ZStack {
+                VStack {
+                    HomeTopBar(homeViewModel: homeViewModel)
+                    ScrollView {
+                        VStack(spacing: 2) {
+                            if let phrase = detailBookViewModel.newPhrase {
+                                PhraseCard(display: .todaysBread, phrase: phrase)
+                            }
+                            
+                            SegmentedBar(selected: $selected)
+                            
+                            switch selected {
+                            case .book :
+                                BookList(homeViewModel: homeViewModel)
+                                    .padding(22)
+                                    .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+                            case .clip:
+                                ClipList()
+                            }
                         }
+                        .scrollIndicators(.hidden)
+                        .padding(.horizontal,2)
                     }
-                    .scrollIndicators(.hidden)
-                    .padding(.horizontal,2)
+                    .background(.backLighter)
                 }
-                .background(.backLighter)
-            }
-            switch homeViewModel.viewStatus {
-            case .home:
-                EmptyView()
-            case .searchBook:
-                SearchBook(homeViewModel: homeViewModel)
-            case .addBook:
-                if let selectedBook = homeViewModel.selectedBook {
-                    AddBook(homeViewModel: homeViewModel, 
-                            book: .constant(selectedBook))
+                switch homeViewModel.viewStatus {
+                case .home:
+                    EmptyView()
+                case .searchBook:
+                    SearchBook(homeViewModel: homeViewModel)
+                case .addBook:
+                    if let selectedBookData = homeViewModel.selectedBookData {
+                        AddBook(homeViewModel: homeViewModel,
+                                bookData: .constant(selectedBookData))
+                    }
+                case .addDough:
+                    if let selectedBookData = homeViewModel.selectedBookData {
+                        AddDough(homeViewModel: homeViewModel,
+                                 bookData: .constant(selectedBookData))
+                    }
+                case .addBookFinal:
+                    CompleteAddingBook(homeViewModel: homeViewModel)
+                case .detailBook:
+                    if let selectedBook = homeViewModel.selectedBook {
+                        DetailBook(homeViewModel: homeViewModel,
+                                   detailBookViewModel: detailBookViewModel,
+                                   book: selectedBook)
+                    }
+                case .receipt:
+                    ReciptMain(homeViewModel: homeViewModel)
+                case .setting:
+                    Setting(homeViewModel: homeViewModel)
                 }
-            case .addDough:
-                if let selectedBook = homeViewModel.selectedBook {
-                    AddDough(homeViewModel: homeViewModel,
-                             book: .constant(selectedBook))
-                }
-            case .addBookFinal:
-                CompleteAddingBook(homeViewModel: homeViewModel)
-            case .detailBook:
-                if let selectedBook = homeViewModel.selectedBook {
-                    DetailBook(homeViewModel: homeViewModel,
-                               detailBookViewModel: detailBookViewModel,
-                               book: .constant(selectedBook))
-                }
-            case .receipt:
-                ReciptMain(homeViewModel: homeViewModel)
-            case .setting:
-                Setting(homeViewModel: homeViewModel)
             }
         }
     }

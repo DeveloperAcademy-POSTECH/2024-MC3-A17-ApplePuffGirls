@@ -40,6 +40,9 @@
 		B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */; };
 		B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946282C5A8A9400C25EDB /* AsyncImage.swift */; };
 		B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96435BB2C6137A10045B07F /* DetailClipProfile.swift */; };
+		B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCC2C650AE900FAD37C /* BookData.swift */; };
+		B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */; };
+		B96DBCD12C6528B200FAD37C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCD02C6528B200FAD37C /* UIApplication+.swift */; };
 		B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B977DF102C58AA8200EC0186 /* SearchBook.swift */; };
 		B97D27882C63C0B800ED490D /* EditBookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */; };
 		B97D278A2C63EE9D00ED490D /* EditBookGenreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */; };
@@ -149,6 +152,9 @@
 		B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookListRow.swift; sourceTree = "<group>"; };
 		B92946282C5A8A9400C25EDB /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		B96435BB2C6137A10045B07F /* DetailClipProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClipProfile.swift; sourceTree = "<group>"; };
+		B96DBCCC2C650AE900FAD37C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsPhraseCard.swift; sourceTree = "<group>"; };
+		B96DBCD02C6528B200FAD37C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B977DF102C58AA8200EC0186 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookInfoSection.swift; sourceTree = "<group>"; };
 		B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookGenreSection.swift; sourceTree = "<group>"; };
@@ -246,6 +252,7 @@
 			children = (
 				B910CC2C2C59047E000FFAA7 /* Font+.swift */,
 				D6DBF78C2C5F3FB90095CAFF /* Date+.swift */,
+				B96DBCD02C6528B200FAD37C /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -312,6 +319,7 @@
 				D6DBF77C2C5C60900095CAFF /* TeamMember.swift */,
 				B9C116772C5B6C6100E8C26E /* BookDTO.swift */,
 				B9D431962C61489B00E08069 /* SettingCategory.swift */,
+				B96DBCCC2C650AE900FAD37C /* BookData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -633,6 +641,7 @@
 			children = (
 				F0E92EA52C5BC52700F04BFE /* AddThoughtsTextfield.swift */,
 				F0E92EA92C5BC66300F04BFE /* AddThoughts.swift */,
+				B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */,
 			);
 			path = AddThoughts;
 			sourceTree = "<group>";
@@ -784,7 +793,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */,
 				B9133FA12C5F69E9004D5864 /* SettingViewModel.swift in Sources */,
+				B96DBCD12C6528B200FAD37C /* UIApplication+.swift in Sources */,
 				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
 				F08930A92C60F24F000D0206 /* MultipleClipSelectList.swift in Sources */,
 				B9C116802C5C61BA00E8C26E /* CustomNavigationBar.swift in Sources */,
@@ -834,6 +845,7 @@
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
 				6D9F06662C5FD1ED00E73D81 /* DoughImage.swift in Sources */,
 				D6DBF7692C5A4E830095CAFF /* PhraseCard.swift in Sources */,
+				B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */,
 				F08930972C5F59A7000D0206 /* AddCategoryToPhrase.swift in Sources */,
 				F089309D2C5F5AD8000D0206 /* DetailPhraseClipList.swift in Sources */,
 				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,

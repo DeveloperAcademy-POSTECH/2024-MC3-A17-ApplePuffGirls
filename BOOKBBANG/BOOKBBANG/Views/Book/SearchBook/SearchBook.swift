@@ -18,6 +18,8 @@ struct SearchBook: View {
     @State private var bookSelected: Bool = false
     @State private var selectedBook: Documents?
     
+    @ObservedObject var book: BookData = BookData()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -87,25 +89,25 @@ struct SearchBook: View {
                 selectedBook = router.bookList?.first { $0.isbn == newValue }
                 if let selectedBook = selectedBook {
                     let newBook = createBook(from: selectedBook)
-                    homeViewModel.selectBook(newBook)
+                    homeViewModel.selectBookData(newBook)
                 }
             } else {
                 selectedBook = nil
-                homeViewModel.selectedBook = nil
+                homeViewModel.selectedBookData = nil
             }
             bookSelected = newValue != nil
         }
     }
     
-    private func createBook(from document: Documents) -> Book {
-        let newBook = Book(context: viewContext)
-        newBook.name = document.title
-        newBook.thumbnail = document.thumbnail
-        newBook.publisher = document.publisher
-        newBook.publishedDate = convertToDate(from: document.datetime)
-        newBook.author = document.authors.joined(separator: ",")
-        newBook.registerDate = Date()
-        return newBook
+    private func createBook(from document: Documents) -> BookData {
+        let newBookData = BookData()
+        newBookData.title = document.title
+        newBookData.thumbnail = document.thumbnail
+        newBookData.publisher = document.publisher
+        newBookData.publishedDate = convertToDate(from: document.datetime) ?? Date()
+        newBookData.authors = document.authors.joined(separator: ",")
+        newBookData.registerDate = Date()
+        return newBookData
     }
 }
 

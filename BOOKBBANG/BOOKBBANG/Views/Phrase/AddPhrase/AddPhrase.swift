@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AddPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -16,6 +17,8 @@ struct AddPhrase: View {
     @State private var phrase: String = ""
     
     var book: Book
+    
+    @ObservedObject var phraseData: PhraseData = PhraseData()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -57,7 +60,7 @@ struct AddPhrase: View {
                         .font(.system(size: 24, weight: .bold))
                         .padding(.bottom, 10)
                     
-                    Text("책에서 마음에 와닿았던 구절을 적어주세요")
+                    Text("책에서 마음에 와닿은 구절을 적어주세요")
                         .foregroundStyle(.typo50)
                         .font(.system(size: 13, weight: .regular))
                         .padding(.bottom, 20)
@@ -77,15 +80,17 @@ struct AddPhrase: View {
         }
         .background(.backLighter)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func clickRightButton() {
-        let newPhrase = Phrase(context: viewContext)
-        newPhrase.book = book
-        newPhrase.content = phrase
-        newPhrase.page = page
-        book.phrases?.adding(newPhrase)
-        detailBookViewModel.addPhrase(newPhrase)
+        let newPhraseData = PhraseData()
+        newPhraseData.book = book
+        newPhraseData.content = phrase
+        newPhraseData.page = page
+        detailBookViewModel.addPhraseData(newPhraseData)
         
         detailBookViewModel.transition(to: .addThoughts)
     }

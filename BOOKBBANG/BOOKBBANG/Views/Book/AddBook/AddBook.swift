@@ -13,7 +13,9 @@ struct AddBook: View {
     @State var selectedReadStatus: ReadStatus?
     @State var selectedDate: Date = Date()
     
-    @Binding var book: Book
+    //@Binding var book: Book
+    
+    @Binding var bookData: BookData
     
     var body: some View {
         VStack(spacing: 0) {
@@ -35,7 +37,7 @@ struct AddBook: View {
                 BookInfoSection(selectedGenre: $selectedGenre,
                                 selectedReadStatus: $selectedReadStatus,
                                 selectedDate: $selectedDate,
-                                book: book)
+                                book: bookData)
                 
                 BookGenreView(selectedGenre: $selectedGenre)
                 
@@ -74,10 +76,10 @@ struct AddBook: View {
         .background(.backLighter)
     }
     private func saveBookDetails() {
-        book.genre = selectedGenre?.description
-        book.readDate = selectedDate
-        book.readStatus = selectedReadStatus?.rawValue
-        homeViewModel.selectBook(book)
+        bookData.genre = selectedGenre?.description
+        bookData.readDate = selectedDate
+        bookData.readStatus = selectedReadStatus?.rawValue
+        homeViewModel.selectBookData(bookData)
     }
     
     private func clickRightButton() {

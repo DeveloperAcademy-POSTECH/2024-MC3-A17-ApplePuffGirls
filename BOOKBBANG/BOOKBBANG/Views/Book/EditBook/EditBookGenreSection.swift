@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EditBookGenreSection: View {
-    @Binding var selectedGenre: BookGenre?
-    var book: Book
+   // @Binding var selectedGenre: BookGenre?
+    @ObservedObject var book: BookData
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,7 +28,7 @@ struct EditBookGenreSection: View {
                                 if index < BookGenre.allGenreCount {
                                     let genre = BookGenre.allCases[index]
                                     Button(action: {
-                                        selectedGenre = genre
+                                        book.genre = genre.description
                                     }) {
                                         Text(genre.description)
                                             .font(.addBookButton)
@@ -36,13 +36,13 @@ struct EditBookGenreSection: View {
                                             .padding(.vertical, 5)
                                             .background(
                                                 RoundedRectangle(cornerRadius: 20)
-                                                    .foregroundColor(selectedGenre == genre ? .greenMain100 : .clear)
+                                                    .foregroundColor(book.genre == genre.description ? .greenMain100 : .clear)
                                                     .overlay(
                                                         RoundedRectangle(cornerRadius: 20)
-                                                            .stroke(selectedGenre == genre ? Color.greenMain100 : Color.typo50, lineWidth: 1)
+                                                            .stroke(book.genre == genre.description ? Color.greenMain100 : Color.typo50, lineWidth: 1)
                                                     )
                                             )
-                                            .foregroundColor(selectedGenre == genre ? .white : .typo50)
+                                            .foregroundColor(book.genre == genre.description ? .white : .typo50)
                                     }
                                 }
                             }
@@ -58,13 +58,7 @@ struct EditBookGenreSection: View {
                     .frame(width: 355, height: 140)
             }
         }
-        .onAppear {
-            for genre in BookGenre.allCases {
-                if genre.description == book.genre {
-                    selectedGenre = genre
-                }
-            }
-        }
+
     }
 }
 

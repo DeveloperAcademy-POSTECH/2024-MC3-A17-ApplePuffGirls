@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EditReadStatusSection: View {
-    @Binding var selectedReadStatus: ReadStatus?
-    var book: Book
+    //@Binding var selectedReadStatus: ReadStatus?
+    @ObservedObject var book: BookData
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,7 +28,7 @@ struct EditReadStatusSection: View {
                 HStack(spacing: 10) {
                     ForEach(ReadStatus.allCases, id: \.self) { readstatus in
                         Button(action: {
-                            selectedReadStatus = readstatus
+                            book.readStatus = readstatus.rawValue
                         }) {
                             Text(readstatus.rawValue)
                                 .font(.addBookButton)
@@ -36,25 +36,18 @@ struct EditReadStatusSection: View {
                                 .padding(.vertical, 5)
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
-                                        .foregroundColor(selectedReadStatus == readstatus ? .greenMain100 : .clear)
+                                        .foregroundColor(book.readStatus == readstatus.rawValue ? .greenMain100 : .clear)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 20)
-                                                .stroke(selectedReadStatus == readstatus ? Color.greenMain100 : Color.typo50, lineWidth: 1)
+                                                .stroke(book.readStatus == readstatus.rawValue ? Color.greenMain100 : Color.typo50, lineWidth: 1)
                                         )
                                 )
-                                .foregroundColor(selectedReadStatus == readstatus ? .white : .typo50)
+                                .foregroundColor(book.readStatus == readstatus.rawValue ? .white : .typo50)
                         }
                     }
                     Spacer()
                 }
                 .padding(.leading, 45)
-            }
-        }
-        .onAppear {
-            for status in ReadStatus.allCases {
-                if status.rawValue == book.readStatus {
-                    selectedReadStatus = status
-                }
             }
         }
     }
