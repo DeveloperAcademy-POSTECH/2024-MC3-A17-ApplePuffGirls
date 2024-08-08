@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CompleteAddingPhraseHeader: View {
+    var title: String
+    var onComplete: (() -> Void)?
+    
     var body: some View {
             HStack {
                 Text("완료")
@@ -17,17 +20,22 @@ struct CompleteAddingPhraseHeader: View {
                 
                 Spacer()
 
-                Text("빵 굽기 완료")
+                Text(title)
                     .foregroundStyle(.typo100)
                     .font(.system(size: 18, weight: .semibold))
                     .kerning(-0.4)
 
                 Spacer()
 
-                Text("완료")
-                    .foregroundStyle(.greenMain100)
-                    .font(.system(size: 17, weight: .bold))
-                    .kerning(-0.4)
+                Button(action: {
+                    onComplete?()
+                }, label: {
+                    Text("완료")
+                        .foregroundStyle(.greenMain100)
+                        .font(.system(size: 17, weight: .bold))
+                        .kerning(-0.4)
+                })
+                
             }
             .padding(.horizontal, 23)
             .frame(height: 55)
@@ -36,5 +44,5 @@ struct CompleteAddingPhraseHeader: View {
 }
 
 #Preview {
-    CompleteAddingPhraseHeader()
+    CompleteAddingPhraseHeader(title: "책 추가 완료")
 }

@@ -8,35 +8,18 @@
 import SwiftUI
 
 struct BookInfo: View {
-    var author: String = "히가시노 게이고(지은이), 최고은(옮긴이)"
-    var genre: String = "소설"
-    var name: String = "당신이 누군가를 죽였다"
-    var phraseCount: Int = 100
-    var publisher: String = "제리"
-    var readDate: Date = Date()
-    var formattedDate: String {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: readDate)
-        
-        if let year = components.year, let month = components.month, let day = components.day {
-            return "\(year). \(month). \(day)"
-        } else {
-            return ""
-        }
-    }
-    
-    var readStatus: ReadStatus = .readIng
-    
+   var book: Book
+
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 39) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(name)
+                    Text(book.name ?? "알 수 없음")
                         .font(.bookTitle)
                         .kerning(-1)
                         .foregroundStyle(.typo100)
                     
-                    Text(author)
+                    Text(book.author ?? "작자미상")
                         .font(.bookCaption)
                         .foregroundStyle(.typo80)
                 }
@@ -50,7 +33,7 @@ struct BookInfo: View {
                             Spacer()
                         }
                         .frame(width: 67)
-                        Text(genre)
+                        Text(book.genre ?? "")
                             .font(.bookCaptionBold)
                             .foregroundStyle(.typo80)
                     }
@@ -62,31 +45,32 @@ struct BookInfo: View {
                             Spacer()
                         }
                         .frame(width: 67)
-                        Text(formattedDate)
-                            .font(.bookCaptionBold)
-                            .foregroundStyle(.typo80)
+                        if let readDate = book.readDate {
+                            Text("\(readDate, formatter: dateFormatter)")
+                                .font(.bookCaptionBold)
+                                .foregroundStyle(.typo80)
+                        }
                         
-                        Text(readStatus.description)
-                            .font(.readStateButton)
-                            .frame(width: 43, height: 19)
-                            .background(Capsule().stroke())
-                            .foregroundStyle(.greenMain100)
+                        if let readStatus = book.readStatus {
+                            Text(readStatus)
+                                .font(.readStateButton)
+                                .frame(width: 43, height: 19)
+                                .padding(.horizontal, 2)
+                                .background(Capsule().stroke())
+                                .foregroundStyle(.greenMain100)
+                        }
                     }
                 }
             }
             Spacer()
             
-            Image("fish_2")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 92)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+            fetchHomeImage(url: book.thumbnail ?? "")
         }
         .padding(.horizontal, 26)
         .padding(.vertical, 25)
     }
 }
 
-#Preview {
-    BookInfo()
-}
+//#Preview {
+//    BookInfo()
+//}

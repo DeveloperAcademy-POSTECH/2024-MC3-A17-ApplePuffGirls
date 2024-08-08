@@ -23,14 +23,14 @@ struct PhraseCard: View {
     let date = Date()
     let title = "당신이 누군가를 죽였다"
     let page = 12
-    let phrase = "그리고는, 안고 온 꽃묶음 속에서 가지가 꺾이고 꽃이 일그러진 송이를 골라 발 밑에 버린다. 소녀는 소년이 개울둑에 앉아 있는 걸 아는지 모르는지 그냥 날쌔게 물만 움켜 낸다."
+    //    let phrase = "그리고는, 안고 온 꽃묶음 속에서 가지가 꺾이고 꽃이 일그러진 송이를 골라 발 밑에 버린다. 소녀는 소년이 개울둑에 앉아 있는 걸 아는지 모르는지 그냥 날쌔게 물만 움켜 낸다."
     
     // 날짜 형식 -> 0000년 0월 00일
     var dateString: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 M월 d일"
         
-        return formatter.string(from: Date())
+        return formatter.string(from: phrase.createdDate ?? .now)
     }
     
     var phraseTop: String? {
@@ -53,35 +53,38 @@ struct PhraseCard: View {
         case .detailBook, .detailPhrase, .detailClip:
             return dateString
         case .addPhrase:
-            return nil
+            return dateString
         }
     }
     
+    var phrase: Phrase
+    
     var body: some View {
         VStack(alignment: .leading) {
-            
             // 구절 위 초록 형광펜 텍스트
             if let phraseTop {
                 ZStack(alignment: .trailing) {
                     Rectangle()
                         .foregroundStyle(.greenMain40)
-                        //.frame(width: 177, height: 14)
                         .frame(height: 14)
                         .padding(.bottom, -10)
-                    Text(phraseTop)
-                        .font(.phraseTop)
-                        .foregroundStyle(.typo100)
+                    if let createdDate = phrase.createdDate {
+                        Text("\(formattedDate(createdDate))의 추천빵")
+                            .font(.phraseTop)
+                            .foregroundStyle(.typo100)
+                    }
                 }
                 .fixedSize()
             }
             
             // 구절
-            Text(phrase)
+            Text(phrase.content ?? "")
                 .font(.bookk15)
                 .lineSpacing(15)
                 .foregroundStyle(.typo80)
                 .padding(.top, 7)
                 .padding(.bottom, 13)
+                .multilineTextAlignment(.leading)
             
             // 구절 밑 텍스트
             if let phraseBottom {
@@ -89,7 +92,6 @@ struct PhraseCard: View {
                     .font(.phraseBottom)
                     .foregroundStyle(.typo50)
             }
-            
         }
         .padding(.horizontal, 35)
         .padding(.vertical, 30)
@@ -102,15 +104,18 @@ struct PhraseCard: View {
                 .stroke(.typo25)
             
         )
-        
     }
     
-    
+    private func formattedDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 M월 d일"
+        return dateFormatter.string(from: date)
+    }
 }
 
-#Preview {
-    ScrollView{
-        PhraseCard()
-            .padding(.horizontal,2)
-    }
-}
+//#Preview {
+//    ScrollView{
+//        PhraseCard(phrase: "")
+//            .padding(.horizontal,2)
+//    }
+//}

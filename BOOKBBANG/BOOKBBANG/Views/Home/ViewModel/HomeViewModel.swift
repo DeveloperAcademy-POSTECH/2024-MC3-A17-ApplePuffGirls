@@ -5,18 +5,22 @@
 //  Created by Seoyeon Choi on 8/4/24.
 //
 
-import Foundation
 import SwiftUI
+import CoreData
 
 final class HomeViewModel: ObservableObject {
     @Published var viewStatus: HomeViewType = .home
+    @Published var selectedBook: Book? = nil
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
-            withAnimation(.spring(duration: 0.2, bounce: 0.3)) {
-                self.viewStatus = to
-            }
+            self.viewStatus = to
         }
+    }
+    
+    func selectBook(_ book: Book) {
+        self.selectedBook = book
+        print("selectedBook: \(String(describing: selectedBook))")
     }
 }
 
@@ -24,9 +28,12 @@ enum HomeViewType {
     case home
     
     case searchBook
+    case addBook
+    case addDough
+    case addBookFinal
+    
     case detailBook
-    case detailClip
-    case addClip
+    
     case receipt
     case setting
 }

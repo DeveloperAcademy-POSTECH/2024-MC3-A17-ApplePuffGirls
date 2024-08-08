@@ -40,6 +40,12 @@ struct DetailClip: View {
                         Spacer()
                     }
                     .padding(.bottom, 12)
+                    
+                    ForEach(0..<4, id: \.self) { _ in
+//                        PhraseCard(display: .detailClip)
+//                            .padding(.horizontal, 2)
+//                            .padding(.bottom, 1)
+                    }
                 }
             }
             .scrollIndicators(.hidden)

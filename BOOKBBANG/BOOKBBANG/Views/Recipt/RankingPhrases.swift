@@ -37,8 +37,8 @@ struct RankingPhrases: View {
                 .padding(.top, 30)
                 .padding(.horizontal, 35)
                 
-                PhraseCard(display: .detailBook)
-                PhraseCard(display: .detailBook)
+//                PhraseCard(display: .detailBook)
+//                PhraseCard(display: .detailBook)
             }
         }
         

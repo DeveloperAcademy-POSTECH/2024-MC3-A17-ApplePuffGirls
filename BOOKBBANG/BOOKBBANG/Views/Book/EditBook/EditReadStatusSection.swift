@@ -1,14 +1,15 @@
 //
-//  ReadStatusBox.swift
+//  EditReadStatusSection.swift
 //  BOOKBBANG
 //
-//  Created by 이연정 on 8/3/24.
+//  Created by Seoyeon Choi on 8/8/24.
 //
 
 import SwiftUI
 
-struct ReadStatusBox: View {
+struct EditReadStatusSection: View {
     @Binding var selectedReadStatus: ReadStatus?
+    var book: Book
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -49,10 +50,12 @@ struct ReadStatusBox: View {
                 .padding(.leading, 45)
             }
         }
+        .onAppear {
+            for status in ReadStatus.allCases {
+                if status.rawValue == book.readStatus {
+                    selectedReadStatus = status
+                }
+            }
+        }
     }
 }
-
-#Preview {
-    ReadStatusBox(selectedReadStatus: .constant(nil))
-}
-

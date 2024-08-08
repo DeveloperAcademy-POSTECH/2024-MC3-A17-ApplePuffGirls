@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct CompleteAddingPhrase: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
+    
+    var book: Book
+    
     var body: some View {
         VStack(spacing: 0) {
-            CompleteAddingPhraseHeader()
+            CompleteAddingPhraseHeader(title: "새로운 빵 굽기",
+                                       onComplete: { clickRightButton() })
             
             Rectangle()
                 .frame(width: .infinity, height: 2)
@@ -29,8 +35,18 @@ struct CompleteAddingPhrase: View {
         }
         .background(Color.backLighter)
     }
+    
+    private func clickRightButton() {
+        book.phraseCount += 1
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        detailBookViewModel.transition(to: .detailBook)
+    }
 }
 
-#Preview {
-    CompleteAddingPhrase()
-}
+//#Preview {
+//    CompleteAddingPhrase()
+//}

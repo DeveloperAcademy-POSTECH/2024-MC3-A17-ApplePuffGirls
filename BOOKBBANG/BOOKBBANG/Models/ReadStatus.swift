@@ -8,17 +8,9 @@
 import Foundation
 
 enum ReadStatus: String, CaseIterable {
-    case readYet
-    case readIng
-    case readFinished
-    
-    var description: String {
-        switch self {
-        case .readYet: return "읽기 전"
-        case .readIng: return "읽는 중"
-        case .readFinished: return "읽기 완료"
-        }
-    }
+    case readYet = "읽기 전"
+    case readIng = "읽는 중"
+    case readFinished = "읽기 완료"
   
    static let allStatusCount: Int = 3
 }

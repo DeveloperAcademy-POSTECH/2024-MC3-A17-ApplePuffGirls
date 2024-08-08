@@ -2,16 +2,17 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="bread" optional="YES" attributeType="String"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="phraseCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="publishedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="publisher" optional="YES" attributeType="String"/>
         <attribute name="readDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="readStatus" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="readStatus" optional="YES" attributeType="String"/>
         <attribute name="registerDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="thumbnail" optional="YES" attributeType="String"/>
-        <relationship name="phrases" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="phrases" inverseEntity="Book"/>
+        <relationship name="phrases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="book" inverseEntity="Phrase"/>
     </entity>
     <entity name="Clip" representedClassName="Clip" syncable="YES" codeGenerationType="class">
         <attribute name="clipDescription" optional="YES" attributeType="String"/>
@@ -23,8 +24,10 @@
     <entity name="Phrase" representedClassName="Phrase" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="page" optional="YES" attributeType="String"/>
         <attribute name="thinking" optional="YES" attributeType="String"/>
-        <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clip" inverseName="phrases" inverseEntity="Clip"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="phrases" inverseEntity="Book"/>
+        <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="clips" inverseEntity="Phrase"/>
     </entity>
     <entity name="Recipt" representedClassName="Recipt" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

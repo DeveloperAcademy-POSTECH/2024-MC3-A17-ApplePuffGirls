@@ -35,8 +35,6 @@ struct RankingBooks: View {
                             .foregroundStyle(.typo50)
                             .padding(.top, 15)
                             .padding(.leading, 30)
-                        
-                        ImagesContainer()
                     }
                 }
             }

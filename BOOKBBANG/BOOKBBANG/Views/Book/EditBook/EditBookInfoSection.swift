@@ -1,17 +1,16 @@
 //
-//  BookInfoSection.swift
+//  EditBookInfoSection.swift
 //  BOOKBBANG
 //
-//  Created by 이연정 on 8/2/24.
+//  Created by Seoyeon Choi on 8/7/24.
 //
 
 import SwiftUI
 
-struct BookInfoSection: View {
+struct EditBookInfoSection: View {
     @Binding var selectedGenre: BookGenre?
     @Binding var selectedReadStatus: ReadStatus?
     @Binding var selectedDate: Date
-    
     var book: Book
     
     var body: some View {
@@ -52,15 +51,15 @@ struct BookInfoSection: View {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                             
                                         } else if text == "장르" {
-                                            Text(selectedGenre?.description ?? "미설정")
-                                                .font(selectedGenre != nil ? .bookCaptionBold : .bookCaption)
+                                            Text(selectedGenre?.description ?? book.genre ?? "미설정")
+                                                .font(book.genre != nil ? .bookCaptionBold : .bookCaption)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.leading, 26)
                                             
                                         } else if text == "독서 상태" {
-                                            Text(selectedReadStatus?.rawValue ?? "미설정")
-                                                .font(selectedReadStatus != nil ? .bookCaptionBold : .bookCaption)
+                                            Text(selectedReadStatus?.rawValue ?? book.readStatus ?? "미설정")
+                                                .font(selectedReadStatus?.rawValue != nil ? .bookCaptionBold : .bookCaption)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                         }
@@ -75,11 +74,15 @@ struct BookInfoSection: View {
                     }
             )
             .padding(.top, 20)
+            .onAppear {
+                selectedDate = book.readDate ?? Date()
+            }
+    }
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter
     }
 }
 
-var dateFormatter: DateFormatter {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy.MM.dd"
-    return formatter
-}

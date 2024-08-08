@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ReciptMain: View {
-    @Environment(\.dismiss) var dismiss
+    @ObservedObject var homeViewModel: HomeViewModel
     
     var body: some View {
         VStack {
             CustomNavigationBar(isHighlighted: .constant(false),
                                 navigationType: .chevron,
                                 title: "빵수증",
-                                onChevron: { dismiss() })
+                                onChevron: { homeViewModel.transition(to: .home) })
             
             VStack(spacing: 0) {
                 
@@ -120,6 +120,6 @@ struct NoRecipt: View {
 
 #Preview {
     NavigationStack {
-        ReciptMain()
+        ReciptMain(homeViewModel: HomeViewModel())
     }
 }

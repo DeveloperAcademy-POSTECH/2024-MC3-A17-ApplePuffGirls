@@ -8,57 +8,86 @@
 import SwiftUI
 
 struct AddPhrase: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var clipSelected: Bool = false
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
+    
+    @State private var checkEmpty: Bool = false
+    @State private var page: String = ""
+    @State private var phrase: String = ""
+    
+    var book: Book
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            CustomNavigationBar(isHighlighted: $clipSelected,
-                                        navigationType: .chevron,
-                                        title: "새로운 빵 굽기",
-                                        rightTitle: "다음",
-                                        onChevron: { dismiss() })
+        VStack(spacing: 0) {
+            CustomNavigationBar(isHighlighted: $checkEmpty,
+                                navigationType: .chevron,
+                                title: "새로운 빵 굽기",
+                                rightTitle: "다음",
+                                onChevron: { detailBookViewModel.transition(to: .detailBook) },
+                                onRightButton: { clickRightButton() })
             
             AddPhraseProgressBar()
             
-            Spacer() .frame(height: 132)
-            
-            Section {
-                ZStack(alignment: .trailing) {
-                    Rectangle()
-                        .foregroundStyle(.greenMain40)
-                        .frame(height: 14)
-                        .padding(.bottom, -10)
+            HStack {
+                VStack(alignment: .leading, spacing: 0) {
+                    Image(.baking2)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 90)
                     
-                    Text("\"당신이 누군가를 죽였다\"")
+                    ZStack(alignment: .leading) {
+                        Rectangle()
+                            .foregroundStyle(.greenMain40)
+                            .frame(height: 14)
+                            .padding(.bottom, -10)
+                        
+                        if let title = book.name {
+                            Text("\"\(title)\"")
+                                .foregroundStyle(.typo100)
+                                .font(.system(size: 24, weight: .bold))
+                                .padding(.bottom, 3)
+                                .frame(maxWidth: UIScreen.main.bounds.width - 46)
+                                .lineLimit(1)
+                        }
+                    }
+                    .fixedSize()
+                    
+                    Text("책의 어느 부분을 구워볼까요?")
                         .foregroundStyle(.typo100)
                         .font(.system(size: 24, weight: .bold))
-                        .padding(.bottom, 3)
-                } 
-                .fixedSize()
+                        .padding(.bottom, 10)
+                    
+                    Text("책에서 마음에 와닿았던 구절을 적어주세요")
+                        .foregroundStyle(.typo50)
+                        .font(.system(size: 13, weight: .regular))
+                        .padding(.bottom, 20)
+                }
                 
-                Text("책의 어느 부분을 구워볼까요?")
-                    .foregroundStyle(.typo100)
-                    .font(.system(size: 24, weight: .bold))
-                    .padding(.bottom, 10)
-                
-                Text("책에서 마음에 와닿았던 구절을 적어주세요")
-                    .foregroundStyle(.typo50)
-                    .font(.system(size: 13, weight: .regular))
-                    .padding(.bottom, 20)
-                
-                Spacer() .frame(height: 22)
-                
-                AddPhraseTextfield()
-                
+                Spacer()
             }
-            .padding(.horizontal, 22)
+            .padding(.top, 20)
+            .padding(.horizontal, 23)
+            
+            AddPhraseTextfield(checkEmpty: $checkEmpty,
+                               page: $page,
+                               phrase: $phrase)
+                .padding(.horizontal, 22)
             
             Spacer()
-            
         }
         .background(.backLighter)
         .navigationBarBackButtonHidden()
+    }
+    
+    private func clickRightButton() {
+        let newPhrase = Phrase(context: viewContext)
+        newPhrase.book = book
+        newPhrase.content = phrase
+        newPhrase.page = page
+        book.phrases?.adding(newPhrase)
+        detailBookViewModel.addPhrase(newPhrase)
+        
+        detailBookViewModel.transition(to: .addThoughts)
     }
 }
 
@@ -71,8 +100,4 @@ func AddPhraseProgressBar() -> some View {
                 .frame(width: UIScreen.main.bounds.width / 3, height: 2)
                 .background(.greenMain100)
         }
-}
-
-#Preview {
-    AddPhrase()
 }
