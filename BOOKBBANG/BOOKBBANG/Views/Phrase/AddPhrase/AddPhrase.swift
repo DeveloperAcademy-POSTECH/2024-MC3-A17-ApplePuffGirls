@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AddPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -79,6 +80,9 @@ struct AddPhrase: View {
         }
         .background(.backLighter)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func clickRightButton() {

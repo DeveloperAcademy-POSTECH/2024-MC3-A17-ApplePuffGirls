@@ -91,6 +91,9 @@ struct AddThoughts: View {
             }
             .background(.backLighter)
             .scrollIndicators(.hidden)
+            .onAppear {
+                UIApplication.shared.hideKeyboard()
+            }
         }
     }
     

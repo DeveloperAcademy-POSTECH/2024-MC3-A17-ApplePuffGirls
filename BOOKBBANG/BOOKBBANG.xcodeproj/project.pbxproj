@@ -42,6 +42,7 @@
 		B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96435BB2C6137A10045B07F /* DetailClipProfile.swift */; };
 		B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCC2C650AE900FAD37C /* BookData.swift */; };
 		B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */; };
+		B96DBCD12C6528B200FAD37C /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCD02C6528B200FAD37C /* UIApplication+.swift */; };
 		B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B977DF102C58AA8200EC0186 /* SearchBook.swift */; };
 		B97D27882C63C0B800ED490D /* EditBookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */; };
 		B97D278A2C63EE9D00ED490D /* EditBookGenreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */; };
@@ -153,6 +154,7 @@
 		B96435BB2C6137A10045B07F /* DetailClipProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClipProfile.swift; sourceTree = "<group>"; };
 		B96DBCCC2C650AE900FAD37C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsPhraseCard.swift; sourceTree = "<group>"; };
+		B96DBCD02C6528B200FAD37C /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B977DF102C58AA8200EC0186 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookInfoSection.swift; sourceTree = "<group>"; };
 		B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookGenreSection.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				B910CC2C2C59047E000FFAA7 /* Font+.swift */,
 				D6DBF78C2C5F3FB90095CAFF /* Date+.swift */,
+				B96DBCD02C6528B200FAD37C /* UIApplication+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 			files = (
 				B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */,
 				B9133FA12C5F69E9004D5864 /* SettingViewModel.swift in Sources */,
+				B96DBCD12C6528B200FAD37C /* UIApplication+.swift in Sources */,
 				B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */,
 				F08930A92C60F24F000D0206 /* MultipleClipSelectList.swift in Sources */,
 				B9C116802C5C61BA00E8C26E /* CustomNavigationBar.swift in Sources */,
