@@ -12,7 +12,7 @@ struct DetailPhrase: View {
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditPhrasePresented: Bool = false
     
-    var phrase: Phrase
+    @ObservedObject var phrase: Phrase
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

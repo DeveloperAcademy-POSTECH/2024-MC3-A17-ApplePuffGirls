@@ -11,10 +11,10 @@
 		084E81FA2C5B5C5C00323377 /* DetailClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084E81F92C5B5C5C00323377 /* DetailClip.swift */; };
 		6D6537BA2C620201000EA719 /* EditBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6537B92C620201000EA719 /* EditBook.swift */; };
 		6D9F06502C5FCF2100E73D81 /* BookGenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */; };
-		6D9F06522C5FCF4100E73D81 /*  BookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */; };
+		6D9F06522C5FCF4100E73D81 /* BookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06512C5FCF4100E73D81 /* BookInfoSection.swift */; };
 		6D9F06542C5FCF5D00E73D81 /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */; };
 		6D9F06562C5FCF8200E73D81 /* ReadStatusBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */; };
-		6D9F06582C5FD04100E73D81 /*  ClipColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */; };
+		6D9F06582C5FD04100E73D81 /* ClipColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06572C5FD04100E73D81 /* ClipColorButton.swift */; };
 		6D9F065A2C5FD05E00E73D81 /* ClipShapeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */; };
 		6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */; };
 		6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */; };
@@ -123,10 +123,10 @@
 		084E81F92C5B5C5C00323377 /* DetailClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClip.swift; sourceTree = "<group>"; };
 		6D6537B92C620201000EA719 /* EditBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBook.swift; sourceTree = "<group>"; };
 		6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGenreView.swift; sourceTree = "<group>"; };
-		6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BookInfoSection.swift"; sourceTree = "<group>"; };
+		6D9F06512C5FCF4100E73D81 /* BookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoSection.swift; sourceTree = "<group>"; };
 		6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
 		6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatusBox.swift; sourceTree = "<group>"; };
-		6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ClipColorButton.swift"; sourceTree = "<group>"; };
+		6D9F06572C5FD04100E73D81 /* ClipColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipColorButton.swift; sourceTree = "<group>"; };
 		6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipShapeButton.swift; sourceTree = "<group>"; };
 		6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipTextFields.swift; sourceTree = "<group>"; };
 		6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopClipImage.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				6DE58EBE2C58C190009A9F2F /* AddClip.swift */,
-				6D9F06572C5FD04100E73D81 /*  ClipColorButton.swift */,
+				6D9F06572C5FD04100E73D81 /* ClipColorButton.swift */,
 				6D9F06592C5FD05E00E73D81 /* ClipShapeButton.swift */,
 				6D9F065B2C5FD07B00E73D81 /* ClipTextFields.swift */,
 				6D9F065D2C5FD09A00E73D81 /* TopClipImage.swift */,
@@ -464,7 +464,7 @@
 				6DE58EC82C5A0C4C009A9F2F /* AddDough.swift */,
 				6DE58ECE2C5B4A97009A9F2F /* CompleteAddingBook.swift */,
 				6D9F064F2C5FCF2100E73D81 /* BookGenreView.swift */,
-				6D9F06512C5FCF4100E73D81 /*  BookInfoSection.swift */,
+				6D9F06512C5FCF4100E73D81 /* BookInfoSection.swift */,
 				6D9F06532C5FCF5D00E73D81 /* HeaderSection.swift */,
 				6D9F06552C5FCF8200E73D81 /* ReadStatusBox.swift */,
 			);
@@ -792,7 +792,7 @@
 				F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */,
 				F08930AB2C620C24000D0206 /* EditPhraseShowClip.swift in Sources */,
 				F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */,
-				6D9F06522C5FCF4100E73D81 /*  BookInfoSection.swift in Sources */,
+				6D9F06522C5FCF4100E73D81 /* BookInfoSection.swift in Sources */,
 				B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */,
 				D6DBF76D2C5A4E830095CAFF /* SegmentedBar.swift in Sources */,
 				6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */,
@@ -824,7 +824,7 @@
 				D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */,
 				6DE58EC92C5A0C4C009A9F2F /* AddDough.swift in Sources */,
 				B908743A2C63FB4600F54882 /* DetailBookViewModel.swift in Sources */,
-				6D9F06582C5FD04100E73D81 /*  ClipColorButton.swift in Sources */,
+				6D9F06582C5FD04100E73D81 /* ClipColorButton.swift in Sources */,
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */,
 				F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */,

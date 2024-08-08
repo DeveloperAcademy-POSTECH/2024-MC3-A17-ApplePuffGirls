@@ -16,6 +16,7 @@ struct MultipleClipSelectList : View {
     var body: some View {
         Button(action: self.action) {
             HStack {
+                
                 Image(imageName)
                     .resizable()
                     .frame(width: 55, height: 55)
@@ -50,8 +51,12 @@ struct MultipleSelectionList: View {
     @Binding var clipImage: [String]
     @Binding var selections: [String]
 
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
+    private var clips: FetchedResults<Clip>
+    
     var body: some View {
         VStack(alignment: .leading) {
+            
             ForEach(Array(items.enumerated()), id: \.element) { index, item in
                 MultipleClipSelectList(
                     title: item,

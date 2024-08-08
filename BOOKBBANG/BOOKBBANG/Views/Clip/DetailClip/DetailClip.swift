@@ -32,19 +32,20 @@ struct DetailClip: View {
                         .padding(.top, 20)
                     
                     HStack {
-                        Text("총 \(phraseCount)개")
+                        Text("총 \(clip.phrases?.count ?? 0)개")
                             .font(.system(size: 13, weight: .regular))
                             .padding(.leading, 30)
                             .foregroundStyle(.typo50)
+                        
                         
                         Spacer()
                     }
                     .padding(.bottom, 12)
                     
                     ForEach(0..<4, id: \.self) { _ in
-//                        PhraseCard(display: .detailClip)
-//                            .padding(.horizontal, 2)
-//                            .padding(.bottom, 1)
+                        //                        PhraseCard(display: .detailClip)
+                        //                            .padding(.horizontal, 2)
+                        //                            .padding(.bottom, 1)
                     }
                 }
             }

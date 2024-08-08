@@ -22,49 +22,57 @@ struct CustomNavigationBar: View {
     var onRightButton: (() -> Void)?
     
     var body: some View {
-        HStack {
-            if navigationType == .cancel {
+        ZStack(alignment: .center) {
+            HStack {
+                if navigationType == .cancel {
+                    Button(action: {
+                        onCancel?()
+                    }, label: {
+                        Text("취소")
+                            .foregroundStyle(.greenMain100)
+                            .font(.cancel)
+                    })
+                }
+                else {
+                    Button(action: {
+                        onChevron?()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(.greenMain100)
+                    })
+                    
+                }
+                
+                Spacer()
+                
+//                Text(title)
+//                    .foregroundStyle(.typo100)
+//                    .font(.system(size: 18, weight: .semibold))
+//                    .kerning(-0.4)
+                
+//                Spacer()
+                
                 Button(action: {
-                    onCancel?()
+                    onRightButton?()
                 }, label: {
-                    Text("취소")
-                        .foregroundStyle(.greenMain100)
-                        .font(.cancel)
+                    Text(rightTitle ?? "")
+                        .foregroundStyle(isHighlighted ? .greenMain100 : .typo25)
+                        .font(.system(size: 17, weight: .bold))
+                        .kerning(-0.4)
                 })
-            }
-            else {
-                Button(action: {
-                    onChevron?()
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(.greenMain100)
-                })
+                .disabled(!isHighlighted)
                 
             }
-            
-            Spacer()
+            .padding(.horizontal, 23)
+            .frame(height: 55)
+            .background(.backLighter)
             
             Text(title)
                 .foregroundStyle(.typo100)
                 .font(.system(size: 18, weight: .semibold))
                 .kerning(-0.4)
-            
-            Spacer()
-            
-            Button(action: {
-                onRightButton?()
-            }, label: {
-                Text(rightTitle ?? "")
-                    .foregroundStyle(isHighlighted ? .greenMain100 : .typo25)
-                    .font(.system(size: 17, weight: .bold))
-                    .kerning(-0.4)
-            })
-            .disabled(!isHighlighted)
-            
         }
-        .padding(.horizontal, 23)
-        .frame(height: 55)
-        .background(.backLighter)
+        
     }
     
 }
