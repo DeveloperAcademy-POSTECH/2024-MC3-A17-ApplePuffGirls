@@ -10,12 +10,18 @@ import CoreData
 
 final class HomeViewModel: ObservableObject {
     @Published var viewStatus: HomeViewType = .home
+    @Published var selectedBookData: BookData? = nil
     @Published var selectedBook: Book? = nil
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
             self.viewStatus = to
         }
+    }
+    
+    func selectBookData(_ book: BookData) {
+        self.selectedBookData = book
+        print("selectedBook: \(String(describing: selectedBookData))")
     }
     
     func selectBook(_ book: Book) {

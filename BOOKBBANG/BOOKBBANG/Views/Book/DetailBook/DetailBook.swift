@@ -13,6 +13,7 @@ struct DetailBook: View {
     @State private var isEditBookPresented: Bool = false
     
     @Binding var book: Book
+    //@Binding var book: Book
     
     var body: some View {
         NavigationStack {
