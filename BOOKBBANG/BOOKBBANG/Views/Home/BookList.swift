@@ -23,6 +23,29 @@ struct BookList: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State var display: Display = .main
     @State var sort: SortBookBy = .recentRegister
+    
+    var sortedBooks: [Book] {
+        switch sort {
+        case .recentRegister:
+            return books.sorted { $0.registerDate ?? Date() > $1.registerDate ?? Date() }
+        case .recentRead:
+            return books.sorted { $0.readDate ?? Date() > $1.readDate ?? Date() }
+        case .registerPhrase:
+            return books.sorted { getPhraseRecentDate(phrases: $0.phrases) > getPhraseRecentDate(phrases: $1.phrases) }
+        }
+    }
+    
+    func getPhraseRecentDate(phrases: NSSet?) -> Date {
+        guard let phraseArray = phrases?.allObjects as? [Phrase] else {
+            return Date()
+        }
+        
+        if let recentDate = phraseArray.compactMap({ $0.createdDate }).max() {
+            return recentDate
+        }
+        return Date()
+    }
+    
     @State var rankedBooks: [String] = []
     
     let columns = [
@@ -46,7 +69,7 @@ struct BookList: View {
                         }
                 }
                 
-                ForEach(books, id: \.self) { book in
+                ForEach(sortedBooks, id: \.self) { book in
                     if display == .main {
                         fetchHomeImage(url: book.thumbnail ?? "")
                             .onTapGesture {

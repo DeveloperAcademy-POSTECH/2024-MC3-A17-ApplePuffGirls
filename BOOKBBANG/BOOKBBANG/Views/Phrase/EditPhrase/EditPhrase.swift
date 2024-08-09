@@ -42,6 +42,9 @@ struct EditPhrase: View {
             .padding(.horizontal, 22)
         }
         .background(Color.backLighter)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func clickRightButton() {
@@ -76,6 +79,7 @@ extension EditPhrase {
                         .font(.system(size: 15, weight: .regular))
                         .foregroundStyle(.typo80)
                         .lineSpacing(10)
+                        .scrollIndicators(.hidden)
                 )
         }
     }

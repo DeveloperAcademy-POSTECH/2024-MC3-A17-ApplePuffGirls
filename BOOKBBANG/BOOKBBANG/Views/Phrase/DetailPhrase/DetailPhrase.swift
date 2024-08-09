@@ -35,8 +35,13 @@ struct DetailPhrase: View {
                                phrase: phrase)
                     .padding(.bottom, 20)
                     
-                    DetailPhraseClipList()
-                        .padding(.bottom, 20)
+                    Text("\(phrase.clips?.count ?? 324)")
+                    ForEach(phrase.clips?.allObjects as! [Clip], id: \.self) { clip in
+                        Text(clip.title ?? "no name")
+                    }
+                    
+//                    DetailPhraseClipList()
+//                        .padding(.bottom, 20)
                     
                     Text("빵 속에 담긴 나의 생각")
                         .foregroundStyle(.typo50)
