@@ -40,8 +40,8 @@ struct PhraseCard: View {
         case .detailBook, .addPhrase:
             return nil
         case .detailPhrase:
-            if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
+            if let bookName = phrase.book?.name {
+                return "\(bookName)"
             } else {
                 return "책 정보가 없거나 페이지 번호가 없습니다."
             }
@@ -53,8 +53,8 @@ struct PhraseCard: View {
     var phraseBottom: String? {
         switch display {
         case .todaysBread:
-            if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
+            if let bookName = phrase.book?.name {
+                return "\(bookName)"
             } else {
                 return "책 정보가 없거나 페이지 번호가 없습니다."
             }
