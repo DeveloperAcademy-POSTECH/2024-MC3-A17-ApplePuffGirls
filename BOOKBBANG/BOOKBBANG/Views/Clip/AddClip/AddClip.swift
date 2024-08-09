@@ -11,13 +11,15 @@ struct AddClip: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedObject var clipData = ClipData()
+    @ObservedObject var clipData = ClipData(selectedShape: 0, selectedColor: 0)
+    @State private var checkEmpty: Bool = false
+    
     private let nameLimit = 13
     private let descriptionLimit = 25
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavigationBar(isHighlighted: .constant(true),
+            CustomNavigationBar(isHighlighted: $checkEmpty,
                                 navigationType: .cancel,
                                 title: "새로운 클립 추가하기",
                                 rightTitle: "저장",
@@ -27,7 +29,8 @@ struct AddClip: View {
             TopClipImage(clipData: clipData)
             
             VStack(alignment: .leading) {
-                ClipTextFields(clipData: clipData)
+                ClipTextFields(clipData: clipData,
+                               checkEmpty: $checkEmpty)
                 
                 ClipShapeButton(clipData: clipData)
                     .padding(.vertical, 5)

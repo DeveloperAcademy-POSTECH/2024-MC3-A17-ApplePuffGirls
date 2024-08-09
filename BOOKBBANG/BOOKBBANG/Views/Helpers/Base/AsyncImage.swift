@@ -9,21 +9,37 @@ import SwiftUI
 
 func fetchImage(url: String) -> some View {
     AsyncImage(url: URL(string: url)) { image in
-        image.resizable()
+        image
+            .resizable()
+            .scaledToFill()
+            .frame(width: 86, height: 140)
     } placeholder: {
-        ProgressView()
+        Image(.loadingThumbnail)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 86, height: 140)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.typo25)
+            }
     }
-    .scaledToFill()
-    .frame(width: 86, height: 140)
 }
 
 func fetchHomeImage(url: String) -> some View {
     AsyncImage(url: URL(string: url)) { image in
-        image.resizable()
+        image
+            .resizable()
+            .scaledToFill()
+            .frame(width: 105, height: 152)
+            .clipShape(RoundedRectangle(cornerRadius: 13))
     } placeholder: {
-        ProgressView()
+        Image(.loadingThumbnail)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 105, height: 152)
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.typo25)
+            }
     }
-    .scaledToFill()
-    .frame(width: 105, height: 152)
-    .clipShape(RoundedRectangle(cornerRadius: 13))
 }
