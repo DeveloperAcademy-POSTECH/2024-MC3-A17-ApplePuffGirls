@@ -18,7 +18,7 @@ struct SelectClips: View {
     }
 
     var body: some View {
-        ScrollView {
+        ScrollView() {
             ForEach(clips) { clip in
                 Button {
                     if selections.contains(clip) {
@@ -66,5 +66,6 @@ struct SelectClips: View {
             }
             NewClipButton()
         }
+        .scrollIndicators(.hidden)
     }
 }

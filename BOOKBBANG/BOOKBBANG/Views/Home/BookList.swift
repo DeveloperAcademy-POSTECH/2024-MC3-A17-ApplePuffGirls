@@ -88,6 +88,7 @@ struct BookList: View {
                 }
             }
         }
+        .padding(.bottom, 20)
     }
 }
 

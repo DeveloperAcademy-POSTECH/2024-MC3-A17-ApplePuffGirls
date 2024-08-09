@@ -30,26 +30,31 @@ struct AddCategoryToPhrase: View {
             
             AddCategorytoPhraseProgressBar()
             
-            Image(.baking3)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 90)
-            
-            Section {
-                Text("빵을 어떤 클립에 담아둘까요?")
-                    .foregroundStyle(.typo100)
-                    .font(.system(size: 24, weight: .bold))
-                    .padding(.bottom, 10)
+            VStack(alignment: .leading, spacing: 0) {
+                Image(.baking3)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 90)
                 
-                Text("빵에 어울리는 클립을 선택해보세요. (복수 선택 가능)")
-                    .foregroundStyle(.typo50)
-                    .font(.system(size: 13, weight: .regular))
-                    .padding(.bottom, 20)
-                    .lineSpacing(5)
+                Section {
+                    Text("빵을 어떤 클립에 담아둘까요?")
+                        .foregroundStyle(.typo100)
+                        .font(.system(size: 24, weight: .bold))
+                        .padding(.bottom, 10)
+                    
+                    Text("빵에 어울리는 클립을 선택해보세요. (복수 선택 가능)")
+                        .foregroundStyle(.typo50)
+                        .font(.system(size: 13, weight: .regular))
+                        .padding(.bottom, 20)
+                        .lineSpacing(5)
+                }
+                
+                SelectClips(selections: $selections)
+
             }
             .padding(.horizontal, 22)
+            .padding(.top, 20)
             
-                SelectClips(selections: $selections)
             
             Spacer()
         }
