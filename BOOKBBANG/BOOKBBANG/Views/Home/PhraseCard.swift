@@ -39,14 +39,14 @@ struct PhraseCard: View {
             return "\(dateString)의 추천빵"
         case .detailBook, .addPhrase:
             return nil
-        case .detailPhrase:
-            if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
-            } else {
-                return "책 정보가 없거나 페이지 번호가 없습니다."
-            }
-        case .detailClip:
-            return title
+//        case .detailPhrase:
+//            if let bookName = phrase.book?.name, let page = phrase.page {
+//                return "\(bookName), \(page)페이지에서"
+//            } else {
+//                return "책 정보가 없거나 페이지 번호가 없습니다."
+//            }
+        case .detailClip, .detailPhrase:
+            return phrase.book?.name ?? "No title"
         }
     }
     
@@ -84,13 +84,18 @@ struct PhraseCard: View {
             }
             
             // 구절
-            Text(phrase.content ?? "")
-                .font(.bookk15)
-                .lineSpacing(15)
-                .foregroundStyle(.typo80)
-                .padding(.top, 7)
-                .padding(.bottom, 13)
-                .multilineTextAlignment(.leading)
+            HStack {
+                Text(phrase.content ?? "")
+                    .font(.bookk15)
+                    .lineSpacing(15)
+                    .foregroundStyle(.typo80)
+                    .padding(.top, 7)
+                    .padding(.bottom, 13)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
             
             // 구절 밑 텍스트
             if let phraseBottom {
@@ -101,7 +106,7 @@ struct PhraseCard: View {
         }
         .padding(.horizontal, 35)
         .padding(.vertical, 30)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxHeight: .infinity)
         .background(.backDarker)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .overlay {
