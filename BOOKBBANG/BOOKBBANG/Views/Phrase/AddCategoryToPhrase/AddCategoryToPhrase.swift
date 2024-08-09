@@ -10,9 +10,7 @@ import SwiftUI
 struct AddCategoryToPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var detailBookViewModel: DetailBookViewModel
-    
-    //@Environment(\.managedObjectContext) private var viewContext
-    
+        
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
     private var clips: FetchedResults<Clip>
     
@@ -111,6 +109,7 @@ struct AddCategoryToPhrase: View {
         newPhrase.thinking = detailBookViewModel.newPhraseData?.thought
         newPhrase.book = detailBookViewModel.newPhraseData?.book
         newPhrase.createdDate = detailBookViewModel.newPhraseData?.createdDate
+        newPhrase.clips = NSSet(array: selections)
         newPhrase.book?.phraseCount += 1
         
         detailBookViewModel.addPhrase(newPhrase)
@@ -134,7 +133,3 @@ func AddCategorytoPhraseProgressBar() -> some View {
                 .background(.greenMain100)
         }
 }
-
-//#Preview {
-//    AddCategoryToPhrase()
-//}

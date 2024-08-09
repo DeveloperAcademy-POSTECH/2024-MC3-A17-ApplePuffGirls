@@ -28,7 +28,7 @@
         <attribute name="page" optional="YES" attributeType="String"/>
         <attribute name="thinking" optional="YES" attributeType="String"/>
         <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="phrases" inverseEntity="Book"/>
-        <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="clips" inverseEntity="Phrase"/>
+        <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clip" inverseName="phrases" inverseEntity="Clip"/>
     </entity>
     <entity name="Recipt" representedClassName="Recipt" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
