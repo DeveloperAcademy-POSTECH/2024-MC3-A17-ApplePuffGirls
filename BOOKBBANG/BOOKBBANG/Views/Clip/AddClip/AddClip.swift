@@ -38,6 +38,9 @@ struct AddClip: View {
             }
         }
         .background(.backLighter)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func saveClip() {
