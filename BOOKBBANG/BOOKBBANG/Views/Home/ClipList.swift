@@ -19,6 +19,26 @@ struct ClipList: View {
     @FetchRequest(entity: Book.entity(), sortDescriptors: [])
     private var books: FetchedResults<Book>
     
+    var sortedClips: [Clip] {
+        switch sort {
+        case .updated:
+            return clips.sorted { getPhraseRecentDate(phrases: $0.phrases) > getPhraseRecentDate(phrases: $1.phrases) }
+        case .created:
+            return clips.sorted { $0.createdDate ?? Date() > $1.createdDate ?? Date() }
+        }
+    }
+    
+    func getPhraseRecentDate(phrases: NSSet?) -> Date {
+        guard let phraseArray = phrases?.allObjects as? [Phrase] else {
+            return Date()
+        }
+        
+        if let recentDate = phraseArray.compactMap({ $0.createdDate }).max() {
+            return recentDate
+        }
+        return Date()
+    }
+    
     var body: some View {
         
         VStack {
@@ -33,7 +53,7 @@ struct ClipList: View {
                 NewClipButton()
                 
                 // 클립 리스트
-                ForEach(clips) { clip in
+                ForEach(sortedClips) { clip in
                     Divider()
                     
                     NavigationLink(destination: {
@@ -61,14 +81,15 @@ struct ClipView: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 25) {
             // 클립 이미지
             Image(ClipItem.allCases[Int(clip.design)].clipImageName)
                 .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(width: 55, height: 55)
                 .foregroundStyle(Colors.allCases[Int(clip.color)].color)
-                .padding(8)
+                
             
             VStack(alignment: .leading) {
                 Text(clip.title ?? "")

@@ -49,6 +49,7 @@ struct AddClip: View {
                 newClip.design = Int16(shape)
                 newClip.title = clipData.name
                 newClip.clipDescription = clipData.description
+                newClip.createdDate = Date()
             }
             do {
                 try viewContext.save()

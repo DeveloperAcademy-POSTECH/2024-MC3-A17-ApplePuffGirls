@@ -21,11 +21,17 @@ struct ClipTextFields: View {
         .padding(.trailing, 300)
       
       Group {
+          
         TextField("클립 제목을 입력해주세요", text: $clipData.name)
           .onChange(of: clipData.name) { newValue in
             if newValue.count > nameLimit {
               clipData.name = String(newValue.prefix(nameLimit))
             }
+          }
+          .overlay(alignment: .trailing) {
+              Text("\(clipData.name.count)/\(nameLimit)")
+                  .font(.caption)
+                  .foregroundStyle(.typo50)
           }
         
         TextField("클립에 대한 설명을 입력해주세요", text: $clipData.description)
@@ -33,6 +39,11 @@ struct ClipTextFields: View {
             if newValue.count > descriptionLimit {
               clipData.description = String(newValue.prefix(descriptionLimit))
             }
+          }
+          .overlay(alignment: .trailing) {
+              Text("\(clipData.description.count)/\(descriptionLimit)")
+                  .font(.caption)
+                  .foregroundStyle(.typo50)
           }
       }
       .frame(width: 330, height: 18)
