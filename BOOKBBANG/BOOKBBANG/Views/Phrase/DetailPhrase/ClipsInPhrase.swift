@@ -30,8 +30,8 @@ struct ClipsInPhrase: View {
             }
             Spacer()
         }
+        .frame(maxWidth: .infinity, minHeight: 25)
         .padding(.vertical, 10)
         .padding(.horizontal, 20)
-        .frame(maxWidth: .infinity)
     }
 }

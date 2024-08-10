@@ -11,7 +11,7 @@ struct AddDough: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     
-    @State var selectedDough: DoughImage? = .croissant
+    @State var selectedDough: Int = 0
     //@Binding var book: Book
     @Binding var bookData: BookData
     
@@ -32,7 +32,7 @@ struct AddDough: View {
             .padding(.top, 20)
             
             
-            Image(selectedDough?.imageName ?? DoughImage.croissant.imageName)
+            Image(DoughImage.allCases[selectedDough].rawValue)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 170, height: 170)
@@ -51,14 +51,13 @@ struct AddDough: View {
                         ForEach(0..<4) { columnIndex in
                             let index = rowIndex * 4 + columnIndex
                             if index < DoughImage.allCases.count {
-                                let dough = DoughImage.allCases[index]
                                 Button(action: {
-                                    selectedDough = dough
+                                    selectedDough = index
                                 }) {
                                     RoundedRectangle(cornerRadius: 10)
-                                        .strokeBorder(selectedDough == dough ? Color.green : Color.gray, lineWidth: selectedDough == dough ? 2 : 1)
+                                        .strokeBorder(selectedDough == index ? Color.green : Color.gray, lineWidth: selectedDough == index ? 2 : 1)
                                         .background(
-                                            Image(dough.imageName)
+                                            Image(DoughImage.allCases[index].imageName)
                                                 .resizable()
                                                 .scaledToFit()
                                                 .padding(7)
@@ -79,7 +78,7 @@ struct AddDough: View {
     }
     
     private func clickRightButton() {
-        bookData.bread = selectedDough?.imageName ?? ""
+        bookData.bread = selectedDough
         homeViewModel.selectBookData(bookData)
         
         let newBook = Book(context: viewContext)
@@ -95,7 +94,7 @@ struct AddDough: View {
         newBook.readDate = homeViewModel.selectedBookData?.readDate
         newBook.registerDate = homeViewModel.selectedBookData?.registerDate
         
-        newBook.bread = homeViewModel.selectedBookData?.bread
+        newBook.bread = Int16(homeViewModel.selectedBookData?.bread ?? 0)
         
         //뷰 확인을 위한 임시 코드 추가
         homeViewModel.selectBook(newBook)

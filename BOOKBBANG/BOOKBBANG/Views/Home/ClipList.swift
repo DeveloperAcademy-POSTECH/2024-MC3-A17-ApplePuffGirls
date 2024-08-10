@@ -50,7 +50,10 @@ struct ClipList: View {
             
             VStack {
                 // 새로운 클립 만들기
-                NewClipButton()
+                VStack {
+                    Divider()
+                    NewClipButton()
+                }
                 
                 // 클립 리스트
                 ForEach(sortedClips) { clip in
@@ -122,7 +125,7 @@ struct NewClipButton: View {
             showingSheet = true
         } label: {
             VStack {
-                Divider()
+                //Divider()
                 HStack {
                     EmptyBox(width: 55, height: 55)
                     
