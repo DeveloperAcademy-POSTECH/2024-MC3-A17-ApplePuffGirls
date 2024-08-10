@@ -32,7 +32,7 @@ struct AddDough: View {
             .padding(.top, 20)
             
             
-            Image(DoughImage.allCases[selectedDough].rawValue)
+            Image(DoughImage.allCases[selectedDough].imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 170, height: 170)

@@ -22,7 +22,7 @@ struct ClipColorButton: View {
       HStack(spacing: 14) {
         ForEach(Colors.allCases, id: \.self) { color in
           Button(action: {
-            clipData.selectedColor = Colors.allCases.firstIndex(of: color)
+              clipData.selectedColor = Colors.allCases.firstIndex(of: color) ?? 0
           }) {
             Rectangle()
               .fill(color.color)

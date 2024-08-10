@@ -145,11 +145,3 @@ struct NewClipButton: View {
         }
     }
 }
-
-#Preview {
-    NavigationView {
-        ClipList()
-            .padding(.horizontal,2)
-            .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
-    }
-}

@@ -42,7 +42,7 @@ struct PhraseCard: View {
         switch display {
         case .todaysBread:
             if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
+                return bookName
             } else {
                 return "책 정보가 없거나 페이지 번호가 없습니다."
             }
