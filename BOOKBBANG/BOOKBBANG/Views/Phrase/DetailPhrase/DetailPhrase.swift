@@ -35,13 +35,21 @@ struct DetailPhrase: View {
                                phrase: phrase)
                     .padding(.bottom, 20)
                     
-                    Text("\(phrase.clips?.count ?? 324)")
-                    ForEach(phrase.clips?.allObjects as! [Clip], id: \.self) { clip in
-                        Text(clip.title ?? "no name")
-                    }
+                    Text("빵 클립")
+                        .foregroundStyle(.typo50)
+                        .font(.system(size: 13, weight: .regular))
+                        .padding(.bottom, 8)
+                        .padding(.leading, 30)
                     
-//                    DetailPhraseClipList()
-//                        .padding(.bottom, 20)
+                    ClipsInPhrase(clips: phrase.clips?.allObjects as! [Clip])
+                        .background(
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color.backDarker))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(.typo25)
+                        }
+                        .padding(.bottom, 20)
                     
                     Text("빵 속에 담긴 나의 생각")
                         .foregroundStyle(.typo50)
@@ -49,21 +57,24 @@ struct DetailPhrase: View {
                         .padding(.bottom, 8)
                         .padding(.leading, 30)
                     
-                    Text(phrase.thinking ?? "")
-                        .foregroundStyle(.typo100)
-                        .font(.system(size: 15, weight: .regular))
-                        .lineSpacing(10)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 30)
-                        .multilineTextAlignment(.leading)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.backDarker))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.typo25)
-                        }
-                        .frame(maxWidth: .infinity)
+                    HStack {
+                        Text(phrase.thinking ?? "")
+                            .foregroundStyle(.typo100)
+                            .font(.system(size: 15, weight: .regular))
+                            .lineSpacing(10)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 30)
+                    .multilineTextAlignment(.leading)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color.backDarker))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.typo25)
+                    }
+                    .frame(maxWidth: .infinity)
                     
                     Spacer()
                 }
@@ -77,7 +88,3 @@ struct DetailPhrase: View {
         })
     }
 }
-
-//#Preview {
-//    DetailPhrase(detailBookViewModel: DetailBookViewModel())
-//}

@@ -58,7 +58,7 @@ extension PersistentenceController {
                   publishedDate: Date,
                   readStatus: String,
                   readDate: Date,
-                  bread: String) throws {
+                  bread: Int) throws {
         let book = Book(context: container.viewContext)
         
         book.author = author
@@ -68,7 +68,7 @@ extension PersistentenceController {
         book.publishedDate = publishedDate
         book.readStatus = readStatus
         book.readDate = readDate
-        book.bread = bread
+        book.bread = Int16(bread)
         
         do {
             try container.viewContext.save()

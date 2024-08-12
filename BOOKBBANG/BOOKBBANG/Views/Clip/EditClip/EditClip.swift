@@ -55,12 +55,10 @@ struct EditClip: View {
     
     private func saveClip() {
         withAnimation {
-            if let color = clipData.selectedColor, let shape = clipData.selectedShape {
-                clip.color = Int16(color)
-                clip.design = Int16(shape)
-                clip.title = clipData.name
-                clip.clipDescription = clipData.description
-            }
+            clip.color = Int16(clipData.selectedColor)
+            clip.design = Int16(clipData.selectedShape)
+            clip.title = clipData.name
+            clip.clipDescription = clipData.description
             
             do {
                 try viewContext.save()

@@ -59,7 +59,3 @@ struct BookGenreView: View {
     }
   }
 }
-
-#Preview {
-  BookGenreView(selectedGenre: .constant(nil))
-}

@@ -20,9 +20,9 @@ final class BookData: ObservableObject {
     @Published var readDate: Date = Date()
     @Published var registerDate: Date
     
-    @Published var bread: String
+    @Published var bread: Int
     
-    init(title: String = "", authors: String = "", thumbnail: String = "", publishedDate: Date = Date(), publisher: String = "", genre: String? = nil, readStatus: String? = nil, readDate: Date = Date(), registerDate: Date = Date(), bread: String = "") {
+    init(title: String = "", authors: String = "", thumbnail: String = "", publishedDate: Date = Date(), publisher: String = "", genre: String? = nil, readStatus: String? = nil, readDate: Date = Date(), registerDate: Date = Date(), bread: Int = 0) {
         self.title = title
         self.authors = authors
         self.thumbnail = thumbnail

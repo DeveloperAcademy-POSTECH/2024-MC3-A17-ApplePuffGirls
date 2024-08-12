@@ -36,3 +36,31 @@ enum DoughImage: String, CaseIterable {
   
   static let allDoughCount: Int = 8
 }
+
+enum BreadImage: String, CaseIterable {
+    case croissant, sikpang, bagel, twistbread
+    case baguette, sorapang, sweetbread, pretzel
+    
+    var imageName: String {
+      switch self {
+      case .croissant:
+        return "Bread_6"
+      case .sikpang:
+        return "Bread_2"
+      case .bagel:
+        return "Bread_3"
+      case .twistbread:
+        return "Bread_4"
+      case .baguette:
+        return "Bread_1"
+      case .sorapang:
+        return "Bread_7"
+      case .sweetbread:
+        return "Bread_8"
+      case .pretzel:
+        return "Bread_5"
+      }
+    }
+    
+    static let allBreadCount: Int = 8
+}

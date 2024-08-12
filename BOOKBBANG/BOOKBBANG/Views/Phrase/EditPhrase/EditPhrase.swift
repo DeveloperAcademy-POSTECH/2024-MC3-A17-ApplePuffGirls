@@ -15,6 +15,8 @@ struct EditPhrase: View {
     @State private var mythought: String = ""
     @Binding var showEditSheet: Bool
     
+    @State var selectedClips: [Clip] = []
+    
     init(phrase: Phrase, showEditSheet: Binding<Bool>) {
         _phrase = ObservedObject(wrappedValue: phrase)
         _myPhrase = State(initialValue: phrase.content ?? "")
@@ -23,33 +25,54 @@ struct EditPhrase: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            CustomNavigationBar(isHighlighted: .constant(true),
-                                navigationType: .cancel,
-                                title: "빵 수정하기",
-                                rightTitle: "저장",
-                                onCancel: { showEditSheet.toggle() },
-                                onRightButton: { clickRightButton() })
-            VStack {
-                editField(title: "내가 구운 빵", text: $myPhrase)
-                    .padding(.bottom, 22)
-                
-                EditPhraseShowClip()
-                    .padding(.bottom, 22)
-                
-                editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 0) {
+                CustomNavigationBar(isHighlighted: .constant(true),
+                                    navigationType: .cancel,
+                                    title: "빵 수정하기",
+                                    rightTitle: "저장",
+                                    onCancel: { showEditSheet.toggle() },
+                                    onRightButton: { clickRightButton() })
+                VStack(alignment: .leading) {
+                    editField(title: "내가 구운 빵", text: $myPhrase)
+                        .padding(.bottom, 22)
+                    
+                    Text("빵 클립")
+                        .foregroundStyle(.typo50)
+                        .font(.system(size: 13, weight: .regular))
+                        .padding(.leading, 20)
+                    
+                    NavigationLink {
+                        SelectClips(selections: $selectedClips)
+                            .padding()
+                    } label: {
+                        ClipsInPhrase(clips: selectedClips)
+                            .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(.typo10))
+                            .overlay(alignment: .trailing) {
+                                Image(systemName: "chevron.right")
+                                    //.font(.title)
+                                    .padding(.trailing, 15)
+                            }
+                    }
+                    .padding(.bottom, 20)
+                    
+                    editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+                }
+                .padding(.horizontal, 22)
             }
-            .padding(.horizontal, 22)
+            .background(Color.backLighter)
         }
         .background(Color.backLighter)
         .onAppear {
             UIApplication.shared.hideKeyboard()
+            selectedClips = phrase.clips?.allObjects as? [Clip] ?? []
         }
     }
     
     private func clickRightButton() {
         phrase.content = myPhrase
         phrase.thinking = mythought
+        phrase.clips = NSSet(array: selectedClips)
         
         do {
             try viewContext.save()

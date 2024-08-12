@@ -13,6 +13,11 @@ struct Home: View {
     @ObservedObject var settingViewModel: SettingViewModel
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
+    @FetchRequest(entity: Phrase.entity(), sortDescriptors: [])
+    private var phrases: FetchedResults<Phrase>
+    
+    @State var todaysBread: Phrase?
+    
     @State var selected: GroupBy = .book
     
     var body: some View {
@@ -20,28 +25,55 @@ struct Home: View {
             ZStack {
                 VStack {
                     HomeTopBar(homeViewModel: homeViewModel)
-                    ScrollView {
+                    ScrollView() {
                         VStack(spacing: 2) {
-                            if let phrase = detailBookViewModel.newPhrase {
+                            if let phrase = todaysBread {
                                 PhraseCard(display: .todaysBread, phrase: phrase)
+                                    .padding(.top, 2)
+                            } else {
+                                HStack {
+                                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
+                                        .font(.bookk15)
+                                        .lineSpacing(15)
+                                        .foregroundStyle(.typo80)
+                                    
+                                    Spacer()
+                                    Image(.congratulatoryBread)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 150)
+                                }
+                                .padding(.leading, 35)
+                                .padding(.vertical)
+                                .background(.backDarker)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.typo25)
+                                }
+                               
+                                
                             }
-                            
-                            SegmentedBar(selected: $selected)
-                            
-                            switch selected {
-                            case .book :
-                                BookList(homeViewModel: homeViewModel)
-                                    .padding(22)
-                                    .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
-                            case .clip:
-                                ClipList()
+                            VStack(spacing: 2) {
+                                
+                                SegmentedBar(selected: $selected)
+                                
+                                switch selected {
+                                case .book :
+                                    BookList(homeViewModel: homeViewModel)
+                                case .clip:
+                                    ClipList()
+                                }
                             }
+                            .scrollIndicators(.hidden)
+                            .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
+                            .padding(.horizontal,2)
                         }
-                        .scrollIndicators(.hidden)
-                        .padding(.horizontal,2)
+                        
                     }
-                    .background(.backLighter)
                 }
+                .background(.backLighter)
+                
                 switch homeViewModel.viewStatus {
                 case .home:
                     EmptyView()
@@ -70,6 +102,9 @@ struct Home: View {
                 case .setting:
                     Setting(homeViewModel: homeViewModel)
                 }
+            }
+            .onAppear {
+                todaysBread = phrases.randomElement()
             }
         }
     }
@@ -111,6 +146,6 @@ struct Home: View {
     }
 }
 
-#Preview {
-    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel(), detailBookViewModel: DetailBookViewModel())
-}
+//#Preview {
+//    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel(), detailBookViewModel: DetailBookViewModel())
+//}

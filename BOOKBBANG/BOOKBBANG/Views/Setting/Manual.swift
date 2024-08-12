@@ -1,3 +1,4 @@
+
 //
 //  Manual.swift
 //  BOOKBBANG
@@ -62,6 +63,7 @@ struct ShowEachChapter: View {
                 .frame(width: 180, height: 180)
             
             Text(chapter.context)
+                .lineSpacing(6)
                 .font(.segment)
                 .kerning(-0.4)
                 .foregroundStyle(.typo100)

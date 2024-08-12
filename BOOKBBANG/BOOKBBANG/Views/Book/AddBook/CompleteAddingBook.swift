@@ -21,7 +21,7 @@ struct CompleteAddingBook: View {
             
             HeaderSection(title: "책 추가를 완료했습니다",
                           subtitle: "맛있는 빵을 만들러 가볼까요?")
-            .padding(.top, 150)
+            .padding(.top, 20)
             .padding(.bottom, 50)
             
             Image(.baking2)
