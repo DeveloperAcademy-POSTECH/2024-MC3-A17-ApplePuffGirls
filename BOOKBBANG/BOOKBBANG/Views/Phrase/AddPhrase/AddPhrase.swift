@@ -70,6 +70,18 @@ struct AddPhrase: View {
             .padding(.top, 20)
             .padding(.horizontal, 23)
             
+            Text("책 내 구절을 촬영해보세요!")
+                .foregroundStyle(.typo50)
+                .font(.system(size: 13, weight: .regular))
+                .padding(.bottom, 20)
+            
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "camera.viewfinder")
+                    .font(.system(size: 20))
+            })
+            
             AddPhraseTextfield(checkEmpty: $checkEmpty,
                                phrase: $phrase)
                 .padding(.horizontal, 22)

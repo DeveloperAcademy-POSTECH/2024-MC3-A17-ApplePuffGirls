@@ -38,7 +38,7 @@ extension AddPhraseTextfield {
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 10)
-                        .font(.system(size: 15, weight: .regular))
+                        .font(.bookk15)
                         .foregroundStyle(.typo100)
                         .lineSpacing(10)
                 }

@@ -102,13 +102,12 @@ struct PhraseCard: View {
                 .stroke(.typo25)
         }
         .overlay(alignment: .bottomTrailing) {
-            //Image(phrase.book?.bread)
             Image(BreadImage.allCases[Int(phrase.book?.bread ?? 0)].imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 60)
-                .padding(.trailing, 5)
-            
+                .padding(.trailing, 15)
+                .padding(.bottom, 10)
         }
     }
     

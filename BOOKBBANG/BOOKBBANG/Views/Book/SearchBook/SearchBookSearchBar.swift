@@ -34,18 +34,16 @@ struct CustomSearchBar: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.greenMain100)
+                        .font(.system(size: 20, weight: .regular))
+                        .kerning(-0.4)
+                    
                     TextField("책을 검색해보세요", text: $searchText, onCommit: {
                         searchRouter.fetch(searchText: searchText)
                     })
                     .foregroundStyle(.typo80)
                     .font(.system(size: 15, weight: .regular))
-                    
-                    Spacer()
-                    
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.greenMain100)
-                        .font(.system(size: 20, weight: .regular))
-                        .kerning(-0.4)
                 }
                 .padding(.leading, 15)
                 .padding(.trailing, 13)
