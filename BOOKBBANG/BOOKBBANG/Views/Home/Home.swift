@@ -112,7 +112,7 @@ struct Home: View {
         
         var body: some View {
             HStack {
-                Image(.logo)
+                Image(.mainLogo)
                     .resizable()
                     .frame(width: 44, height: 44)
                     .padding(.leading, 10)

@@ -38,4 +38,6 @@ enum DetailBookViewType {
     case addClipFinal
     
     case detailPhrase
+    
+    
 }

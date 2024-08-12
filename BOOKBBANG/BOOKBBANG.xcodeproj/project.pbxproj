@@ -89,10 +89,9 @@
 		D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7782C5B86180095CAFF /* TeamInfo.swift */; };
 		D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77A2C5B910D0095CAFF /* Manual.swift */; };
 		D6DBF77D2C5C60900095CAFF /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77C2C5C60900095CAFF /* TeamMember.swift */; };
-		D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */; };
+		D6DBF77F2C5C68EE0095CAFF /* ReceiptMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF77E2C5C68EE0095CAFF /* ReceiptMain.swift */; };
 		D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */; };
 		D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */; };
-		D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */; };
 		D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */; };
 		D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78C2C5F3FB90095CAFF /* Date+.swift */; };
 		D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */; };
@@ -210,10 +209,9 @@
 		D6DBF7782C5B86180095CAFF /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		D6DBF77A2C5B910D0095CAFF /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		D6DBF77C2C5C60900095CAFF /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
-		D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReciptMain.swift; sourceTree = "<group>"; };
+		D6DBF77E2C5C68EE0095CAFF /* ReceiptMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptMain.swift; sourceTree = "<group>"; };
 		D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoLineDivider.swift; sourceTree = "<group>"; };
 		D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingBooks.swift; sourceTree = "<group>"; };
-		D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingPhrases.swift; sourceTree = "<group>"; };
 		D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineDivider.swift; sourceTree = "<group>"; };
 		D6DBF78C2C5F3FB90095CAFF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecipt.swift; sourceTree = "<group>"; };
@@ -360,7 +358,7 @@
 				B977DF1F2C58B39D00EC0186 /* Phrase */,
 				B977DF1E2C58ACD700EC0186 /* Onboarding */,
 				B977DF1D2C58ACD300EC0186 /* Setting */,
-				B977DF1B2C58ACC600EC0186 /* Recipt */,
+				B977DF1B2C58ACC600EC0186 /* Receipt */,
 				B977DF152C58AC3E00EC0186 /* Clip */,
 				B977DF142C58AC3100EC0186 /* Book */,
 				B977DF132C58AC2D00EC0186 /* Home */,
@@ -492,17 +490,16 @@
 			path = AddBook;
 			sourceTree = "<group>";
 		};
-		B977DF1B2C58ACC600EC0186 /* Recipt */ = {
+		B977DF1B2C58ACC600EC0186 /* Receipt */ = {
 			isa = PBXGroup;
 			children = (
-				D6DBF77E2C5C68EE0095CAFF /* ReciptMain.swift */,
+				D6DBF77E2C5C68EE0095CAFF /* ReceiptMain.swift */,
 				D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */,
 				D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */,
-				D6DBF7882C5E056C0095CAFF /* RankingPhrases.swift */,
 				D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */,
 				D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */,
 			);
-			path = Recipt;
+			path = Receipt;
 			sourceTree = "<group>";
 		};
 		B977DF1D2C58ACD300EC0186 /* Setting */ = {
@@ -842,7 +839,7 @@
 				D6DBF76A2C5A4E830095CAFF /* ClipList.swift in Sources */,
 				D6DBF7672C5A4E830095CAFF /* EmptyBox.swift in Sources */,
 				D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */,
-				D6DBF77F2C5C68EE0095CAFF /* ReciptMain.swift in Sources */,
+				D6DBF77F2C5C68EE0095CAFF /* ReceiptMain.swift in Sources */,
 				6DE58EC92C5A0C4C009A9F2F /* AddDough.swift in Sources */,
 				B908743A2C63FB4600F54882 /* DetailBookViewModel.swift in Sources */,
 				6D9F06582C5FD04100E73D81 /* ClipColorButton.swift in Sources */,
@@ -883,7 +880,6 @@
 				F08930B42C6242B1000D0206 /* CompleteAddingPhraseHeader.swift in Sources */,
 				B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */,
 				B9133F9E2C5F5652004D5864 /* HomeViewModel.swift in Sources */,
-				D6DBF7892C5E056C0095CAFF /* RankingPhrases.swift in Sources */,
 				D6DBF77B2C5B910D0095CAFF /* Manual.swift in Sources */,
 				B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */,
 				6D9F065C2C5FD07B00E73D81 /* ClipTextFields.swift in Sources */,

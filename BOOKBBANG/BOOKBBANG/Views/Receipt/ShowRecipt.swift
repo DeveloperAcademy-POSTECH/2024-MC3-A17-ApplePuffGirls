@@ -9,6 +9,24 @@ import SwiftUI
 
 // 빵수증이 있을 때
 struct ShowRecipt: View {
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Book.registerDate, ascending: false)],
+        animation: .default)
+    private var books: FetchedResults<Book>
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
+    private var clips: FetchedResults<Clip>
+    
+    @Binding var rankedBooks: [Book]
+    
+    var mostAddedBooks: [Book] {
+        return Array(books.sorted { $0.phraseCount > $1.phraseCount }.prefix(3))
+    }
+    
+    var mostAddedClips: [Clip] {
+        return Array(clips.sorted { $0.phrases?.count ?? 0 > $1.phrases?.count ?? 0 }.prefix(3))
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -22,7 +40,7 @@ struct ShowRecipt: View {
                             .font(.segment)
                             .foregroundStyle(.typo50)
                         Spacer()
-                        Text("5권")
+                        Text("\(books.count) 권")
                             .font(.segmentSelected)
                             .foregroundStyle(.typo80)
                     }
@@ -41,83 +59,53 @@ struct ShowRecipt: View {
                 
                 TwoLineDivider()
                 
-                Text("가장 인상 깊은 책 3 순위")
+                Text("가장 인상 깊은 책 \(rankedBooks.count) 순위")
                     .font(.listTitle)
                     .foregroundStyle(.typo80)
                 
                 DashLineDivider()
                 
                 VStack(spacing: 15) {
-                    ForEach(1..<4) { i in
+                    
+                    ForEach(Array(rankedBooks.enumerated()), id: \.element.id) { index, book in
                         HStack {
-                            Text("당신이 누군가를 죽였다")
+                            Text("\(book.name ?? "No title")")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
-                            Text("\(i)위")
+                            Text("\(index + 1)위")
                                 .font(.segment)
                                 .foregroundStyle(.typo50)
                         }
                     }
+
                 }
                 .frame(width: 300)
                 
                 // 책 이미지 3개
                 HStack(spacing: 36) {
-                    ForEach(1..<4) { _ in
-                        Image(.fish2)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 76)
+                    ForEach(rankedBooks) { book in
+                        fetchReceiptImage(url: book.thumbnail ?? "")
                     }
                 }
                 .padding(.top, 40)
                 .padding(.bottom, 20)
-                
-                DashLineDivider()
-                Text("가장 인상 깊은 문구 3 순위")
-                    .font(.listTitle)
-                    .foregroundStyle(.typo80)
-                
-                DashLineDivider()
-                VStack(spacing: 0) {
-                    ForEach(1..<4) { i in
-                        VStack(spacing: 0)
-                        {
-                            HStack {
-                                Text("당신이 누군가를 죽였다")
-                                Spacer()
-                                Text("\(i)위")
-                            }
-                            .font(.segment)
-                            .foregroundStyle(.typo50)
-                            .padding(.bottom, 10)
-                            
-                            Text("그리고는, 안고 온 꽃묶음 속에서 가지가 꺾이고 꽃이 일그러진 송이를 골라 발 밑에 버린다. 소녀는 소년이 개울둑에 앉아 있는 걸 아는지 모르는지 그냥 날쌔게 물만 움켜 낸다.")
-                                .lineSpacing(10)
-                                .font(.phraseAtRecipt)
-                                .foregroundStyle(.typo100)
-                        }
-                    }
-                    .padding(.vertical, 15)
-                }
-                .frame(width: 300)
                 
                 TwoLineDivider()
                 
-                Text("가장 빵을 많이 구운 책 3 순위")
+                Text("가장 빵을 많이 구운 책 \(mostAddedBooks.count) 순위")
                     .font(.listTitle)
                     .foregroundStyle(.typo80)
                 DashLineDivider()
                 
                 VStack(spacing: 15) {
-                    ForEach(1..<4) { i in
+                    ForEach(mostAddedBooks) { book in
                         HStack {
-                            Text("당신이 누군가를 죽였다")
+                            Text(book.name ?? "No title")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
-                            Text("\(i)개")
+                            Text("\(book.phraseCount)개")
                                 .font(.segment)
                                 .foregroundStyle(.typo50)
                         }
@@ -127,36 +115,50 @@ struct ShowRecipt: View {
                 
                 // 책 이미지 3개
                 HStack(spacing: 36) {
-                    ForEach(1..<4) { _ in
-                        Image(.fish2)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 76)
+                    ForEach(mostAddedBooks) { book in
+                        fetchReceiptImage(url: book.thumbnail ?? "")
                     }
                 }
                 .padding(.top, 40)
                 .padding(.bottom, 20)
                 
                 DashLineDivider()
-                Text("가장 빵을 많이 담은 클립 3 순위")
+                Text("가장 빵을 많이 담은 클립 \(mostAddedClips.count) 순위")
                     .font(.listTitle)
                     .foregroundStyle(.typo80)
                 DashLineDivider()
                 
                 VStack(spacing: 15) {
-                    ForEach(1..<4) { i in
+                    ForEach(mostAddedClips) { clip in
                         HStack {
-                            Text("당신이 누군가를 죽였다")
+                            // 클립 이미지
+                            Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+                                .renderingMode(.template)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundStyle(Colors.allCases[Int(clip.color)].color)
+                                .frame(height: 20)
+                            
+                            Text(clip.title ?? "No title")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
-                            Text("\(i)개")
+                            Text("\(clip.phrases?.count ?? 0)개")
                                 .font(.segment)
                                 .foregroundStyle(.typo50)
                         }
                     }
                 }
                 .frame(width: 300)
+                .padding(.bottom, 30)
+                
+                TwoLineDivider()
+                
+                Text("독서의 진정한 기쁨은 몇번이고 그것을 되풀이하여 읽는 데 있다.\n- D. H 로랜스 -\n\n책빵이 그 기쁨을 도와주는 앱이 되길 기원합니다.")
+                    .multilineTextAlignment(.center)
+                    .font(.addBookButton)
+                    .foregroundStyle(.typo80)
+                    .padding(.vertical, 50)
                 
                 
                 Spacer()
@@ -164,8 +166,4 @@ struct ShowRecipt: View {
         }
         .scrollIndicators(.hidden)
     }
-}
-
-#Preview {
-    ShowRecipt()
 }

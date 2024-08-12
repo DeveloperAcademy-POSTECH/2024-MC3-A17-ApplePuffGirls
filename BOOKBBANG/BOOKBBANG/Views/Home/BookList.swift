@@ -21,7 +21,6 @@ struct BookList: View {
     private var books: FetchedResults<Book>
     
     @ObservedObject var homeViewModel: HomeViewModel
-    @State var display: Display = .main
     @State var sort: SortBookBy = .recentRegister
     
     var sortedBooks: [Book] {
@@ -46,8 +45,6 @@ struct BookList: View {
         return Date()
     }
     
-    // @State var rankedBooks: [String] = []
-    
     let columns = [
         GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2),
         GridItem(.flexible(), spacing: 2)
@@ -56,11 +53,11 @@ struct BookList: View {
     var body: some View {
         VStack(spacing: 0) {
             // 정렬 버튼
-            if display == .main {
-                SortingBookPicker(sort: $sort)
-            }
             
-            if sortedBooks.count == 0, display == .main {
+            SortingBookPicker(sort: $sort)
+            
+            
+            if sortedBooks.count == 0 {
                 HStack {
                     EmptyBox(width: 105, height: 155)
                         .onTapGesture {
@@ -87,12 +84,12 @@ struct BookList: View {
             }
             else {
                 LazyVGrid(columns: columns, spacing: 12) {
-                    if display == .main {
-                        EmptyBox(width: 105, height: 155)
-                            .onTapGesture {
-                                homeViewModel.transition(to: .searchBook)
-                            }
-                    }
+                    
+                    EmptyBox(width: 105, height: 155)
+                        .onTapGesture {
+                            homeViewModel.transition(to: .searchBook)
+                        }
+                    
                     ForEach(sortedBooks, id: \.self) { book in
                         
                         fetchHomeImage(url: book.thumbnail ?? "")

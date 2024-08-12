@@ -24,7 +24,7 @@ enum SettingCategory: CaseIterable {
     
     var image: Image {
         switch self {
-        case .manual: return Image(.fish1)
+        case .manual: return Image(.oven)
         case .teamInfo: return Image(.teamLogo)
         case .widget: return Image(.fish2)
         case .alert: return Image(.fish4)

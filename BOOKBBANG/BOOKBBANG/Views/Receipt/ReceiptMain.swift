@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReciptMain: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    @State var rankedBooks: [Book] = []
     
     var body: some View {
         VStack {
@@ -18,12 +19,16 @@ struct ReciptMain: View {
                                 onChevron: { homeViewModel.transition(to: .home) })
             
             VStack(spacing: 0) {
+                if rankedBooks.isEmpty {
+                    // 빵수증 발급하기
+                    StartMakeRecipt(homeViewModel: homeViewModel, rankedBooks: $rankedBooks)
+                } else {
+                    // 정기 빵수증 결과
+                    ShowRecipt(rankedBooks: $rankedBooks)
+                }
                 
-                StartMakeRecipt(homeViewModel: homeViewModel)
+                // 빵수증 결과 아무것도 없을 때
                 //NoRecipt()
-                
-                // 정기 빵수증 결과
-                //ShowRecipt()
                 
             }
             .frame(maxWidth: .infinity)
@@ -75,6 +80,7 @@ struct SelectDate: View {
 // 기간 내 빵수증을 발급할 데이터가 있을 때 (아직 발급 안했을 때)
 struct StartMakeRecipt: View {
     @ObservedObject var homeViewModel: HomeViewModel
+    @Binding var rankedBooks: [Book]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -82,7 +88,7 @@ struct StartMakeRecipt: View {
             TwoLineDivider()
             
             NavigationLink {
-                RankingBooks(homeViewModel: homeViewModel)
+                RankingBooks(homeViewModel: homeViewModel, rankedBooks: $rankedBooks)
             } label: {
                 EmptyBox(width: 294, 
                          height: 305,
@@ -123,8 +129,3 @@ struct NoRecipt: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        ReciptMain(homeViewModel: HomeViewModel())
-    }
-}
