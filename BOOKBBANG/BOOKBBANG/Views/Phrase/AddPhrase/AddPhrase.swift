@@ -64,22 +64,6 @@ struct AddPhrase: View {
                         Text("책에서 마음에 와닿은 구절을 적어주세요")
                             .foregroundStyle(.typo50)
                             .font(.system(size: 13, weight: .regular))
-                            .padding(.bottom, 20)
-                        
-                        Text("책 내 구절을 촬영해보세요!")
-                            .foregroundStyle(.typo50)
-                            .font(.system(size: 13, weight: .regular))
-                            .padding(.bottom, 20)
-                        
-                        NavigationLink(destination: {
-                            AddPhraseScanner(liveTextViewModel: liveTextViewModel)
-                                .task {
-                                    await liveTextViewModel.requestDataScannerAccessStatus()
-                                }
-                        }, label: {
-                            Image(systemName: "text.viewfinder")
-                                .font(.system(size: 20))
-                        })
                     }
                     
                     Spacer()
@@ -90,6 +74,39 @@ struct AddPhrase: View {
                 AddPhraseTextfield(checkEmpty: $checkEmpty,
                                    phrase: $phrase)
                 .padding(.horizontal, 22)
+                .padding(.bottom, 30)
+                
+                HStack {
+                    Text("책에서 구절을 촬영해보세요!")
+                        .foregroundStyle(.typo50)
+                        .font(.system(size: 13, weight: .regular))
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: {
+                        AddPhraseScanner(liveTextViewModel: liveTextViewModel)
+                            .task {
+                                await liveTextViewModel.requestDataScannerAccessStatus()
+                            }
+                    }, label: {
+                        RoundedRectangle(cornerRadius: 29)
+                            .stroke(.greenMain100, lineWidth: 1.0)
+                            .frame(width: 150 ,height: 32)
+                            .overlay {
+                                HStack {
+                                    Image(systemName: "text.viewfinder")
+                                        .font(.system(size: 20))
+                                    
+                                    Text("구절 가져오기")
+                                        .foregroundStyle(.greenMain100)
+                                        .font(.system(size: 13, weight: .regular))
+                                        .padding(.horizontal, 10)
+                                }
+                            }
+                    })
+                }
+                .padding(.horizontal, 22)
+                .padding(.bottom, 40)
                 
                 Spacer()
             }
