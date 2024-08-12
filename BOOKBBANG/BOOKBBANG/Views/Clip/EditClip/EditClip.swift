@@ -12,8 +12,10 @@ struct EditClip: View {
     @Environment(\.dismiss) private var dismiss
     
     @ObservedObject var clip: Clip
-    
     @ObservedObject var clipData = ClipData()
+    
+    @State private var checkEmpty: Bool = false
+    
     private let nameLimit = 13
     private let descriptionLimit = 25
     
@@ -38,7 +40,7 @@ struct EditClip: View {
             TopClipImage(clipData: clipData)
             
             VStack(alignment: .leading) {
-                ClipTextFields(clipData: clipData)
+                ClipTextFields(clipData: clipData, checkEmpty: $checkEmpty)
                 
                 ClipShapeButton(clipData: clipData)
                     .padding(.vertical, 5)
@@ -49,6 +51,9 @@ struct EditClip: View {
             }
         }
         .background(.backLighter)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func saveClip() {

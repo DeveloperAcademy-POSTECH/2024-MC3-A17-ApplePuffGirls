@@ -22,7 +22,6 @@ struct EditPhrase: View {
         _myPhrase = State(initialValue: phrase.content ?? "")
         _mythought = State(initialValue: phrase.thinking ?? "")
         _showEditSheet = showEditSheet
-        //selectedClips = phrase.clips?.allObjects as? State<[Clip]> ?? []
     }
     
     var body: some View {
@@ -45,13 +44,11 @@ struct EditPhrase: View {
                     
                     NavigationLink {
                         SelectClips(selections: $selectedClips)
-                            .padding()
                     } label: {
                         ClipsInPhrase(clips: selectedClips)
                             .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(.typo10))
                             .overlay(alignment: .trailing) {
                                 Image(systemName: "chevron.right")
-                                    //.font(.title)
                                     .padding(.trailing, 15)
                             }
                     }
@@ -63,7 +60,9 @@ struct EditPhrase: View {
             }
             .background(Color.backLighter)
         }
+        .background(Color.backLighter)
         .onAppear {
+            UIApplication.shared.hideKeyboard()
             selectedClips = phrase.clips?.allObjects as? [Clip] ?? []
         }
     }
@@ -101,6 +100,7 @@ extension EditPhrase {
                         .font(.system(size: 15, weight: .regular))
                         .foregroundStyle(.typo80)
                         .lineSpacing(10)
+                        .scrollIndicators(.hidden)
                 )
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClipTextFields: View {
     @ObservedObject var clipData: ClipData
+    @Binding var checkEmpty: Bool
     
     let nameLimit = 13
     let descriptionLimit = 25
@@ -21,9 +22,7 @@ struct ClipTextFields: View {
                 .padding(.trailing, 300)
             
             Group {
-                
                 TextField("클립 제목을 입력해주세요", text: $clipData.name)
-                    .padding(.trailing, 35)
                     .onChange(of: clipData.name) { newValue in
                         if newValue.count > nameLimit {
                             clipData.name = String(newValue.prefix(nameLimit))
@@ -36,7 +35,6 @@ struct ClipTextFields: View {
                     }
                 
                 TextField("클립에 대한 설명을 입력해주세요", text: $clipData.description)
-                    .padding(.trailing, 35)
                     .onChange(of: clipData.description) { newValue in
                         if newValue.count > descriptionLimit {
                             clipData.description = String(newValue.prefix(descriptionLimit))
@@ -53,5 +51,19 @@ struct ClipTextFields: View {
             .background(Color.typo10)
             .cornerRadius(10)
         }
+        .onChange(of: clipData.name) { _ in
+            validateFields()
+        }
+        .onChange(of: clipData.description) { _ in
+            validateFields()
+        }
     }
+    
+    private func validateFields() {
+        checkEmpty = !clipData.name.isEmpty && !clipData.description.isEmpty
+    }
+}
+
+#Preview {
+    ClipTextFields(clipData: ClipData(), checkEmpty: .constant(true))
 }

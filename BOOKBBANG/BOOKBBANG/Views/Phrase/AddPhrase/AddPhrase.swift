@@ -13,7 +13,6 @@ struct AddPhrase: View {
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @State private var checkEmpty: Bool = false
-    @State private var page: String = ""
     @State private var phrase: String = ""
     
     var book: Book
@@ -72,7 +71,6 @@ struct AddPhrase: View {
             .padding(.horizontal, 23)
             
             AddPhraseTextfield(checkEmpty: $checkEmpty,
-                               page: $page,
                                phrase: $phrase)
                 .padding(.horizontal, 22)
             
@@ -89,7 +87,6 @@ struct AddPhrase: View {
         let newPhraseData = PhraseData()
         newPhraseData.book = book
         newPhraseData.content = phrase
-        newPhraseData.page = page
         detailBookViewModel.addPhraseData(newPhraseData)
         
         detailBookViewModel.transition(to: .addThoughts)

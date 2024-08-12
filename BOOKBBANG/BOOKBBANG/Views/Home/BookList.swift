@@ -62,7 +62,6 @@ struct BookList: View {
             
             LazyVGrid(columns: columns, spacing: 12) {
                 if display == .main {
-                    
                     EmptyBox(width: 105, height: 155)
                         .onTapGesture {
                             homeViewModel.transition(to: .searchBook)
@@ -70,21 +69,14 @@ struct BookList: View {
                 }
                 
                 ForEach(sortedBooks, id: \.self) { book in
-                    if display == .main {
-                        fetchHomeImage(url: book.thumbnail ?? "")
-                            .onTapGesture {
-                                homeViewModel.selectedBook = book
-                                homeViewModel.transition(to: .detailBook)
-                            }
-                    } else {
-                        //                        Button {
-                        //                            if rankedBooks.count < 3 {
-                        //                                rankedBooks.append(image)
-                        //                            }
-                        //                        } label: {
-                        //                            fetchImage(url: image)
-                        //                        }
-                    }
+                    
+                    fetchHomeImage(url: book.thumbnail ?? "")
+                        .onTapGesture {
+                            homeViewModel.selectedBook = book
+                            homeViewModel.transition(to: .detailBook)
+                        }
+                    
+                    
                 }
             }
             .padding(.horizontal, 10)

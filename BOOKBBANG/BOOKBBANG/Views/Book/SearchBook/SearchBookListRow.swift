@@ -100,7 +100,7 @@ func formatISO8601Date(dateStr: String) -> String {
     }
     
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy.MM.dd."
+    formatter.dateFormat = "yyyy.MM.dd"
     formatter.timeZone = TimeZone(secondsFromGMT: 0)
     return formatter.string(from: date)
 }

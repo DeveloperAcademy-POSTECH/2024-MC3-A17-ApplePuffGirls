@@ -63,7 +63,6 @@ struct AddCategoryToPhrase: View {
     
     private func clickRightButton() {
         let newPhrase = Phrase(context: viewContext)
-        newPhrase.page = detailBookViewModel.newPhraseData?.page
         newPhrase.content = detailBookViewModel.newPhraseData?.content
         newPhrase.thinking = detailBookViewModel.newPhraseData?.thought
         newPhrase.book = detailBookViewModel.newPhraseData?.book

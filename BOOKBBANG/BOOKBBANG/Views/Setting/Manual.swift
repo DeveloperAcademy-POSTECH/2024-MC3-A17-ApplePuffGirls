@@ -8,33 +8,36 @@
 
 import SwiftUI
 
-struct ManualChapter: Hashable {
-    var title: String
-    var image: String
-    var context: String
+
+enum DisplayManual {
+    case setting
+    case onboarding
 }
 
 struct Manual: View {
     @Environment(\.dismiss) var dismiss
-    let manualChapter: [ManualChapter] = [
-        ManualChapter(title: "책 반죽하기", image: "fish_1", context: "책은 우리가 만들 빵의 재료에요. 어떤 책으로 반죽을 만들어볼까요? 그 책은 어떤 맛인지 알려주세요!"),
-        ManualChapter(title: "책빵 굽기", image: "fish_2", context: "책 속 좋아하는 문장으로 빵을 구워보세요! 빵 반죽에 문장을 담아 맛있는 빵을 만들어 줄게요."),
-        ManualChapter(title: "오늘의 빵", image: "fish_3", context: "하루에 두 번, 내가 만든 빵들 중 하나를 추천해드려요. 설레는 마음으로 빵을 기다려보세요!"),
-        ManualChapter(title: "빵 클립", image: "fish_4", context: "이 빵을 언제 먹을지, 어떤 맛인지 빵 클립으로 묶어 보아요. 내가 먹고 싶을 때 더 쉽게 찾아 먹을 수 있어요!"),
-        ManualChapter(title: "빵수증", image: "fish_6", context: "일 년에 두 번, 내가 구운 빵들의 영수증이 만들어져요! 지금까지 구운 빵 기록들을 한 눈에 볼 수 있죠. 어떤 빵이 가장 많이 만들어졌는지 궁금하지 않나요? 빵을 많이 구울 수록 더 재미있는 빵수증이 될 거에요.")
-    ]
+    
+    @State private var isClipImage: Bool = false
+    @Binding var isFirstLaunching: Bool
+    var display: DisplayManual = .setting
+    
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(false),
-                                navigationType: .chevron,
-                                title: "책빵 사용 설명서",
-                                onChevron: { dismiss() })
+            if display == .setting {
+                CustomNavigationBar(isHighlighted: .constant(false),
+                                    navigationType: .chevron,
+                                    title: "책빵 사용 설명서",
+                                    onChevron: { dismiss() })
+            }
             
             TabView {
                 ManualCover()
                 
                 ForEach(manualChapter, id: \.self) { chapter in
-                    ShowEachChapter(chapter: chapter)
+                    ShowEachChapter(isFirstLaunching: $isFirstLaunching, 
+                                    isClipImage: chapter.title == "빵 클립",
+                                    display: display,
+                                    chapter: chapter)
                 }
             }
             .padding(.bottom, 40)
@@ -47,9 +50,13 @@ struct Manual: View {
 }
 
 struct ShowEachChapter: View {
+    @Binding var isFirstLaunching: Bool
+    var isClipImage: Bool
+    var display: DisplayManual
     var chapter: ManualChapter
     
     var body: some View {
+        
         VStack(spacing: 0) {
             Text(chapter.title)
                 .font(.teamMemberTitle)
@@ -59,11 +66,12 @@ struct ShowEachChapter: View {
             Image(chapter.image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 180, height: 180)
+                .frame(width: isClipImage ? 100 : 180, height: 180)
             
-            Text(chapter.context)
+            Text(chapter.content)
                 .lineSpacing(6)
                 .font(.segment)
+                .kerning(-0.4)
                 .foregroundStyle(.typo100)
                 .frame(width: 330)
                 .multilineTextAlignment(.center)
@@ -80,6 +88,25 @@ struct ShowEachChapter: View {
                     .font(.segment)
                     .foregroundStyle(.typo100)
             }
+            
+            if chapter.title == "빵수증" && display == .onboarding {
+                Button(action: {
+                    isFirstLaunching.toggle()
+                }, label: {
+                    HStack {
+                        Spacer()
+                        Text("책빵으로 가기")
+                            .font(.system(size: 20, weight: .semibold))
+                            .foregroundStyle(.backLighter)
+                            .padding()
+                        Spacer()
+                    }
+                    .background(.greenMain100)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                })
+                .padding(.top, 30)
+                .padding(.horizontal, 20)
+            }
         }
     }
 }
@@ -87,7 +114,7 @@ struct ShowEachChapter: View {
 struct ManualCover: View {
     var body: some View {
         VStack {
-            Image("gentlemangyodong")
+            Image(.gentlemangyodong)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 180, height: 180)

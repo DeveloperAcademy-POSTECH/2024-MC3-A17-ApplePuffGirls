@@ -57,8 +57,7 @@ struct DetailBook: View {
                             
                             ForEach(book.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
                                 NavigationLink(destination: {
-                                    DetailPhrase(detailBookViewModel: detailBookViewModel,
-                                                 phrase: phrase)
+                                    DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
                                 }, label: {
                                     PhraseCard(display: .detailBook, phrase: phrase)
                                 })

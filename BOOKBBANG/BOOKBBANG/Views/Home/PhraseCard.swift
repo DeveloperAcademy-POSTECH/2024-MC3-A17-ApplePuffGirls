@@ -41,8 +41,8 @@ struct PhraseCard: View {
     var phraseBottom: String? {
         switch display {
         case .todaysBread:
-            if let bookName = phrase.book?.name, let page = phrase.page {
-                return bookName
+            if let bookName = phrase.book?.name {
+                return "\(bookName)"
             } else {
                 return "책 정보가 없거나 페이지 번호가 없습니다."
             }
@@ -53,7 +53,7 @@ struct PhraseCard: View {
         }
     }
     
-    var phrase: Phrase
+    @ObservedObject var phrase: Phrase
     
     var body: some View {
         VStack(alignment: .leading) {

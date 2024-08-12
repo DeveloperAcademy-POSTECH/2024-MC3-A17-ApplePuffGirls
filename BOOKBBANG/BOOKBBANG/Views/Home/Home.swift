@@ -50,9 +50,7 @@ struct Home: View {
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 20)
                                         .stroke(.typo25)
-                                }
-                               
-                                
+                                } 
                             }
                             VStack(spacing: 2) {
                                 
@@ -62,7 +60,7 @@ struct Home: View {
                                 case .book :
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
-                                    ClipList()
+                                    ClipList(detailBookViewModel: detailBookViewModel)
                                 }
                             }
                             .scrollIndicators(.hidden)
