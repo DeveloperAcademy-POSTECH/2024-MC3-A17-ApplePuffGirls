@@ -35,7 +35,7 @@ struct CustomSearchBar: View {
             .overlay {
                 HStack {
                     Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.greenMain100)
+                        .foregroundStyle(.typo50)
                         .font(.system(size: 20, weight: .regular))
                         .kerning(-0.4)
                     

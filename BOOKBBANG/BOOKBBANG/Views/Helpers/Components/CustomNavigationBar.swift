@@ -44,14 +44,7 @@ struct CustomNavigationBar: View {
                 }
                 
                 Spacer()
-                
-//                Text(title)
-//                    .foregroundStyle(.typo100)
-//                    .font(.system(size: 18, weight: .semibold))
-//                    .kerning(-0.4)
-                
-//                Spacer()
-                
+
                 Button(action: {
                     onRightButton?()
                 }, label: {

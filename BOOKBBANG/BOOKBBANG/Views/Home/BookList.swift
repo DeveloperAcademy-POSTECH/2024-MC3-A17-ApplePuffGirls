@@ -60,33 +60,52 @@ struct BookList: View {
                 SortingBookPicker(sort: $sort)
             }
             
-            LazyVGrid(columns: columns, spacing: 12) {
-                if display == .main {
+            if sortedBooks.count == 0, display == .main {
+                HStack {
                     EmptyBox(width: 105, height: 155)
                         .onTapGesture {
                             homeViewModel.transition(to: .searchBook)
                         }
+                    
+                    VStack(spacing: 0) {
+                        Image(.breadHat2)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 140)
+                            .padding(.bottom, 4)
+                        
+                        Text("책을 추가하러 가볼까요?")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(.typo80)
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.leading, 40)
+                    
+                    Spacer()
                 }
-                
-                ForEach(sortedBooks, id: \.self) { book in
-                    
-                    fetchHomeImage(url: book.thumbnail ?? "")
-                        .onTapGesture {
-                            homeViewModel.selectedBook = book
-                            homeViewModel.transition(to: .detailBook)
-                        }
-                    
-                    
-                }
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 10)
+            else {
+                LazyVGrid(columns: columns, spacing: 12) {
+                    if display == .main {
+                        EmptyBox(width: 105, height: 155)
+                            .onTapGesture {
+                                homeViewModel.transition(to: .searchBook)
+                            }
+                    }
+                    ForEach(sortedBooks, id: \.self) { book in
+                        
+                        fetchHomeImage(url: book.thumbnail ?? "")
+                            .onTapGesture {
+                                homeViewModel.selectedBook = book
+                                homeViewModel.transition(to: .detailBook)
+                            }
+                    }
+                    
+                }
+                .padding(.horizontal, 10)
+            }
         }
         .padding(.bottom, 20)
     }
-}
-
-
-#Preview {
-    BookList(homeViewModel: HomeViewModel(), display: .recipt)
-        .padding(.horizontal,2)
 }

@@ -10,6 +10,7 @@ import UIKit
 
 struct AddPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var liveTextViewModel = LiveTextViewModel()
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @State private var checkEmpty: Bool = false
@@ -20,73 +21,78 @@ struct AddPhrase: View {
     @ObservedObject var phraseData: PhraseData = PhraseData()
     
     var body: some View {
-        VStack(spacing: 0) {
-            CustomNavigationBar(isHighlighted: $checkEmpty,
-                                navigationType: .chevron,
-                                title: "새로운 빵 굽기",
-                                rightTitle: "다음",
-                                onChevron: { detailBookViewModel.transition(to: .detailBook) },
-                                onRightButton: { clickRightButton() })
-            
-            AddPhraseProgressBar()
-            
-            HStack {
-                VStack(alignment: .leading, spacing: 0) {
-                    Image(.baking2)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 90)
-                    
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .foregroundStyle(.greenMain40)
-                            .frame(height: 14)
-                            .padding(.bottom, -10)
+        NavigationStack {
+            VStack(spacing: 0) {
+                CustomNavigationBar(isHighlighted: $checkEmpty,
+                                    navigationType: .chevron,
+                                    title: "새로운 빵 굽기",
+                                    rightTitle: "다음",
+                                    onChevron: { detailBookViewModel.transition(to: .detailBook) },
+                                    onRightButton: { clickRightButton() })
+                
+                AddPhraseProgressBar()
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Image(.baking2)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 90)
                         
-                        if let title = book.name {
-                            Text("\"\(title)\"")
-                                .foregroundStyle(.typo100)
-                                .font(.system(size: 24, weight: .bold))
-                                .padding(.bottom, 3)
-                                .frame(maxWidth: UIScreen.main.bounds.width - 46)
-                                .lineLimit(1)
+                        ZStack(alignment: .leading) {
+                            Rectangle()
+                                .foregroundStyle(.greenMain40)
+                                .frame(height: 14)
+                                .padding(.bottom, -10)
+                            
+                            if let title = book.name {
+                                Text("\"\(title)\"")
+                                    .foregroundStyle(.typo100)
+                                    .font(.system(size: 24, weight: .bold))
+                                    .padding(.bottom, 3)
+                                    .frame(maxWidth: UIScreen.main.bounds.width - 46)
+                                    .lineLimit(1)
+                            }
                         }
+                        .fixedSize()
+                        
+                        Text("책의 어느 부분을 구워볼까요?")
+                            .foregroundStyle(.typo100)
+                            .font(.system(size: 24, weight: .bold))
+                            .padding(.bottom, 10)
+                        
+                        Text("책에서 마음에 와닿은 구절을 적어주세요")
+                            .foregroundStyle(.typo50)
+                            .font(.system(size: 13, weight: .regular))
+                            .padding(.bottom, 20)
+                        
+                        Text("책 내 구절을 촬영해보세요!")
+                            .foregroundStyle(.typo50)
+                            .font(.system(size: 13, weight: .regular))
+                            .padding(.bottom, 20)
+                        
+                        NavigationLink(destination: {
+                            AddPhraseScanner(liveTextViewModel: liveTextViewModel)
+                                .task {
+                                    await liveTextViewModel.requestDataScannerAccessStatus()
+                                }
+                        }, label: {
+                            Image(systemName: "text.viewfinder")
+                                .font(.system(size: 20))
+                        })
                     }
-                    .fixedSize()
                     
-                    Text("책의 어느 부분을 구워볼까요?")
-                        .foregroundStyle(.typo100)
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.bottom, 10)
-                    
-                    Text("책에서 마음에 와닿은 구절을 적어주세요")
-                        .foregroundStyle(.typo50)
-                        .font(.system(size: 13, weight: .regular))
-                        .padding(.bottom, 20)
+                    Spacer()
                 }
+                .padding(.vertical, 20)
+                .padding(.horizontal, 23)
+                
+                AddPhraseTextfield(checkEmpty: $checkEmpty,
+                                   phrase: $phrase)
+                .padding(.horizontal, 22)
                 
                 Spacer()
             }
-            .padding(.top, 20)
-            .padding(.horizontal, 23)
-            
-            Text("책 내 구절을 촬영해보세요!")
-                .foregroundStyle(.typo50)
-                .font(.system(size: 13, weight: .regular))
-                .padding(.bottom, 20)
-            
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "camera.viewfinder")
-                    .font(.system(size: 20))
-            })
-            
-            AddPhraseTextfield(checkEmpty: $checkEmpty,
-                               phrase: $phrase)
-                .padding(.horizontal, 22)
-            
-            Spacer()
         }
         .background(.backLighter)
         .navigationBarBackButtonHidden()
