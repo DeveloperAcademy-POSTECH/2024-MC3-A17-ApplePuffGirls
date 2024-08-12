@@ -30,7 +30,7 @@ func fetchHomeImage(url: String) -> some View {
         image
             .resizable()
             .scaledToFill()
-            .frame(width: 105, height: 152)
+            .frame(width: 105, height: 155)
             .clipShape(RoundedRectangle(cornerRadius: 13))
     } placeholder: {
         Image(.loadingThumbnail)

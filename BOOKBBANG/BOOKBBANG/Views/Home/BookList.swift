@@ -62,7 +62,6 @@ struct BookList: View {
             
             LazyVGrid(columns: columns, spacing: 12) {
                 if display == .main {
-                    
                     EmptyBox(width: 105, height: 155)
                         .onTapGesture {
                             homeViewModel.transition(to: .searchBook)
