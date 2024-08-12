@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+enum DisplaySelectClips {
+    case addPhrase, editClip
+}
+
 struct SelectClips: View {
     @Environment(\.dismiss) var dismiss
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Clip.title, ascending: true)], animation: .default)
     private var clips: FetchedResults<Clip>
     
     @Binding var selections: [Clip]
+    var display: DisplaySelectClips = .addPhrase
     
     func isSelected(clip: Clip) -> Bool {
         return selections.contains(clip)
@@ -20,6 +25,13 @@ struct SelectClips: View {
     
     var body: some View {
         VStack {
+            if display == .editClip {
+                CustomNavigationBar(isHighlighted: .constant(false),
+                                    navigationType: .chevron,
+                                    title: "빵 클립",
+                                    onChevron: { dismiss() })
+            }
+            
             ScrollView() {
                 ForEach(clips) { clip in
                     Button {

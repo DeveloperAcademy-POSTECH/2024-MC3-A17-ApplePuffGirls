@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EditPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) var dismiss
+    
     @ObservedObject var phrase: Phrase
     
     @State private var myPhrase: String = ""
@@ -43,7 +45,8 @@ struct EditPhrase: View {
                         .padding(.leading, 20)
                     
                     NavigationLink {
-                        SelectClips(selections: $selectedClips)
+                        SelectClips(selections: $selectedClips,
+                                    display: .editClip)
                     } label: {
                         ClipsInPhrase(clips: selectedClips)
                             .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(.typo10))
