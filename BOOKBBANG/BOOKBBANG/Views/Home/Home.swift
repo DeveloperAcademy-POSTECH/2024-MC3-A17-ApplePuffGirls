@@ -62,7 +62,7 @@ struct Home: View {
                                 case .book :
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
-                                    ClipList()
+                                    ClipList(detailBookViewModel: detailBookViewModel)
                                 }
                             }
                             .scrollIndicators(.hidden)

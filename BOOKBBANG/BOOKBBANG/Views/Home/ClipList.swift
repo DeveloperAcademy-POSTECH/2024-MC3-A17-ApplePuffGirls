@@ -19,6 +19,8 @@ struct ClipList: View {
     @FetchRequest(entity: Book.entity(), sortDescriptors: [])
     private var books: FetchedResults<Book>
     
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
+    
     var sortedClips: [Clip] {
         switch sort {
         case .updated:
@@ -57,10 +59,10 @@ struct ClipList: View {
                 
                 // 클립 리스트
                 ForEach(sortedClips) { clip in
-                    Divider()
+                    //Divider()
                     
                     NavigationLink(destination: {
-                        DetailClip(clip: clip)
+                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
                     }, label: {
                         ClipView(clip: clip, viewContext: viewContext)
                     })

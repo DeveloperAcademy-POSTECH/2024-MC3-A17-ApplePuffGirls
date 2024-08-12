@@ -51,6 +51,9 @@ struct EditClip: View {
             }
         }
         .background(.backLighter)
+        .onAppear {
+            UIApplication.shared.hideKeyboard()
+        }
     }
     
     private func saveClip() {

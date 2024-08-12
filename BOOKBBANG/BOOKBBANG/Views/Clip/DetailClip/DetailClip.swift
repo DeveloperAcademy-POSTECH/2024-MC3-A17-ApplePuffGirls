@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailClip: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var detailBookViewModel: DetailBookViewModel
     @ObservedObject var clip: Clip
     @State var showingSheet: Bool = false
     
@@ -37,16 +38,19 @@ struct DetailClip: View {
                             .padding(.leading, 30)
                             .foregroundStyle(.typo50)
                         
-                        
                         Spacer()
                     }
                     .padding(.bottom, 12)
                     
                     VStack(spacing: 2) {
                         ForEach(clip.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
-                            PhraseCard(display: .detailClip, phrase: phrase)
-                                .padding(.horizontal, 2)
-                                .padding(.bottom, 1)
+                            NavigationLink(destination: {
+                                DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
+                            }, label: {
+                                PhraseCard(display: .detailClip, phrase: phrase)
+                                    .padding(.horizontal, 2)
+                                    .padding(.bottom, 1)
+                            })
                         }
                     }
                 }
