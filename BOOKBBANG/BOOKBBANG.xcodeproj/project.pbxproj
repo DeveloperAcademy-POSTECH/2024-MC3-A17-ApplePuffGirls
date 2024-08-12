@@ -41,6 +41,10 @@
 		B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946282C5A8A9400C25EDB /* AsyncImage.swift */; };
 		B93254872C69DB280004535F /* SegmentedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */; };
 		B93254892C69FC010004535F /* ManualChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93254882C69FC010004535F /* ManualChapter.swift */; };
+		B932548D2C6A22660004535F /* DataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932548C2C6A22660004535F /* DataScanner.swift */; };
+		B932548F2C6A22B80004535F /* AddPhraseScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932548E2C6A22B80004535F /* AddPhraseScanner.swift */; };
+		B93254992C6A46AA0004535F /* LiveText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93254982C6A46AA0004535F /* LiveText.swift */; };
+		B932549B2C6A46D10004535F /* LiveTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932549A2C6A46D10004535F /* LiveTextViewModel.swift */; };
 		B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96435BB2C6137A10045B07F /* DetailClipProfile.swift */; };
 		B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCC2C650AE900FAD37C /* BookData.swift */; };
 		B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */; };
@@ -152,6 +156,10 @@
 		B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookListRow.swift; sourceTree = "<group>"; };
 		B92946282C5A8A9400C25EDB /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		B93254882C69FC010004535F /* ManualChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualChapter.swift; sourceTree = "<group>"; };
+		B932548C2C6A22660004535F /* DataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScanner.swift; sourceTree = "<group>"; };
+		B932548E2C6A22B80004535F /* AddPhraseScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseScanner.swift; sourceTree = "<group>"; };
+		B93254982C6A46AA0004535F /* LiveText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveText.swift; sourceTree = "<group>"; };
+		B932549A2C6A46D10004535F /* LiveTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTextViewModel.swift; sourceTree = "<group>"; };
 		B96435BB2C6137A10045B07F /* DetailClipProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClipProfile.swift; sourceTree = "<group>"; };
 		B96DBCCC2C650AE900FAD37C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsPhraseCard.swift; sourceTree = "<group>"; };
@@ -304,6 +312,9 @@
 			children = (
 				B92946282C5A8A9400C25EDB /* AsyncImage.swift */,
 				B9D431942C613F2E00E08069 /* PersistenceController.swift */,
+				B932548C2C6A22660004535F /* DataScanner.swift */,
+				B93254982C6A46AA0004535F /* LiveText.swift */,
+				B932549A2C6A46D10004535F /* LiveTextViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -531,6 +542,7 @@
 			children = (
 				F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */,
 				F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */,
+				B932548E2C6A22B80004535F /* AddPhraseScanner.swift */,
 			);
 			path = AddPhrase;
 			sourceTree = "<group>";
@@ -804,9 +816,11 @@
 				F0E92EAA2C5BC66300F04BFE /* AddThoughts.swift in Sources */,
 				6D9F06522C5FCF4100E73D81 /* BookInfoSection.swift in Sources */,
 				B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */,
+				B932549B2C6A46D10004535F /* LiveTextViewModel.swift in Sources */,
 				6D9F065E2C5FD09A00E73D81 /* TopClipImage.swift in Sources */,
 				F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */,
 				B9133F972C5F4F06004D5864 /* Root.swift in Sources */,
+				B93254992C6A46AA0004535F /* LiveText.swift in Sources */,
 				D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */,
 				B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
@@ -845,6 +859,7 @@
 				B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */,
 				D6311E422C67B808004161C7 /* ShowBreadInCard.swift in Sources */,
 				F08930972C5F59A7000D0206 /* AddCategoryToPhrase.swift in Sources */,
+				B932548D2C6A22660004535F /* DataScanner.swift in Sources */,
 				D6DBF76B2C5A4E830095CAFF /* SettingImageGrid.swift in Sources */,
 				B9D431952C613F2E00E08069 /* PersistenceController.swift in Sources */,
 				D6DBF7662C5A4E830095CAFF /* Home.swift in Sources */,
@@ -859,6 +874,7 @@
 				6D9F065A2C5FD05E00E73D81 /* ClipShapeButton.swift in Sources */,
 				6DE58EBF2C58C190009A9F2F /* AddClip.swift in Sources */,
 				B92946252C5A866800C25EDB /* SearchBookSearchBar.swift in Sources */,
+				B932548F2C6A22B80004535F /* AddPhraseScanner.swift in Sources */,
 				B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */,
 				6DE58EC72C59234E009A9F2F /* ClipData.swift in Sources */,
 				6DE58ECF2C5B4A97009A9F2F /* CompleteAddingBook.swift in Sources */,
@@ -1050,6 +1066,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "책빵";
+				INFOPLIST_KEY_NSCameraUsageDescription = "For scanning phrase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -1090,6 +1107,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "책빵";
+				INFOPLIST_KEY_NSCameraUsageDescription = "For scanning phrase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
