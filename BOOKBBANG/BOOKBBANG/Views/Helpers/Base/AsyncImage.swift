@@ -20,7 +20,7 @@ func fetchImage(url: String) -> some View {
             .frame(width: 86, height: 140)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.typo25)
+                    .stroke(.typo10)
             }
     }
 }
@@ -31,7 +31,11 @@ func fetchHomeImage(url: String) -> some View {
             .resizable()
             .scaledToFill()
             .frame(width: 105, height: 155)
-            .clipShape(RoundedRectangle(cornerRadius: 13))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.typo10)
+            }
     } placeholder: {
         Image(.loadingThumbnail)
             .resizable()
@@ -39,7 +43,29 @@ func fetchHomeImage(url: String) -> some View {
             .frame(width: 105, height: 152)
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.typo25)
+                    .stroke(.typo10)
+            }
+    }
+}
+
+func fetchReceiptImage(url: String) -> some View {
+    AsyncImage(url: URL(string: url)) { image in
+        image
+            .resizable()
+            .scaledToFill()
+            .frame(width: 75, height: 105)
+            .overlay {
+                Rectangle()
+                    .stroke(.typo10)
+            }
+    } placeholder: {
+        Image(.loadingThumbnail)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 75, height: 105)
+            .overlay {
+                Rectangle()
+                    .stroke(.typo10)
             }
     }
 }
