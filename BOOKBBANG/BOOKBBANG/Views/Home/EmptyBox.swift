@@ -13,13 +13,14 @@ struct EmptyBox: View {
     var height: Int
     var text: String?
     var isButton: Bool = true
+    var backgroundColor: Color = .backLighter
     
     var body: some View {
         RoundedRectangle(cornerRadius: 13)
             .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
             .foregroundStyle(.typo25)
             .frame(width: CGFloat(width), height: CGFloat(height))
-            .background(.backLighter)
+            .background(backgroundColor)
             .overlay {
                 if let text {
                     Text(text)

@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Onboarding: View {
+    @Binding var isFirstLaunching: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Manual(isFirstLaunching: $isFirstLaunching, 
+               display: .onboarding)
     }
 }
 
 #Preview {
-    Onboarding()
+    Onboarding(isFirstLaunching: .constant(true))
 }

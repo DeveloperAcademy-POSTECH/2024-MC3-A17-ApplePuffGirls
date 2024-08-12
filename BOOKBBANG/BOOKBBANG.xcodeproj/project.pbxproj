@@ -40,6 +40,7 @@
 		B92946272C5A8A3300C25EDB /* SearchBookListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */; };
 		B92946292C5A8A9400C25EDB /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92946282C5A8A9400C25EDB /* AsyncImage.swift */; };
 		B93254872C69DB280004535F /* SegmentedBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7622C5A4E830095CAFF /* SegmentedBar.swift */; };
+		B93254892C69FC010004535F /* ManualChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93254882C69FC010004535F /* ManualChapter.swift */; };
 		B96435BC2C6137A10045B07F /* DetailClipProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96435BB2C6137A10045B07F /* DetailClipProfile.swift */; };
 		B96DBCCD2C650AE900FAD37C /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCC2C650AE900FAD37C /* BookData.swift */; };
 		B96DBCCF2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */; };
@@ -150,6 +151,7 @@
 		B92946242C5A866800C25EDB /* SearchBookSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookSearchBar.swift; sourceTree = "<group>"; };
 		B92946262C5A8A3300C25EDB /* SearchBookListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookListRow.swift; sourceTree = "<group>"; };
 		B92946282C5A8A9400C25EDB /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		B93254882C69FC010004535F /* ManualChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualChapter.swift; sourceTree = "<group>"; };
 		B96435BB2C6137A10045B07F /* DetailClipProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClipProfile.swift; sourceTree = "<group>"; };
 		B96DBCCC2C650AE900FAD37C /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		B96DBCCE2C651C7F00FAD37C /* AddThoughtsPhraseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThoughtsPhraseCard.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				B9C116772C5B6C6100E8C26E /* BookDTO.swift */,
 				B9D431962C61489B00E08069 /* SettingCategory.swift */,
 				B96DBCCC2C650AE900FAD37C /* BookData.swift */,
+				B93254882C69FC010004535F /* ManualChapter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				B9C116782C5B6C6100E8C26E /* BookDTO.swift in Sources */,
 				F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */,
 				F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */,
+				B93254892C69FC010004535F /* ManualChapter.swift in Sources */,
 				F08930B22C6236BB000D0206 /* ClipChips.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
 				D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */,

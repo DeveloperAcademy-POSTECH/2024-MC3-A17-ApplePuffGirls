@@ -19,7 +19,7 @@ struct ReciptMain: View {
             
             VStack(spacing: 0) {
                 
-                StartMakeRecipt()
+                StartMakeRecipt(homeViewModel: homeViewModel)
                 //NoRecipt()
                 
                 // 정기 빵수증 결과
@@ -62,7 +62,7 @@ struct SelectDate: View {
             }
             .padding(.top, 25)
             
-            Text("2020.7.1 - 2020.12.31")
+            Text("2024.1.1 - 2020.6.31")
                 .font(.datePeriod)
                 .foregroundStyle(.typo50)
         }
@@ -74,15 +74,20 @@ struct SelectDate: View {
 
 // 기간 내 빵수증을 발급할 데이터가 있을 때 (아직 발급 안했을 때)
 struct StartMakeRecipt: View {
+    @ObservedObject var homeViewModel: HomeViewModel
+    
     var body: some View {
         VStack(spacing: 0) {
             SelectDate()
             TwoLineDivider()
             
             NavigationLink {
-                RankingBooks()
+                RankingBooks(homeViewModel: homeViewModel)
             } label: {
-                EmptyBox(width: 294, height: 305, text: "+  지금 빵수증 발급하기")
+                EmptyBox(width: 294, 
+                         height: 305,
+                         text: "+  지금 빵수증 발급하기", 
+                         backgroundColor: .backDarker)
                     .padding(.top, 25)
             }
             

@@ -33,7 +33,7 @@ enum SettingCategory: CaseIterable {
     
     var destination: AnyView {
         switch self {
-        case .manual: return AnyView(Manual())
+        case .manual: return AnyView(Manual(isFirstLaunching: .constant(true)))
         case .teamInfo: return AnyView(TeamInfo())
         case .widget: return AnyView(Text("widget"))
         case .alert: return AnyView(Text("alert"))

@@ -50,9 +50,7 @@ struct Home: View {
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 20)
                                         .stroke(.typo25)
-                                }
-                               
-                                
+                                } 
                             }
                             VStack(spacing: 2) {
                                 
