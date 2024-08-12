@@ -24,7 +24,7 @@ struct CompleteAddingPhrase: View {
             
             HeaderSection(title: "빵 굽기를 완료했습니다",
                           subtitle: "맛있는 빵을 만들었어요. 축하합니달라")
-            .padding(.top, 150)
+            .padding(.top, 20)
             .padding(.bottom, 50)
             
             Image(.congratulatoryBread)

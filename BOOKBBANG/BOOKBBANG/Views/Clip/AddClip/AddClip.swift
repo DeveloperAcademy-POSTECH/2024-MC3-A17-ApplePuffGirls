@@ -23,6 +23,7 @@ struct AddClip: View {
                                 rightTitle: "저장",
                                 onCancel: { dismiss() },
                                 onRightButton: { saveClip() })
+            //.padding(.top, 20)
             
             TopClipImage(clipData: clipData)
             
@@ -44,13 +45,12 @@ struct AddClip: View {
         withAnimation {
             let newClip = Clip(context: viewContext)
             
-            if let color = clipData.selectedColor, let shape = clipData.selectedShape {
-                newClip.color = Int16(color)
-                newClip.design = Int16(shape)
-                newClip.title = clipData.name
-                newClip.clipDescription = clipData.description
-                newClip.createdDate = Date()
-            }
+            newClip.color = Int16(clipData.selectedColor)
+            newClip.design = Int16(clipData.selectedShape)
+            newClip.title = clipData.name
+            newClip.clipDescription = clipData.description
+            newClip.createdDate = Date()
+            
             do {
                 try viewContext.save()
             } catch {
@@ -61,10 +61,4 @@ struct AddClip: View {
             dismiss()
         }
     }
-}
-
-
-
-#Preview {
-    AddClip()
 }

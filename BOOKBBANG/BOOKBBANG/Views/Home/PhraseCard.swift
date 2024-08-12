@@ -19,12 +19,6 @@ struct PhraseCard: View {
     
     var display: displayCardAt = .todaysBread
     
-    // dummy data
-    let date = Date()
-    let title = "당신이 누군가를 죽였다"
-    let page = 12
-    //    let phrase = "그리고는, 안고 온 꽃묶음 속에서 가지가 꺾이고 꽃이 일그러진 송이를 골라 발 밑에 버린다. 소녀는 소년이 개울둑에 앉아 있는 걸 아는지 모르는지 그냥 날쌔게 물만 움켜 낸다."
-    
     // 날짜 형식 -> 0000년 0월 00일
     var dateString: String {
         let formatter = DateFormatter()
@@ -39,14 +33,8 @@ struct PhraseCard: View {
             return "\(dateString)의 추천빵"
         case .detailBook, .addPhrase:
             return nil
-        case .detailPhrase:
-            if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
-            } else {
-                return "책 정보가 없거나 페이지 번호가 없습니다."
-            }
-        case .detailClip:
-            return title
+        case .detailClip, .detailPhrase:
+            return phrase.book?.name ?? "No title"
         }
     }
     
@@ -54,7 +42,7 @@ struct PhraseCard: View {
         switch display {
         case .todaysBread:
             if let bookName = phrase.book?.name, let page = phrase.page {
-                return "\(bookName), \(page)페이지에서"
+                return bookName
             } else {
                 return "책 정보가 없거나 페이지 번호가 없습니다."
             }
@@ -84,13 +72,18 @@ struct PhraseCard: View {
             }
             
             // 구절
-            Text(phrase.content ?? "")
-                .font(.bookk15)
-                .lineSpacing(15)
-                .foregroundStyle(.typo80)
-                .padding(.top, 7)
-                .padding(.bottom, 13)
-                .multilineTextAlignment(.leading)
+            HStack {
+                Text(phrase.content ?? "")
+                    .font(.bookk15)
+                    .lineSpacing(15)
+                    .foregroundStyle(.typo80)
+                    .padding(.top, 7)
+                    .padding(.bottom, 13)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
             
             // 구절 밑 텍스트
             if let phraseBottom {
@@ -101,12 +94,21 @@ struct PhraseCard: View {
         }
         .padding(.horizontal, 35)
         .padding(.vertical, 30)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxHeight: .infinity)
         .background(.backDarker)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.typo25)
+        }
+        .overlay(alignment: .bottomTrailing) {
+            //Image(phrase.book?.bread)
+            Image(BreadImage.allCases[Int(phrase.book?.bread ?? 0)].imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60)
+                .padding(.trailing, 5)
+            
         }
     }
     
@@ -116,10 +118,3 @@ struct PhraseCard: View {
         return dateFormatter.string(from: date)
     }
 }
-
-//#Preview {
-//    ScrollView{
-//        PhraseCard(phrase: "")
-//            .padding(.horizontal,2)
-//    }
-//}

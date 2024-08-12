@@ -10,10 +10,10 @@ import SwiftUI
 class ClipData: ObservableObject {
     @Published var name: String
     @Published var description: String
-    @Published var selectedShape: Int? = 0
-    @Published var selectedColor: Int? = 0
+    @Published var selectedShape: Int
+    @Published var selectedColor: Int
 
-    init(name: String = "", description: String = "", selectedShape: Int? = nil, selectedColor: Int? = nil) {
+    init(name: String = "", description: String = "", selectedShape: Int = 0, selectedColor: Int = 0) {
         self.name = name
         self.description = description
         self.selectedShape = selectedShape

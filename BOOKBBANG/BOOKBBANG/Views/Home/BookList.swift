@@ -46,7 +46,7 @@ struct BookList: View {
         return Date()
     }
     
-    @State var rankedBooks: [String] = []
+    // @State var rankedBooks: [String] = []
     
     let columns = [
         GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2),
@@ -87,7 +87,9 @@ struct BookList: View {
                     }
                 }
             }
+            .padding(.horizontal, 10)
         }
+        .padding(.bottom, 20)
     }
 }
 
