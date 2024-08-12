@@ -20,10 +20,6 @@ struct SelectClips: View {
     
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(false),
-                                navigationType: .chevron,
-                                title: "빵 클립",
-                                onChevron: { dismiss() })
             ScrollView() {
                 ForEach(clips) { clip in
                     Button {

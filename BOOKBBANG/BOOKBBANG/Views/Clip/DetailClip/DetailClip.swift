@@ -42,15 +42,33 @@ struct DetailClip: View {
                     }
                     .padding(.bottom, 12)
                     
-                    VStack(spacing: 2) {
-                        ForEach(clip.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
-                            NavigationLink(destination: {
-                                DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
-                            }, label: {
-                                PhraseCard(display: .detailClip, phrase: phrase)
-                                    .padding(.horizontal, 2)
-                                    .padding(.bottom, 1)
-                            })
+                    VStack(spacing: 0) {
+                        if clip.phrases?.count == 0 {
+                            if let title = clip.title {
+                                VStack {
+                                    Image(.gentlemangyodong)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200)
+                                        .padding(.bottom, 20)
+                                    
+                                    Text("문장을 추가하러 가볼까요?")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundStyle(.typo80)
+                                }
+                                .padding(.vertical, 50)
+                            }
+                        }
+                        else {
+                            ForEach(clip.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
+                                NavigationLink(destination: {
+                                    DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
+                                }, label: {
+                                    PhraseCard(display: .detailClip, phrase: phrase)
+                                        .padding(.horizontal, 2)
+                                        .padding(.bottom, 1)
+                                })
+                            }
                         }
                     }
                 }

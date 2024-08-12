@@ -42,7 +42,6 @@ struct ClipList: View {
     }
     
     var body: some View {
-        
         VStack {
             // 정렬 버튼
             HStack {
@@ -59,7 +58,7 @@ struct ClipList: View {
                 
                 // 클립 리스트
                 ForEach(sortedClips) { clip in
-                    //Divider()
+                    Divider()
                     
                     NavigationLink(destination: {
                         DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
@@ -70,7 +69,6 @@ struct ClipList: View {
             }
             .padding(.horizontal, 10)
             .padding(.bottom, 10)
-            
         }
         .frame(maxWidth: .infinity)
     }

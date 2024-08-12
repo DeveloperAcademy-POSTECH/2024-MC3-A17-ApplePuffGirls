@@ -17,7 +17,6 @@ struct Home: View {
     private var phrases: FetchedResults<Phrase>
     
     @State var todaysBread: Phrase?
-    
     @State var selected: GroupBy = .book
     
     var body: some View {
@@ -25,7 +24,8 @@ struct Home: View {
             ZStack {
                 VStack {
                     HomeTopBar(homeViewModel: homeViewModel)
-                    ScrollView() {
+                    
+                    ScrollView {
                         VStack(spacing: 2) {
                             if let phrase = todaysBread {
                                 PhraseCard(display: .todaysBread, phrase: phrase)
@@ -50,7 +50,7 @@ struct Home: View {
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 20)
                                         .stroke(.typo25)
-                                } 
+                                }
                             }
                             VStack(spacing: 2) {
                                 
@@ -67,7 +67,6 @@ struct Home: View {
                             .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                             .padding(.horizontal,2)
                         }
-                        
                     }
                 }
                 .background(.backLighter)
