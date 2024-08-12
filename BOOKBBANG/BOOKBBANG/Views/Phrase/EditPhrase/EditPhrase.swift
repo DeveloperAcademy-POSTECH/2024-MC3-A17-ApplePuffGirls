@@ -44,13 +44,11 @@ struct EditPhrase: View {
                     
                     NavigationLink {
                         SelectClips(selections: $selectedClips)
-                            .padding()
                     } label: {
                         ClipsInPhrase(clips: selectedClips)
                             .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(.typo10))
                             .overlay(alignment: .trailing) {
                                 Image(systemName: "chevron.right")
-                                    //.font(.title)
                                     .padding(.trailing, 15)
                             }
                     }
