@@ -67,7 +67,7 @@ struct SelectDate: View {
             }
             .padding(.top, 25)
             
-            Text("2024.1.1 - 2020.6.31")
+            Text("2024.1.1 - 2024.6.31")
                 .font(.datePeriod)
                 .foregroundStyle(.typo50)
         }
@@ -88,7 +88,8 @@ struct StartMakeRecipt: View {
             TwoLineDivider()
             
             NavigationLink {
-                RankingBooks(homeViewModel: homeViewModel, rankedBooks: $rankedBooks)
+                RankingBooks(homeViewModel: homeViewModel, 
+                             rankedBooks: $rankedBooks)
             } label: {
                 EmptyBox(width: 294, 
                          height: 305,

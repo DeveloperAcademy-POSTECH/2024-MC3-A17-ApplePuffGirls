@@ -24,7 +24,3 @@ struct SearchTestView: View {
         }
     }
 }
-
-#Preview {
-    SearchTestView().environment(\.managedObjectContext, PersistentenceController.preview.container.viewContext)
-}
