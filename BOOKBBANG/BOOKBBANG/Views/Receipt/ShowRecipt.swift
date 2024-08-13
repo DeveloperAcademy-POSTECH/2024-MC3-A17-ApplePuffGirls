@@ -19,6 +19,15 @@ struct ShowRecipt: View {
     
     @Binding var rankedBooks: [Book]
     
+    var mostCommonGenre: String? {
+            let genreCounts = books.reduce(into: [String: Int]()) { counts, book in
+                if let genre = book.genre {
+                    counts[genre, default: 0] += 1
+                }
+            }
+            return genreCounts.max(by: { $0.value < $1.value })?.key
+        }
+    
     var mostAddedBooks: [Book] {
         return Array(books.sorted { $0.phraseCount > $1.phraseCount }.prefix(3))
     }
@@ -50,7 +59,7 @@ struct ShowRecipt: View {
                             .font(.segment)
                             .foregroundStyle(.typo50)
                         Spacer()
-                        Text("소설")
+                        Text(mostCommonGenre ?? "Unknown")
                             .font(.segmentSelected)
                             .foregroundStyle(.typo80)
                     }
