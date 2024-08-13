@@ -50,7 +50,7 @@ struct ShowRecipt: View {
                             .font(.segment)
                             .foregroundStyle(.typo50)
                         Spacer()
-                        Text("추리/미스테리")
+                        Text("소설")
                             .font(.segmentSelected)
                             .foregroundStyle(.typo80)
                     }
