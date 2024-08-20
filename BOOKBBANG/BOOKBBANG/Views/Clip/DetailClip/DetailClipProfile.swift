@@ -34,7 +34,3 @@ struct DetailClipProfile: View {
         }
     }
 }
-
-//#Preview {
-//    DetailClipProfile()
-//}

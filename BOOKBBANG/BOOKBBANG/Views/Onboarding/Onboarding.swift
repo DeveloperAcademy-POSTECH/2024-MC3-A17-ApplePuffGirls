@@ -15,7 +15,3 @@ struct Onboarding: View {
                display: .onboarding)
     }
 }
-
-#Preview {
-    Onboarding(isFirstLaunching: .constant(true))
-}

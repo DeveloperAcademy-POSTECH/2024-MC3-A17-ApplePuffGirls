@@ -66,7 +66,3 @@ struct SelectCategory: View {
         .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
     }
 }
-
-#Preview {
-    Setting(homeViewModel: HomeViewModel())
-}

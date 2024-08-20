@@ -72,6 +72,7 @@
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
 		B9FDC4C42C62732E00AA309D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B9FDC4C32C62732E00AA309D /* Config.xcconfig */; };
+		D60B7DA22C74651F002CEFD3 /* SelectDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B7DA12C74651F002CEFD3 /* SelectDate.swift */; };
 		D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */; };
 		D6311E3C2C6653A5004161C7 /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E3B2C6653A5004161C7 /* FlowLayout.swift */; };
 		D6311E3E2C665859004161C7 /* ClipsInPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E3D2C665859004161C7 /* ClipsInPhrase.swift */; };
@@ -96,12 +97,11 @@
 		D6DBF7872C5D3C510095CAFF /* RankingBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */; };
 		D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */; };
 		D6DBF78D2C5F3FB90095CAFF /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78C2C5F3FB90095CAFF /* Date+.swift */; };
-		D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */; };
+		D6DBF78F2C5FFE770095CAFF /* ShowReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF78E2C5FFE770095CAFF /* ShowReceipt.swift */; };
 		F08930972C5F59A7000D0206 /* AddCategoryToPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930962C5F59A7000D0206 /* AddCategoryToPhrase.swift */; };
 		F089309A2C5F59AE000D0206 /* CompleteAddingPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930982C5F59AE000D0206 /* CompleteAddingPhrase.swift */; };
 		F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F089309E2C5FC7CE000D0206 /* DetailPhrase.swift */; };
 		F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930A42C60ED00000D0206 /* EditPhrase.swift */; };
-		F08930B22C6236BB000D0206 /* ClipChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930B12C6236BB000D0206 /* ClipChips.swift */; };
 		F08930B42C6242B1000D0206 /* CompleteAddingPhraseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08930B32C6242B1000D0206 /* CompleteAddingPhraseHeader.swift */; };
 		F0E92E9E2C5BC48E00F04BFE /* AddPhraseTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */; };
 		F0E92EA32C5BC4F000F04BFE /* AddPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */; };
@@ -193,6 +193,7 @@
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
 		B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BOOKBBANG.entitlements; sourceTree = "<group>"; };
 		B9FDC4C32C62732E00AA309D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D60B7DA12C74651F002CEFD3 /* SelectDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDate.swift; sourceTree = "<group>"; };
 		D6311E362C63DADC004161C7 /* countBooksContainingClip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countBooksContainingClip.swift; sourceTree = "<group>"; };
 		D6311E3B2C6653A5004161C7 /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		D6311E3D2C665859004161C7 /* ClipsInPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsInPhrase.swift; sourceTree = "<group>"; };
@@ -218,13 +219,12 @@
 		D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingBooks.swift; sourceTree = "<group>"; };
 		D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashLineDivider.swift; sourceTree = "<group>"; };
 		D6DBF78C2C5F3FB90095CAFF /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecipt.swift; sourceTree = "<group>"; };
+		D6DBF78E2C5FFE770095CAFF /* ShowReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowReceipt.swift; sourceTree = "<group>"; };
 		F08930962C5F59A7000D0206 /* AddCategoryToPhrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryToPhrase.swift; sourceTree = "<group>"; };
 		F08930982C5F59AE000D0206 /* CompleteAddingPhrase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteAddingPhrase.swift; sourceTree = "<group>"; };
 		F089309B2C5F5A14000D0206 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F089309E2C5FC7CE000D0206 /* DetailPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhrase.swift; sourceTree = "<group>"; };
 		F08930A42C60ED00000D0206 /* EditPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhrase.swift; sourceTree = "<group>"; };
-		F08930B12C6236BB000D0206 /* ClipChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipChips.swift; sourceTree = "<group>"; };
 		F08930B32C6242B1000D0206 /* CompleteAddingPhraseHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteAddingPhraseHeader.swift; sourceTree = "<group>"; };
 		F0E92E9D2C5BC48E00F04BFE /* AddPhraseTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhraseTextfield.swift; sourceTree = "<group>"; };
 		F0E92EA22C5BC4F000F04BFE /* AddPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhrase.swift; sourceTree = "<group>"; };
@@ -503,7 +503,8 @@
 				D6DBF7842C5D3A600095CAFF /* TwoLineDivider.swift */,
 				D6DBF7862C5D3C510095CAFF /* RankingBooks.swift */,
 				D6DBF78A2C5E50130095CAFF /* DashLineDivider.swift */,
-				D6DBF78E2C5FFE770095CAFF /* ShowRecipt.swift */,
+				D6DBF78E2C5FFE770095CAFF /* ShowReceipt.swift */,
+				D60B7DA12C74651F002CEFD3 /* SelectDate.swift */,
 			);
 			path = Receipt;
 			sourceTree = "<group>";
@@ -554,7 +555,6 @@
 			isa = PBXGroup;
 			children = (
 				F08930A42C60ED00000D0206 /* EditPhrase.swift */,
-				F08930B12C6236BB000D0206 /* ClipChips.swift */,
 			);
 			path = EditPhrase;
 			sourceTree = "<group>";
@@ -828,10 +828,11 @@
 				D6311E372C63DADC004161C7 /* countBooksContainingClip.swift in Sources */,
 				B9D431972C61489B00E08069 /* SettingCategory.swift in Sources */,
 				B9C1167E2C5B6EDB00E8C26E /* Config.swift in Sources */,
-				D6DBF78F2C5FFE770095CAFF /* ShowRecipt.swift in Sources */,
+				D6DBF78F2C5FFE770095CAFF /* ShowReceipt.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
 				B97D278C2C63F11700ED490D /* EditReadStatusSection.swift in Sources */,
+				D60B7DA22C74651F002CEFD3 /* SelectDate.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
 				D6311E3E2C665859004161C7 /* ClipsInPhrase.swift in Sources */,
 				D6DBF78B2C5E50130095CAFF /* DashLineDivider.swift in Sources */,
@@ -854,7 +855,6 @@
 				F089309F2C5FC7CE000D0206 /* DetailPhrase.swift in Sources */,
 				F08930A52C60ED00000D0206 /* EditPhrase.swift in Sources */,
 				B93254892C69FC010004535F /* ManualChapter.swift in Sources */,
-				F08930B22C6236BB000D0206 /* ClipChips.swift in Sources */,
 				B9C1167A2C5B6C8300E8C26E /* SearchRouter.swift in Sources */,
 				D6DBF7852C5D3A600095CAFF /* TwoLineDivider.swift in Sources */,
 				B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */,
@@ -1065,7 +1065,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = BSP66D4QHX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
@@ -1083,7 +1083,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.seoyeonchoi.BOOKBBANG;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerriejerrie.BOOKBBANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1106,7 +1106,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BOOKBBANG/Preview Content\"";
-				DEVELOPMENT_TEAM = 9SVDHQS4M3;
+				DEVELOPMENT_TEAM = BSP66D4QHX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BOOKBBANG/Info.plist;
@@ -1124,7 +1124,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.seoyeonchoi.BOOKBBANG;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerriejerrie.BOOKBBANG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

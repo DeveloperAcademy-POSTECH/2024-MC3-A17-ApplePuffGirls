@@ -46,7 +46,3 @@ struct CompleteAddingPhrase: View {
         detailBookViewModel.transition(to: .detailBook)
     }
 }
-
-//#Preview {
-//    CompleteAddingPhrase()
-//}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 // 빵수증이 있을 때
-struct ShowRecipt: View {
+struct ShowReceipt: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Book.registerDate, ascending: false)],
         animation: .default)
@@ -18,6 +18,8 @@ struct ShowRecipt: View {
     private var clips: FetchedResults<Clip>
     
     @Binding var rankedBooks: [Book]
+    
+    @Binding var selectedDate: DateRange
     
     var mostCommonGenre: String? {
             let genreCounts = books.reduce(into: [String: Int]()) { counts, book in
@@ -39,7 +41,6 @@ struct ShowRecipt: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                SelectDate()
                 TwoLineDivider()
                 
                 // 기간동안 읽은 책, 가장 많이 읽은 장르

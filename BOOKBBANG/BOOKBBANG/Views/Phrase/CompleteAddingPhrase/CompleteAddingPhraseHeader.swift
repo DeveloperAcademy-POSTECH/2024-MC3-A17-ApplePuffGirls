@@ -42,7 +42,3 @@ struct CompleteAddingPhraseHeader: View {
             .background(.backLighter)
         }
 }
-
-#Preview {
-    CompleteAddingPhraseHeader(title: "책 추가 완료")
-}
