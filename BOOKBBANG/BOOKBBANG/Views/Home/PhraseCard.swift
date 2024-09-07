@@ -59,16 +59,24 @@ struct PhraseCard: View {
         VStack(alignment: .leading) {
             // 구절 위 초록 형광펜 텍스트
             if let phraseTop = phraseTop {
-                ZStack(alignment: .trailing) {
+                ZStack(alignment: .leading) {
                     Rectangle()
                         .foregroundStyle(.greenMain40)
                         .frame(height: 14)
                         .padding(.bottom, -10)
-                    Text(phraseTop)
-                        .font(.phraseTop)
-                        .foregroundStyle(.typo100)
+                    HStack {
+                        Rectangle()
+                            .frame(width: 5)
+                            .foregroundStyle(.opacity(0))
+                        Text(phraseTop)
+                            .font(.phraseTop)
+                            .foregroundStyle(.typo100)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(nil)
+                    }
+                        
                 }
-                .fixedSize()
+                //.fixedSize()
             }
             
             // 구절

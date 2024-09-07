@@ -9,20 +9,24 @@ import SwiftUI
 
 // 빵수증이 있을 때
 struct ShowReceipt: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @Binding var selectedDate: DateRange
     var receipt: Receipt
     
     var rankedBooks: [RankedBook] {
-        Array(receipt.rankedBooks?.allObjects as? [RankedBook] ?? [])
+        Array(receipt.rankedBooks?.allObjects as? [RankedBook] ?? []).sorted { $0.rank < $1.rank }
     }
     
     var topQuotedBooks: [TopQuotedBook] {
-        Array(receipt.topQuotedBooks?.allObjects as? [TopQuotedBook] ?? [])
+        Array(receipt.topQuotedBooks?.allObjects as? [TopQuotedBook] ?? []).sorted { $0.rank < $1.rank }
     }
     
     var topQuotedClips: [TopQuotedClip] {
-        Array(receipt.topQuotedClips?.allObjects as? [TopQuotedClip] ?? [])
+        Array(receipt.topQuotedClips?.allObjects as? [TopQuotedClip] ?? []).sorted { $0.rank < $1.rank }
     }
+    
+    @State private var showingAlert: Bool = false
     
     var body: some View {
         ScrollView {
@@ -153,10 +157,33 @@ struct ShowReceipt: View {
                     .foregroundStyle(.typo80)
                     .padding(.vertical, 50)
                 
+                
+                Button(role: .destructive) {
+                    showingAlert = true
+                } label: {
+                    Text("삭제하기")
+                        .font(.caption)
+                }
                 Spacer()
             }
             
         }
         .scrollIndicators(.hidden)
+        // Jerrie Comment: alert는 어디에 달아야 best일까요? 일단 Body가장 바깥 괄호에 달았음
+        // 그리고 alert를 subView로 분리해 보여주고 싶은데 방법이 없을지요?
+        .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
+            Button("앗 실수", role: .cancel) { }
+            Button("정말루", role: .destructive) { deleteReceipt() }
+        }, message: { Text("되돌릴 수 없다네..~")})
+    }
+    
+    private func deleteReceipt() {
+        viewContext.delete(receipt)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }

@@ -44,6 +44,7 @@ struct SelectClips: View {
                         VStack(spacing: 0) {
                             HStack {
                                 // 클립 이미지
+                                // Jerrie Comment : 클립 이미지 불러오는 거 이렇게 하는 게 최선일까요
                                 Image(ClipItem.allCases[Int(clip.design)].clipImageName)
                                     .renderingMode(.template)
                                     .resizable()

@@ -27,6 +27,8 @@ struct RankingBooks: View {
         animation: .default)
     private var phrases: FetchedResults<Phrase>
     
+    
+    // Jerrie Comment: 여기 아래 32줄부터 97줄까지가 대부분 뷰에 직접 쓰이는 건 아니고 다음버튼 눌렀을 때 데이터 저장하려고 써둔 것들이라서 굳이 여기 둘 필요 없는 내용들인데 일단 여기다 두어씁니다
     // 기간 내에 작성한 phrase list
     var filteredPhrases: [Phrase] {
         let startDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 1 : 7, d: 1) ?? Date()
@@ -86,12 +88,17 @@ struct RankingBooks: View {
     
     // 기간 내 구절을 등록한 책들 중 가장 많이 해당되는 장르
     var mostCommonGenre: String? {
-        let genreCounts = booksInPeriod.keys.reduce(into: [String: Int]()) { counts, book in
+        let genreCounts = booksList.reduce(into: [String: Int]()) { counts, book in
             if let genre = book.genre {
                 counts[genre, default: 0] += 1
             }
         }
         return genreCounts.max(by: { $0.value < $1.value })?.key
+    }
+    
+    // 책 순위 매길 목록들
+    var booksList: [Book] {
+        Array(booksInPeriod.keys).sorted { $0.registerDate ?? Date() < $1.registerDate ?? Date() }
     }
 
     @State var rankedBooks: [Book] = []
@@ -123,6 +130,7 @@ struct RankingBooks: View {
                     HeaderSection(title: "인상깊은 책들을 선택해주세요",
                                   subtitle: "오래 기억하고 싶은 책이 있나요? 순위를 매겨보세요.")
                     
+                    // Jerrie Comment: 여기 빵수증에서 책 선택했을 때랑 안 선택했을 때랑 박스 크기가 미묘하게 다른데 딱 맞추는 법 몰겠어요
                     HStack(spacing: 14) {
                         ForEach(1..<4) { i in
                             if rankedBooks.count >= i {
@@ -143,8 +151,9 @@ struct RankingBooks: View {
                                 .padding(.leading, 30)
                             
                             // 책 목록
-                            LazyVGrid(columns: columns, spacing: 12) {
-                                ForEach(books, id: \.self) { book in
+                            // Jerrie Comment: 위에 1~3순위 이미지 띄우는 거랑 간격이 안맞는데.. LazyVGrid는 대체 간격을 어떻게 맞추는 건가요 ...??
+                            LazyVGrid(columns: columns, spacing: 14) {
+                                ForEach(booksList, id: \.self) { book in
                                     Button {
                                         if rankedBooks.contains(book) {
                                             rankedBooks.removeAll(where: { $0 == book })
@@ -152,10 +161,21 @@ struct RankingBooks: View {
                                             rankedBooks.append(book)
                                         }
                                     } label: {
-                                        fetchHomeImage(url: book.thumbnail ?? "")
+                                        ZStack {
+                                            fetchHomeImage(url: book.thumbnail ?? "")
+                                            if rankedBooks.contains(book) {
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .foregroundStyle(.black.opacity(0.3))
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    //.inset(by: 1)
+                                                    .stroke(.greenMain100, lineWidth: 2)
+                                            }
+                                        }
+                                        .fixedSize()
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }
@@ -197,6 +217,7 @@ struct RankingBooks: View {
         }
     }
     
+    // Jerrie Comment: 데이터 저장하는 코드가 뷰랑 관련이 없는데 뷰 안에 함수로 넣은게 적절하지 않은 것 같다는 생각입니다. 근데 또 어디다 둬야할지는 잘 모르겠다는
     private func makeReceipt() {
         withAnimation {
             let newReceipt = Receipt(context: viewContext)

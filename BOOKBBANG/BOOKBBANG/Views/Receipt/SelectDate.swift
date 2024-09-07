@@ -15,6 +15,7 @@ struct DateRange: Hashable {
 // 빵수증 기간 선택
 struct SelectDate: View {
     // 앱 설치한 날짜 dummy
+    // Jerrie Comment: 앱 설치한 날짜는 어떤 형식으로 저장해야 하나요? .. core data 상에 저장해두고 불러와서 써야 하나요 ?
     var installedDate: Date = Date(y: 2022, m: 9, d: 3) ?? Date()
     
     func setDateList() -> [DateRange] {
