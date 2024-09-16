@@ -13,11 +13,11 @@ struct DetailClipProfile: View {
     var body: some View {
         VStack(spacing: 0) {
             // 클립 이미지
-            Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+            Image(ClipItem.getClipShape(clip.design))
                 .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .foregroundStyle(Colors.allCases[Int(clip.color)].color)
+                .foregroundStyle(Colors.getClipColor(clip.color))
                 .frame(height: 100)
                 .padding(.bottom, 14)
             

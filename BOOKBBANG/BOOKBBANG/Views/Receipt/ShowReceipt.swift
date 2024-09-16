@@ -129,11 +129,11 @@ struct ShowReceipt: View {
                     ForEach(topQuotedClips, id: \.id) { topQuotedClip in
                         HStack {
                             // 클립 이미지
-                            Image(ClipItem.allCases[Int(topQuotedClip.clip?.design ?? 0)].clipImageName)
+                            Image(ClipItem.getClipShape(topQuotedClip.clip?.design ?? 0))
                                 .renderingMode(.template)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .foregroundStyle(Colors.allCases[Int(topQuotedClip.clip?.color ?? 0)].color)
+                                .foregroundStyle(Colors.getClipColor(topQuotedClip.clip?.color ?? 0))
                                 .frame(height: 20)
                             
                             Text(topQuotedClip.clip?.title ?? "No title")
@@ -169,12 +169,15 @@ struct ShowReceipt: View {
             
         }
         .scrollIndicators(.hidden)
-        // Jerrie Comment: alert는 어디에 달아야 best일까요? 일단 Body가장 바깥 괄호에 달았음
-        // 그리고 alert를 subView로 분리해 보여주고 싶은데 방법이 없을지요?
         .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
-            Button("앗 실수", role: .cancel) { }
-            Button("정말루", role: .destructive) { deleteReceipt() }
+            alertView
         }, message: { Text("되돌릴 수 없다네..~")})
+    }
+    
+    @ViewBuilder
+    private var alertView: some View {
+        Button("앗 실수", role: .cancel) { }
+        Button("정말루", role: .destructive) { deleteReceipt() }
     }
     
     private func deleteReceipt() {

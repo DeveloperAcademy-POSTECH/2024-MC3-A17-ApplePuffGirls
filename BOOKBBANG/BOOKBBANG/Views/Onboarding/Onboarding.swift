@@ -9,9 +9,13 @@ import SwiftUI
 
 struct Onboarding: View {
     @Binding var isFirstLaunching: Bool
+    @AppStorage("installedDate") var installDate: Double?
     
     var body: some View {
         Manual(isFirstLaunching: $isFirstLaunching, 
                display: .onboarding)
+        .onAppear {
+            installDate = Date().timeIntervalSince1970
+        }
     }
 }

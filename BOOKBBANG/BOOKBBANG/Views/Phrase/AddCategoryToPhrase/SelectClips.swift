@@ -44,12 +44,11 @@ struct SelectClips: View {
                         VStack(spacing: 0) {
                             HStack {
                                 // 클립 이미지
-                                // Jerrie Comment : 클립 이미지 불러오는 거 이렇게 하는 게 최선일까요
-                                Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+                                Image(ClipItem.getClipShape(clip.design))
                                     .renderingMode(.template)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .foregroundStyle(Colors.allCases[Int(clip.color)].color)
+                                    .foregroundStyle(Colors.getClipColor(clip.color))
                                     .frame(height: 55)
                                     .padding(.bottom, 14)
                                     .cornerRadius(8)
@@ -60,7 +59,7 @@ struct SelectClips: View {
                                         .foregroundColor(.typo100)
                                         .padding(.bottom, 2)
                                     
-                                    Text("빵 \(clip.phrases?.count ?? 325)개")
+                                    Text("빵 \(clip.phrases?.count ?? 0)개")
                                         .font(.phraseBottom)
                                         .foregroundStyle(.typo50)
                                 }

@@ -26,85 +26,11 @@ struct RankingBooks: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Phrase.createdDate, ascending: true)],
         animation: .default)
     private var phrases: FetchedResults<Phrase>
-    
-    
-    // Jerrie Comment: 여기 아래 32줄부터 97줄까지가 대부분 뷰에 직접 쓰이는 건 아니고 다음버튼 눌렀을 때 데이터 저장하려고 써둔 것들이라서 굳이 여기 둘 필요 없는 내용들인데 일단 여기다 두어씁니다
-    // 기간 내에 작성한 phrase list
-    var filteredPhrases: [Phrase] {
-        let startDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 1 : 7, d: 1) ?? Date()
-        let endDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 6 : 12, d: 31) ?? Date()
-        
-        return phrases.filter { guard let phraseDate = $0.createdDate else { return false }
-            if phraseDate >= startDate && phraseDate <= endDate {
-                return true
-            }
-            return false
-        }
-    }
-    
-    // key: 기간 내에 phrase를 저장한 book, value: 저장된 phrase 개수
-    var booksInPeriod: [Book:Int] {
-        var bookDict = Dictionary<Book, Int>()
-        
-        for phrase in filteredPhrases {
-            if let book = phrase.book {
-                if let count = bookDict[book] {
-                    bookDict.updateValue(count+1, forKey: book)
-                } else {
-                    bookDict[book] = 1
-                }
-            }
-        }
-        return bookDict
-    }
-    
-    // 가장 phrase를 많이 저장한 book 3순위
-    var mostAddedBooks: [(Book, Int)] {
-        return Array(booksInPeriod.sorted { $0.value > $1.value }.prefix(3))
-    }
-    
-    // key: 기간 내에 phrase를 저장한 clip, value: 저장된 phrase 개수
-    var clipsInPeriod: [Clip:Int] {
-        var clipDict = Dictionary<Clip, Int>()
-        
-        for phrase in filteredPhrases {
-            if let clipSet = phrase.clips as? Set<Clip> {
-                for clip in clipSet {
-                    if let count = clipDict[clip] {
-                        clipDict.updateValue(count+1, forKey: clip)
-                    } else {
-                        clipDict[clip] = 1
-                    }
-                }
-            }
-        }
-        return clipDict
-    }
-    
-    // 가장 phrase를 많이 저장한 clip 3순위
-    var mostAddedClips: [(Clip, Int)] {
-        return Array(clipsInPeriod.sorted { $0.value > $1.value }.prefix(3))
-    }
-    
-    // 기간 내 구절을 등록한 책들 중 가장 많이 해당되는 장르
-    var mostCommonGenre: String? {
-        let genreCounts = booksList.reduce(into: [String: Int]()) { counts, book in
-            if let genre = book.genre {
-                counts[genre, default: 0] += 1
-            }
-        }
-        return genreCounts.max(by: { $0.value < $1.value })?.key
-    }
-    
-    // 책 순위 매길 목록들
-    var booksList: [Book] {
-        Array(booksInPeriod.keys).sorted { $0.registerDate ?? Date() < $1.registerDate ?? Date() }
-    }
 
     @State var rankedBooks: [Book] = []
 
     var isCompleted: Bool {
-        return !rankedBooks.isEmpty
+        !rankedBooks.isEmpty
     }
     
     let columns = [
@@ -130,13 +56,12 @@ struct RankingBooks: View {
                     HeaderSection(title: "인상깊은 책들을 선택해주세요",
                                   subtitle: "오래 기억하고 싶은 책이 있나요? 순위를 매겨보세요.")
                     
-                    // Jerrie Comment: 여기 빵수증에서 책 선택했을 때랑 안 선택했을 때랑 박스 크기가 미묘하게 다른데 딱 맞추는 법 몰겠어요
                     HStack(spacing: 14) {
                         ForEach(1..<4) { i in
                             if rankedBooks.count >= i {
                                 fetchHomeImage(url: rankedBooks[i-1].thumbnail ?? "")
                             } else {
-                                EmptyBox(width: 106, height: 155, text: "\(i)위", isButton: false)
+                                EmptyBox(width: 105, height: 155, text: "\(i)위", isButton: false)
                             }
                         }
                     }
@@ -151,7 +76,6 @@ struct RankingBooks: View {
                                 .padding(.leading, 30)
                             
                             // 책 목록
-                            // Jerrie Comment: 위에 1~3순위 이미지 띄우는 거랑 간격이 안맞는데.. LazyVGrid는 대체 간격을 어떻게 맞추는 건가요 ...??
                             LazyVGrid(columns: columns, spacing: 14) {
                                 ForEach(booksList, id: \.self) { book in
                                     Button {
@@ -206,7 +130,6 @@ struct RankingBooks: View {
     }
     
     private func onNextButton() {
-        
         makeReceipt()
         
         self.showGif = true
@@ -264,6 +187,80 @@ struct RankingBooks: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+}
+
+private extension RankingBooks {
+    // 기간 내에 작성한 phrase list
+    var filteredPhrases: [Phrase] {
+        let startDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 1 : 7, d: 1) ?? Date()
+        let endDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 6 : 12, d: 31) ?? Date()
+        
+        return phrases.filter { guard let phraseDate = $0.createdDate else { return false }
+            if phraseDate >= startDate && phraseDate <= endDate {
+                return true
+            }
+            return false
+        }
+    }
+    
+    // key: 기간 내에 phrase를 저장한 book, value: 저장된 phrase 개수
+    var booksInPeriod: [Book:Int] {
+        var bookDict = Dictionary<Book, Int>()
+        
+        for phrase in filteredPhrases {
+            if let book = phrase.book {
+                if let count = bookDict[book] {
+                    bookDict.updateValue(count+1, forKey: book)
+                } else {
+                    bookDict[book] = 1
+                }
+            }
+        }
+        return bookDict
+    }
+    
+    // 가장 phrase를 많이 저장한 book 3순위
+    var mostAddedBooks: [(Book, Int)] {
+        Array(booksInPeriod.sorted { $0.value > $1.value }.prefix(3))
+    }
+    
+    // key: 기간 내에 phrase를 저장한 clip, value: 저장된 phrase 개수
+    var clipsInPeriod: [Clip:Int] {
+        var clipDict = Dictionary<Clip, Int>()
+        
+        for phrase in filteredPhrases {
+            if let clipSet = phrase.clips as? Set<Clip> {
+                for clip in clipSet {
+                    if let count = clipDict[clip] {
+                        clipDict.updateValue(count+1, forKey: clip)
+                    } else {
+                        clipDict[clip] = 1
+                    }
+                }
+            }
+        }
+        return clipDict
+    }
+    
+    // 가장 phrase를 많이 저장한 clip 3순위
+    var mostAddedClips: [(Clip, Int)] {
+        Array(clipsInPeriod.sorted { $0.value > $1.value }.prefix(3))
+    }
+    
+    // 기간 내 구절을 등록한 책들 중 가장 많이 해당되는 장르
+    var mostCommonGenre: String? {
+        let genreCounts = booksList.reduce(into: [String: Int]()) { counts, book in
+            if let genre = book.genre {
+                counts[genre, default: 0] += 1
+            }
+        }
+        return genreCounts.max(by: { $0.value < $1.value })?.key
+    }
+    
+    // 책 순위 매길 목록들
+    var booksList: [Book] {
+        Array(booksInPeriod.keys).sorted { $0.registerDate ?? Date() < $1.registerDate ?? Date() }
     }
 }
 

@@ -86,12 +86,12 @@ struct ClipView: View {
     var body: some View {
         HStack(spacing: 25) {
             // 클립 이미지
-            Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+            Image(ClipItem.getClipShape(clip.design))
                 .renderingMode(.template)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 55, height: 55)
-                .foregroundStyle(Colors.allCases[Int(clip.color)].color)
+                .foregroundStyle(Colors.getClipColor(clip.color))
                 
             
             VStack(alignment: .leading) {

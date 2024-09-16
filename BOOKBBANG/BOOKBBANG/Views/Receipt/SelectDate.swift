@@ -14,15 +14,22 @@ struct DateRange: Hashable {
 
 // 빵수증 기간 선택
 struct SelectDate: View {
-    // 앱 설치한 날짜 dummy
-    // Jerrie Comment: 앱 설치한 날짜는 어떤 형식으로 저장해야 하나요? .. core data 상에 저장해두고 불러와서 써야 하나요 ?
-    var installedDate: Date = Date(y: 2022, m: 9, d: 3) ?? Date()
+    @AppStorage("installedDate") var savedInstalledDate: Double? //= UserDefaults.standard.double(forKey: "installedDate")
+    
+    var storedInstallDate: Date {
+        get {
+            return Date(timeIntervalSince1970: savedInstalledDate ?? 1.0)
+        }
+        set {
+            savedInstalledDate = newValue.timeIntervalSince1970
+        }
+    }
     
     func setDateList() -> [DateRange] {
         let calendar = Calendar.current
-        
-        let installedYear: Int = calendar.component(.year, from: installedDate)
-        let installedIsFirstHalf: Bool = calendar.component(.month, from: installedDate) < 7 ? true : false
+        print(storedInstallDate)
+        let installedYear: Int = calendar.component(.year, from: storedInstallDate)
+        let installedIsFirstHalf: Bool = calendar.component(.month, from: storedInstallDate) < 7 ? true : false
         
         let current = Date()
         let currentYear: Int = calendar.component(.year, from: current)
@@ -37,26 +44,30 @@ struct SelectDate: View {
                 list.append(DateRange(year: installedYear, isFirstHalf: true))
             }
             list.append(DateRange(year: installedYear, isFirstHalf: false))
+            
+            // 현재 년도 이전까지 ..
+            for year in (installedYear+1)..<currentYear {
+                list.append(DateRange(year: year, isFirstHalf: true))
+                list.append(DateRange(year: year, isFirstHalf: false))
+            }
+            
+            // 현재 년도
+            list.append(DateRange(year: currentYear, isFirstHalf: true))
+            
+        } else if installedIsFirstHalf {
+            list.append(DateRange(year: currentYear, isFirstHalf: true))
         }
         
-        // 현재 년도 이전까지 ..
-        for year in (installedYear+1)..<currentYear {
-            list.append(DateRange(year: year, isFirstHalf: true))
-            list.append(DateRange(year: year, isFirstHalf: false))
-        }
-        
-        // 현재 년도
-        list.append(DateRange(year: currentYear, isFirstHalf: true))
         if !currentIsFirstHalf {
             list.append(DateRange(year: currentYear, isFirstHalf: false))
         }
+        
         
         return list
     }
     
     @State var dateList: [DateRange] = []
     @Binding var selectedDate: DateRange
-    //@State private var selectedDate: DateRange = DateRange(year: 2024, isFirstHalf: true)
     
     var body: some View {
         VStack(spacing: 0) {
