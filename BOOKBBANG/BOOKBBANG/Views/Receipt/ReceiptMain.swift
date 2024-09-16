@@ -7,9 +7,42 @@
 
 import SwiftUI
 
-struct ReciptMain: View {
+struct ReceiptMain: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @State var rankedBooks: [Book] = []
+    
+    @FetchRequest(entity: Receipt.entity(), sortDescriptors: [])
+    private var receipts: FetchedResults<Receipt>
+    
+    @FetchRequest(entity: Phrase.entity(), sortDescriptors: [])
+    private var phrases: FetchedResults<Phrase>
+    
+    @State private var selectedDate: DateRange = DateRange(year: 2024, isFirstHalf: true)
+    
+    var filteredReceipt: [Receipt] {
+        receipts.filter { $0.year == selectedDate.year && $0.isFirstHalf == selectedDate.isFirstHalf }
+    }
+    
+    // 기간 내 등록한 구절이 있나요?
+    var isExistPhrase: Bool {
+        let startDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 1 : 7, d: 1) ?? Date()
+        let endDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 6 : 12, d: 31) ?? Date()
+        
+        let filteredPhrases = phrases.filter { phrase in
+            guard let createdDate = phrase.createdDate else {
+                return false
+            }
+            
+            if createdDate >= startDate && createdDate <= endDate {
+                return true
+            }
+            return false
+        }
+        
+        if !filteredPhrases.isEmpty {
+            return true
+        }
+        return false
+    }
     
     var body: some View {
         VStack {
@@ -19,17 +52,20 @@ struct ReciptMain: View {
                                 onChevron: { homeViewModel.transition(to: .home) })
             
             VStack(spacing: 0) {
-                if rankedBooks.isEmpty {
-                    // 빵수증 발급하기
-                    StartMakeRecipt(homeViewModel: homeViewModel, rankedBooks: $rankedBooks)
+                SelectDate(selectedDate: $selectedDate)
+                
+                if !filteredReceipt.isEmpty {
+                    // 빵수증이 있을 때
+                    ForEach(filteredReceipt) { receipt in
+                        ShowReceipt(selectedDate: $selectedDate, receipt: receipt)
+                    }
+                } else if isExistPhrase {
+                    // 빵수증이 없고, 새로 만들 수 있을 때
+                    StartMakeReceipt(homeViewModel: homeViewModel, selectedDate: selectedDate)
                 } else {
-                    // 정기 빵수증 결과
-                    ShowRecipt(rankedBooks: $rankedBooks)
+                    // 데이터가 없어 빵수증을 발급할 수 없을 때
+                    NoRecipt()
                 }
-                
-                // 빵수증 결과 아무것도 없을 때
-                //NoRecipt()
-                
             }
             .frame(maxWidth: .infinity)
             .background(.backDarker)
@@ -42,60 +78,25 @@ struct ReciptMain: View {
     }
 }
 
-// 빵수증 기간 선택
-struct SelectDate: View {
-    var dates: [String] = [ "2022년 상반기", "2022년 하반기", "2023년 상반기", "2023년 하반기", "2024년 상반기"]
-    @State private var selectedDate: String = "2024년 상반기"
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            Menu {
-                Picker ("Date", selection: $selectedDate) {
-                    ForEach(dates, id: \.self) { date in
-                        Text(date).tag(date)
-                    }
-                }
-                
-            } label: {
-                HStack(spacing: 12) {
-                    Text(selectedDate)
-                        .font(.selectedDate)
-                        .foregroundStyle(.typo100)
-                    Image(systemName: "chevron.up.chevron.down")
-                }
-                .frame(height: 40)
-            }
-            .padding(.top, 25)
-            
-            Text("2024.1.1 - 2024.6.31")
-                .font(.datePeriod)
-                .foregroundStyle(.typo50)
-        }
-        .padding(.bottom, 10)
-    }
-}
-
-
 
 // 기간 내 빵수증을 발급할 데이터가 있을 때 (아직 발급 안했을 때)
-struct StartMakeRecipt: View {
+struct StartMakeReceipt: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @Binding var rankedBooks: [Book]
+    
+    var selectedDate: DateRange
     
     var body: some View {
         VStack(spacing: 0) {
-            SelectDate()
             TwoLineDivider()
             
             NavigationLink {
-                RankingBooks(homeViewModel: homeViewModel, 
-                             rankedBooks: $rankedBooks)
+                RankingBooks(homeViewModel: homeViewModel, selectedDate: selectedDate)
             } label: {
-                EmptyBox(width: 294, 
+                EmptyBox(width: 294,
                          height: 305,
-                         text: "+  지금 빵수증 발급하기", 
+                         text: "+  지금 빵수증 발급하기",
                          backgroundColor: .backDarker)
-                    .padding(.top, 25)
+                .padding(.top, 25)
             }
             
             Spacer()
@@ -105,9 +106,10 @@ struct StartMakeRecipt: View {
 
 // 기간 내 빵수증을 발급할 데이터가 없을 때
 struct NoRecipt: View {
+    
     var body: some View {
         VStack(spacing: 0) {
-            SelectDate()
+            
             TwoLineDivider()
             
             Text("기간동안 읽은 책이 없어\n빵수증을 발급할 수 없어요")

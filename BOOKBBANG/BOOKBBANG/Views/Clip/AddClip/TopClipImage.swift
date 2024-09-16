@@ -11,12 +11,14 @@ struct TopClipImage: View {
     @ObservedObject var clipData = ClipData()
     
     var body: some View {
-        Image(ClipItem.allCases[clipData.selectedShape].clipImageName)
+        Image(ClipItem.getClipShape(clipData.selectedShape))
             .renderingMode(.template)
             .resizable()
             .frame(width: 115, height: 110)
             .padding(.vertical, 50)
-            .foregroundColor( Colors.allCases[clipData.selectedColor].color)
+            .foregroundColor(
+                Colors.getClipColor(clipData.selectedColor)
+            )
     }
 }
 

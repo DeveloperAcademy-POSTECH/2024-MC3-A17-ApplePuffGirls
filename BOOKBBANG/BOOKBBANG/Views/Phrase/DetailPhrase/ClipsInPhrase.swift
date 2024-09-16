@@ -15,12 +15,12 @@ struct ClipsInPhrase: View {
                 ForEach(clips, id: \.self) { clip in
                     HStack(spacing: 3) {
                         // 클립 이미지
-                        Image(ClipItem.allCases[Int(clip.design)].clipImageName)
+                        Image(ClipItem.getClipShape(clip.design))
                             .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 23, height: 23)
-                            .foregroundStyle(Colors.allCases[Int(clip.color)].color)
+                            .foregroundStyle(Colors.getClipColor(clip.color))
                         
                         Text(clip.title ?? "no name")
                             .font(.phraseBottom)

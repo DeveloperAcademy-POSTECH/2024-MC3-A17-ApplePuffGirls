@@ -95,7 +95,7 @@ struct Home: View {
                                    book: selectedBook)
                     }
                 case .receipt:
-                    ReciptMain(homeViewModel: homeViewModel)
+                    ReceiptMain(homeViewModel: homeViewModel)
                 case .setting:
                     Setting(homeViewModel: homeViewModel)
                 }
@@ -142,7 +142,3 @@ struct Home: View {
         }
     }
 }
-
-//#Preview {
-//    Home(homeViewModel: HomeViewModel(), settingViewModel: SettingViewModel(), detailBookViewModel: DetailBookViewModel())
-//}

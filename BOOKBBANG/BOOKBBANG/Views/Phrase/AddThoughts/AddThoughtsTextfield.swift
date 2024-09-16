@@ -39,7 +39,3 @@ struct AddThoughtsTextfield: View {
         }
     }
 }
-
-//#Preview {
-//    AddThoughtsTextfield(checkEmpty: .constant(true))
-//}
