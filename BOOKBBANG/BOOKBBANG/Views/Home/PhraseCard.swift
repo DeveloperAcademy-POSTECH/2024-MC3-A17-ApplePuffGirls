@@ -62,7 +62,7 @@ struct PhraseCard: View {
                 Text(phraseTop)
                     .font(.phraseTop)
                     .foregroundStyle(.typo100)
-                    .multilineTextAlignment(.leading)
+//                    .multilineTextAlignment(.leading)
                     .lineLimit(1)
                     .background {
                         Rectangle()
@@ -93,6 +93,8 @@ struct PhraseCard: View {
                 Text(phraseBottom)
                     .font(.phraseBottom)
                     .foregroundStyle(.typo50)
+                    .lineLimit(1)
+                    .padding(.trailing, 30)
             }
         }
         .padding(.horizontal, 35)

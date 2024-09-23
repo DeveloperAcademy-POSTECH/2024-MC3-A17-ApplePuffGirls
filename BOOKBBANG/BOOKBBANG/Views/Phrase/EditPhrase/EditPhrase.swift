@@ -17,6 +17,8 @@ struct EditPhrase: View {
     @State private var mythought: String = ""
     @Binding var showEditSheet: Bool
     
+    @State var showingAlert: Bool = false
+    
     @State var selectedClips: [Clip] = []
     
     init(phrase: Phrase, showEditSheet: Binding<Bool>) {
@@ -58,6 +60,12 @@ struct EditPhrase: View {
                     .padding(.bottom, 20)
                     
                     editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+                    
+                    Button(role: .destructive) {
+                        showingAlert = true
+                    } label: {
+                        Text("삭제하기")
+                    }
                 }
                 .padding(.horizontal, 22)
             }
@@ -68,6 +76,28 @@ struct EditPhrase: View {
             UIApplication.shared.hideKeyboard()
             selectedClips = phrase.clips?.allObjects as? [Clip] ?? []
         }
+        .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
+            alertView
+        }, message: { Text("되돌릴 수 없다네..~")})
+        
+    }
+    
+    @ViewBuilder
+    private var alertView: some View {
+        Button("앗 실수", role: .cancel) { }
+        Button("정말루", role: .destructive) { deletePhrase() }
+    }
+    
+    private func deletePhrase() {
+        viewContext.delete(phrase)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
+        dismiss()
     }
     
     private func clickRightButton() {

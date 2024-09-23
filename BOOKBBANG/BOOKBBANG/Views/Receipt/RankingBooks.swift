@@ -157,7 +157,9 @@ struct RankingBooks: View {
                 
                 newRankedBook.receipt = newReceipt
                 newRankedBook.rank = Int16(index+1)
-                newRankedBook.book = book
+//                newRankedBook.book = book
+                newRankedBook.bookTitle = book.name
+                newRankedBook.bookThumbnail = book.thumbnail
             }
             
             // 구절 많이 등록한 책
@@ -166,7 +168,9 @@ struct RankingBooks: View {
                 
                 newTopQuotedBook.receipt = newReceipt
                 newTopQuotedBook.rank = Int16(index+1)
-                newTopQuotedBook.book = element.0
+//                newTopQuotedBook.book = element.0
+                newTopQuotedBook.bookTitle = element.0.name
+                newTopQuotedBook.bookThumbnail = element.0.thumbnail
                 newTopQuotedBook.phraseCount = Int16(element.1)
             }
             
@@ -176,7 +180,10 @@ struct RankingBooks: View {
                 
                 newTopQuotedClip.receipt = newReceipt
                 newTopQuotedClip.rank = Int16(index+1)
-                newTopQuotedClip.clip = element.0
+//                newTopQuotedClip.clip = element.0
+                newTopQuotedClip.clipColor = element.0.color
+                newTopQuotedClip.clipShape = element.0.design
+                newTopQuotedClip.clipTitle = element.0.title
                 newTopQuotedClip.phraseCount = Int16(element.1)
             }
             

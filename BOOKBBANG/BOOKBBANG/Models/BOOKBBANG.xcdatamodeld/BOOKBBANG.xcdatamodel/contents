@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="bread" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -12,9 +12,7 @@
         <attribute name="readStatus" optional="YES" attributeType="String"/>
         <attribute name="registerDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="thumbnail" optional="YES" attributeType="String"/>
-        <relationship name="phrases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="book" inverseEntity="Phrase"/>
-        <relationship name="ranked" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RankedBook" inverseName="book" inverseEntity="RankedBook"/>
-        <relationship name="topQuoted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TopQuotedBook" inverseName="book" inverseEntity="TopQuotedBook"/>
+        <relationship name="phrases" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Phrase" inverseName="book" inverseEntity="Phrase"/>
     </entity>
     <entity name="Clip" representedClassName="Clip" syncable="YES" codeGenerationType="class">
         <attribute name="clipDescription" optional="YES" attributeType="String"/>
@@ -23,7 +21,6 @@
         <attribute name="design" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="phrases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Phrase" inverseName="clips" inverseEntity="Phrase"/>
-        <relationship name="topQuoted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TopQuotedClip" inverseName="clip" inverseEntity="TopQuotedClip"/>
     </entity>
     <entity name="Phrase" representedClassName="Phrase" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
@@ -33,8 +30,9 @@
         <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clip" inverseName="phrases" inverseEntity="Clip"/>
     </entity>
     <entity name="RankedBook" representedClassName="RankedBook" syncable="YES" codeGenerationType="class">
+        <attribute name="bookThumbnail" optional="YES" attributeType="String"/>
+        <attribute name="bookTitle" optional="YES" attributeType="String"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="ranked" inverseEntity="Book"/>
         <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="rankedBooks" inverseEntity="Receipt"/>
     </entity>
     <entity name="Receipt" representedClassName="Receipt" syncable="YES" codeGenerationType="class">
@@ -42,20 +40,23 @@
         <attribute name="isFirstHalf" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="mostGenre" optional="YES" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="rankedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RankedBook" inverseName="receipt" inverseEntity="RankedBook"/>
-        <relationship name="topQuotedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TopQuotedBook" inverseName="receipt" inverseEntity="TopQuotedBook"/>
-        <relationship name="topQuotedClips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TopQuotedClip" inverseName="receipt" inverseEntity="TopQuotedClip"/>
+        <relationship name="rankedBooks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RankedBook" inverseName="receipt" inverseEntity="RankedBook"/>
+        <relationship name="topQuotedBooks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TopQuotedBook" inverseName="receipt" inverseEntity="TopQuotedBook"/>
+        <relationship name="topQuotedClips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TopQuotedClip" inverseName="receipt" inverseEntity="TopQuotedClip"/>
     </entity>
     <entity name="TopQuotedBook" representedClassName="TopQuotedBook" syncable="YES" codeGenerationType="class">
+        <attribute name="bookThumbnail" optional="YES" attributeType="String"/>
+        <attribute name="bookTitle" optional="YES" attributeType="String"/>
         <attribute name="phraseCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="topQuoted" inverseEntity="Book"/>
         <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="topQuotedBooks" inverseEntity="Receipt"/>
     </entity>
     <entity name="TopQuotedClip" representedClassName="TopQuotedClip" syncable="YES" codeGenerationType="class">
+        <attribute name="clipColor" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="clipShape" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="clipTitle" optional="YES" attributeType="String"/>
         <attribute name="phraseCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="clip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clip" inverseName="topQuoted" inverseEntity="Clip"/>
         <relationship name="receipt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="topQuotedClips" inverseEntity="Receipt"/>
     </entity>
 </model>
