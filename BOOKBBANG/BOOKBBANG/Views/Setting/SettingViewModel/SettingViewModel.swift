@@ -25,10 +25,8 @@ final class SettingViewModel: ObservableObject {
             viewStatus = .manual
         case .teamInfo:
             viewStatus = .teamInfo
-        case .widget:
-            viewStatus = .widget
-        case .alert:
-            viewStatus = .alert
+        case .contact:
+            viewStatus = .teamInfo
         }
     }
 }
@@ -38,6 +36,5 @@ enum SettingViewType {
     
     case manual
     case teamInfo
-    case widget
-    case alert
+    case contact
 }

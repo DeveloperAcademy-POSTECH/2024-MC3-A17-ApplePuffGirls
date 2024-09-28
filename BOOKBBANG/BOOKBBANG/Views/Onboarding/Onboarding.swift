@@ -1,21 +1,37 @@
 //
-//  Onboarding.swift
+//  SwiftUIView.swift
 //  BOOKBBANG
 //
-//  Created by 강다혜 on 7/30/24.
+//  Created by Seoyeon Choi on 9/29/24.
 //
 
 import SwiftUI
 
-struct Onboarding: View {
-    @Binding var isFirstLaunching: Bool
-    @AppStorage("installedDate") var installDate: Double?
-    
+struct SwiftUIView: View {
     var body: some View {
-        Manual(isFirstLaunching: $isFirstLaunching, 
-               display: .onboarding)
-        .onAppear {
-            installDate = Date().timeIntervalSince1970
+        ZStack {
+            Color.backLighter.ignoresSafeArea()
+            
+            VStack(spacing: 0) {
+                Image(.mustache)
+                    .padding(.bottom, 20)
+                
+                Text("책 반죽하기")
+                    .fontWeight(.bold)
+                    .foregroundStyle(.greenMain100)
+                    .padding(.bottom, 20)
+                    .kerning(-0.4)
+                
+                Text("빵을 만들려면 재료가 필요하죠\n어떤 책을 재료로 반죽을 만들어볼까요?\n그리고 이 책은 어떤 맛이 나는지 들려주세요")
+                    .font(.system(size: 13, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.typo80)
+                    .kerning(-0.4)
+            }
         }
     }
+}
+
+#Preview {
+    SwiftUIView()
 }
