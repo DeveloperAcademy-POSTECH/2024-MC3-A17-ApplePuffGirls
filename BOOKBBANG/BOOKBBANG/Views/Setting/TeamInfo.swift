@@ -12,55 +12,57 @@ import SwiftUI
 struct TeamInfo: View {
     @Environment(\.dismiss) var dismiss
     let columns = [
-        GridItem(.flexible()), GridItem(.flexible())
-        ]
+        GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5)
+    ]
     
     var body: some View {
         VStack {
             CustomNavigationBar(isHighlighted: .constant(false),
                                 navigationType: .chevron,
-                                title: "Apple Puff Girls에 대해",
+                                title: "책빵을 만든 사람들",
                                 onChevron: { dismiss() })
-
+            
             ScrollView {
                 VStack(spacing: 0) {
-                    
-                    Image(.teamLogo)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 235, height: 163)
-                        .padding(.top, 50)
-                    
                     Text("Team Members")
-                        .font(.teamMemberTitle)
+                        .font(.system(size: 16, weight: .bold))
                         .foregroundStyle(.greenMain100)
-                        .padding(.top, 68)
+                        .kerning(-0.4)
                         .padding(.bottom, 31)
                     
-                    LazyVGrid(columns: columns, spacing: 12) {
-                        ForEach(TeamMember.members, id: \.self) { member in
-                            MemberCard(member: member)
+                    HStack {
+                        Spacer()
+                        LazyVGrid(columns: columns, spacing: 5) {
+                            ForEach(TeamMember.members, id: \.self) { member in
+                                MemberCard(member: member)
+                            }
                         }
+                        Spacer()
                     }
                     
                     Text("Team Mentors")
-                        .font(.teamMemberTitle)
+                        .font(.system(size: 16, weight: .bold))
                         .foregroundStyle(.greenMain100)
                         .padding(.top, 68)
                         .padding(.bottom, 31)
                     
-                    LazyVGrid(columns: columns, spacing: 12) {
-                        ForEach(TeamMember.mentors, id: \.self) { member in
-                            MemberCard(member: member)
+                    HStack {
+                        Spacer()
+                        LazyVGrid(columns: columns, spacing: 5) {
+                            ForEach(TeamMember.mentors, id: \.self) { member in
+                                MemberCard(member: member)
+                            }
                         }
+                        Spacer()
                     }
                     
                     Image(.appleLogo)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 62)
-                        .padding(.top, 120)
+                        .padding(.top, 68)
                         .padding(.bottom, 34)
+                    
                     Text("Apple Developer Academy @ POSTECH")
                         .font(.listTitle)
                         .foregroundStyle(.greenMain100)
@@ -78,24 +80,28 @@ struct MemberCard: View {
     var member: TeamMember
     
     var body: some View {
-        VStack(spacing: 19) {
-            Image(member.name+"_profile")
+        VStack(spacing: 0) {
+            Spacer()
+            
+            Image(.brownCat)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 119)
+                .frame(width: 100)
+                .padding(.bottom, 10)
             
             Text(member.name)
                 .font(.memberName)
-            VStack(spacing: 0) {
-                Text(member.comment)
-                    .font(.memberComment)
-                    .multilineTextAlignment(.center)
-                Spacer()
-            }
-            .frame(width: 140, height: 65)
+                .padding(.bottom, 10)
+                .foregroundStyle(.typo100)
+            
+            Text(member.comment)
+                .font(.memberComment)
+                .foregroundStyle(.typo80)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 23)
         }
-        .padding(15)
-        .foregroundStyle(.typo100)
+        .frame(width: 163, height: 267)
         .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
     }
 }
