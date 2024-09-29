@@ -28,6 +28,7 @@
         <attribute name="thinking" optional="YES" attributeType="String"/>
         <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="phrases" inverseEntity="Book"/>
         <relationship name="clips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clip" inverseName="phrases" inverseEntity="Clip"/>
+        <relationship name="todaysBread" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TodayBread" inverseName="phrase" inverseEntity="TodayBread"/>
     </entity>
     <entity name="RankedBook" representedClassName="RankedBook" syncable="YES" codeGenerationType="class">
         <attribute name="bookThumbnail" optional="YES" attributeType="String"/>
@@ -43,6 +44,11 @@
         <relationship name="rankedBooks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RankedBook" inverseName="receipt" inverseEntity="RankedBook"/>
         <relationship name="topQuotedBooks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TopQuotedBook" inverseName="receipt" inverseEntity="TopQuotedBook"/>
         <relationship name="topQuotedClips" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TopQuotedClip" inverseName="receipt" inverseEntity="TopQuotedClip"/>
+    </entity>
+    <entity name="TodayBread" representedClassName="TodayBread" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isOpened" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="phrase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Phrase" inverseName="todaysBread" inverseEntity="Phrase"/>
     </entity>
     <entity name="TopQuotedBook" representedClassName="TopQuotedBook" syncable="YES" codeGenerationType="class">
         <attribute name="bookThumbnail" optional="YES" attributeType="String"/>

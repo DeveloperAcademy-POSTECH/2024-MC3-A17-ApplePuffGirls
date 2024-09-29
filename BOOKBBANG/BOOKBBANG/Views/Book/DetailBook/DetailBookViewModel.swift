@@ -27,6 +27,10 @@ final class DetailBookViewModel: ObservableObject {
         self.newPhrase = phrase
         print("newPhrase: \(String(describing: newPhrase))")
     }
+    
+    func deleteBook() {
+        
+    }
 }
 
 enum DetailBookViewType {

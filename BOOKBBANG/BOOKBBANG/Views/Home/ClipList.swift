@@ -20,6 +20,7 @@ struct ClipList: View {
     private var books: FetchedResults<Book>
     
     @ObservedObject var detailBookViewModel: DetailBookViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     var sortedClips: [Clip] {
         switch sort {
@@ -60,11 +61,17 @@ struct ClipList: View {
                 ForEach(sortedClips) { clip in
                     Divider()
                     
-                    NavigationLink(destination: {
-                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
-                    }, label: {
-                        ClipView(clip: clip, viewContext: viewContext)
-                    })
+                    ClipView(clip: clip, viewContext: viewContext)
+                        .onTapGesture {
+                            homeViewModel.selectedClip = clip
+                            homeViewModel.transition(to: .detailClip)
+                        }
+//                    NavigationLink(destination: {
+//                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
+//                    }, label: {
+//                        ClipView(clip: clip, viewContext: viewContext)
+//                    })
+                    
                 }
             }
             .padding(.horizontal, 10)

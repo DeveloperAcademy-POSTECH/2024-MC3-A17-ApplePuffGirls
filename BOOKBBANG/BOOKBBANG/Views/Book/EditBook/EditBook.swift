@@ -13,6 +13,8 @@ struct EditBook: View {
     @ObservedObject var book: Book
     @ObservedObject var bookData: BookData = BookData()
     
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    
     @State var showingAlert: Bool = false
     init(book: Book) {
         self.book = book
@@ -90,6 +92,9 @@ struct EditBook: View {
     }
     
     private func deleteBook() {
+        homeViewModel.transition(to: .home)
+        homeViewModel.selectedBook = nil
+        
         viewContext.delete(book)
         do {
             try viewContext.save()
@@ -97,8 +102,6 @@ struct EditBook: View {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
-        
-        dismiss()
     }
     
     private func clickRightButton() {

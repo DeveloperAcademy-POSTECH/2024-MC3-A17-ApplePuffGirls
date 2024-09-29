@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailPhrase: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var detailBookViewModel: DetailBookViewModel
+    @EnvironmentObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditPhrasePresented: Bool = false
     
     @ObservedObject var phrase: Phrase
@@ -20,7 +20,10 @@ struct DetailPhrase: View {
                                 navigationType: .chevron,
                                 title: "빵 상세보기",
                                 rightTitle: "수정",
-                                onChevron: { dismiss() },
+                                onChevron: {
+                detailBookViewModel.transition(to: .detailBook)
+                detailBookViewModel.newPhrase = nil
+            },
                                 onRightButton: { isEditPhrasePresented.toggle()})
             
             ScrollView {

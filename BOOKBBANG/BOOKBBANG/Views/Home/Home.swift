@@ -61,6 +61,7 @@ struct Home: View {
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
                                     ClipList(detailBookViewModel: detailBookViewModel)
+                                        .environmentObject(homeViewModel)
                                 }
                             }
                             .scrollIndicators(.hidden)
@@ -93,11 +94,17 @@ struct Home: View {
                         DetailBook(homeViewModel: homeViewModel,
                                    detailBookViewModel: detailBookViewModel,
                                    book: selectedBook)
+                        .environmentObject(homeViewModel)
                     }
                 case .receipt:
                     ReceiptMain(homeViewModel: homeViewModel)
                 case .setting:
                     Setting(homeViewModel: homeViewModel)
+                case .detailClip:
+                    if let selectedClip = homeViewModel.selectedClip {
+                        DetailClip(detailBookViewModel: detailBookViewModel, clip: selectedClip)
+                            .environmentObject(homeViewModel)
+                    }
                 }
             }
             .onAppear {

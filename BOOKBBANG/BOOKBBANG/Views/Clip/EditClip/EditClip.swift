@@ -10,6 +10,7 @@ import SwiftUI
 struct EditClip: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var homeViewModel: HomeViewModel
     
     @ObservedObject var clip: Clip
     @ObservedObject var clipData = ClipData()
@@ -74,6 +75,9 @@ struct EditClip: View {
     }
     
     private func deleteClip() {
+        homeViewModel.transition(to: .home)
+        homeViewModel.selectedClip = nil
+
         viewContext.delete(clip)
         do {
             try viewContext.save()

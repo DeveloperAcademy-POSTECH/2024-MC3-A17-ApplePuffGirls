@@ -10,6 +10,7 @@ import SwiftUI
 struct EditPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var detailBookViewModel: DetailBookViewModel
     
     @ObservedObject var phrase: Phrase
     
@@ -89,6 +90,9 @@ struct EditPhrase: View {
     }
     
     private func deletePhrase() {
+        detailBookViewModel.transition(to: .detailBook)
+        detailBookViewModel.newPhrase = nil
+        
         viewContext.delete(phrase)
         do {
             try viewContext.save()
@@ -96,8 +100,6 @@ struct EditPhrase: View {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
-        
-        dismiss()
     }
     
     private func clickRightButton() {
