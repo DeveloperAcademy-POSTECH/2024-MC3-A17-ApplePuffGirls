@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Date {
-    init?(y year: Int, m month: Int, d day: Int) {
+    init?(y year: Int, m month: Int, d day: Int, h hour: Int = 0) {
         var components = DateComponents()
         components.year = year
         components.month = month
