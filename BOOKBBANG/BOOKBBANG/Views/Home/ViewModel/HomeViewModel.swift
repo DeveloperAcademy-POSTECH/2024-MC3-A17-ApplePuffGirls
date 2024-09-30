@@ -14,6 +14,7 @@ final class HomeViewModel: ObservableObject {
     @Published var selectedBookData: BookData? = nil
     // CoreData 연결 객체
     @Published var selectedBook: Book? = nil
+    @Published var selectedClip: Clip? = nil
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
@@ -44,4 +45,6 @@ enum HomeViewType {
     
     case receipt
     case setting
+    
+    case detailClip
 }

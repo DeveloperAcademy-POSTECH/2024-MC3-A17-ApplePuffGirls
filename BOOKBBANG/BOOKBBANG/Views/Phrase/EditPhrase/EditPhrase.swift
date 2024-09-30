@@ -10,12 +10,15 @@ import SwiftUI
 struct EditPhrase: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var detailBookViewModel: DetailBookViewModel
     
     @ObservedObject var phrase: Phrase
     
     @State private var myPhrase: String = ""
     @State private var mythought: String = ""
     @Binding var showEditSheet: Bool
+    
+    @State var showingAlert: Bool = false
     
     @State var selectedClips: [Clip] = []
     
@@ -58,6 +61,12 @@ struct EditPhrase: View {
                     .padding(.bottom, 20)
                     
                     editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+                    
+                    Button(role: .destructive) {
+                        showingAlert = true
+                    } label: {
+                        Text("삭제하기")
+                    }
                 }
                 .padding(.horizontal, 22)
             }
@@ -67,6 +76,29 @@ struct EditPhrase: View {
         .onAppear {
             UIApplication.shared.hideKeyboard()
             selectedClips = phrase.clips?.allObjects as? [Clip] ?? []
+        }
+        .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
+            alertView
+        }, message: { Text("되돌릴 수 없다네..~")})
+        
+    }
+    
+    @ViewBuilder
+    private var alertView: some View {
+        Button("앗 실수", role: .cancel) { }
+        Button("정말루", role: .destructive) { deletePhrase() }
+    }
+    
+    private func deletePhrase() {
+        detailBookViewModel.transition(to: .detailBook)
+        detailBookViewModel.newPhrase = nil
+        
+        viewContext.delete(phrase)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
     

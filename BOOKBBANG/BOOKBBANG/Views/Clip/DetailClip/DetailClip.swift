@@ -11,6 +11,7 @@ struct DetailClip: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
     @ObservedObject var detailBookViewModel: DetailBookViewModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var clip: Clip
     @State var showingSheet: Bool = false
     
@@ -24,7 +25,10 @@ struct DetailClip: View {
                                 navigationType: .chevron,
                                 title: "클립 상세정보",
                                 rightTitle: "수정",
-                                onChevron: { dismiss() },
+                                onChevron: {
+                homeViewModel.transition(to: .home)
+                homeViewModel.selectedClip = nil
+            },
                                 onRightButton: { showingSheet.toggle() })
             
             ScrollView {
@@ -43,7 +47,7 @@ struct DetailClip: View {
                     .padding(.bottom, 12)
                     
                     VStack(spacing: 0) {
-                        if clip.phrases?.count == 0 {
+                        if let count = clip.phrases?.count, count == 0 {
                             VStack {
                                 Image(.gentlemangyodong)
                                     .resizable()
@@ -57,15 +61,16 @@ struct DetailClip: View {
                             }
                             .padding(.vertical, 50)
                         }
-                        else {
-                            ForEach(clip.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
-                                NavigationLink(destination: {
-                                    DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
-                                }, label: {
+                        else if let phrases = clip.phrases?.allObjects as? [Phrase] {
+                            ForEach(phrases, id: \.self) { phrase in
+                                Button {
+                                    detailBookViewModel.newPhrase = phrase
+                                    detailBookViewModel.transition(to: .detailPhrase)
+                                } label: {
                                     PhraseCard(display: .detailClip, phrase: phrase)
                                         .padding(.horizontal, 2)
                                         .padding(.bottom, 1)
-                                })
+                                }
                             }
                         }
                     }
