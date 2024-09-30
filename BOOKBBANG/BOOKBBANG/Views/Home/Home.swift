@@ -27,31 +27,32 @@ struct Home: View {
                     
                     ScrollView {
                         VStack(spacing: 2) {
-                            if let phrase = todaysBread {
-                                PhraseCard(display: .todaysBread, phrase: phrase)
-                                    .padding(.top, 2)
-                            } else {
-                                HStack {
-                                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
-                                        .font(.bookk15)
-                                        .lineSpacing(15)
-                                        .foregroundStyle(.typo80)
-                                    
-                                    Spacer()
-                                    Image(.congratulatoryBread)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(height: 150)
-                                }
-                                .padding(.leading, 35)
-                                .padding(.vertical)
-                                .background(.backDarker)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .stroke(.typo25)
-                                }
-                            }
+//                            if let phrase = todaysBread {
+//                                PhraseCard(display: .todaysBread, phrase: phrase)
+//                                    .padding(.top, 2)
+//                            } else {
+//                                HStack {
+//                                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
+//                                        .font(.bookk15)
+//                                        .lineSpacing(15)
+//                                        .foregroundStyle(.typo80)
+//                                    
+//                                    Spacer()
+//                                    Image(.congratulatoryBread)
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(height: 150)
+//                                }
+//                                .padding(.leading, 35)
+//                                .padding(.vertical)
+//                                .background(.backDarker)
+//                                .clipShape(RoundedRectangle(cornerRadius: 20))
+//                                .overlay {
+//                                    RoundedRectangle(cornerRadius: 20)
+//                                        .stroke(.typo25)
+//                                }
+//                            }
+                            TodaysBread()
                             VStack(spacing: 2) {
                                 
                                 SegmentedBar(selected: $selected)
@@ -61,6 +62,7 @@ struct Home: View {
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
                                     ClipList(detailBookViewModel: detailBookViewModel)
+                                        .environmentObject(homeViewModel)
                                 }
                             }
                             .scrollIndicators(.hidden)
@@ -93,11 +95,17 @@ struct Home: View {
                         DetailBook(homeViewModel: homeViewModel,
                                    detailBookViewModel: detailBookViewModel,
                                    book: selectedBook)
+                        .environmentObject(homeViewModel)
                     }
                 case .receipt:
                     ReceiptMain(homeViewModel: homeViewModel)
                 case .setting:
                     Setting(homeViewModel: homeViewModel)
+                case .detailClip:
+                    if let selectedClip = homeViewModel.selectedClip {
+                        DetailClip(detailBookViewModel: detailBookViewModel, clip: selectedClip)
+                            .environmentObject(homeViewModel)
+                    }
                 }
             }
             .onAppear {

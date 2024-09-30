@@ -55,14 +55,17 @@ struct DetailBook: View {
                             .padding(.horizontal, 26)
                             .padding(.bottom, 27)
                             
-                            ForEach(book.phrases?.allObjects as! [Phrase], id: \.self) { phrase in
-                                NavigationLink(destination: {
-                                    DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: phrase)
-                                }, label: {
-                                    PhraseCard(display: .detailBook, phrase: phrase)
-                                })
+                            if let phrases = book.phrases?.allObjects as? [Phrase] {
+                                ForEach(phrases, id: \.self) { phrase in
+                                    Button {
+                                        detailBookViewModel.newPhrase = phrase
+                                        detailBookViewModel.transition(to: .detailPhrase)
+                                    } label: {
+                                        PhraseCard(display: .detailBook, phrase: phrase)
+                                    }
+                                }
+                                .padding(.horizontal, 2)
                             }
-                            .padding(.horizontal, 2)
                         }
                     }
                     .scrollIndicators(.hidden)
@@ -88,7 +91,8 @@ struct DetailBook: View {
                     CompleteAddingPhrase(detailBookViewModel: detailBookViewModel, book: book)
                 case .detailPhrase:
                     if let newPhrase = detailBookViewModel.newPhrase {
-                        DetailPhrase(detailBookViewModel: detailBookViewModel, phrase: newPhrase)
+                        DetailPhrase(phrase: newPhrase)
+                            .environmentObject(detailBookViewModel)
                     }
                 }
             }

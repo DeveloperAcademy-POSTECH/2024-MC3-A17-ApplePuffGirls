@@ -68,7 +68,7 @@ struct ShowReceipt: View {
                 VStack(spacing: 15) {
                     ForEach(rankedBooks, id: \.id) { rankedBook in
                         HStack {
-                            Text("\(rankedBook.book?.name ?? "No title")")
+                            Text("\(rankedBook.bookTitle ?? "No title")")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
@@ -83,7 +83,7 @@ struct ShowReceipt: View {
                 // 책 이미지 3개
                 HStack(spacing: 36) {
                     ForEach(rankedBooks, id: \.id) { rankedBook in
-                        fetchReceiptImage(url: rankedBook.book?.thumbnail ?? "")
+                        fetchReceiptImage(url: rankedBook.bookThumbnail ?? "")
                     }
                 }
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
@@ -98,7 +98,7 @@ struct ShowReceipt: View {
                 VStack(spacing: 15) {
                     ForEach(topQuotedBooks, id: \.id) { topQuotedBook in
                         HStack {
-                            Text(topQuotedBook.book?.name ?? "No title")
+                            Text(topQuotedBook.bookTitle ?? "No title")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
@@ -113,7 +113,7 @@ struct ShowReceipt: View {
                 // 책 이미지 3개
                 HStack(spacing: 36) {
                     ForEach(topQuotedBooks, id: \.id) { topQuotedBook in
-                        fetchReceiptImage(url: topQuotedBook.book?.thumbnail ?? "")
+                        fetchReceiptImage(url: topQuotedBook.bookThumbnail ?? "")
                     }
                 }
                 .padding(.top, 40)
@@ -129,14 +129,14 @@ struct ShowReceipt: View {
                     ForEach(topQuotedClips, id: \.id) { topQuotedClip in
                         HStack {
                             // 클립 이미지
-                            Image(ClipItem.getClipShape(topQuotedClip.clip?.design ?? 0))
+                            Image(ClipItem.getClipShape(topQuotedClip.clipShape))
                                 .renderingMode(.template)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .foregroundStyle(Colors.getClipColor(topQuotedClip.clip?.color ?? 0))
+                                .foregroundStyle(Colors.getClipColor(topQuotedClip.clipColor))
                                 .frame(height: 20)
                             
-                            Text(topQuotedClip.clip?.title ?? "No title")
+                            Text(topQuotedClip.clipTitle ?? "No title")
                                 .font(.segmentSelected)
                                 .foregroundStyle(.typo100)
                             Spacer()
