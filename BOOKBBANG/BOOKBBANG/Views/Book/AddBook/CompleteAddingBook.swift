@@ -20,11 +20,11 @@ struct CompleteAddingBook: View {
             SearchBookProgressBar(process: 4)
             
             HeaderSection(title: "책 추가를 완료했습니다",
-                          subtitle: "맛있는 빵을 만들러 가볼까요?")
-            .padding(.top, 20)
-            .padding(.bottom, 50)
+                          subtitle: "이 책으론 메론빵을 만들 수 있어요!")
+            .padding(.top, 28)
+            .padding(.bottom, 100)
             
-            Image(.baking2)
+            Image(.completeBread)
             
             Spacer()
         }

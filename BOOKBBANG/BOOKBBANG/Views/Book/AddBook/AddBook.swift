@@ -10,11 +10,8 @@ import SwiftUI
 struct AddBook: View {
     @ObservedObject var homeViewModel: HomeViewModel
     @State var selectedGenre: BookGenre?
-    @State var selectedReadStatus: ReadStatus?
     @State var selectedDate: Date = Date()
-    
-    //@Binding var book: Book
-    
+
     @Binding var bookData: BookData
     
     var body: some View {
@@ -27,24 +24,21 @@ struct AddBook: View {
                                 onRightButton: { clickRightButton() })
             
             SearchBookProgressBar(process: 2)
-                .padding(.bottom, 30)
+                .padding(.bottom, 28)
             
             VStack(spacing: 0) {
                 HeaderSection(title: "책에 대한 정보를 작성해주세요",
                               subtitle: "책을 맛있게 만들기 위해 정확한 계량 정보가 필요해요")
-                .padding(.top, 20)
+                .padding(.bottom, 20)
                 
                 BookInfoSection(selectedGenre: $selectedGenre,
-                                selectedReadStatus: $selectedReadStatus,
                                 selectedDate: $selectedDate,
                                 book: bookData)
                 
                 BookGenreView(selectedGenre: $selectedGenre)
                 
-                ReadStatusBox(selectedReadStatus: $selectedReadStatus)
-                
                 VStack(alignment: .leading) {
-                    Text("독서 날짜")
+                    Text("등록 날짜")
                         .font(.bookCaption)
                         .foregroundStyle(.typo50)
                         .padding(.top, 15)
@@ -78,12 +72,11 @@ struct AddBook: View {
     private func saveBookDetails() {
         bookData.genre = selectedGenre?.description
         bookData.readDate = selectedDate
-        bookData.readStatus = selectedReadStatus?.rawValue
         homeViewModel.selectBookData(bookData)
     }
     
     private func clickRightButton() {
         saveBookDetails()
-        homeViewModel.transition(to: .addDough)
+        homeViewModel.transition(to: .addBookFinal)
     }
 }

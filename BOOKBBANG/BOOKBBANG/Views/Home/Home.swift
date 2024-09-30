@@ -107,6 +107,7 @@ struct Home: View {
                         homeViewModel.transition(to: .receipt)
                     }, label: {
                         Text("빵수증")
+                            .font(.system(size: 16, weight: .semibold))
                             .padding()
                     })
                     
@@ -114,6 +115,7 @@ struct Home: View {
                         homeViewModel.transition(to: .setting)
                     }, label: {
                         Text("설정")
+                            .font(.system(size: 16, weight: .semibold))
                             .padding()
                     })
                 }
