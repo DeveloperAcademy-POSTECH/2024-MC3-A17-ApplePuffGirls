@@ -107,6 +107,7 @@ struct TodaysBread: View {
     func openBread() {
         for bread in todayBread {
             bread.isOpened = true
+            bread.date = Date()
         }
         
         do {
