@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "Rochelle_profile@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Rochelle_profile@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
