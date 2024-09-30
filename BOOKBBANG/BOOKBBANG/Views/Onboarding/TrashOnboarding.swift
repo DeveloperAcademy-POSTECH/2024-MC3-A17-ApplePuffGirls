@@ -12,8 +12,7 @@ struct Onboarding: View {
     @AppStorage("installedDate") var installDate: Double?
     
     var body: some View {
-        Manual(isFirstLaunching: $isFirstLaunching, 
-               display: .onboarding)
+        Manual()
         .onAppear {
             installDate = Date().timeIntervalSince1970
         }

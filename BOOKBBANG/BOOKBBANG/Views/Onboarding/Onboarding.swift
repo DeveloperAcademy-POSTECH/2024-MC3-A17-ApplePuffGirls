@@ -13,7 +13,7 @@ struct SwiftUIView: View {
             Color.backLighter.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Image(.mustache)
+                Image(.mustacheCat)
                     .padding(.bottom, 20)
                 
                 Text("책 반죽하기")
