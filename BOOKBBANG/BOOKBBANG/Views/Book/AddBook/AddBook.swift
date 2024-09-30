@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddBook: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     @State var selectedGenre: BookGenre?
     @State var selectedDate: Date = Date()
@@ -77,6 +78,32 @@ struct AddBook: View {
     
     private func clickRightButton() {
         saveBookDetails()
+
+        homeViewModel.selectBookData(bookData)
+        
+        let newBook = Book(context: viewContext)
+        newBook.name = homeViewModel.selectedBookData?.title
+        newBook.author = homeViewModel.selectedBookData?.authors
+        newBook.thumbnail = homeViewModel.selectedBookData?.thumbnail
+        
+        newBook.publishedDate = homeViewModel.selectedBookData?.publishedDate
+        newBook.publisher = homeViewModel.selectedBookData?.publisher
+        
+        newBook.genre = homeViewModel.selectedBookData?.genre
+        newBook.readStatus = homeViewModel.selectedBookData?.readStatus
+        newBook.readDate = homeViewModel.selectedBookData?.readDate
+        newBook.registerDate = homeViewModel.selectedBookData?.registerDate
+        
+        newBook.bread = Int16(homeViewModel.selectedBookData?.bread ?? 0)
+        
+        //뷰 확인을 위한 임시 코드 추가
+        homeViewModel.selectBook(newBook)
+        do {
+            try viewContext.save()
+        } catch {
+            fatalError("Failed to save context, \(error.localizedDescription)")
+        }
+        
         homeViewModel.transition(to: .addBookFinal)
     }
 }

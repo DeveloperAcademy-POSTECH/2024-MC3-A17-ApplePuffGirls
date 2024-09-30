@@ -19,6 +19,7 @@ struct CompleteAddingBook: View {
             
             SearchBookProgressBar(process: 4)
             
+            //TODO: - 책 장르에 따른 빵 종류 연결하기
             HeaderSection(title: "책 추가를 완료했습니다",
                           subtitle: "이 책으론 메론빵을 만들 수 있어요!")
             .padding(.top, 28)
