@@ -39,23 +39,7 @@ struct TeamInfo: View {
                         }
                         Spacer()
                     }
-                    
-                    Text("Team Mentors")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.greenMain100)
-                        .padding(.top, 68)
-                        .padding(.bottom, 31)
-                    
-                    HStack {
-                        Spacer()
-                        LazyVGrid(columns: columns, spacing: 5) {
-                            ForEach(TeamMember.mentors, id: \.self) { member in
-                                MemberCard(member: member)
-                            }
-                        }
-                        Spacer()
-                    }
-                    
+
                     Image(.appleLogo)
                         .resizable()
                         .scaledToFit()
@@ -83,10 +67,10 @@ struct MemberCard: View {
         VStack(spacing: 0) {
             Spacer()
             
-            Image(.brownCat)
+            Image("\(member.name)_profile")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100)
+                .frame(width: 130)
                 .padding(.bottom, 10)
             
             Text(member.name)

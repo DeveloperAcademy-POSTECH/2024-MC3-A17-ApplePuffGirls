@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Jason_profile.png",
+      "filename" : "Guryss_Profile.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Guryss_Profile@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Guryss_Profile@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
