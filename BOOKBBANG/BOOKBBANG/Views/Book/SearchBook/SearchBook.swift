@@ -31,11 +31,11 @@ struct SearchBook: View {
                                     onRightButton: { homeViewModel.transition(to: .addBook) })
                 
                 SearchBookProgressBar(process: 1)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 28)
                 
                 SearchBookSearchBar(searchText: $searchText, searchRouter: router)
-                    .padding(.vertical, 20)
-                
+                    .padding(.bottom, 20)
+                    
                 ScrollView {
                     Spacer().frame(height: 20)
                     
