@@ -22,17 +22,23 @@ enum SettingCategory: CaseIterable {
     
     var image: Image {
         switch self {
-        case .manual: return Image(.blueCat)
-        case .teamInfo: return Image(.brownCat)
-        case .contact: return Image(.blueCat)
+        case .manual: return Image(.manual)
+        case .teamInfo: return Image(.makers)
+        case .contact: return Image(.contact)
         }
     }
     
-    var destination: AnyView {
+    var destination: AnyView? {
         switch self {
         case .manual: return AnyView(Manual())
         case .teamInfo: return AnyView(TeamInfo())
-        case .contact: return AnyView(TeamInfo())
+        case .contact: return nil
+        }
+    }
+    
+    func handleContactTap() {
+        if self == .contact, let url = URL(string: "https://posacademy.notion.site/1182b843d5af804294f4fa0aa190521b") {
+            UIApplication.shared.open(url)
         }
     }
 }

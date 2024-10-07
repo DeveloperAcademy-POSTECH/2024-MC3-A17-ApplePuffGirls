@@ -19,6 +19,12 @@ struct Manual: View {
                                     title: "책빵 사용설명서",
                                     onChevron: { dismiss() })
                 ScrollView {
+                    Text("책빵장님, 책빵에 온 걸 환영해요!")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.greenMain100)
+                        .kerning(-0.4)
+                        .padding(.bottom, 20)
+                    
                     ForEach(manualChapter, id: \.self) { manual in
                         ShowEachChapter(chapter: manual)
                             .padding(.bottom, 30)
