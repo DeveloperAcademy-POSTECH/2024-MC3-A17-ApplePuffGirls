@@ -16,7 +16,7 @@ struct BOOKBBANGApp: App {
         WindowGroup {
             Root()
                 .fullScreenCover(isPresented: $isFirstLaunching, content: {
-                    Onboarding()
+                    Onboarding(isFirstLaunching: $isFirstLaunching)
                 })
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
