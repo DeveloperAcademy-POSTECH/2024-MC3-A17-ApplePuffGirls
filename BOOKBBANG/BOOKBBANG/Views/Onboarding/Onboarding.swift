@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Onboarding: View {
+    @Binding var isFirstLaunching: Bool
+    @AppStorage("installedDate") var installDate: Double?
+    
     var body: some View {
         ZStack {
             Color.backLighter.ignoresSafeArea()
@@ -22,6 +25,12 @@ struct Onboarding: View {
                     }
                     .tabViewStyle(.page)
             }
+        }
+        .onAppear {
+            installDate = Date().timeIntervalSince1970
+        }
+        .onDisappear {
+            isFirstLaunching = false
         }
     }
 }
@@ -54,5 +63,5 @@ struct OnboardingEachChapter: View {
 }
 
 #Preview {
-    Onboarding()
+    Onboarding(isFirstLaunching: .constant(true))
 }
