@@ -25,11 +25,11 @@ struct CompleteAddingPhrase: View {
             HeaderSection(title: "빵 굽기를 완료했습니다",
                           subtitle: "맛있는 빵을 만들었어요. 축하합니달라")
             .padding(.top, 20)
-            .padding(.bottom, 50)
+            .padding(.bottom, 130)
             
-            Image(.congratulatoryBread)
+            Image(.completePhrase)
                 .resizable()
-                .frame(width: 354, height: 400)
+                .frame(width: 290, height: 290)
             
             Spacer()
         }
