@@ -64,14 +64,6 @@ struct SearchBook: View {
                         Spacer()
                         
                         NavigationLink(destination: {
-                            VStack {
-                                Text("쨔자잔")
-                                    .bold()
-                                
-                                Image(.gentlemangyodong)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
                         }, label: {
                             DirectRegisterBookButton()
                         })

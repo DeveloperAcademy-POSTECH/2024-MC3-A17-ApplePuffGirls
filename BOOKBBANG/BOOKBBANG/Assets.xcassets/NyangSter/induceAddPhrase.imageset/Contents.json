@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mustache.png",
+      "filename" : "induceAddPhrase.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mustache@2x.png",
+      "filename" : "induceAddPhrase@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mustache@3x.png",
+      "filename" : "induceAddPhrase@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
