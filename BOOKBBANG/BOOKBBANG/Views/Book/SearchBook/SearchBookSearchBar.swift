@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchBookSearchBar: View {
     @Binding var searchText: String
     var searchRouter: SearchRouter
+    var onScrollToTop: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -18,7 +19,8 @@ struct SearchBookSearchBar: View {
             .padding(.bottom, 30)
             
             CustomSearchBar(searchText: $searchText,
-                            searchRouter: searchRouter)
+                            searchRouter: searchRouter,
+                            onScrollToTop: onScrollToTop)
         }
     }
 }
@@ -26,6 +28,7 @@ struct SearchBookSearchBar: View {
 struct CustomSearchBar: View {
     @Binding var searchText: String
     var searchRouter: SearchRouter
+    var onScrollToTop: () -> Void
     
     var body: some View {
         VStack {}
@@ -36,6 +39,7 @@ struct CustomSearchBar: View {
                 HStack {
                     TextField("책을 검색해보세요", text: $searchText, onCommit: {
                         searchRouter.fetch(searchText: searchText)
+                        onScrollToTop()
                     })
                     .foregroundStyle(.typo80)
                     .font(.system(size: 15, weight: .regular))
@@ -50,8 +54,4 @@ struct CustomSearchBar: View {
             }
             .padding(.horizontal, 22)
     }
-}
-
-#Preview {
-    SearchBookSearchBar(searchText: .constant(""), searchRouter: SearchRouter())
 }
