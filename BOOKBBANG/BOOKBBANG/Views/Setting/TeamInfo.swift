@@ -40,7 +40,7 @@ struct TeamInfo: View {
                         Spacer()
                     }
 
-                    Image(.appleLogo)
+                    Image(.apple)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 62)

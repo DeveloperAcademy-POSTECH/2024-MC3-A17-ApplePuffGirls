@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "_bookCat.png",
+      "filename" : "apple.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "_bookCat@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "_bookCat@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

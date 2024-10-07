@@ -25,6 +25,8 @@ struct DetailBook: View {
                                         onChevron: { homeViewModel.transition(to: .home) },
                                         onRightButton: { isEditBookPresented.toggle() })
                     
+                    let phrases = book.phrases?.allObjects as? [Phrase]
+                    
                     ScrollView {
                         VStack(spacing: 2) {
                             BookInfo(book: book)
@@ -57,18 +59,27 @@ struct DetailBook: View {
                             }
                             .foregroundStyle(.typo50)
                             .padding(.horizontal, 26)
-                            .padding(.bottom, 27)
+                            .padding(.bottom, phrases?.count == 0 ? 0 : 27)
                             
-                            if let phrases = book.phrases?.allObjects as? [Phrase] {
-                                ForEach(phrases, id: \.self) { phrase in
-                                    Button {
-                                        detailBookViewModel.newPhrase = phrase
-                                        detailBookViewModel.transition(to: .detailPhrase)
-                                    } label: {
-                                        PhraseCard(display: .detailBook, phrase: phrase)
-                                    }
+                            if phrases?.count == 0 {
+                                HStack {
+                                    Spacer()
+                                    Image(.induceAddPhrase)
+                                        .padding(.trailing, 150)
                                 }
-                                .padding(.horizontal, 2)
+                            }
+                            else {
+                                if let phrases = phrases {
+                                    ForEach(phrases, id: \.self) { phrase in
+                                        Button {
+                                            detailBookViewModel.newPhrase = phrase
+                                            detailBookViewModel.transition(to: .detailPhrase)
+                                        } label: {
+                                            PhraseCard(display: .detailBook, phrase: phrase)
+                                        }
+                                    }
+                                    .padding(.horizontal, 2)
+                                }
                             }
                         }
                     }

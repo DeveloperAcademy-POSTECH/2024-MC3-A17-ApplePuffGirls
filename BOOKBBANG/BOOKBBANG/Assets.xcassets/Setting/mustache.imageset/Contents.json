@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "completeCat.png",
+      "filename" : "mustache.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "completeCat@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "completeCat@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

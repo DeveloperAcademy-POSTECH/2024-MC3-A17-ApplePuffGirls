@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  Onboarding.swift
 //  BOOKBBANG
 //
 //  Created by Seoyeon Choi on 9/29/24.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct Onboarding: View {
     var body: some View {
         ZStack {
             Color.backLighter.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Image(.mustacheCat)
+                Image(.mustache)
                     .padding(.bottom, 20)
                 
                 Text("책 반죽하기")
@@ -33,5 +33,5 @@ struct SwiftUIView: View {
 }
 
 #Preview {
-    SwiftUIView()
+    Onboarding()
 }

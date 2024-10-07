@@ -1,5 +1,5 @@
 //
-//  Onboarding.swift
+//  TrashOnboarding.swift
 //  BOOKBBANG
 //
 //  Created by 강다혜 on 7/30/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Onboarding: View {
+struct TrashOnboarding: View {
     @Binding var isFirstLaunching: Bool
     @AppStorage("installedDate") var installDate: Double?
     
