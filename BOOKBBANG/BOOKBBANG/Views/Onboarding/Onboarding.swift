@@ -13,21 +13,42 @@ struct Onboarding: View {
             Color.backLighter.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Image(.mustache)
-                    .padding(.bottom, 20)
-                
-                Text("책 반죽하기")
-                    .fontWeight(.bold)
-                    .foregroundStyle(.greenMain100)
-                    .padding(.bottom, 20)
-                    .kerning(-0.4)
-                
-                Text("빵을 만들려면 재료가 필요하죠\n어떤 책을 재료로 반죽을 만들어볼까요?\n그리고 이 책은 어떤 맛이 나는지 들려주세요")
-                    .font(.system(size: 13, weight: .regular))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.typo80)
-                    .kerning(-0.4)
+                CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "책빵 시작하기")
+
+                    TabView {
+                        ForEach(onboardingChapter, id: \.self) { chapter in
+                            OnboardingEachChapter(chapter: chapter)
+                        }
+                    }
+                    .tabViewStyle(.page)
             }
+        }
+    }
+}
+
+struct OnboardingEachChapter: View {
+    var chapter: OnboardingChapter
+    
+    var body: some View {
+        VStack {
+            Image(chapter.firstImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Text(chapter.firstContent)
+                .font(.phraseBottom)
+                .foregroundStyle(.typo100)
+            
+            Spacer()
+            Image(chapter.secondImage)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Text(chapter.secondContent)
+                .font(.phraseBottom)
+                .foregroundStyle(.typo100)
+
+            Spacer()
         }
     }
 }
