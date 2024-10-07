@@ -24,11 +24,20 @@ struct Setting: View {
                 
                 LazyVGrid(columns: columns, spacing: 5) {
                     ForEach(SettingCategory.allCases, id: \.self) { page in
-                        NavigationLink(destination: {
-                            page.destination
-                        }, label: {
-                            SelectCategory(category: page)
-                        })
+                        if page == .contact {
+                            Button(action: {
+                                page.handleContactTap()
+                            }, label: {
+                                SelectCategory(category: page)
+                            })
+                        }
+                        else {
+                            NavigationLink(destination: {
+                                page.destination
+                            }, label: {
+                                SelectCategory(category: page)
+                            })
+                        }
                     }
                 }
                 .padding(.top, 10)
