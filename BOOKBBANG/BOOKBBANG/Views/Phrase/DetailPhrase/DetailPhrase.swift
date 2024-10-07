@@ -83,7 +83,7 @@ struct DetailPhrase: View {
                 }
             }
         }
-        .padding(.horizontal, 2)
+        .padding(.horizontal, 5)
         .background(.backLighter)
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $isEditPhrasePresented, content: {

@@ -15,6 +15,8 @@ struct AddCategoryToPhrase: View {
     private var clips: FetchedResults<Clip>
     
     @State var selections: [Clip] = []
+    
+    @Binding var phraseData: PhraseData
 
     func isSelected(clip: Clip) -> Bool {
         return selections.contains(clip)
@@ -31,23 +33,38 @@ struct AddCategoryToPhrase: View {
             AddCategorytoPhraseProgressBar()
             
             VStack(alignment: .leading, spacing: 0) {
-                Image(.baking3)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 90)
-                
                 Section {
+                    ZStack(alignment: .leading) {
+                        Rectangle()
+                            .foregroundStyle(.greenSub50)
+                            .frame(height: 14)
+                            .padding(.bottom, -5)
+                        
+                        if let title = phraseData.book?.name {
+                            Text("\"\(title)\"")
+                                .foregroundStyle(.typo100)
+                                .font(.system(size: 20, weight: .bold))
+                                .padding(.bottom, 3)
+                                .frame(maxWidth: UIScreen.main.bounds.width - 46)
+                                .lineLimit(1)
+                        }
+                    }
+                    .fixedSize()
+                    
                     Text("빵을 어떤 클립에 담아둘까요?")
                         .foregroundStyle(.typo100)
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.bottom, 10)
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.bottom, 4)
                     
-                    Text("빵에 어울리는 클립을 선택해보세요. (복수 선택 가능)")
+                    Text("빵에 어울리는 클립을 선택해보세요 (복수 선택 가능)")
                         .foregroundStyle(.typo50)
                         .font(.system(size: 13, weight: .regular))
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 35)
                         .lineSpacing(5)
                 }
+                
+                Divider()
+                    .padding(.bottom, 24)
                 
                 SelectClips(selections: $selections)
 

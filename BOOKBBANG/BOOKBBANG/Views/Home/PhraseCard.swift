@@ -66,7 +66,7 @@ struct PhraseCard: View {
                     .lineLimit(1)
                     .background {
                         Rectangle()
-                            .foregroundStyle(.greenMain40)
+                            .foregroundStyle(.greenSub50)
                             .frame(height: 14)
                             .padding(.bottom, -10)
                             .padding(.leading, -5)

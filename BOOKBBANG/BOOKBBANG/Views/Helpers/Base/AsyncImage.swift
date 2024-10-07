@@ -30,7 +30,7 @@ func fetchHomeImage(url: String) -> some View {
         image
             .resizable()
             .scaledToFill()
-            .frame(width: 92, height: 150)
+            .frame(width: 105, height: 155)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 RoundedRectangle(cornerRadius: 10)

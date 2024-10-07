@@ -27,7 +27,7 @@ extension Font {
     
     // 책 상세정보
     static let bookTitle: Font = .system(size: 17, weight: .bold)
-    static let bookCaption: Font = .system(size: 13, weight: .regular)
+    static let bookCaption: Font = .system(size: 13, weight: .medium)
     static let bookCaptionBold: Font = .system(size: 13, weight: .bold)
     static let readStateButton: Font = .system(size: 10, weight: .medium)
     
