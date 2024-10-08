@@ -97,9 +97,19 @@ struct AddPhrase: View {
                 AddPhraseTextfield(checkEmpty: $checkEmpty,
                                    phrase: $phrase)
                 .padding(.horizontal, 22)
-                .padding(.bottom, 30)
+                .padding(.bottom, 10)
                 
                 Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Image(.book)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .padding(.trailing, 22)
+                }
             }
         }
         .background(.backLighter)

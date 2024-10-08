@@ -38,7 +38,6 @@ enum HomeViewType {
     
     case searchBook
     case addBook
-    case addDough
     case addBookFinal
     
     case detailBook
