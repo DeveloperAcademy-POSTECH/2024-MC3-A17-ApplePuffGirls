@@ -43,6 +43,21 @@ enum BookGenre: String, CaseIterable {
         }
     }
     
+    var breadName: String {
+        switch self {
+        case .essay: return "프레첼"
+        case .novel: return "롤케이크"
+        case .liberalArts: return "식빵"
+        case .economicManagement: return "모카번"
+        case .religion: return "마카롱"
+        case .socialPolitics: return "체리파이"
+        case .selfImprovement: return "바게트"
+        case .history: return "메론빵"
+        case .naturalScience: return "초코빵"
+        case .etc: return "삼김"
+        }
+    }
+    
     static func fromDescription(_ description: String) -> BookGenre? {
         return BookGenre.allCases.first { $0.description == description }
     }

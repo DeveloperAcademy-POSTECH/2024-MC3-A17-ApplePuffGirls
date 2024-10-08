@@ -59,7 +59,9 @@ struct Home: View {
                                 bookData: .constant(selectedBookData))
                     }
                 case .addBookFinal:
-                    CompleteAddingBook(homeViewModel: homeViewModel)
+                    if let selectedBookData = homeViewModel.selectedBookData {
+                        CompleteAddingBook(homeViewModel: homeViewModel, bookData: .constant(selectedBookData))
+                    }
                 case .detailBook:
                     if let selectedBook = homeViewModel.selectedBook {
                         DetailBook(homeViewModel: homeViewModel,
