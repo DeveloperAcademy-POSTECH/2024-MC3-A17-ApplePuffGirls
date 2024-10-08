@@ -52,10 +52,8 @@
 		B977DF112C58AA8200EC0186 /* SearchBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B977DF102C58AA8200EC0186 /* SearchBook.swift */; };
 		B97D27882C63C0B800ED490D /* EditBookInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */; };
 		B97D278A2C63EE9D00ED490D /* EditBookGenreSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */; };
-		B97D278C2C63F11700ED490D /* EditReadStatusSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97D278B2C63F11700ED490D /* EditReadStatusSection.swift */; };
 		B983CA442C5E3B8E00EAFD29 /* SearchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B983CA432C5E3B8E00EAFD29 /* SearchTestView.swift */; };
 		B985BB112C6AE7B4005EF0AA /* GIFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B985BB102C6AE7B4005EF0AA /* GIFImageView.swift */; };
-		B985BB132C6AE8EA005EF0AA /* receiptVideo.gif in Resources */ = {isa = PBXBuildFile; fileRef = B985BB122C6AE8EA005EF0AA /* receiptVideo.gif */; };
 		B9AE11802C5897270082C1DE /* BOOKBBANGApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */; };
 		B9AE11842C5897280082C1DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AE11832C5897280082C1DE /* Assets.xcassets */; };
 		B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9AE11862C5897280082C1DE /* Preview Assets.xcassets */; };
@@ -172,10 +170,8 @@
 		B977DF102C58AA8200EC0186 /* SearchBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBook.swift; sourceTree = "<group>"; };
 		B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookInfoSection.swift; sourceTree = "<group>"; };
 		B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookGenreSection.swift; sourceTree = "<group>"; };
-		B97D278B2C63F11700ED490D /* EditReadStatusSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReadStatusSection.swift; sourceTree = "<group>"; };
 		B983CA432C5E3B8E00EAFD29 /* SearchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTestView.swift; sourceTree = "<group>"; };
 		B985BB102C6AE7B4005EF0AA /* GIFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageView.swift; sourceTree = "<group>"; };
-		B985BB122C6AE8EA005EF0AA /* receiptVideo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = receiptVideo.gif; sourceTree = "<group>"; };
 		B9AE117C2C5897270082C1DE /* BOOKBBANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOOKBBANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGApp.swift; sourceTree = "<group>"; };
 		B9AE11832C5897280082C1DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -351,7 +347,6 @@
 		B977DF0B2C58AA5600EC0186 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B985BB122C6AE8EA005EF0AA /* receiptVideo.gif */,
 				B910CC2B2C590475000FFAA7 /* Extensions */,
 				B977DF0C2C58AA5F00EC0186 /* Fonts */,
 			);
@@ -585,7 +580,6 @@
 			children = (
 				B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */,
 				B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */,
-				B97D278B2C63F11700ED490D /* EditReadStatusSection.swift */,
 				6D6537B92C620201000EA719 /* EditBook.swift */,
 			);
 			path = EditBook;
@@ -788,7 +782,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B985BB132C6AE8EA005EF0AA /* receiptVideo.gif in Resources */,
 				C954A5612CA87B0600C1062A /* Config.xcconfig in Resources */,
 				B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */,
 				B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
@@ -842,7 +835,6 @@
 				D6DBF78F2C5FFE770095CAFF /* ShowReceipt.swift in Sources */,
 				D6DBF7792C5B86180095CAFF /* TeamInfo.swift in Sources */,
 				D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */,
-				B97D278C2C63F11700ED490D /* EditReadStatusSection.swift in Sources */,
 				D60B7DA22C74651F002CEFD3 /* SelectDate.swift in Sources */,
 				D6DBF76C2C5A4E830095CAFF /* SortingBookPicker.swift in Sources */,
 				D6311E3E2C665859004161C7 /* ClipsInPhrase.swift in Sources */,

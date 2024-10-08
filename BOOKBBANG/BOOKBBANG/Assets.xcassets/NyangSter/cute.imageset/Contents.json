@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Dough_6.imageset.png",
+      "filename" : "cute.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Dough_6.imageset@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Dough_6.imageset@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

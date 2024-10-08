@@ -65,7 +65,7 @@ struct BookList: View {
                         }
                     
                     VStack(spacing: 0) {
-                        Image(.breadHat2)
+                        Image(.pencil)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 140)
