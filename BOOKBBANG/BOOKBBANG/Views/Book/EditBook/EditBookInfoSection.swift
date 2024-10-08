@@ -34,7 +34,7 @@ struct EditBookInfoSection: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.bottom, 20)
                                 
-                                ForEach(["장르", "독서 상태", "독서 날짜"], id: \.self) { text in
+                                ForEach(["장르", "독서 날짜"], id: \.self) { text in
                                     HStack(spacing: 0) {
                                         Text(text)
                                             .font(.bookCaption)
@@ -53,12 +53,6 @@ struct EditBookInfoSection: View {
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.leading, 26)
-                                            
-                                        } else if text == "독서 상태" {
-                                            Text(book.readStatus ?? "미설정")
-                                                .font(book.readStatus != nil ? .bookCaptionBold : .bookCaption)
-                                                .foregroundStyle(.typo100)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
                                         }
                                     }
                                     .padding(.bottom, 3)
