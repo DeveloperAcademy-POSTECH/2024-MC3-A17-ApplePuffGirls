@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Onboarding: View {
+    @State private var isStartViewActive: Bool = false
     @Binding var isFirstLaunching: Bool
     @AppStorage("installedDate") var installDate: Double?
     
@@ -16,14 +17,26 @@ struct Onboarding: View {
             Color.backLighter.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                CustomNavigationBar(isHighlighted: .constant(false), navigationType: .chevron, title: "책빵 시작하기")
-
-                    TabView {
-                        ForEach(onboardingChapter, id: \.self) { chapter in
-                            OnboardingEachChapter(chapter: chapter)
-                        }
+                HStack {
+                    Spacer()
+                    Text("책빵 시작하기")
+                        .foregroundStyle(.typo100)
+                        .font(.system(size: 18, weight: .semibold))
+                        .kerning(-0.4)
+                    Spacer()
+                }
+                .frame(height: 55)
+                .background(.backLighter)
+                
+                TabView {
+                    ForEach(onboardingChapter, id: \.self) { chapter in
+                        OnboardingEachChapter(chapter: chapter)
                     }
-                    .tabViewStyle(.page)
+                    
+                    OnboardingStart(isFirstLaunching: $isFirstLaunching)
+                }
+                .tabViewStyle(.page)
+                .padding(.top, 50)
             }
         }
         .onAppear {
@@ -45,23 +58,25 @@ struct OnboardingEachChapter: View {
                 .aspectRatio(contentMode: .fit)
             
             Text(chapter.firstContent)
-                .font(.phraseBottom)
+                .font(.segment)
                 .foregroundStyle(.typo100)
+                .multilineTextAlignment(.center)
+                .kerning(-0.4)
             
             Spacer()
+            
             Image(chapter.secondImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             
             Text(chapter.secondContent)
-                .font(.phraseBottom)
+                .font(.segment)
                 .foregroundStyle(.typo100)
-
+                .multilineTextAlignment(.center)
+                .kerning(-0.4)
+            
             Spacer()
         }
+        .padding(.horizontal, 50)
     }
-}
-
-#Preview {
-    Onboarding(isFirstLaunching: .constant(true))
 }

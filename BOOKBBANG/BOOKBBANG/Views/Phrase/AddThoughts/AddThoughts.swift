@@ -81,6 +81,18 @@ struct AddThoughts: View {
                         AddThoughtsTextfield(checkEmpty: $checkEmpty,
                                              thought: $thought)
                         .padding(.horizontal, 22)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            
+                            Image(.book)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100)
+                                .padding(.trailing, 22)
+                        }
                     }
                 }
             }
