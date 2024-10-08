@@ -42,9 +42,6 @@ struct Onboarding: View {
         .onAppear {
             installDate = Date().timeIntervalSince1970
         }
-        .onDisappear {
-            isFirstLaunching = false
-        }
     }
 }
 
