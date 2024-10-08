@@ -82,6 +82,7 @@ struct DetailPhrase: View {
                     Spacer()
                 }
             }
+            .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 5)
         .background(.backLighter)

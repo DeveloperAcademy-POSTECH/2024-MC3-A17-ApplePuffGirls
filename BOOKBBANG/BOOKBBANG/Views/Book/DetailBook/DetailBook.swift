@@ -78,7 +78,7 @@ struct DetailBook: View {
                                             PhraseCard(display: .detailBook, phrase: phrase)
                                         }
                                     }
-                                    .padding(.horizontal, 2)
+                                    .padding(.horizontal, 5)
                                 }
                             }
                         }

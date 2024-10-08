@@ -62,7 +62,6 @@ struct PhraseCard: View {
                 Text(phraseTop)
                     .font(.phraseTop)
                     .foregroundStyle(.typo100)
-//                    .multilineTextAlignment(.leading)
                     .lineLimit(1)
                     .background {
                         Rectangle()
@@ -70,7 +69,6 @@ struct PhraseCard: View {
                             .frame(height: 14)
                             .padding(.bottom, -10)
                             .padding(.leading, -5)
-                        
                     }
             }
             
@@ -107,12 +105,15 @@ struct PhraseCard: View {
                 .stroke(.typo25)
         }
         .overlay(alignment: .bottomTrailing) {
-            Image(BreadImage.allCases[Int(phrase.book?.bread ?? 0)].imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60)
-                .padding(.trailing, 15)
-                .padding(.bottom, 10)
+            if let genre = phrase.book?.genre,
+               let matchingGenre = BookGenre.fromDescription(genre) {
+                matchingGenre.bread
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                    .padding(.trailing, 15)
+                    .padding(.bottom, 10)
+            }
         }
     }
     

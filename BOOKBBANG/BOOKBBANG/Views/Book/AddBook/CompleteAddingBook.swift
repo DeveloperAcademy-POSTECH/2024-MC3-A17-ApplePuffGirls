@@ -36,7 +36,3 @@ struct CompleteAddingBook: View {
         homeViewModel.transition(to: .home)
     }
 }
-
-#Preview {
-    CompleteAddingBook(homeViewModel: HomeViewModel())
-}
