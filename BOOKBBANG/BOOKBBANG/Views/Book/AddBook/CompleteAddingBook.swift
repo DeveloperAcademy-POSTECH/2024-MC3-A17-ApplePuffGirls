@@ -37,7 +37,3 @@ struct CompleteAddingBook: View {
         homeViewModel.selectedBook = nil
     }
 }
-
-#Preview {
-    CompleteAddingBook(homeViewModel: HomeViewModel())
-}

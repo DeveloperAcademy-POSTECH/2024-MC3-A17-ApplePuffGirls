@@ -90,11 +90,8 @@ struct AddBook: View {
         newBook.publisher = homeViewModel.selectedBookData?.publisher
         
         newBook.genre = homeViewModel.selectedBookData?.genre
-        newBook.readStatus = homeViewModel.selectedBookData?.readStatus
         newBook.readDate = homeViewModel.selectedBookData?.readDate
         newBook.registerDate = homeViewModel.selectedBookData?.registerDate
-        
-        newBook.bread = Int16(homeViewModel.selectedBookData?.bread ?? 0)
         
         //뷰 확인을 위한 임시 코드 추가
         homeViewModel.selectBook(newBook)

@@ -50,15 +50,6 @@ struct BookInfo: View {
                                 .font(.bookCaptionBold)
                                 .foregroundStyle(.typo80)
                         }
-                        
-                        if let readStatus = book.readStatus {
-                            Text(readStatus)
-                                .font(.readStateButton)
-                                .frame(width: 43, height: 19)
-                                .padding(.horizontal, 2)
-                                .background(Capsule().stroke())
-                                .foregroundStyle(.greenMain100)
-                        }
                     }
                 }
             }
