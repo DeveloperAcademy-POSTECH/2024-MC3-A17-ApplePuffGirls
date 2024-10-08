@@ -40,7 +40,7 @@ struct TodaysBread: View {
                         .foregroundStyle(.typo80)
                     
                     Spacer()
-                    Image(.congratulatoryBread)
+                    Image(.cute)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 150)

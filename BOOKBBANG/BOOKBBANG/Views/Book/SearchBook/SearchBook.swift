@@ -61,20 +61,6 @@ struct SearchBook: View {
                                 }
                             }
                         }
-                        HStack {
-                            Text("원하는 책이 없나요?")
-                                .foregroundStyle(.typo50)
-                                .font(.system(size: 13, weight: .regular))
-                            
-                            Spacer()
-                            
-                            NavigationLink(destination: {
-                            }, label: {
-                                DirectRegisterBookButton()
-                            })
-                        }
-                        .padding(.horizontal, 25)
-                        .padding(.bottom, 40)
                     }
                     .scrollIndicators(.hidden)
                     .scrollDismissesKeyboard(.immediately)

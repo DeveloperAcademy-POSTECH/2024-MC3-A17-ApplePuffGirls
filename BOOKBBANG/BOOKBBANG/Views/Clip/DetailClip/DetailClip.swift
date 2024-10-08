@@ -49,7 +49,7 @@ struct DetailClip: View {
                     VStack(spacing: 0) {
                         if let count = clip.phrases?.count, count == 0 {
                             VStack {
-                                Image(.gentlemangyodong)
+                                Image(.mustache)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 200)

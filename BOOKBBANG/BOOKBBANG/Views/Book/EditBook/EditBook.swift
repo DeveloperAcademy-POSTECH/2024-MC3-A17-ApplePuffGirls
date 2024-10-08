@@ -41,9 +41,7 @@ struct EditBook: View {
                 EditBookInfoSection(book: bookData)
                 
                 EditBookGenreSection(book: bookData)
-                
-                EditReadStatusSection(book: bookData)
-                
+
                 VStack(alignment: .leading) {
                     Text("독서 날짜")
                         .font(.bookCaption)

@@ -122,11 +122,10 @@ struct NoRecipt: View {
             TwoLineDivider()
             
             Spacer()
-            Image(.gentlemangyodong)
+            Image(.mustache)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 250)
-            Text("                                          ㅅ \n(다다의 일러스트가 들어간다고 하네요?)")
             Spacer()
         }
     }
