@@ -69,12 +69,17 @@ struct Onboarding: View {
                 .frame(height: 55)
                 .background(.backLighter)
                 
-                if currentPage < onboardingChapter.count {
-                    OnboardingEachChapter(chapter: onboardingChapter[currentPage])
-                        .padding(.top, 40)
-                } else {
+                TabView(selection: $currentPage) {
+                    ForEach(0..<onboardingChapter.count, id: \.self) { index in
+                        OnboardingEachChapter(chapter: onboardingChapter[index])
+                            .tag(index)
+                    }
+                    
                     OnboardingStart(isFirstLaunching: $isFirstLaunching)
+                        .tag(onboardingChapter.count)
                 }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .padding(.top, 40)
             }
         }
         .onAppear {
