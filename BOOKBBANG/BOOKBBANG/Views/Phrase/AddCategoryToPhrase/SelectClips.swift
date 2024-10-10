@@ -43,15 +43,19 @@ struct SelectClips: View {
                     } label: {
                         VStack(spacing: 0) {
                             HStack {
-                                // 클립 이미지
                                 Image(ClipItem.getClipShape(clip.design))
                                     .renderingMode(.template)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .foregroundStyle(Colors.getClipColor(clip.color))
                                     .frame(height: 55)
+                                    .overlay {
+                                        Image(ClipItem.getClipBackgroundShape(clip.design))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(height: 55)
+                                    }
                                     .padding(.bottom, 14)
-                                    .cornerRadius(8)
                                 
                                 VStack(alignment: .leading) {
                                     Text(clip.title ?? "")
