@@ -29,9 +29,9 @@ struct ClipShapeButton: View {
                   clipData.selectedShape = index
                 }) {
                   RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(clipData.selectedShape == index ? Color.green : Color.gray.opacity(0.5), lineWidth: clipData.selectedShape == index ? 2 : 1)
+                        .strokeBorder(clipData.selectedShape == index ? Color.greenMain100 : Color.gray.opacity(0.5), lineWidth: clipData.selectedShape == index ? 2 : 1)
                     .background(
-                      Image(shape.shapeImageName)  // 수정된 부분
+                      Image(shape.shapeImageName)
                         .resizable()
                         .scaledToFit()
                         .padding(12)
