@@ -22,7 +22,7 @@ struct EditBook: View {
         bookData.title = book.name ?? ""
         bookData.authors = book.author ?? ""
         
-        bookData.genre = book.genre
+        bookData.genre = book.genre ?? ""
         bookData.readDate = book.readDate ?? .now
     }
     

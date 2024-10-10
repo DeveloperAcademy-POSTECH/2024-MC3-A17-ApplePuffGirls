@@ -10,7 +10,7 @@ import SwiftUI
 struct AddBook: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
-    @State var selectedGenre: BookGenre?
+    @State var selectedGenre: BookGenre = .etc
     @State var selectedDate: Date = Date()
 
     @Binding var bookData: BookData
@@ -71,7 +71,7 @@ struct AddBook: View {
         .background(.backLighter)
     }
     private func saveBookDetails() {
-        bookData.genre = selectedGenre?.description
+        bookData.genre = selectedGenre.description
         bookData.readDate = selectedDate
         homeViewModel.selectBookData(bookData)
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookInfoSection: View {
-    @Binding var selectedGenre: BookGenre?
+    @Binding var selectedGenre: BookGenre
     @Binding var selectedDate: Date
     
     var book: BookData
@@ -51,8 +51,8 @@ struct BookInfoSection: View {
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                             
                                         } else if text == "장르" {
-                                            Text(selectedGenre?.description ?? "미설정")
-                                                .font(selectedGenre != nil ? .bookCaptionBold : .bookCaption)
+                                            Text(selectedGenre.description)
+                                                .font(.bookCaptionBold)
                                                 .foregroundStyle(.typo100)
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .padding(.leading, 26)

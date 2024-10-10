@@ -45,6 +45,7 @@ struct Home: View {
                             .padding(.horizontal,2)
                         }
                     }
+                    .scrollIndicators(.hidden)
                 }
                 .background(.backLighter)
                 

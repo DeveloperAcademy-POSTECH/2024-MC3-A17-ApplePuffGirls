@@ -21,15 +21,14 @@ struct CompleteAddingBook: View {
             
             SearchBookProgressBar(process: 4)
             
-            if let genre = bookData.genre,
-               let matchingGenre = BookGenre.fromDescription(genre) {
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text("책 추가를 완료했습니다")
-                            .font(.addBookTitle)
-                            .foregroundStyle(.typo100)
-                            .padding(.bottom, 1)
-                        
+            HStack(spacing: 0) {
+                VStack(alignment: .leading) {
+                    Text("책 추가를 완료했습니다")
+                        .font(.addBookTitle)
+                        .foregroundStyle(.typo100)
+                        .padding(.bottom, 1)
+                    
+                    if let matchingGenre = BookGenre.fromDescription(bookData.genre) {
                         HStack(spacing: 0) {
                             Text("이 책으론 ")
                                 .font(.bookCaption)
@@ -42,15 +41,18 @@ struct CompleteAddingBook: View {
                                 .foregroundStyle(.typo50)
                         }
                     }
-                    Spacer()
                 }
-                .padding(.leading, 30)
-                .padding(.top, 28)
-                .padding(.bottom, 100)
+                
+                Spacer()
             }
-            
+            .padding(.leading, 30)
+            .padding(.top, 28)
+            .padding(.bottom, 100)
             
             Image(.completeBread)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 280)
             
             Spacer()
         }
