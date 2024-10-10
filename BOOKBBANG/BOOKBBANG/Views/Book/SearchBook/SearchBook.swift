@@ -18,6 +18,8 @@ struct SearchBook: View {
     @State private var bookSelected: Bool = false
     @State private var selectedBook: Documents?
     
+    @State private var progress: Int = 1
+    
     @ObservedObject var book: BookData = BookData()
     
     var body: some View {
@@ -27,12 +29,11 @@ struct SearchBook: View {
                                     navigationType: .chevron,
                                     title: "새로운 책 추가하기",
                                     rightTitle: "다음",
-                                    onChevron: { homeViewModel.transition(to: .home) },
-                                    onRightButton: { homeViewModel.transition(to: .addBook) })
+                                    onChevron: { clickBackButton() },
+                                    onRightButton: { clickNextButton() })
                 
-                SearchBookProgressBar(process: 1)
+                CustomProgressBar(process: $homeViewModel.progress, count: 3)
                     .padding(.bottom, 28)
-                
                 
                 ScrollViewReader { proxy in
                     SearchBookSearchBar(searchText: $searchText, searchRouter: router, onScrollToTop: {
@@ -94,6 +95,28 @@ struct SearchBook: View {
         newBookData.registerDate = Date()
         return newBookData
     }
+    
+    private func directRegisterBookButton() -> some View {
+        return RoundedRectangle(cornerRadius: 29)
+            .stroke(.greenMain100, lineWidth: 1.0)
+            .frame(width: 120 ,height: 32)
+            .overlay {
+                Text("+  직접 추가하기")
+                    .foregroundStyle(.greenMain100)
+                    .font(.system(size: 13, weight: .regular))
+                    .padding(.horizontal, 10)
+            }
+    }
+    
+    private func clickBackButton() {
+        homeViewModel.backProgress()
+        homeViewModel.transition(to: .home)
+    }
+    
+    private func clickNextButton() {
+        homeViewModel.nextProgress()
+        homeViewModel.transition(to: .addBook)
+    }
 }
 
 func convertToDate(from dateString: String) -> Date? {
@@ -103,30 +126,7 @@ func convertToDate(from dateString: String) -> Date? {
     return dateFormatter.date(from: dateString)
 }
 
-
-func SearchBookProgressBar(process: CGFloat) -> some View {
-    return VStack {}
-        .frame(width: UIScreen.main.bounds.width, height: 2)
-        .background(.typo25)
-        .overlay(alignment: .leading) {
-            VStack{}
-                .frame(width: UIScreen.main.bounds.width / 4 * process, height: 2)
-                .background(.greenMain100)
-        }
-}
-
-func DirectRegisterBookButton() -> some View {
-    return RoundedRectangle(cornerRadius: 29)
-        .stroke(.greenMain100, lineWidth: 1.0)
-        .frame(width: 120 ,height: 32)
-        .overlay {
-            Text("+  직접 추가하기")
-                .foregroundStyle(.greenMain100)
-                .font(.system(size: 13, weight: .regular))
-                .padding(.horizontal, 10)
-        }
-}
-
 #Preview {
     SearchBook(homeViewModel: HomeViewModel())
 }
+

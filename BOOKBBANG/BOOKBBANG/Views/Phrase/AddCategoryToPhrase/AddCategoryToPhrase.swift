@@ -27,10 +27,10 @@ struct AddCategoryToPhrase: View {
                                 navigationType: .chevron,
                                 title: "새로운 빵 굽기",
                                 rightTitle: "다음",
-                                onChevron: { detailBookViewModel.transition(to: .addThoughts) },
-                                onRightButton: { clickRightButton() })
+                                onChevron: { clickBackButton() },
+                                onRightButton: { clickNextButton() })
             
-            AddCategorytoPhraseProgressBar()
+            CustomProgressBar(process: $detailBookViewModel.progress, count: 4)
             
             VStack(alignment: .leading, spacing: 0) {
                 Section {
@@ -78,7 +78,12 @@ struct AddCategoryToPhrase: View {
         .background(.backLighter)
     }
     
-    private func clickRightButton() {
+    private func clickBackButton() {
+        detailBookViewModel.backProgress()
+        detailBookViewModel.transition(to: .addThoughts)
+    }
+    
+    private func clickNextButton() {
         let newPhrase = Phrase(context: viewContext)
         newPhrase.content = detailBookViewModel.newPhraseData?.content
         newPhrase.thinking = detailBookViewModel.newPhraseData?.thought
@@ -87,6 +92,7 @@ struct AddCategoryToPhrase: View {
         newPhrase.clips = NSSet(array: selections)
         newPhrase.book?.phraseCount += 1
         
+        detailBookViewModel.nextProgress()
         detailBookViewModel.addPhrase(newPhrase)
         do {
             try viewContext.save()

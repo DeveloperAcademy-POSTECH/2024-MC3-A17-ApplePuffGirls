@@ -19,7 +19,7 @@ struct CompleteAddingBook: View {
             CompleteAddingPhraseHeader(title: "새로운 책 추가하기",
                                        onComplete: { clickRightButton() })
             
-            SearchBookProgressBar(process: 4)
+            CustomProgressBar(process: $homeViewModel.progress, count: 3)
             
             HStack(spacing: 0) {
                 VStack(alignment: .leading) {
@@ -60,6 +60,7 @@ struct CompleteAddingBook: View {
     }
     
     private func clickRightButton() {
+        homeViewModel.initProgress()
         homeViewModel.transition(to: .home)
     }
 }

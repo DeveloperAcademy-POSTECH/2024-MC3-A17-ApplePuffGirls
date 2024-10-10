@@ -27,10 +27,10 @@ struct AddPhrase: View {
                                     navigationType: .chevron,
                                     title: "새로운 빵 굽기",
                                     rightTitle: "다음",
-                                    onChevron: { detailBookViewModel.transition(to: .detailBook) },
-                                    onRightButton: { clickRightButton() })
+                                    onChevron: { clickBackButton() },
+                                    onRightButton: { clickNextButton() })
                 
-                AddPhraseProgressBar()
+                CustomProgressBar(process: $detailBookViewModel.progress, count: 4)
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
@@ -119,23 +119,18 @@ struct AddPhrase: View {
         }
     }
     
-    private func clickRightButton() {
+    private func clickBackButton() {
+        detailBookViewModel.backProgress()
+        detailBookViewModel.transition(to: .detailBook)
+    }
+    
+    private func clickNextButton() {
         let newPhraseData = PhraseData()
         newPhraseData.book = book
         newPhraseData.content = phrase
         detailBookViewModel.addPhraseData(newPhraseData)
         
+        detailBookViewModel.nextProgress()
         detailBookViewModel.transition(to: .addThoughts)
     }
-}
-
-func AddPhraseProgressBar() -> some View {
-    return VStack {}
-        .frame(width: UIScreen.main.bounds.width, height: 2)
-        .background(.typo25)
-        .overlay(alignment: .leading) {
-            VStack{}
-                .frame(width: UIScreen.main.bounds.width / 3, height: 2)
-                .background(.greenMain100)
-        }
 }

@@ -53,9 +53,7 @@ struct BookList: View {
     var body: some View {
         VStack(spacing: 0) {
             // 정렬 버튼
-            
             SortingBookPicker(sort: $sort)
-            
             
             if sortedBooks.count == 0 {
                 HStack {
@@ -98,7 +96,6 @@ struct BookList: View {
                                 homeViewModel.transition(to: .detailBook)
                             }
                     }
-                    
                 }
                 .padding(.horizontal, 10)
             }

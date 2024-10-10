@@ -21,10 +21,10 @@ struct AddBook: View {
                                 navigationType: .chevron,
                                 title: "새로운 책 추가하기",
                                 rightTitle: "다음",
-                                onChevron: { homeViewModel.transition(to: .searchBook) },
+                                onChevron: { clickBackButton() },
                                 onRightButton: { clickRightButton() })
             
-            SearchBookProgressBar(process: 2)
+            CustomProgressBar(process: $homeViewModel.progress, count: 3)
                 .padding(.bottom, 28)
             
             VStack(spacing: 0) {
@@ -70,6 +70,12 @@ struct AddBook: View {
         }
         .background(.backLighter)
     }
+    
+    private func clickBackButton() {
+        homeViewModel.backProgress()
+        homeViewModel.transition(to: .searchBook)
+    }
+    
     private func saveBookDetails() {
         bookData.genre = selectedGenre.description
         bookData.readDate = selectedDate
@@ -77,8 +83,8 @@ struct AddBook: View {
     }
     
     private func clickRightButton() {
+        homeViewModel.nextProgress()
         saveBookDetails()
-
         homeViewModel.selectBookData(bookData)
         
         let newBook = Book(context: viewContext)
@@ -93,7 +99,6 @@ struct AddBook: View {
         newBook.readDate = homeViewModel.selectedBookData?.readDate
         newBook.registerDate = homeViewModel.selectedBookData?.registerDate
         
-        //뷰 확인을 위한 임시 코드 추가
         homeViewModel.selectBook(newBook)
         do {
             try viewContext.save()
