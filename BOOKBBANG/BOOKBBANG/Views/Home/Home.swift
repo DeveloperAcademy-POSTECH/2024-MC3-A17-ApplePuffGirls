@@ -23,7 +23,7 @@ struct Home: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    HomeTopBar(homeViewModel: homeViewModel)
+                    HomeTopBar()
                     
                     ScrollView {
                         VStack(spacing: 2) {
@@ -70,10 +70,6 @@ struct Home: View {
                                    book: selectedBook)
                         .environmentObject(homeViewModel)
                     }
-                case .receipt:
-                    ReceiptMain(homeViewModel: homeViewModel)
-                case .setting:
-                    Setting(homeViewModel: homeViewModel)
                 case .detailClip:
                     if let selectedClip = homeViewModel.selectedClip {
                         DetailClip(detailBookViewModel: detailBookViewModel, clip: selectedClip)
@@ -86,11 +82,8 @@ struct Home: View {
             }
         }
     }
-    
-    
+
     struct HomeTopBar : View {
-        @ObservedObject var homeViewModel: HomeViewModel
-        
         var body: some View {
             HStack {
                 Image(.logo)
@@ -102,16 +95,16 @@ struct Home: View {
                 Spacer()
                 
                 HStack {
-                    Button(action: {
-                        homeViewModel.transition(to: .receipt)
+                    NavigationLink(destination: {
+                        ReceiptMain()
                     }, label: {
                         Text("빵수증")
                             .font(.system(size: 16, weight: .semibold))
                             .padding()
                     })
                     
-                    Button(action: {
-                        homeViewModel.transition(to: .setting)
+                    NavigationLink(destination: {
+                        Setting()
                     }, label: {
                         Text("설정")
                             .font(.system(size: 16, weight: .semibold))

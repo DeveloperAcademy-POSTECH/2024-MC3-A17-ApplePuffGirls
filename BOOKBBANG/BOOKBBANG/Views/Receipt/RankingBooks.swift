@@ -10,8 +10,7 @@ import SwiftUI
 struct RankingBooks: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var homeViewModel: HomeViewModel
-    
+
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Book.registerDate, ascending: false)],
         animation: .default)

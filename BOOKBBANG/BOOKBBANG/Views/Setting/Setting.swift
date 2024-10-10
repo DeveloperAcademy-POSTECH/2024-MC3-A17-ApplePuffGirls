@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct Setting: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-    
     let columns = [
         GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5)
     ]
@@ -17,11 +15,6 @@ struct Setting: View {
     var body: some View {
         NavigationStack {
             VStack {
-                CustomNavigationBar(isHighlighted: .constant(true),
-                                    navigationType: .chevron,
-                                    title: "설정",
-                                    onChevron: { homeViewModel.transition(to: .home) })
-                
                 LazyVGrid(columns: columns, spacing: 5) {
                     ForEach(SettingCategory.allCases, id: \.self) { page in
                         if page == .contact {
@@ -47,6 +40,7 @@ struct Setting: View {
             }
             .background(.backLighter)
         }
+        .navigationTitle("설정")
     }
 }
 
