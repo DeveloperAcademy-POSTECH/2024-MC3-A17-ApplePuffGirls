@@ -10,15 +10,17 @@ import SwiftUI
 struct SearchBookSearchBar: View {
     @Binding var searchText: String
     var searchRouter: SearchRouter
+    var onScrollToTop: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HeaderSection(title: "어떤 책을 읽고 있나요?",
-                          subtitle: "책을 재료 삼아 빵을 구울 수 있습니다.")
-            .padding(.bottom, 20)
+                          subtitle: "책을 재료 삼아 빵을 구울 수 있습니다")
+            .padding(.bottom, 30)
             
             CustomSearchBar(searchText: $searchText,
-                            searchRouter: searchRouter)
+                            searchRouter: searchRouter,
+                            onScrollToTop: onScrollToTop)
         }
     }
 }
@@ -26,6 +28,7 @@ struct SearchBookSearchBar: View {
 struct CustomSearchBar: View {
     @Binding var searchText: String
     var searchRouter: SearchRouter
+    var onScrollToTop: () -> Void
     
     var body: some View {
         VStack {}
@@ -34,25 +37,21 @@ struct CustomSearchBar: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 HStack {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundStyle(.typo50)
-                        .font(.system(size: 20, weight: .regular))
-                        .kerning(-0.4)
-                    
                     TextField("책을 검색해보세요", text: $searchText, onCommit: {
                         searchRouter.fetch(searchText: searchText)
+                        onScrollToTop()
                     })
                     .foregroundStyle(.typo80)
                     .font(.system(size: 15, weight: .regular))
+                    
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.greenMain100)
+                        .font(.system(size: 20, weight: .regular))
+                        .kerning(-0.4)
                 }
                 .padding(.leading, 15)
                 .padding(.trailing, 13)
             }
             .padding(.horizontal, 22)
-        
     }
-}
-
-#Preview {
-    SearchBookSearchBar(searchText: .constant(""), searchRouter: SearchRouter())
 }

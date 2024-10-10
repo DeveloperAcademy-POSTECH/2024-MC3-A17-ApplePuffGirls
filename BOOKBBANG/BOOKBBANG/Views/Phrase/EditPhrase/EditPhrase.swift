@@ -61,12 +61,18 @@ struct EditPhrase: View {
                     .padding(.bottom, 20)
                     
                     editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
+                        .padding(.bottom, 20)
                     
-                    Button(role: .destructive) {
-                        showingAlert = true
-                    } label: {
-                        Text("삭제하기")
+                    HStack {
+                        Spacer()
+                        Button(role: .destructive) {
+                            showingAlert = true
+                        } label: {
+                            Text("삭제하기")
+                        }
+                        Spacer()
                     }
+                    .padding(.bottom, 20)
                 }
                 .padding(.horizontal, 22)
             }

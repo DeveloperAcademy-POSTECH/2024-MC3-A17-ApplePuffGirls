@@ -54,13 +54,10 @@ struct ClipTextFields: View {
         .onChange(of: clipData.name) { _ in
             validateFields()
         }
-        .onChange(of: clipData.description) { _ in
-            validateFields()
-        }
     }
     
     private func validateFields() {
-        checkEmpty = !clipData.name.isEmpty && !clipData.description.isEmpty
+        checkEmpty = !clipData.name.isEmpty
     }
 }
 

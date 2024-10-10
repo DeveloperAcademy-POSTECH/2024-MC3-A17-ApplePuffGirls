@@ -23,7 +23,6 @@ struct EditBook: View {
         bookData.authors = book.author ?? ""
         
         bookData.genre = book.genre
-        bookData.readStatus = book.readStatus
         bookData.readDate = book.readDate ?? .now
     }
     
@@ -42,9 +41,7 @@ struct EditBook: View {
                 EditBookInfoSection(book: bookData)
                 
                 EditBookGenreSection(book: bookData)
-                
-                EditReadStatusSection(book: bookData)
-                
+
                 VStack(alignment: .leading) {
                     Text("독서 날짜")
                         .font(.bookCaption)
@@ -106,7 +103,6 @@ struct EditBook: View {
     
     private func clickRightButton() {
         book.genre = bookData.genre
-        book.readStatus = bookData.readStatus
         book.readDate = bookData.readDate
         
         do {

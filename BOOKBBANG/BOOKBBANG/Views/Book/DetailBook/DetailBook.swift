@@ -13,7 +13,7 @@ struct DetailBook: View {
     @State private var isEditBookPresented: Bool = false
     
     @ObservedObject var book: Book
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -24,6 +24,8 @@ struct DetailBook: View {
                                         rightTitle: "수정",
                                         onChevron: { homeViewModel.transition(to: .home) },
                                         onRightButton: { isEditBookPresented.toggle() })
+                    
+                    let phrases = book.phrases?.allObjects as? [Phrase]
                     
                     ScrollView {
                         VStack(spacing: 2) {
@@ -44,27 +46,40 @@ struct DetailBook: View {
                                 Button(action: {
                                     detailBookViewModel.transition(to: .addPhrase)
                                 }, label: {
-                                    Text("+  빵 추가하기")
+                                    Text("빵 추가하기")
                                         .font(.bookCaption)
-                                        .frame(width: 118, height: 40)
-                                        .foregroundStyle(.white)
-                                        .background(Capsule().foregroundStyle(.greenMain100))
+                                        .frame(width: 120, height: 32)
+                                        .foregroundColor(.greenMain100)
+                                        .background(Capsule().fill(.clear))
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(Color.greenMain100, lineWidth: 1)
+                                        )
                                 })
                             }
                             .foregroundStyle(.typo50)
                             .padding(.horizontal, 26)
-                            .padding(.bottom, 27)
+                            .padding(.bottom, phrases?.count == 0 ? 0 : 27)
                             
-                            if let phrases = book.phrases?.allObjects as? [Phrase] {
-                                ForEach(phrases, id: \.self) { phrase in
-                                    Button {
-                                        detailBookViewModel.newPhrase = phrase
-                                        detailBookViewModel.transition(to: .detailPhrase)
-                                    } label: {
-                                        PhraseCard(display: .detailBook, phrase: phrase)
-                                    }
+                            if phrases?.count == 0 {
+                                HStack {
+                                    Spacer()
+                                    Image(.induceAddPhrase)
+                                        .padding(.trailing, 150)
                                 }
-                                .padding(.horizontal, 2)
+                            }
+                            else {
+                                if let phrases = phrases {
+                                    ForEach(phrases, id: \.self) { phrase in
+                                        Button {
+                                            detailBookViewModel.newPhrase = phrase
+                                            detailBookViewModel.transition(to: .detailPhrase)
+                                        } label: {
+                                            PhraseCard(display: .detailBook, phrase: phrase)
+                                        }
+                                    }
+                                    .padding(.horizontal, 5)
+                                }
                             }
                         }
                     }
@@ -86,7 +101,9 @@ struct DetailBook: View {
                         AddThoughts(detailBookViewModel: detailBookViewModel, phraseData: .constant(newPhraseData))
                     }
                 case .addClipToPhrase:
-                    AddCategoryToPhrase(detailBookViewModel: detailBookViewModel)
+                    if let newPhraseData = detailBookViewModel.newPhraseData {
+                        AddCategoryToPhrase(detailBookViewModel: detailBookViewModel, phraseData: .constant(newPhraseData))
+                    }
                 case .addClipFinal:
                     CompleteAddingPhrase(detailBookViewModel: detailBookViewModel, book: book)
                 case .detailPhrase:

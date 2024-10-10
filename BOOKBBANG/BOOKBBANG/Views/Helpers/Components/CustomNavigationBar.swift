@@ -23,7 +23,7 @@ struct CustomNavigationBar: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            HStack {
+            HStack(spacing: 0) {
                 if navigationType == .cancel {
                     Button(action: {
                         onCancel?()
@@ -40,7 +40,6 @@ struct CustomNavigationBar: View {
                         Image(systemName: "chevron.left")
                             .foregroundStyle(.greenMain100)
                     })
-                    
                 }
                 
                 Spacer()
@@ -65,9 +64,7 @@ struct CustomNavigationBar: View {
                 .font(.system(size: 18, weight: .semibold))
                 .kerning(-0.4)
         }
-        
     }
-    
 }
 
 #Preview {

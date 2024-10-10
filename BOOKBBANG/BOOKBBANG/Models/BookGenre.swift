@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum BookGenre: String, CaseIterable {
     case essay, novel, liberalArts, economicManagement
@@ -26,5 +27,40 @@ enum BookGenre: String, CaseIterable {
         case .etc: return "기타"
         }
     }
-  static let allGenreCount: Int = 10
+    
+    var bread: Image {
+        switch self {
+        case .essay: return Image(.bread1)
+        case .novel: return Image(.bread2)
+        case .liberalArts: return Image(.bread3)
+        case .economicManagement: return Image(.bread4)
+        case .religion: return Image(.bread5)
+        case .socialPolitics: return Image(.bread6)
+        case .selfImprovement: return Image(.bread7)
+        case .history: return Image(.bread8)
+        case .naturalScience: return Image(.bread9)
+        case .etc: return Image(.bread10)
+        }
+    }
+    
+    var breadName: String {
+        switch self {
+        case .essay: return "프레첼"
+        case .novel: return "롤케이크"
+        case .liberalArts: return "식빵"
+        case .economicManagement: return "모카번"
+        case .religion: return "마카롱"
+        case .socialPolitics: return "체리파이"
+        case .selfImprovement: return "바게트"
+        case .history: return "메론빵"
+        case .naturalScience: return "초코도넛"
+        case .etc: return "삼각김빵"
+        }
+    }
+    
+    static func fromDescription(_ description: String) -> BookGenre? {
+        return BookGenre.allCases.first { $0.description == description }
+    }
+    
+    static let allGenreCount: Int = 10
 }

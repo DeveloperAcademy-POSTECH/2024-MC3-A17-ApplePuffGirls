@@ -34,21 +34,17 @@ struct AddPhrase: View {
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
-                        Image(.baking2)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 90)
                         
                         ZStack(alignment: .leading) {
                             Rectangle()
-                                .foregroundStyle(.greenMain40)
+                                .foregroundStyle(.greenSub50)
                                 .frame(height: 14)
-                                .padding(.bottom, -10)
+                                .padding(.bottom, -5)
                             
                             if let title = book.name {
                                 Text("\"\(title)\"")
                                     .foregroundStyle(.typo100)
-                                    .font(.system(size: 24, weight: .bold))
+                                    .font(.system(size: 20, weight: .bold))
                                     .padding(.bottom, 3)
                                     .frame(maxWidth: UIScreen.main.bounds.width - 46)
                                     .lineLimit(1)
@@ -58,10 +54,10 @@ struct AddPhrase: View {
                         
                         Text("책의 어느 부분을 구워볼까요?")
                             .foregroundStyle(.typo100)
-                            .font(.system(size: 24, weight: .bold))
-                            .padding(.bottom, 10)
+                            .font(.system(size: 20, weight: .bold))
+                            .padding(.bottom, 4)
                         
-                        Text("책에서 마음에 와닿은 구절을 적어주세요")
+                        Text("책을 재료삼아 빵을 구울 수 있습니다")
                             .foregroundStyle(.typo50)
                             .font(.system(size: 13, weight: .regular))
                     }
@@ -71,16 +67,7 @@ struct AddPhrase: View {
                 .padding(.vertical, 20)
                 .padding(.horizontal, 23)
                 
-                AddPhraseTextfield(checkEmpty: $checkEmpty,
-                                   phrase: $phrase)
-                .padding(.horizontal, 22)
-                .padding(.bottom, 30)
-                
                 HStack {
-                    Text("책에서 구절을 촬영해보세요!")
-                        .foregroundStyle(.typo50)
-                        .font(.system(size: 13, weight: .regular))
-                    
                     Spacer()
                     
                     NavigationLink(destination: {
@@ -91,24 +78,38 @@ struct AddPhrase: View {
                     }, label: {
                         RoundedRectangle(cornerRadius: 29)
                             .stroke(.greenMain100, lineWidth: 1.0)
-                            .frame(width: 150 ,height: 32)
+                            .frame(width: 120 ,height: 32)
                             .overlay {
                                 HStack {
                                     Image(systemName: "text.viewfinder")
-                                        .font(.system(size: 20))
+                                        .font(.system(size: 13))
                                     
                                     Text("구절 가져오기")
                                         .foregroundStyle(.greenMain100)
                                         .font(.system(size: 13, weight: .regular))
-                                        .padding(.horizontal, 10)
                                 }
+                                .padding(10)
                             }
                     })
                 }
+                .padding(.trailing, 28)
+                
+                AddPhraseTextfield(checkEmpty: $checkEmpty,
+                                   phrase: $phrase)
                 .padding(.horizontal, 22)
-                .padding(.bottom, 40)
+                .padding(.bottom, 10)
                 
                 Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Image(.book)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .padding(.trailing, 22)
+                }
             }
         }
         .background(.backLighter)

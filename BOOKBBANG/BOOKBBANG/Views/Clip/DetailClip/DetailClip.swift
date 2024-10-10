@@ -49,10 +49,10 @@ struct DetailClip: View {
                     VStack(spacing: 0) {
                         if let count = clip.phrases?.count, count == 0 {
                             VStack {
-                                Image(.gentlemangyodong)
+                                Image(.mustache)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 200)
+                                    .frame(width: 160)
                                     .padding(.bottom, 20)
                                 
                                 Text("문장을 추가하러 가볼까요?")

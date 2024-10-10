@@ -11,7 +11,7 @@ struct Setting: View {
     @ObservedObject var homeViewModel: HomeViewModel
     
     let columns = [
-        GridItem(.flexible(), spacing: 2), GridItem(.flexible(), spacing: 2)
+        GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5)
     ]
     
     var body: some View {
@@ -22,17 +22,26 @@ struct Setting: View {
                                     title: "설정",
                                     onChevron: { homeViewModel.transition(to: .home) })
                 
-                LazyVGrid(columns: columns, spacing: 2) {
+                LazyVGrid(columns: columns, spacing: 5) {
                     ForEach(SettingCategory.allCases, id: \.self) { page in
-                        NavigationLink(destination: {
-                            page.destination
-                        }, label: {
-                            SelectCategory(category: page)
-                        })
-                        
+                        if page == .contact {
+                            Button(action: {
+                                page.handleContactTap()
+                            }, label: {
+                                SelectCategory(category: page)
+                            })
+                        }
+                        else {
+                            NavigationLink(destination: {
+                                page.destination
+                            }, label: {
+                                SelectCategory(category: page)
+                            })
+                        }
                     }
                 }
                 .padding(.top, 10)
+                .padding(.horizontal, 32)
                 
                 Spacer()
             }
@@ -45,24 +54,30 @@ struct SelectCategory: View {
     var category: SettingCategory
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 0) {
+            Spacer()
+            
             category.image
                 .resizable()
                 .scaledToFit()
-                .padding()
-                .frame(height: 143)
+                .frame(height: 100)
+                .padding(.bottom, 20)
             
             HStack(spacing: 0) {
                 Text(category.title)
                     .font(.settingCategoryTitle)
                     .foregroundStyle(.typo100)
-                    .kerning(-1)
+                    .kerning(-0.4)
+                
                 Spacer()
+                
                 Image(systemName: "chevron.right")
                     .foregroundStyle(.typo50)
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 15)
         }
-        .padding(19)
+        .frame(height: 187)
         .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
     }
 }

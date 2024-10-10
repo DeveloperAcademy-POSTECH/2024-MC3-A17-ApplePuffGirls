@@ -99,7 +99,12 @@ struct ClipView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 55, height: 55)
                 .foregroundStyle(Colors.getClipColor(clip.color))
-                
+                .overlay {
+                    Image(ClipItem.getClipBackgroundShape(clip.design))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 55, height: 55)
+                }
             
             VStack(alignment: .leading) {
                 Text(clip.title ?? "")
@@ -132,7 +137,6 @@ struct NewClipButton: View {
             showingSheet = true
         } label: {
             VStack {
-                //Divider()
                 HStack {
                     EmptyBox(width: 55, height: 55)
                     

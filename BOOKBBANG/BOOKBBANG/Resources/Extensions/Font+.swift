@@ -27,7 +27,7 @@ extension Font {
     
     // 책 상세정보
     static let bookTitle: Font = .system(size: 17, weight: .bold)
-    static let bookCaption: Font = .system(size: 13, weight: .regular)
+    static let bookCaption: Font = .system(size: 13, weight: .medium)
     static let bookCaptionBold: Font = .system(size: 13, weight: .bold)
     static let readStateButton: Font = .system(size: 10, weight: .medium)
     
@@ -45,7 +45,6 @@ extension Font {
     static let phraseAtRecipt: Font = .system(size: 15, weight: .regular)
     
     // 책 추가
-    static let addBookTitle: Font = .system(size: 24, weight: .bold)
+    static let addBookTitle: Font = .system(size: 20, weight: .bold)
     static let addBookButton: Font = .system(size: 13, weight: .regular)
-    
 }

@@ -12,6 +12,8 @@ struct CompleteAddingBook: View {
     @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     
+    @Binding var bookData: BookData
+    
     var body: some View {
         VStack{
             CompleteAddingPhraseHeader(title: "새로운 책 추가하기",
@@ -19,12 +21,36 @@ struct CompleteAddingBook: View {
             
             SearchBookProgressBar(process: 4)
             
-            HeaderSection(title: "책 추가를 완료했습니다",
-                          subtitle: "맛있는 빵을 만들러 가볼까요?")
-            .padding(.top, 20)
-            .padding(.bottom, 50)
+            if let genre = bookData.genre,
+               let matchingGenre = BookGenre.fromDescription(genre) {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("책 추가를 완료했습니다")
+                            .font(.addBookTitle)
+                            .foregroundStyle(.typo100)
+                            .padding(.bottom, 1)
+                        
+                        HStack(spacing: 0) {
+                            Text("이 책으론 ")
+                                .font(.bookCaption)
+                                .foregroundStyle(.typo50)
+                            Text("\(matchingGenre.breadName)")
+                                .font(.bookCaptionBold)
+                                .foregroundStyle(.typo80)
+                            Text("을(를) 만들 수 있어요!")
+                                .font(.bookCaption)
+                                .foregroundStyle(.typo50)
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(.leading, 30)
+                .padding(.top, 28)
+                .padding(.bottom, 100)
+            }
             
-            Image(.baking2)
+            
+            Image(.completeBread)
             
             Spacer()
         }
@@ -32,15 +58,6 @@ struct CompleteAddingBook: View {
     }
     
     private func clickRightButton() {
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            fatalError("Failed to save context, \(error.localizedDescription)")
-//        }
         homeViewModel.transition(to: .home)
     }
-}
-
-#Preview {
-    CompleteAddingBook(homeViewModel: HomeViewModel())
 }

@@ -19,6 +19,11 @@ struct TopClipImage: View {
             .foregroundColor(
                 Colors.getClipColor(clipData.selectedColor)
             )
+            .overlay {
+                Image(ClipItem.getClipBackgroundShape(clipData.selectedShape))
+                    .resizable()
+                    .frame(width: 115, height: 110)
+            }
     }
 }
 

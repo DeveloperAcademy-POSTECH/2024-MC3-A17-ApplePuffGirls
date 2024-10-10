@@ -28,21 +28,16 @@ struct AddThoughts: View {
                 VStack {
                     HStack {
                         VStack(alignment: .leading, spacing: 0) {
-                            Image(.baking1)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 90)
-                            
                             ZStack(alignment: .leading) {
                                 Rectangle()
-                                    .foregroundStyle(.greenMain40)
+                                    .foregroundStyle(.greenSub50)
                                     .frame(height: 14)
-                                    .padding(.bottom, -10)
+                                    .padding(.bottom, -5)
                                 
                                 if let title = phraseData.book?.name {
                                     Text("\"\(title)\"")
                                         .foregroundStyle(.typo100)
-                                        .font(.system(size: 24, weight: .bold))
+                                        .font(.system(size: 20, weight: .bold))
                                         .padding(.bottom, 3)
                                         .frame(maxWidth: UIScreen.main.bounds.width - 46)
                                         .lineLimit(1)
@@ -52,8 +47,8 @@ struct AddThoughts: View {
                             
                             Text("이 빵에 어떤 생각을 담아볼까요?")
                                 .foregroundStyle(.typo100)
-                                .font(.system(size: 24, weight: .bold))
-                                .padding(.bottom, 10)
+                                .font(.system(size: 20, weight: .bold))
+                                .padding(.bottom, 4)
                             
                             Text("빵을 구운 이유를 나중에 쉽게 확인할 수 있어요")
                                 .foregroundStyle(.typo50)
@@ -79,13 +74,25 @@ struct AddThoughts: View {
                         
                         if detailBookViewModel.newPhraseData != nil {
                             AddThoughtsPhraseCard(phraseData: $phraseData)
-                                .padding(.horizontal, 2)
+                                .padding(.horizontal, 5)
                                 .padding(.bottom, 22)
                         }
                         
                         AddThoughtsTextfield(checkEmpty: $checkEmpty,
                                              thought: $thought)
                         .padding(.horizontal, 22)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            
+                            Image(.book)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100)
+                                .padding(.trailing, 22)
+                        }
                     }
                 }
             }

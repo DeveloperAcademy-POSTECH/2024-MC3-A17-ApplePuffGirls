@@ -31,55 +31,40 @@ struct SearchBook: View {
                                     onRightButton: { homeViewModel.transition(to: .addBook) })
                 
                 SearchBookProgressBar(process: 1)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 28)
                 
-                SearchBookSearchBar(searchText: $searchText, searchRouter: router)
-                    .padding(.vertical, 20)
                 
-                ScrollView {
-                    Spacer().frame(height: 20)
+                ScrollViewReader { proxy in
+                    SearchBookSearchBar(searchText: $searchText, searchRouter: router, onScrollToTop: {
+                        proxy.scrollTo(0, anchor: .top)
+                    })
+                    .padding(.bottom, 20)
                     
-                    LazyVStack {
-                        if let bookList = router.bookList {
-                            ForEach(bookList, id: \.self) { book in
-                                SearchBookListRow(selectedBookID: $selectedBookID,
-                                                  book: book)
-                                .padding(.bottom, 10)
-                                .padding(.leading, 20)
-                                
-                                VStack{}
-                                    .frame(maxWidth: UIScreen.main.bounds.width)
-                                    .frame(height: 0.5)
-                                    .background(.divider)
+                    ScrollView {
+                        Spacer().frame(height: 20)
+                        
+                        LazyVStack {
+                            if let bookList = router.bookList {
+                                ForEach(bookList.indices, id: \.self) { index in
+                                    SearchBookListRow(selectedBookID: $selectedBookID,
+                                                      book: bookList[index])
                                     .padding(.bottom, 10)
-                                    .padding(.horizontal, 14)
+                                    .padding(.leading, 20)
+                                    
+                                    VStack{}
+                                        .frame(maxWidth: UIScreen.main.bounds.width)
+                                        .frame(height: 0.5)
+                                        .background(.divider)
+                                        .padding(.bottom, 10)
+                                        .padding(.horizontal, 14)
+                                        .id(index)
+                                }
                             }
                         }
                     }
-                    HStack {
-                        Text("원하는 책이 없나요?")
-                            .foregroundStyle(.typo50)
-                            .font(.system(size: 13, weight: .regular))
-                        
-                        Spacer()
-                        
-                        NavigationLink(destination: {
-                            VStack {
-                                Text("쨔자잔")
-                                    .bold()
-                                
-                                Image(.gentlemangyodong)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        }, label: {
-                            DirectRegisterBookButton()
-                        })
-                    }
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 40)
+                    .scrollIndicators(.hidden)
+                    .scrollDismissesKeyboard(.immediately)
                 }
-                .scrollIndicators(.hidden)
             }
             .background(.backLighter)
         }
