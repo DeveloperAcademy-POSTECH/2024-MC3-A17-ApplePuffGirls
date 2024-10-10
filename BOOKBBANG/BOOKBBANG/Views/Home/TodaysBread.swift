@@ -86,9 +86,9 @@ struct TodaysBread: View {
             let day = calendar.component(.day, from: breadDate)
             let hour = calendar.component(.hour, from: breadDate)
             
-            if hour > 9 {
+            if hour < 9 {
                 referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-            } else if hour > 14 {
+            } else if hour < 14 {
                 referenceTime = Date(y: year, m: month, d: day, h: 14) ?? Date()
             } else {
                 referenceTime = Date(y: year, m: month, d: day+1, h: 9) ?? Date()

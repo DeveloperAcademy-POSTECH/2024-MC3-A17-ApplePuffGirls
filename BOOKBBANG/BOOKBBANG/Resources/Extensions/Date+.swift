@@ -13,6 +13,7 @@ extension Date {
         components.year = year
         components.month = month
         components.day = day
+        components.hour = hour
         
         guard let date = Calendar.current.date(from: components) else {
             return nil

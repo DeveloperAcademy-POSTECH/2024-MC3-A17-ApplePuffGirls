@@ -66,12 +66,6 @@ struct ClipList: View {
                             homeViewModel.selectedClip = clip
                             homeViewModel.transition(to: .detailClip)
                         }
-//                    NavigationLink(destination: {
-//                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
-//                    }, label: {
-//                        ClipView(clip: clip, viewContext: viewContext)
-//                    })
-                    
                 }
             }
             .padding(.horizontal, 10)
@@ -99,14 +93,13 @@ struct ClipView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 55, height: 55)
                 .foregroundStyle(Colors.getClipColor(clip.color))
-                
+            
             
             VStack(alignment: .leading) {
                 Text(clip.title ?? "")
                     .font(.listTitle)
                     .foregroundStyle(.typo100)
                     .padding(.bottom, 2)
-                
                 
                 Text("구절 \(phraseCount)개")
                     .font(.phraseBottom)
