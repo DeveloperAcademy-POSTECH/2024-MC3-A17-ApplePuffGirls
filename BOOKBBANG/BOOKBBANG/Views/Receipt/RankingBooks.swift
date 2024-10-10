@@ -38,7 +38,7 @@ struct RankingBooks: View {
         GridItem(.flexible(), spacing: 2)
     ]
     
-    @State private var showGif: Bool = false
+    @State private var showLoading: Bool = false
     
     var selectedDate: DateRange
     
@@ -108,23 +108,8 @@ struct RankingBooks: View {
             .background(.backLighter)
             .navigationBarBackButtonHidden()
             
-            if showGif {
-                VStack {
-                    Spacer()
-                    
-                    GifImageView("receiptVideo")
-                        .frame(width: 200, height: 200)
-                    
-                    Text("빵수증 출력 중 . . .")
-                        .font(.bookTitle)
-                        .foregroundStyle(.typo50)
-                        .kerning(-0.3)
-                    
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.backLighter)
-                .ignoresSafeArea()
+            if showLoading {
+                ReceiptLoading()
             }
         }
     }
@@ -132,10 +117,9 @@ struct RankingBooks: View {
     private func onNextButton() {
         makeReceipt()
         
-        self.showGif = true
+        self.showLoading = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-            showGif = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
             dismiss()
         }
     }
