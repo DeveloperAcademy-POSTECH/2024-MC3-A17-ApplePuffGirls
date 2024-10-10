@@ -97,6 +97,7 @@ struct Home: View {
                 HStack {
                     NavigationLink(destination: {
                         ReceiptMain()
+                            .toolbarRole(.editor)
                     }, label: {
                         Text("빵수증")
                             .font(.system(size: 16, weight: .semibold))
@@ -105,6 +106,7 @@ struct Home: View {
                     
                     NavigationLink(destination: {
                         Setting()
+                            .toolbarRole(.editor)
                     }, label: {
                         Text("설정")
                             .font(.system(size: 16, weight: .semibold))

@@ -26,7 +26,7 @@ struct Setting: View {
                         }
                         else {
                             NavigationLink(destination: {
-                                page.destination
+                                page.destination?.toolbarRole(.editor)
                             }, label: {
                                 SelectCategory(category: page)
                             })
@@ -38,6 +38,7 @@ struct Setting: View {
                 
                 Spacer()
             }
+            .padding(.top, 30)
             .background(.backLighter)
         }
         .navigationTitle("설정")

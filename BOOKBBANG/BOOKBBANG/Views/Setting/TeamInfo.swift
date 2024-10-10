@@ -7,28 +7,20 @@
 
 import SwiftUI
 
-
-
 struct TeamInfo: View {
-    @Environment(\.dismiss) var dismiss
     let columns = [
         GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5)
     ]
     
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(false),
-                                navigationType: .chevron,
-                                title: "책빵을 만든 사람들",
-                                onChevron: { dismiss() })
-            
             ScrollView {
                 VStack(spacing: 0) {
                     Text("Team Members")
                         .font(.system(size: 16, weight: .bold))
                         .foregroundStyle(.greenMain100)
                         .kerning(-0.4)
-                        .padding(.bottom, 31)
+                        .padding(.vertical, 20)
                     
                     HStack {
                         Spacer()
@@ -39,7 +31,7 @@ struct TeamInfo: View {
                         }
                         Spacer()
                     }
-
+                    
                     Image(.apple)
                         .resizable()
                         .scaledToFit()
@@ -56,7 +48,7 @@ struct TeamInfo: View {
             .scrollIndicators(.hidden)
         }
         .background(.backLighter)
-        .navigationBarBackButtonHidden()
+        .navigationTitle("책빵을 만든 사람들")
     }
 }
 
