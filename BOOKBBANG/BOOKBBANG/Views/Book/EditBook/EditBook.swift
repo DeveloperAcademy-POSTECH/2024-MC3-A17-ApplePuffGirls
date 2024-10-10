@@ -73,6 +73,7 @@ struct EditBook: View {
                 } label: {
                     Text("삭제하기")
                 }
+                .padding(.top, 20)
                 
                 Spacer()
             }
