@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TeamInfo: View {
-    let columns = [
+    private let columns = [
         GridItem(.flexible(), spacing: 5), GridItem(.flexible(), spacing: 5)
     ]
     
