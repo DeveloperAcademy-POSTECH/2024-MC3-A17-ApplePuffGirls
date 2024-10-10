@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Onboarding: View {
     @State private var isStartViewActive: Bool = false
+    @State private var currentPage: Int = 0
     @Binding var isFirstLaunching: Bool
     @AppStorage("installedDate") var installDate: Double?
     
@@ -18,25 +19,62 @@ struct Onboarding: View {
             
             VStack(spacing: 0) {
                 HStack {
+                    if currentPage > 0 {
+                        Button(action: {
+                            currentPage -= 1
+                        }, label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.greenMain100)
+                                .font(.system(size: 18, weight: .bold))
+                        })
+                        .padding(.leading, 24)
+                    }
+                    else {
+                        Button(action: {}, label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.backLighter)
+                                .font(.system(size: 18, weight: .bold))
+                        })
+                        .padding(.leading, 24)
+                    }
+                    
                     Spacer()
+                    
                     Text("책빵 시작하기")
                         .foregroundStyle(.typo100)
                         .font(.system(size: 18, weight: .semibold))
                         .kerning(-0.4)
+                    
                     Spacer()
+                    
+                    if currentPage < onboardingChapter.count {
+                        Button(action: {
+                            currentPage += 1
+                        }, label: {
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.greenMain100)
+                                .font(.system(size: 18, weight: .bold))
+                        })
+                        .padding(.trailing, 24)
+                    }
+                    else {
+                        Button(action: {}, label: {
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.backLighter)
+                                .font(.system(size: 18, weight: .bold))
+                        })
+                        .padding(.leading, 24)
+                    }
                 }
                 .frame(height: 55)
                 .background(.backLighter)
                 
-                TabView {
-                    ForEach(onboardingChapter, id: \.self) { chapter in
-                        OnboardingEachChapter(chapter: chapter)
-                    }
-                    
+                if currentPage < onboardingChapter.count {
+                    OnboardingEachChapter(chapter: onboardingChapter[currentPage])
+                        .padding(.top, 40)
+                } else {
                     OnboardingStart(isFirstLaunching: $isFirstLaunching)
                 }
-                .tabViewStyle(.page)
-                .padding(.top, 50)
             }
         }
         .onAppear {
@@ -55,10 +93,11 @@ struct OnboardingEachChapter: View {
                 .aspectRatio(contentMode: .fit)
             
             Text(chapter.firstContent)
-                .font(.segment)
+                .font(.system(size: 14, weight: .bold))
                 .foregroundStyle(.typo100)
                 .multilineTextAlignment(.center)
                 .kerning(-0.4)
+                .padding(.top, 10)
             
             Spacer()
             
@@ -67,13 +106,14 @@ struct OnboardingEachChapter: View {
                 .aspectRatio(contentMode: .fit)
             
             Text(chapter.secondContent)
-                .font(.segment)
+                .font(.system(size: 14, weight: .bold))
                 .foregroundStyle(.typo100)
                 .multilineTextAlignment(.center)
                 .kerning(-0.4)
+                .padding(.top, 10)
             
             Spacer()
         }
-        .padding(.horizontal, 50)
+        .padding(.horizontal, 30)
     }
 }

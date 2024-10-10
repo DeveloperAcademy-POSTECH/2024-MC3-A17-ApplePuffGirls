@@ -27,7 +27,7 @@ struct Manual: View {
                     
                     ForEach(manualChapter, id: \.self) { manual in
                         ShowEachChapter(chapter: manual)
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 50)
                     }
                 }
             }
@@ -48,8 +48,8 @@ struct ShowEachChapter: View {
                 Image(chapter.image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150)
-                    .padding(.bottom, 20)
+                    .frame(width: chapter.imageWidth)
+                    .padding(.bottom, 40)
                 
                 Text(chapter.title)
                     .font(.system(size: 16, weight: .bold))
@@ -60,6 +60,7 @@ struct ShowEachChapter: View {
                 Text(chapter.content)
                     .font(.system(size: 13, weight: .regular))
                     .kerning(-0.4)
+                    .lineSpacing(10)
                     .foregroundStyle(.typo80)
                     .multilineTextAlignment(.center)
             }
