@@ -52,7 +52,7 @@ struct DetailClip: View {
                                 Image(.mustache)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 200)
+                                    .frame(width: 160)
                                     .padding(.bottom, 20)
                                 
                                 Text("문장을 추가하러 가볼까요?")
