@@ -15,6 +15,9 @@ struct Home: View {
     @FetchRequest(entity: Phrase.entity(), sortDescriptors: [])
     private var phrases: FetchedResults<Phrase>
     
+    @FetchRequest(entity: Clip.entity(), sortDescriptors: [])
+    private var clips: FetchedResults<Clip>
+    
     @State var todaysBread: Phrase?
     @State var selected: GroupBy = .book
     
@@ -39,6 +42,18 @@ struct Home: View {
                             }
                             .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
                             .padding(.horizontal,5)
+                            
+                            if selected == .clip, clips.isEmpty {
+                                HStack {
+                                    Image(.induceAddClip)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 180)
+                                        .padding(.leading, 50)
+                                    
+                                    Spacer()
+                                }
+                            }
                         }
                         .padding(.vertical, 5)
                     }
@@ -74,42 +89,42 @@ struct Home: View {
             todaysBread = phrases.randomElement()
         }
     }
-    
-    struct HomeTopBar : View {
-        var body: some View {
+}
+
+struct HomeTopBar : View {
+    var body: some View {
+        HStack {
+            Image(.logo)
+                .resizable()
+                .frame(width: 44, height: 44)
+                .aspectRatio(contentMode: .fit)
+                .padding(.leading, 10)
+            
+            Spacer()
+            
             HStack {
-                Image(.logo)
-                    .resizable()
-                    .frame(width: 44, height: 44)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading, 10)
+                NavigationLink(destination: {
+                    ReceiptMain()
+                        .toolbarRole(.editor)
+                }, label: {
+                    Text("빵수증")
+                        .font(.system(size: 16, weight: .semibold))
+                        .padding()
+                })
                 
-                Spacer()
-                
-                HStack {
-                    NavigationLink(destination: {
-                        ReceiptMain()
-                            .toolbarRole(.editor)
-                    }, label: {
-                        Text("빵수증")
-                            .font(.system(size: 16, weight: .semibold))
-                            .padding()
-                    })
-                    
-                    NavigationLink(destination: {
-                        Setting()
-                            .toolbarRole(.editor)
-                    }, label: {
-                        Text("설정")
-                            .font(.system(size: 16, weight: .semibold))
-                            .padding()
-                    })
-                }
-                .foregroundStyle(.typo100)
-                
+                NavigationLink(destination: {
+                    Setting()
+                        .toolbarRole(.editor)
+                }, label: {
+                    Text("설정")
+                        .font(.system(size: 16, weight: .semibold))
+                        .padding()
+                })
             }
-            .padding(.horizontal, 15)
-            .frame(height: 55)
+            .foregroundStyle(.typo100)
+            
         }
+        .padding(.horizontal, 15)
+        .frame(height: 55)
     }
 }
