@@ -9,23 +9,11 @@ import SwiftUI
 
 struct DetailPhrase: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var detailBookViewModel: DetailBookViewModel
     @State private var isEditPhrasePresented: Bool = false
-    
     @ObservedObject var phrase: Phrase
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavigationBar(isHighlighted:.constant(true) ,
-                                navigationType: .chevron,
-                                title: "빵 상세보기",
-                                rightTitle: "수정",
-                                onChevron: {
-                detailBookViewModel.transition(to: .detailBook)
-                detailBookViewModel.newPhrase = nil
-            },
-                                onRightButton: { isEditPhrasePresented.toggle()})
-            
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("내가 구운 빵")
@@ -44,10 +32,12 @@ struct DetailPhrase: View {
                         .padding(.bottom, 8)
                         .padding(.leading, 30)
                     
-                    ClipsInPhrase(clips: phrase.clips?.allObjects as! [Clip])
+                    let clipsArray = phrase.clips?.allObjects as? [Clip] ?? []
+                    ClipsInPhrase(clips: clipsArray)
                         .background(
                             RoundedRectangle(cornerRadius: 15)
-                                .fill(Color.backDarker))
+                                .fill(Color.backDarker)
+                        )
                         .overlay {
                             RoundedRectangle(cornerRadius: 15)
                                 .stroke(.typo25)
@@ -86,7 +76,19 @@ struct DetailPhrase: View {
         }
         .padding(.horizontal, 5)
         .background(.backLighter)
-        .navigationBarBackButtonHidden()
+        .navigationTitle("빵 상세보기")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarRole(.editor)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    isEditPhrasePresented.toggle()
+                }) {
+                    Text("수정")
+                        .fontWeight(.bold)
+                }
+            }
+        }
         .sheet(isPresented: $isEditPhrasePresented, content: {
             EditPhrase(phrase: phrase, showEditSheet: $isEditPhrasePresented)
         })

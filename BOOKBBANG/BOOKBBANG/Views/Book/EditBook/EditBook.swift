@@ -12,10 +12,9 @@ struct EditBook: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var book: Book
     @ObservedObject var bookData: BookData = BookData()
-    
+
     @EnvironmentObject var homeViewModel: HomeViewModel
     
-    @State var showingAlert: Bool = false
     init(book: Book) {
         self.book = book
         bookData.thumbnail = book.thumbnail ?? ""
@@ -67,38 +66,8 @@ struct EditBook: View {
                         }
                     }
                 }
-                
-                Button(role: .destructive) {
-                    showingAlert = true
-                } label: {
-                    Text("삭제하기")
-                }
-                .padding(.top, 20)
-                
                 Spacer()
             }
-            .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
-                alertView
-            }, message: { Text("되돌릴 수 없다네..~")})
-        }
-    }
-    
-    @ViewBuilder
-    private var alertView: some View {
-        Button("앗 실수", role: .cancel) { }
-        Button("정말루", role: .destructive) { deleteBook() }
-    }
-    
-    private func deleteBook() {
-        homeViewModel.transition(to: .home)
-        homeViewModel.selectedBook = nil
-        
-        viewContext.delete(book)
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
     

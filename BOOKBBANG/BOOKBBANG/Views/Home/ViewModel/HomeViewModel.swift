@@ -57,6 +57,4 @@ enum HomeViewType {
     case addBookFinal
     
     case detailBook
-    
-    case detailClip
 }

@@ -10,7 +10,6 @@ import CoreData
 
 struct Home: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @ObservedObject var settingViewModel: SettingViewModel
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @FetchRequest(entity: Phrase.entity(), sortDescriptors: [])
@@ -36,8 +35,7 @@ struct Home: View {
                                 case .book :
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
-                                    ClipList(detailBookViewModel: detailBookViewModel)
-                                        .environmentObject(homeViewModel)
+                                    ClipList()
                                 }
                             }
                             .scrollIndicators(.hidden)
@@ -69,11 +67,6 @@ struct Home: View {
                                    detailBookViewModel: detailBookViewModel,
                                    book: selectedBook)
                         .environmentObject(homeViewModel)
-                    }
-                case .detailClip:
-                    if let selectedClip = homeViewModel.selectedClip {
-                        DetailClip(detailBookViewModel: detailBookViewModel, clip: selectedClip)
-                            .environmentObject(homeViewModel)
                     }
                 }
             }

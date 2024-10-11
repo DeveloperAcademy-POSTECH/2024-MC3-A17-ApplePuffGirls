@@ -54,6 +54,4 @@ enum DetailBookViewType {
     case addThoughts
     case addClipToPhrase
     case addClipFinal
-    
-    case detailPhrase
 }

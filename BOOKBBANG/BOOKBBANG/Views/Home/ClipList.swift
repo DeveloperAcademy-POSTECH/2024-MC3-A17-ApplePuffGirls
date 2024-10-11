@@ -19,9 +19,6 @@ struct ClipList: View {
     @FetchRequest(entity: Book.entity(), sortDescriptors: [])
     private var books: FetchedResults<Book>
     
-    @ObservedObject var detailBookViewModel: DetailBookViewModel
-    @EnvironmentObject var homeViewModel: HomeViewModel
-    
     var sortedClips: [Clip] {
         switch sort {
         case .updated:
@@ -44,44 +41,45 @@ struct ClipList: View {
     
     var body: some View {
         VStack {
-            // 정렬 버튼
             HStack {
                 Spacer()
                 SortingClipPicker(sort: $sort)
             }
             
             VStack {
-                // 새로운 클립 만들기
-                VStack {
                     Divider()
-                    NewClipButton()
-                }
                 
-                // 클립 리스트
                 ForEach(sortedClips) { clip in
-                    Divider()
-                    
-                    ClipView(clip: clip, viewContext: viewContext)
-                        .onTapGesture {
-                            homeViewModel.selectedClip = clip
-                            homeViewModel.transition(to: .detailClip)
-                        }
-//                    NavigationLink(destination: {
-//                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
-//                    }, label: {
-//                        ClipView(clip: clip, viewContext: viewContext)
-//                    })
-                    
+                    NavigationLink(destination: {
+                        DetailClip(clip: clip)
+                    }, label: {
+                        ClipView(clip: clip, viewContext: viewContext)
+                    })
                 }
+                .padding(.horizontal, 10)
+                .padding(.bottom, 10)
+                
+                Divider()
+                NewClipButton()
             }
-            .padding(.horizontal, 10)
-            .padding(.bottom, 10)
         }
         .frame(maxWidth: .infinity)
     }
+    
+    private func deleteClip(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let clipToDelete = sortedClips[index]
+            viewContext.delete(clipToDelete)
+        }
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Failed to delete clip: \(error.localizedDescription)")
+        }
+    }
 }
 
-// 리스트 중 하나의 클립(NavigationLink)을 보여줍니다.
 struct ClipView: View {
     @ObservedObject var clip: Clip
     var viewContext: NSManagedObjectContext
@@ -92,7 +90,6 @@ struct ClipView: View {
     
     var body: some View {
         HStack(spacing: 25) {
-            // 클립 이미지
             Image(ClipItem.getClipShape(clip.design))
                 .renderingMode(.template)
                 .resizable()
@@ -128,7 +125,6 @@ struct ClipView: View {
     }
 }
 
-// 새로운 클립 만들기 네비게이션 버튼
 struct NewClipButton: View {
     @State var showingSheet: Bool = false
     
@@ -151,6 +147,7 @@ struct NewClipButton: View {
                 .padding(.horizontal, 13)
             }
         }
+        .padding(.bottom, 10)
         .sheet(isPresented: $showingSheet){
             AddClip()
         }

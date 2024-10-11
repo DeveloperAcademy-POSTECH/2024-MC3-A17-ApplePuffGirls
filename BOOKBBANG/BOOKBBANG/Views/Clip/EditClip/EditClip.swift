@@ -63,15 +63,6 @@ struct EditClip: View {
         .onAppear {
             UIApplication.shared.hideKeyboard()
         }
-        .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {
-            alertView
-        }, message: { Text("되돌릴 수 없다네..~")})
-    }
-    
-    @ViewBuilder
-    private var alertView: some View {
-        Button("앗 실수", role: .cancel) { }
-        Button("정말루", role: .destructive) { deleteClip() }
     }
     
     private func deleteClip() {
