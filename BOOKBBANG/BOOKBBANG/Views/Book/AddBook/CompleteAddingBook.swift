@@ -15,7 +15,7 @@ struct CompleteAddingBook: View {
     @Binding var bookData: BookData
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             CompleteAddingPhraseHeader(title: "새로운 책 추가하기",
                                        onComplete: { clickRightButton() })
             

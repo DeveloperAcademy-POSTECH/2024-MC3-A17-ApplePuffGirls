@@ -84,6 +84,7 @@ struct PhraseCard: View {
                 
                 Spacer()
             }
+            .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity)
             
             // 구절 밑 텍스트

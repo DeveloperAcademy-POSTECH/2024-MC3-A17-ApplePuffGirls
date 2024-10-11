@@ -25,10 +25,9 @@ struct Home: View {
                     HomeTopBar()
                     
                     ScrollView {
-                        VStack(spacing: 2) {
+                        VStack(spacing: 0) {
                             TodaysBread()
-                            VStack(spacing: 2) {
-                                
+                            VStack(spacing: 0) {
                                 SegmentedBar(selected: $selected)
                                 
                                 switch selected {
@@ -38,10 +37,10 @@ struct Home: View {
                                     ClipList()
                                 }
                             }
-                            .scrollIndicators(.hidden)
                             .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
-                            .padding(.horizontal,2)
+                            .padding(.horizontal,5)
                         }
+                        .padding(.vertical, 5)
                     }
                     .scrollIndicators(.hidden)
                 }
@@ -70,12 +69,12 @@ struct Home: View {
                     }
                 }
             }
-            .onAppear {
-                todaysBread = phrases.randomElement()
-            }
+        }
+        .onAppear {
+            todaysBread = phrases.randomElement()
         }
     }
-
+    
     struct HomeTopBar : View {
         var body: some View {
             HStack {
@@ -109,7 +108,7 @@ struct Home: View {
                 .foregroundStyle(.typo100)
                 
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal, 15)
             .frame(height: 55)
         }
     }

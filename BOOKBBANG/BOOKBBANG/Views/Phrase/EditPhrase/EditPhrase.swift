@@ -16,9 +16,7 @@ struct EditPhrase: View {
     @State private var myPhrase: String = ""
     @State private var mythought: String = ""
     @Binding var showEditSheet: Bool
-    
-    @State var showingAlert: Bool = false
-    
+
     @State var selectedClips: [Clip] = []
     
     init(phrase: Phrase, showEditSheet: Binding<Bool>) {
@@ -62,16 +60,7 @@ struct EditPhrase: View {
                     editField(title: "빵 속에 담긴 나의 생각", text: $mythought)
                         .padding(.bottom, 20)
                     
-                    HStack {
                         Spacer()
-                        Button(role: .destructive) {
-                            showingAlert = true
-                        } label: {
-                            Text("삭제하기")
-                        }
-                        Spacer()
-                    }
-                    .padding(.bottom, 20)
                 }
                 .padding(.horizontal, 22)
             }

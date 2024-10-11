@@ -47,8 +47,6 @@ struct ClipList: View {
             }
             
             VStack {
-                    Divider()
-                
                 ForEach(sortedClips) { clip in
                     NavigationLink(destination: {
                         DetailClip(clip: clip)
@@ -59,18 +57,16 @@ struct ClipList: View {
                 .padding(.horizontal, 10)
                 .padding(.bottom, 10)
                 
-                Divider()
+                if sortedClips.isEmpty {
+                    Divider()
+                }
                 NewClipButton()
             }
         }
-        .frame(maxWidth: .infinity)
     }
     
-    private func deleteClip(at offsets: IndexSet) {
-        offsets.forEach { index in
-            let clipToDelete = sortedClips[index]
-            viewContext.delete(clipToDelete)
-        }
+    private func deleteClip(clip: Clip) {
+        viewContext.delete(clip)
         
         do {
             try viewContext.save()
@@ -89,36 +85,41 @@ struct ClipView: View {
     }
     
     var body: some View {
-        HStack(spacing: 25) {
-            Image(ClipItem.getClipShape(clip.design))
-                .renderingMode(.template)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 55, height: 55)
-                .foregroundStyle(Colors.getClipColor(clip.color))
-                .overlay {
-                    Image(ClipItem.getClipBackgroundShape(clip.design))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 55, height: 55)
+        VStack {
+            HStack(spacing: 25) {
+                Image(ClipItem.getClipShape(clip.design))
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 55, height: 55)
+                    .foregroundStyle(Colors.getClipColor(clip.color))
+                    .overlay {
+                        Image(ClipItem.getClipBackgroundShape(clip.design))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 55, height: 55)
+                    }
+                
+                VStack(alignment: .leading) {
+                    Text(clip.title ?? "")
+                        .font(.listTitle)
+                        .foregroundStyle(.typo100)
+                        .padding(.bottom, 2)
+                    
+                    
+                    Text("구절 \(phraseCount)개")
+                        .font(.phraseBottom)
+                        .foregroundStyle(.typo50)
                 }
-            
-            VStack(alignment: .leading) {
-                Text(clip.title ?? "")
-                    .font(.listTitle)
-                    .foregroundStyle(.typo100)
-                    .padding(.bottom, 2)
                 
+                Spacer()
                 
-                Text("구절 \(phraseCount)개")
-                    .font(.phraseBottom)
+                Image(systemName: "chevron.right")
                     .foregroundStyle(.typo50)
             }
             
-            Spacer()
+            Divider()
             
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.typo50)
         }
         .padding(.horizontal, 13)
         .frame(height: 70)
@@ -144,7 +145,7 @@ struct NewClipButton: View {
                     Spacer()
                 }
                 .frame(height: 70)
-                .padding(.horizontal, 13)
+                .padding(.horizontal, 25)
             }
         }
         .padding(.bottom, 10)

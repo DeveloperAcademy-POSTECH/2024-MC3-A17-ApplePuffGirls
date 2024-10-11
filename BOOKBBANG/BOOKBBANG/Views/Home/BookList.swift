@@ -53,7 +53,6 @@ struct BookList: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // 정렬 버튼
             SortingBookPicker(sort: $sort)
             
             if sortedBooks.count == 0 {
@@ -64,20 +63,13 @@ struct BookList: View {
                         }
                     
                     VStack(spacing: 0) {
-                        Image(.pencil)
+                        Image(.induceAddingBook)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 140)
+                            .frame(width: 190)
                             .padding(.bottom, 4)
-                        
-                        Text("책을 추가하러 가볼까요?")
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(.typo80)
-                            .multilineTextAlignment(.center)
                     }
                     .padding(.leading, 40)
-                    
-                    Spacer()
                 }
                 .padding(.horizontal, 20)
             }
