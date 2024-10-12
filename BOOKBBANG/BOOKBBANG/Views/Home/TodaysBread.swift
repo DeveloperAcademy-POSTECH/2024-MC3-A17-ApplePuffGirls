@@ -14,7 +14,7 @@ struct TodaysBread: View {
     
     @FetchRequest(entity: TodayBread.entity(), sortDescriptors: [])
     private var todayBread: FetchedResults<TodayBread>
-
+    
     var body: some View {
         VStack {
             if !todayBread.isEmpty {
@@ -81,7 +81,7 @@ struct TodaysBread: View {
                 newTodayBread.isOpened = false
                 newTodayBread.date = Date()
                 newTodayBread.phrase = phrases.randomElement()
-            
+                
                 do {
                     try viewContext.save()
                 } catch {
@@ -102,23 +102,28 @@ struct TodaysBread: View {
             let hour = calendar.component(.hour, from: breadDate)
             
             // 만약 breadDate가 9시 이전이면 9시로, 6시 이전이면 6시로 변경, 아니면 다음 날 9시로 변경
-            if hour > 9 {
+            if hour < 9 {
                 referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-            } else if hour > 18 {
+            } else if hour < 18 {
                 referenceTime = Date(y: year, m: month, d: day, h: 18) ?? Date()
             } else {
-                referenceTime = Date(y: year, m: month, d: day+1, h: 9) ?? Date()
+                // 다음 날의 9시를 안전하게 계산
+                if let nextDay = calendar.date(byAdding: .day, value: 1, to: breadDate) {
+                    let nextDayComponents = calendar.dateComponents([.year, .month], from: nextDay)
+                    referenceTime = Date(y: nextDayComponents.year!, m: nextDayComponents.month!, d: 1, h: 9) ?? Date()
+                } else {
+                    referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
+                }
             }
             
-            if Date() > referenceTime {
-                return true
-            } else {
-                return false
-            }
+            // 현재 시간이 referenceTime보다 큰지 확인
+            return Date() > referenceTime
         } else {
+            // todayBread가 비어있거나 breadDate가 없는 경우, 새로운 TodayBread를 생성해야 함
             return true
         }
     }
+    
     
     func openBread() {
         for bread in todayBread {
