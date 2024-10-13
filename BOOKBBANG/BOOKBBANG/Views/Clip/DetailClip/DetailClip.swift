@@ -77,7 +77,7 @@ struct DetailClip: View {
                             }
                             
                             Spacer()
-
+                            
                             Button(action: {
                                 showDeleteClipAlert = true
                             }, label: {
@@ -91,7 +91,6 @@ struct DetailClip: View {
                 .scrollIndicators(.hidden)
             }
             .background(.backLighter)
-            .navigationTitle("클립 상세정보")
             .toolbarRole(.editor)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -101,6 +100,12 @@ struct DetailClip: View {
                         Text("수정")
                             .fontWeight(.bold)
                     }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("클립 상세정보")
+                        .font(.navigation)
+                        .kerning(-0.4)
+                        .foregroundStyle(.typo100)
                 }
             }
             .sheet(isPresented: $showingSheet) {

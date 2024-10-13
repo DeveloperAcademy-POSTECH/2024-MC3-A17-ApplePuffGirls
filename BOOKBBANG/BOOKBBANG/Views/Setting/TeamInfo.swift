@@ -48,7 +48,14 @@ struct TeamInfo: View {
             .scrollIndicators(.hidden)
         }
         .background(.backLighter)
-        .navigationTitle("책빵을 만든 사람들")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+             Text("책빵을 만든 사람들")
+                    .font(.navigation)
+                    .kerning(-0.4)
+                    .foregroundStyle(.typo100)
+            }
+        }
     }
 }
 

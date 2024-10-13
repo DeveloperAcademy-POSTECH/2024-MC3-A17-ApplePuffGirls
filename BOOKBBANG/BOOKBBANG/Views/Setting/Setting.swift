@@ -41,7 +41,14 @@ struct Setting: View {
             .padding(.top, 30)
             .background(.backLighter)
         }
-        .navigationTitle("설정")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+             Text("설정")
+                    .font(.navigation)
+                    .kerning(-0.4)
+                    .foregroundStyle(.typo100)
+            }
+        }
     }
 }
 

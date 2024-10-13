@@ -67,7 +67,14 @@ struct ReceiptMain: View {
             
         }
         .background(.backLighter)
-        .navigationTitle("빵수증")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+             Text("빵수증")
+                    .font(.navigation)
+                    .kerning(-0.4)
+                    .foregroundStyle(.typo100)
+            }
+        }
     }
 }
 

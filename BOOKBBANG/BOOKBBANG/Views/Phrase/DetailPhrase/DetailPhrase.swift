@@ -68,15 +68,12 @@ struct DetailPhrase: View {
                             .stroke(.typo25)
                     }
                     .frame(maxWidth: .infinity)
-                    
-                    Spacer()
                 }
             }
             .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 5)
         .background(.backLighter)
-        .navigationTitle("빵 상세보기")
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
         .toolbar {
@@ -85,8 +82,16 @@ struct DetailPhrase: View {
                     isEditPhrasePresented.toggle()
                 }) {
                     Text("수정")
-                        .fontWeight(.bold)
+                        .font(.system(size: 17, weight: .bold))
+                        .kerning(-0.4)
+                        .foregroundStyle(.greenMain100)
                 }
+            }
+            ToolbarItem(placement: .principal) {
+             Text("빵 상세보기")
+                    .font(.navigation)
+                    .kerning(-0.4)
+                    .foregroundStyle(.typo100)
             }
         }
         .sheet(isPresented: $isEditPhrasePresented, content: {
