@@ -53,8 +53,8 @@ enum BookGenre: String, CaseIterable {
         case .socialPolitics: return "체리파이"
         case .selfImprovement: return "바게트"
         case .history: return "메론빵"
-        case .naturalScience: return "초코빵"
-        case .etc: return "삼김"
+        case .naturalScience: return "초코도넛"
+        case .etc: return "삼각김빵"
         }
     }
     

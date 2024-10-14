@@ -23,12 +23,32 @@ struct CompleteAddingBook: View {
             
             if let genre = bookData.genre,
                let matchingGenre = BookGenre.fromDescription(genre) {
-                HeaderSection(title: "책 추가를 완료했습니다",
-                              subtitle: "이 책으론 \(matchingGenre.breadName)을 만들 수 있어요!")
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("책 추가를 완료했습니다")
+                            .font(.addBookTitle)
+                            .foregroundStyle(.typo100)
+                            .padding(.bottom, 1)
+                        
+                        HStack(spacing: 0) {
+                            Text("이 책으론 ")
+                                .font(.bookCaption)
+                                .foregroundStyle(.typo50)
+                            Text("\(matchingGenre.breadName)")
+                                .font(.bookCaptionBold)
+                                .foregroundStyle(.typo80)
+                            Text("을(를) 만들 수 있어요!")
+                                .font(.bookCaption)
+                                .foregroundStyle(.typo50)
+                        }
+                    }
+                    Spacer()
+                }
+                .padding(.leading, 30)
                 .padding(.top, 28)
                 .padding(.bottom, 100)
             }
-
+            
             
             Image(.completeBread)
             

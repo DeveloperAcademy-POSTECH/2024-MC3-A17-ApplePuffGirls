@@ -92,9 +92,10 @@ struct Home: View {
         
         var body: some View {
             HStack {
-                Image(.mainLogo)
+                Image(.logo)
                     .resizable()
                     .frame(width: 44, height: 44)
+                    .aspectRatio(contentMode: .fit)
                     .padding(.leading, 10)
                 
                 Spacer()

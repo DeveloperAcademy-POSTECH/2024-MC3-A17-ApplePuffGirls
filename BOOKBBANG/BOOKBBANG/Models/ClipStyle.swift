@@ -94,6 +94,27 @@ enum ClipItem: String, CaseIterable {
         }
     }
     
+    var clipBackgroundImageName: String {
+        switch self {
+        case .WaterDrop:
+            return "WaterDropClipBackground"
+        case .Twinkle:
+            return "TwinkleClipBackground"
+        case .Sun:
+            return "SunClipBackground"
+        case .Star:
+            return "StarClipBackground"
+        case .Apple:
+            return "AppleClipBackground"
+        case .Flower:
+            return "FlowerClipBackground"
+        case .Heart:
+            return "HeartClipBackground"
+        case .Clover:
+            return "CloverClipBackground"
+        }
+    }
+    
     static func getClipShape(_ shape: Int16) -> String {
         getClipShape(Int(shape))
     }
@@ -103,6 +124,18 @@ enum ClipItem: String, CaseIterable {
             return ClipItem.allCases[shape].clipImageName
         } else {
             return ClipItem.allCases[0].clipImageName
+        }
+    }
+    
+    static func getClipBackgroundShape(_ shape: Int16) -> String {
+        getClipBackgroundShape(Int(shape))
+    }
+    
+    static func getClipBackgroundShape(_ shape: Int) -> String {
+        if shape >= 0, shape < ClipItem.allCases.count {
+            return ClipItem.allCases[shape].clipBackgroundImageName
+        } else {
+            return ClipItem.allCases[0].clipBackgroundImageName
         }
     }
 }

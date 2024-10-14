@@ -14,17 +14,24 @@ struct ClipsInPhrase: View {
             AnyLayout(FlowLayout(spacing: 8)) {
                 ForEach(clips, id: \.self) { clip in
                     HStack(spacing: 3) {
-                        // 클립 이미지
                         Image(ClipItem.getClipShape(clip.design))
                             .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 23, height: 23)
                             .foregroundStyle(Colors.getClipColor(clip.color))
+                            .overlay {
+                                Image(ClipItem.getClipBackgroundShape(clip.design))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 23, height: 23)
+                            }
                         
-                        Text(clip.title ?? "no name")
-                            .font(.phraseBottom)
-                            .foregroundStyle(.typo100)
+                        if let title = clip.title {
+                            Text(title)
+                                .font(.phraseBottom)
+                                .foregroundStyle(.typo100)
+                        }
                     }
                 }
             }

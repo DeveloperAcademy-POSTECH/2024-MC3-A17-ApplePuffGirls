@@ -25,8 +25,7 @@ struct AddClip: View {
                                 rightTitle: "저장",
                                 onCancel: { dismiss() },
                                 onRightButton: { saveClip() })
-            //.padding(.top, 20)
-            
+
             TopClipImage(clipData: clipData)
             
             VStack(alignment: .leading) {
