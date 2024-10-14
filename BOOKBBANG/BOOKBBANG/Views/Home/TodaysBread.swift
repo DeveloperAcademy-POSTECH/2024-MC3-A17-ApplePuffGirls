@@ -47,7 +47,7 @@ struct TodaysBread: View {
                             }
                         }
                     } else {
-                        //
+                        
                         VStack {
                             Image(.todaysBreadCover2)
                                 .resizable()
@@ -69,31 +69,11 @@ struct TodaysBread: View {
                     }
                     //
                 }
-            } else {
-                HStack {
-                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
-                        .font(.bookk15)
-                        .lineSpacing(15)
-                        .foregroundStyle(.typo80)
-                    
-                    Spacer()
-                    Image(.cute)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 150)
-                }
-                .padding(.leading, 35)
-                .padding(.vertical)
-                .background(.backDarker)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.typo25)
-                }
             }
         }
         .onAppear {
             if isChanged() {
+                print("오늘의빵이 새로 바뀔거에요 ")
                 for bread in todayBread {
                     viewContext.delete(bread)
                 }
@@ -108,6 +88,8 @@ struct TodaysBread: View {
                 } catch {
                     fatalError("Failed to save context, \(error.localizedDescription)")
                 }
+            } else {
+                print("오늘의 빵이 바뀌지 않앗어여")
             }
         }
         
@@ -117,6 +99,10 @@ struct TodaysBread: View {
         var referenceTime: Date
         
         if !todayBread.isEmpty, let breadDate = todayBread[0].date {
+            print("오늘의 빵 데이터가 비어있지 않아서 검사할거에요")
+            print(breadDate)
+            print(todayBread[0].self)
+            print(todayBread[0].phrase?.content)
             let year = calendar.component(.year, from: breadDate)
             let month = calendar.component(.month, from: breadDate)
             let day = calendar.component(.day, from: breadDate)
@@ -141,6 +127,7 @@ struct TodaysBread: View {
             return Date() > referenceTime
         } else {
             // todayBread가 비어있거나 breadDate가 없는 경우, 새로운 TodayBread를 생성해야 함
+            print("오늘의 빵이 비어있거나 빵 데이터가 업서요")
             return true
         }
     }
