@@ -15,6 +15,7 @@ struct DetailBook: View {
     
     @State private var isEditBookPresented: Bool = false
     @State private var showDeleteAlert: Bool = false
+    @State private var selectedDeletePhrase: Phrase?
     
     var body: some View {
         NavigationStack {
@@ -79,6 +80,7 @@ struct DetailBook: View {
                                             PhraseCard(display: .detailBook, phrase: phrase)
                                                 .contextMenu {
                                                     Button(role: .destructive) {
+                                                        selectedDeletePhrase = phrase
                                                         showDeleteAlert = true
                                                     }
                                                     label: {
@@ -86,7 +88,9 @@ struct DetailBook: View {
                                                     }
                                                 }
                                                 .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeleteAlert, actions: {
-                                                    alertView(phrase: phrase)
+                                                    if let phrase = selectedDeletePhrase {
+                                                        alertView(phrase: phrase)
+                                                    }
                                                 }, message: { Text("구절을 삭제하시겠습니까?")})
                                         })
                                     }

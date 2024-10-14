@@ -14,6 +14,7 @@ struct DetailClip: View {
     
     @State var showingSheet: Bool = false
     @State private var showDeletePhraseAlert: Bool = false
+    @State private var selectedDeletePhrase: Phrase?
     
     var phraseCount: Int {
         countPhrasesContainingClip(clip: clip, context: viewContext)
@@ -64,6 +65,7 @@ struct DetailClip: View {
                                             .padding(.bottom, 3)
                                             .contextMenu {
                                                 Button(role: .destructive) {
+                                                    selectedDeletePhrase = phrase
                                                     showDeletePhraseAlert = true
                                                 }
                                                 label: {
@@ -71,7 +73,9 @@ struct DetailClip: View {
                                                 }
                                             }
                                             .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeletePhraseAlert, actions: {
-                                                alertView(phrase: phrase)
+                                                if let phrase = selectedDeletePhrase {
+                                                    alertView(phrase: phrase)
+                                                }
                                             }, message: { Text("구절을 삭제하시겠습니까?")})
                                     })
                                 }
