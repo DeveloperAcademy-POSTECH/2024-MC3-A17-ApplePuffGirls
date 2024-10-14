@@ -27,7 +27,6 @@ struct SelectDate: View {
     
     func setDateList() -> [DateRange] {
         let calendar = Calendar.current
-        print(storedInstallDate)
         let installedYear: Int = calendar.component(.year, from: storedInstallDate)
         let installedIsFirstHalf: Bool = calendar.component(.month, from: storedInstallDate) < 7 ? true : false
         

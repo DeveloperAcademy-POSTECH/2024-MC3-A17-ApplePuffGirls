@@ -19,13 +19,12 @@ struct AddClip: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomNavigationBar(isHighlighted: $checkEmpty,
-                                navigationType: .cancel,
-                                title: "새로운 클립 추가하기",
-                                rightTitle: "저장",
-                                onCancel: { dismiss() },
-                                onRightButton: { saveClip() })
-
+                        CustomNavigationBar(isHighlighted: $checkEmpty,
+                                            navigationType: .cancel,
+                                            title: "새로운 클립 추가하기",
+                                            rightTitle: "저장",
+                                            onCancel: { dismiss() },
+                                            onRightButton: { saveClip() })
             TopClipImage(clipData: clipData)
             
             VStack(alignment: .leading) {

@@ -47,7 +47,7 @@ struct TodaysBread: View {
                             }
                         }
                     } else {
-                        //
+                        
                         VStack {
                             Image(.todaysBreadCover2)
                                 .resizable()
@@ -69,27 +69,6 @@ struct TodaysBread: View {
                     }
                     //
                 }
-            } else {
-                HStack {
-                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
-                        .font(.bookk15)
-                        .lineSpacing(15)
-                        .foregroundStyle(.typo80)
-                    
-                    Spacer()
-                    Image(.cute)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 150)
-                }
-                .padding(.leading, 35)
-                .padding(.vertical)
-                .background(.backDarker)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.typo25)
-                }
             }
         }
         .onAppear {
@@ -108,6 +87,7 @@ struct TodaysBread: View {
                 } catch {
                     fatalError("Failed to save context, \(error.localizedDescription)")
                 }
+            } else {
             }
         }
         
@@ -117,6 +97,7 @@ struct TodaysBread: View {
         var referenceTime: Date
         
         if !todayBread.isEmpty, let breadDate = todayBread[0].date {
+
             let year = calendar.component(.year, from: breadDate)
             let month = calendar.component(.month, from: breadDate)
             let day = calendar.component(.day, from: breadDate)
@@ -128,15 +109,10 @@ struct TodaysBread: View {
             } else if hour < 18 {
                 referenceTime = Date(y: year, m: month, d: day, h: 18) ?? Date()
             } else {
-                // 다음 날의 9시를 안전하게 계산
-                if let nextDay = calendar.date(byAdding: .day, value: 1, to: breadDate) {
-                    let nextDayComponents = calendar.dateComponents([.year, .month], from: nextDay)
-                    referenceTime = Date(y: nextDayComponents.year!, m: nextDayComponents.month!, d: 1, h: 9) ?? Date()
-                } else {
-                    referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-                }
+                referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
+                referenceTime = calendar.date(byAdding: .day, value: +1, to: referenceTime) ?? Date()
             }
-            
+
             // 현재 시간이 referenceTime보다 큰지 확인
             return Date() > referenceTime
         } else {
