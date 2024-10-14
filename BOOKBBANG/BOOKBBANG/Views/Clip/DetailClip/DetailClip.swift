@@ -14,6 +14,7 @@ struct DetailClip: View {
     
     @State var showingSheet: Bool = false
     @State private var showDeletePhraseAlert: Bool = false
+    @State private var selectedDeletePhrase: Phrase?
     
     var phraseCount: Int {
         countPhrasesContainingClip(clip: clip, context: viewContext)
@@ -54,43 +55,29 @@ struct DetailClip: View {
                                 .padding(.vertical, 50)
                                 .padding(.bottom, 12)
                             }
-                            
-                            VStack(spacing: 5) {
-                                if let count = clip.phrases?.count, count == 0 {
-                                    VStack {
-                                        Image(.mustache)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 160)
-                                            .padding(.bottom, 20)
-                                        
-                                        Text("문장을 추가하러 가볼까요?")
-                                            .font(.system(size: 16, weight: .semibold))
-                                            .foregroundStyle(.typo80)
-                                    }
-                                    .padding(.vertical, 50)
-                                }
-                                else if let phrases = clip.phrases?.allObjects as? [Phrase] {
-                                    ForEach(phrases, id: \.self) { phrase in
-                                        NavigationLink(destination: {
-                                            DetailPhrase(phrase: phrase)
-                                        }, label: {
-                                            PhraseCard(display: .detailClip, phrase: phrase)
-                                                
-                                                .contextMenu {
-                                                    Button(role: .destructive) {
-                                                        showDeletePhraseAlert = true
-                                                    }
-                                                    label: {
-                                                        Label("삭제하기", systemImage: "trash")
-                                                    }
+                            else if let phrases = clip.phrases?.allObjects as? [Phrase] {
+                                ForEach(phrases, id: \.self) { phrase in
+                                    NavigationLink(destination: {
+                                        DetailPhrase(phrase: phrase)
+                                    }, label: {
+                                        PhraseCard(display: .detailClip, phrase: phrase)
+                                            .padding(.horizontal, 5)
+                                            .padding(.bottom, 3)
+                                            .contextMenu {
+                                                Button(role: .destructive) {
+                                                    selectedDeletePhrase = phrase
+                                                    showDeletePhraseAlert = true
                                                 }
-                                                .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeletePhraseAlert, actions: {
+                                                label: {
+                                                    Label("삭제하기", systemImage: "trash")
+                                                }
+                                            }
+                                            .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeletePhraseAlert, actions: {
+                                                if let phrase = selectedDeletePhrase {
                                                     alertView(phrase: phrase)
-                                                }, message: { Text("구절을 삭제하시겠습니까?")})
-                                        })
-                                    }
-                                    .padding(.horizontal, 5)
+                                                }
+                                            }, message: { Text("구절을 삭제하시겠습니까?")})
+                                    })
                                 }
                             }
                             
