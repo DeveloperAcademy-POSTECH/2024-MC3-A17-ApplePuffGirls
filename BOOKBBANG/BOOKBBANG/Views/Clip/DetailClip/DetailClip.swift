@@ -56,7 +56,7 @@ struct DetailClip: View {
                                 .padding(.bottom, 12)
                             }
                             
-                            VStack(spacing: 0) {
+                            VStack(spacing: 5) {
                                 if let count = clip.phrases?.count, count == 0 {
                                     VStack {
                                         Image(.mustache)
@@ -77,8 +77,7 @@ struct DetailClip: View {
                                             DetailPhrase(phrase: phrase)
                                         }, label: {
                                             PhraseCard(display: .detailClip, phrase: phrase)
-                                                .padding(.horizontal, 5)
-                                                .padding(.bottom, 3)
+                                                
                                                 .contextMenu {
                                                     Button(role: .destructive) {
                                                         showDeletePhraseAlert = true
@@ -92,6 +91,7 @@ struct DetailClip: View {
                                                 }, message: { Text("구절을 삭제하시겠습니까?")})
                                         })
                                     }
+                                    .padding(.horizontal, 5)
                                 }
                                 
                                 Spacer()

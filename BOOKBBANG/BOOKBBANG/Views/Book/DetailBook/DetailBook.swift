@@ -30,7 +30,7 @@ struct DetailBook: View {
                     let phrases = book.phrases?.allObjects as? [Phrase]
                     
                     ScrollView {
-                        VStack(spacing: 2) {
+                        VStack(spacing: 5) {
                             BookInfo(book: book)
                             
                             HStack(alignment: .bottom, spacing: 0) {
