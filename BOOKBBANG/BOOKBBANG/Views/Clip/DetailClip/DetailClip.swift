@@ -93,46 +93,46 @@ struct DetailClip: View {
                                     }
                                     .padding(.horizontal, 5)
                                 }
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    showDeleteClipAlert = true
-                                }, label: {
-                                    Text("클립 삭제하기")
-                                        .font(.system(size: 13))
-                                        .foregroundStyle(.clipRed)
-                                })
                             }
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                showDeleteClipAlert = true
+                            }, label: {
+                                Text("클립 삭제하기")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(.clipRed)
+                            })
                         }
                     }
-                    .scrollIndicators(.hidden)
                 }
-                .background(.backLighter)
-                .toolbarRole(.editor)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            showingSheet.toggle()
-                        }) {
-                            Text("수정")
-                                .fontWeight(.bold)
-                        }
-                    }
-                    ToolbarItem(placement: .principal) {
-                        Text("클립 상세정보")
-                            .font(.navigation)
-                            .kerning(-0.4)
-                            .foregroundStyle(.typo100)
-                    }
-                }
-                .sheet(isPresented: $showingSheet) {
-                    EditClip(clip: clip)
-                }
-                .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
-                    alertView(clip: clip)
-                }, message: { Text("클립을 삭제하시겠습니까?")})
+                .scrollIndicators(.hidden)
             }
+            .background(.backLighter)
+            .toolbarRole(.editor)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showingSheet.toggle()
+                    }) {
+                        Text("수정")
+                            .fontWeight(.bold)
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("클립 상세정보")
+                        .font(.navigation)
+                        .kerning(-0.4)
+                        .foregroundStyle(.typo100)
+                }
+            }
+            .sheet(isPresented: $showingSheet) {
+                EditClip(clip: clip)
+            }
+            .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
+                alertView(clip: clip)
+            }, message: { Text("클립을 삭제하시겠습니까?")})
         }
     }
     
@@ -141,13 +141,13 @@ struct DetailClip: View {
         Button("취소", role: .cancel) { }
         Button("삭제하기", role: .destructive) { deletePhrase(phrase: phrase) }
     }
-    
+
     @ViewBuilder
     private func alertView(clip: Clip) -> some View {
         Button("취소", role: .cancel) { }
         Button("삭제하기", role: .destructive) { deleteClip(clip: clip) }
     }
-    
+
     private func deletePhrase(phrase: Phrase) {
         viewContext.delete(phrase)
         do {
@@ -157,7 +157,7 @@ struct DetailClip: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-    
+
     private func deleteClip(clip: Clip) {
         viewContext.delete(clip)
         dismiss()
