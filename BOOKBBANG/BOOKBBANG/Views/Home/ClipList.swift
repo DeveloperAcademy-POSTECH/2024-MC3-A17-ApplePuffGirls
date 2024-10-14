@@ -19,6 +19,8 @@ struct ClipList: View {
     @FetchRequest(entity: Book.entity(), sortDescriptors: [])
     private var books: FetchedResults<Book>
     
+    @State private var showDeleteClipAlert: Bool = false
+    
     var sortedClips: [Clip] {
         switch sort {
         case .updated:
@@ -53,6 +55,17 @@ struct ClipList: View {
                     }, label: {
                         ClipView(clip: clip, viewContext: viewContext)
                     })
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            showDeleteClipAlert = true
+                        }
+                        label: {
+                            Label("삭제하기", systemImage: "trash")
+                        }
+                    }
+                    .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
+                        alertView(clip: clip)
+                    }, message: { Text("클립을 삭제하시겠습니까?")})
                 }
                 .padding(.horizontal, 10)
                 .padding(.bottom, 10)
@@ -63,6 +76,12 @@ struct ClipList: View {
                 NewClipButton()
             }
         }
+    }
+    
+    @ViewBuilder
+    private func alertView(clip: Clip) -> some View {
+        Button("취소", role: .cancel) { }
+        Button("삭제하기", role: .destructive) { deleteClip(clip: clip) }
     }
     
     private func deleteClip(clip: Clip) {
