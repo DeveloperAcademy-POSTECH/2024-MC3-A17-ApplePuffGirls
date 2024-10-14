@@ -42,6 +42,12 @@ struct ReceiptMain: View {
         return false
     }
     
+    // 현재 기간이 지난 후인지?
+    var isPastEndDate: Bool {
+        let endDate = Date(y: selectedDate.year, m: selectedDate.isFirstHalf ? 6 : 12, d: 31) ?? Date()
+        return endDate < Date() ? true : false
+    }
+    
     var body: some View {
         VStack {
             VStack(spacing: 0) {
@@ -52,6 +58,9 @@ struct ReceiptMain: View {
                     ForEach(filteredReceipt) { receipt in
                         ShowReceipt(selectedDate: $selectedDate, receipt: receipt)
                     }
+                } else if !isPastEndDate { // 빵수증 테스트할 때 여기 느낌표만 지우고 test 해보면 됨니다.
+                    // 빵수증을 제작할 기간이 아닐 때
+                    NotYetReceipt()
                 } else if isExistPhrase {
                     // 빵수증이 없고, 새로 만들 수 있을 때
                     StartMakeReceipt(selectedDate: selectedDate)
@@ -120,6 +129,33 @@ struct NoRecipt: View {
             TwoLineDivider()
             
             Spacer()
+            Image(.mustache)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 250)
+            Spacer()
+        }
+    }
+}
+
+// 빵수증을 제작할 기간이 아닐 때
+struct NotYetReceipt: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            
+            TwoLineDivider()
+            
+            Text("아직 빵수증 제작 기간이 아니에요.")
+                .font(.listTitle)
+                .foregroundStyle(.typo100)
+                .lineSpacing(14)
+                .multilineTextAlignment(.center)
+                .padding(.vertical, 35)
+            
+            TwoLineDivider()
+            
+            Spacer()
+            // 추후 이미지 변경 될 수 있음
             Image(.mustache)
                 .resizable()
                 .scaledToFit()

@@ -35,6 +35,7 @@ struct DetailClip: View {
                                 .foregroundStyle(.typo50)
                             
                             Spacer()
+                            Spacer()
                         }
                         .padding(.bottom, 12)
                         
@@ -47,73 +48,91 @@ struct DetailClip: View {
                                         .frame(width: 160)
                                         .padding(.bottom, 20)
                                     
-                                    Text("문장을 추가하러 가볼까요?")
+                                    Text("빵을 추가하러 가볼까요?")
                                         .font(.system(size: 16, weight: .semibold))
                                         .foregroundStyle(.typo80)
                                 }
                                 .padding(.vertical, 50)
+                                .padding(.bottom, 12)
                             }
-                            else if let phrases = clip.phrases?.allObjects as? [Phrase] {
-                                ForEach(phrases, id: \.self) { phrase in
-                                    NavigationLink(destination: {
-                                        DetailPhrase(phrase: phrase)
-                                    }, label: {
-                                        PhraseCard(display: .detailClip, phrase: phrase)
-                                            .padding(.horizontal, 5)
-                                            .padding(.bottom, 3)
-                                            .contextMenu {
-                                                Button(role: .destructive) {
-                                                    showDeletePhraseAlert = true
-                                                }
-                                                label: {
-                                                    Label("삭제하기", systemImage: "trash")
-                                                }
-                                            }
-                                            .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeletePhraseAlert, actions: {
-                                                alertView(phrase: phrase)
-                                            }, message: { Text("구절을 삭제하시겠습니까?")})
-                                    })
+                            
+                            VStack(spacing: 0) {
+                                if let count = clip.phrases?.count, count == 0 {
+                                    VStack {
+                                        Image(.mustache)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 160)
+                                            .padding(.bottom, 20)
+                                        
+                                        Text("문장을 추가하러 가볼까요?")
+                                            .font(.system(size: 16, weight: .semibold))
+                                            .foregroundStyle(.typo80)
+                                    }
+                                    .padding(.vertical, 50)
                                 }
+                                else if let phrases = clip.phrases?.allObjects as? [Phrase] {
+                                    ForEach(phrases, id: \.self) { phrase in
+                                        NavigationLink(destination: {
+                                            DetailPhrase(phrase: phrase)
+                                        }, label: {
+                                            PhraseCard(display: .detailClip, phrase: phrase)
+                                                .padding(.horizontal, 5)
+                                                .padding(.bottom, 3)
+                                                .contextMenu {
+                                                    Button(role: .destructive) {
+                                                        showDeletePhraseAlert = true
+                                                    }
+                                                    label: {
+                                                        Label("삭제하기", systemImage: "trash")
+                                                    }
+                                                }
+                                                .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeletePhraseAlert, actions: {
+                                                    alertView(phrase: phrase)
+                                                }, message: { Text("구절을 삭제하시겠습니까?")})
+                                        })
+                                    }
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    showDeleteClipAlert = true
+                                }, label: {
+                                    Text("클립 삭제하기")
+                                        .font(.system(size: 13))
+                                        .foregroundStyle(.clipRed)
+                                })
                             }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                showDeleteClipAlert = true
-                            }, label: {
-                                Text("클립 삭제하기")
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(.clipRed)
-                            })
                         }
                     }
+                    .scrollIndicators(.hidden)
                 }
-                .scrollIndicators(.hidden)
-            }
-            .background(.backLighter)
-            .toolbarRole(.editor)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showingSheet.toggle()
-                    }) {
-                        Text("수정")
-                            .fontWeight(.bold)
+                .background(.backLighter)
+                .toolbarRole(.editor)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showingSheet.toggle()
+                        }) {
+                            Text("수정")
+                                .fontWeight(.bold)
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
+                        Text("클립 상세정보")
+                            .font(.navigation)
+                            .kerning(-0.4)
+                            .foregroundStyle(.typo100)
                     }
                 }
-                ToolbarItem(placement: .principal) {
-                    Text("클립 상세정보")
-                        .font(.navigation)
-                        .kerning(-0.4)
-                        .foregroundStyle(.typo100)
+                .sheet(isPresented: $showingSheet) {
+                    EditClip(clip: clip)
                 }
+                .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
+                    alertView(clip: clip)
+                }, message: { Text("클립을 삭제하시겠습니까?")})
             }
-            .sheet(isPresented: $showingSheet) {
-                EditClip(clip: clip)
-            }
-            .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
-                alertView(clip: clip)
-            }, message: { Text("클립을 삭제하시겠습니까?")})
         }
     }
     

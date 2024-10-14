@@ -151,6 +151,7 @@ struct NewClipButton: View {
         .padding(.bottom, 10)
         .sheet(isPresented: $showingSheet){
             AddClip()
+                .presentationDragIndicator(.visible)
         }
     }
 }

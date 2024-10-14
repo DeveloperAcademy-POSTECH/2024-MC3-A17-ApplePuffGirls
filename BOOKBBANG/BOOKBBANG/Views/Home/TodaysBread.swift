@@ -27,10 +27,47 @@ struct TodaysBread: View {
                             Button {
                                 openBread()
                             } label: {
-                                    Text("눌러서 오픈 &^^!")
+                                VStack(spacing: 40) {
+                                    Image(.todaysBreadCover)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 355)
+                                    Text("터치해서 오늘의 추천빵을 확인해보세요")
+                                        .font(.phraseTop)
+                                        .foregroundStyle(.typo80)
+                                }
+                                .padding(.vertical)
+                                .frame(maxWidth: .infinity)
+                                .background(.backDarker)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.typo25)
+                                }
                             }
                         }
+                    } else {
+                        //
+                        VStack {
+                            Image(.todaysBreadCover2)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 150)
+                            
+                            Text("빵을 추가해보세요!")
+                                .font(.phraseTop)
+                                .foregroundStyle(.typo80)
+                        }
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(.backDarker)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.typo25)
+                        }
                     }
+                    //
                 }
             } else {
                 HStack {
@@ -65,7 +102,7 @@ struct TodaysBread: View {
                 newTodayBread.isOpened = false
                 newTodayBread.date = Date()
                 newTodayBread.phrase = phrases.randomElement()
-            
+                
                 do {
                     try viewContext.save()
                 } catch {
@@ -80,29 +117,34 @@ struct TodaysBread: View {
         var referenceTime: Date
         
         if !todayBread.isEmpty, let breadDate = todayBread[0].date {
-            // 만약 breadDate가 9시 이전이면 9시로, 2시 이전이면 2시로 변경, 아니면 다음 날 9시로 변경
             let year = calendar.component(.year, from: breadDate)
             let month = calendar.component(.month, from: breadDate)
             let day = calendar.component(.day, from: breadDate)
             let hour = calendar.component(.hour, from: breadDate)
             
-            if hour > 9 {
+            // 만약 breadDate가 9시 이전이면 9시로, 6시 이전이면 6시로 변경, 아니면 다음 날 9시로 변경
+            if hour < 9 {
                 referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-            } else if hour > 14 {
-                referenceTime = Date(y: year, m: month, d: day, h: 14) ?? Date()
+            } else if hour < 18 {
+                referenceTime = Date(y: year, m: month, d: day, h: 18) ?? Date()
             } else {
-                referenceTime = Date(y: year, m: month, d: day+1, h: 9) ?? Date()
+                // 다음 날의 9시를 안전하게 계산
+                if let nextDay = calendar.date(byAdding: .day, value: 1, to: breadDate) {
+                    let nextDayComponents = calendar.dateComponents([.year, .month], from: nextDay)
+                    referenceTime = Date(y: nextDayComponents.year!, m: nextDayComponents.month!, d: 1, h: 9) ?? Date()
+                } else {
+                    referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
+                }
             }
             
-            if Date() > referenceTime {
-                return true
-            } else {
-                return false
-            }
+            // 현재 시간이 referenceTime보다 큰지 확인
+            return Date() > referenceTime
         } else {
+            // todayBread가 비어있거나 breadDate가 없는 경우, 새로운 TodayBread를 생성해야 함
             return true
         }
     }
+    
     
     func openBread() {
         for bread in todayBread {
@@ -116,8 +158,4 @@ struct TodaysBread: View {
             fatalError("Failed to save context, \(error.localizedDescription)")
         }
     }
-}
-
-#Preview {
-    TodaysBread()
 }

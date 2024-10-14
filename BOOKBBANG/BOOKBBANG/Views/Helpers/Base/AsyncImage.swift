@@ -47,25 +47,3 @@ func fetchHomeImage(url: String) -> some View {
             }
     }
 }
-
-func fetchReceiptImage(url: String) -> some View {
-    AsyncImage(url: URL(string: url)) { image in
-        image
-            .resizable()
-            .scaledToFill()
-            .frame(width: 75, height: 105)
-            .overlay {
-                Rectangle()
-                    .stroke(.typo10)
-            }
-    } placeholder: {
-        Image(.loadingThumbnail)
-            .resizable()
-            .scaledToFit()
-            .frame(width: 75, height: 105)
-            .overlay {
-                Rectangle()
-                    .stroke(.typo10)
-            }
-    }
-}

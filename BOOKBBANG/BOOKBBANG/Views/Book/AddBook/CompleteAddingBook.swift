@@ -62,5 +62,6 @@ struct CompleteAddingBook: View {
     private func clickRightButton() {
         homeViewModel.initProgress()
         homeViewModel.transition(to: .home)
+        homeViewModel.selectedBook = nil
     }
 }
