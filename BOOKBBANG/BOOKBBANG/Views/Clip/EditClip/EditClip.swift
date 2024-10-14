@@ -56,7 +56,12 @@ struct EditClip: View {
             Button(role: .destructive) {
                 showingAlert = true
             } label: {
-                Text("삭제하기")
+                HStack {
+                    Text("삭제하기")
+                        .font(.addBookButton)
+                        .padding(.leading)
+                    Spacer()
+                }
             }
         }
         .background(.backLighter)

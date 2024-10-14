@@ -15,7 +15,6 @@ struct TopClipImage: View {
             .renderingMode(.template)
             .resizable()
             .frame(width: 115, height: 110)
-            .padding(.vertical, 50)
             .foregroundColor(
                 Colors.getClipColor(clipData.selectedColor)
             )
@@ -24,6 +23,8 @@ struct TopClipImage: View {
                     .resizable()
                     .frame(width: 115, height: 110)
             }
+            .padding(.top, 30)
+            .padding(.bottom, 20)
     }
 }
 

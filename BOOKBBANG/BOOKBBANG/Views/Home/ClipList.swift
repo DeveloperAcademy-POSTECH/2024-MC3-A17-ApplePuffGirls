@@ -66,12 +66,6 @@ struct ClipList: View {
                             homeViewModel.selectedClip = clip
                             homeViewModel.transition(to: .detailClip)
                         }
-//                    NavigationLink(destination: {
-//                        DetailClip(detailBookViewModel: detailBookViewModel, clip: clip)
-//                    }, label: {
-//                        ClipView(clip: clip, viewContext: viewContext)
-//                    })
-                    
                 }
             }
             .padding(.horizontal, 10)
@@ -111,7 +105,6 @@ struct ClipView: View {
                     .font(.listTitle)
                     .foregroundStyle(.typo100)
                     .padding(.bottom, 2)
-                
                 
                 Text("구절 \(phraseCount)개")
                     .font(.phraseBottom)
@@ -153,6 +146,7 @@ struct NewClipButton: View {
         }
         .sheet(isPresented: $showingSheet){
             AddClip()
+                .presentationDragIndicator(.visible)
         }
     }
 }

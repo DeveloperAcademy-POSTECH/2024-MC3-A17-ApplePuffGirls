@@ -56,10 +56,19 @@ struct RankingBooks: View {
                     HeaderSection(title: "인상깊은 책들을 선택해주세요",
                                   subtitle: "오래 기억하고 싶은 책이 있나요? 순위를 매겨보세요.")
                     
+                    // 순위로 선택된 책 목록 (최대 3개)
                     HStack(spacing: 14) {
                         ForEach(1..<4) { i in
                             if rankedBooks.count >= i {
                                 fetchHomeImage(url: rankedBooks[i-1].thumbnail ?? "")
+                                    .overlay(alignment: .topTrailing) {
+                                        Image("badge_\(i)")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(height: 30)
+                                            .padding(.trailing, 10)
+                                            .padding(.top, -7)
+                                    }
                             } else {
                                 EmptyBox(width: 105, height: 155, text: "\(i)위", isButton: false)
                             }

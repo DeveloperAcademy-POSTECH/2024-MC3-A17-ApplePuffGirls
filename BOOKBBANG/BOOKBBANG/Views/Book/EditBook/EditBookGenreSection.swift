@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EditBookGenreSection: View {
-   // @Binding var selectedGenre: BookGenre?
     @ObservedObject var book: BookData
     
     var body: some View {

@@ -81,9 +81,18 @@ struct ShowReceipt: View {
                 .frame(width: 300)
                 
                 // 책 이미지 3개
+                
                 HStack(spacing: 36) {
                     ForEach(rankedBooks, id: \.id) { rankedBook in
-                        fetchReceiptImage(url: rankedBook.bookThumbnail ?? "")
+                        fetchHomeImage(url: rankedBook.bookThumbnail ?? "")
+                            .overlay(alignment: .topTrailing) {
+                                Image("badge_\(rankedBook.rank)")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 30)
+                                    .padding(.trailing, 10)
+                                    .padding(.top, -7)
+                            }
                     }
                 }
                 .padding(EdgeInsets(top: 40, leading: 0, bottom: 20, trailing: 0))
@@ -113,7 +122,15 @@ struct ShowReceipt: View {
                 // 책 이미지 3개
                 HStack(spacing: 36) {
                     ForEach(topQuotedBooks, id: \.id) { topQuotedBook in
-                        fetchReceiptImage(url: topQuotedBook.bookThumbnail ?? "")
+                        fetchHomeImage(url: topQuotedBook.bookThumbnail ?? "")
+                            .overlay(alignment: .topTrailing) {
+                                Image("badge_\(topQuotedBook.rank)")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(height: 30)
+                                    .padding(.trailing, 10)
+                                    .padding(.top, -7)
+                            }
                     }
                 }
                 .padding(.top, 40)
@@ -164,9 +181,27 @@ struct ShowReceipt: View {
                     Text("삭제하기")
                         .font(.caption)
                 }
+                
+                ZStack {
+                    Image(.bookbbangillust)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(
+                            LinearGradient(
+                                stops: [
+                                    Gradient.Stop(color: .backDarker, location: 0.00),
+                                    Gradient.Stop(color: .backDarker.opacity(0), location: 0.26),
+                                ],
+                                startPoint: UnitPoint(x: 0.5, y: 0),
+                                endPoint: UnitPoint(x: 0.5, y: 1)
+                            )
+                        )
+                }
+                
                 Spacer()
             }
-            
         }
         .scrollIndicators(.hidden)
         .alert(Text("정말 삭제하시겠습니까?"), isPresented: $showingAlert, actions: {

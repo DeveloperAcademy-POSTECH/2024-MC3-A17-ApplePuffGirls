@@ -59,5 +59,6 @@ struct CompleteAddingBook: View {
     
     private func clickRightButton() {
         homeViewModel.transition(to: .home)
+        homeViewModel.selectedBook = nil
     }
 }
