@@ -14,7 +14,6 @@ struct DetailClip: View {
     
     @State var showingSheet: Bool = false
     @State private var showDeletePhraseAlert: Bool = false
-    @State private var showDeleteClipAlert: Bool = false
     
     var phraseCount: Int {
         countPhrasesContainingClip(clip: clip, context: viewContext)
@@ -96,14 +95,6 @@ struct DetailClip: View {
                             }
                             
                             Spacer()
-                            
-                            Button(action: {
-                                showDeleteClipAlert = true
-                            }, label: {
-                                Text("클립 삭제하기")
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(.clipRed)
-                            })
                         }
                     }
                 }
@@ -130,9 +121,6 @@ struct DetailClip: View {
             .sheet(isPresented: $showingSheet) {
                 EditClip(clip: clip)
             }
-            .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
-                alertView(clip: clip)
-            }, message: { Text("클립을 삭제하시겠습니까?")})
         }
     }
     
@@ -140,12 +128,6 @@ struct DetailClip: View {
     private func alertView(phrase: Phrase) -> some View {
         Button("취소", role: .cancel) { }
         Button("삭제하기", role: .destructive) { deletePhrase(phrase: phrase) }
-    }
-
-    @ViewBuilder
-    private func alertView(clip: Clip) -> some View {
-        Button("취소", role: .cancel) { }
-        Button("삭제하기", role: .destructive) { deleteClip(clip: clip) }
     }
 
     private func deletePhrase(phrase: Phrase) {
