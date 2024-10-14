@@ -73,7 +73,6 @@ struct TodaysBread: View {
         }
         .onAppear {
             if isChanged() {
-                print("오늘의빵이 새로 바뀔거에요 ")
                 for bread in todayBread {
                     viewContext.delete(bread)
                 }
@@ -89,7 +88,6 @@ struct TodaysBread: View {
                     fatalError("Failed to save context, \(error.localizedDescription)")
                 }
             } else {
-                print("오늘의 빵이 바뀌지 않앗어여")
             }
         }
         
@@ -99,10 +97,7 @@ struct TodaysBread: View {
         var referenceTime: Date
         
         if !todayBread.isEmpty, let breadDate = todayBread[0].date {
-            print("오늘의 빵 데이터가 비어있지 않아서 검사할거에요")
-            print(breadDate)
-            print(todayBread[0].self)
-            print(todayBread[0].phrase?.content)
+
             let year = calendar.component(.year, from: breadDate)
             let month = calendar.component(.month, from: breadDate)
             let day = calendar.component(.day, from: breadDate)
@@ -114,20 +109,14 @@ struct TodaysBread: View {
             } else if hour < 18 {
                 referenceTime = Date(y: year, m: month, d: day, h: 18) ?? Date()
             } else {
-                // 다음 날의 9시를 안전하게 계산
-                if let nextDay = calendar.date(byAdding: .day, value: 1, to: breadDate) {
-                    let nextDayComponents = calendar.dateComponents([.year, .month], from: nextDay)
-                    referenceTime = Date(y: nextDayComponents.year!, m: nextDayComponents.month!, d: 1, h: 9) ?? Date()
-                } else {
-                    referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-                }
+                referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
+                referenceTime = calendar.date(byAdding: .day, value: +1, to: referenceTime) ?? Date()
             }
-            
+
             // 현재 시간이 referenceTime보다 큰지 확인
             return Date() > referenceTime
         } else {
             // todayBread가 비어있거나 breadDate가 없는 경우, 새로운 TodayBread를 생성해야 함
-            print("오늘의 빵이 비어있거나 빵 데이터가 업서요")
             return true
         }
     }
