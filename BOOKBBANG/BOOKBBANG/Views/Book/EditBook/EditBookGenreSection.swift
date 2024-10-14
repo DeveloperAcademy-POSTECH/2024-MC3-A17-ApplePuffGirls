@@ -57,12 +57,6 @@ struct EditBookGenreSection: View {
                     .frame(width: 355, height: 140)
             }
         }
-
+        
     }
 }
-
-#Preview {
-    BookGenreView(selectedGenre: .constant(nil))
-}
-
-

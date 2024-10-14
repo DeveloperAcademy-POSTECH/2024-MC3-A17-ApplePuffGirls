@@ -35,7 +35,6 @@ struct CompleteAddingPhraseHeader: View {
                         .font(.system(size: 17, weight: .bold))
                         .kerning(-0.4)
                 })
-                
             }
             .padding(.horizontal, 23)
             .frame(height: 55)

@@ -37,6 +37,7 @@ struct CompleteAddingPhrase: View {
     }
     
     private func clickRightButton() {
+        detailBookViewModel.initProgress()
         detailBookViewModel.transition(to: .detailBook)
     }
 }

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ReceiptMain: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-    
     @FetchRequest(entity: Receipt.entity(), sortDescriptors: [])
     private var receipts: FetchedResults<Receipt>
     
@@ -52,11 +50,6 @@ struct ReceiptMain: View {
     
     var body: some View {
         VStack {
-            CustomNavigationBar(isHighlighted: .constant(false),
-                                navigationType: .chevron,
-                                title: "빵수증",
-                                onChevron: { homeViewModel.transition(to: .home) })
-            
             VStack(spacing: 0) {
                 SelectDate(selectedDate: $selectedDate)
                 
@@ -70,7 +63,7 @@ struct ReceiptMain: View {
                     NotYetReceipt()
                 } else if isExistPhrase {
                     // 빵수증이 없고, 새로 만들 수 있을 때
-                    StartMakeReceipt(homeViewModel: homeViewModel, selectedDate: selectedDate)
+                    StartMakeReceipt(selectedDate: selectedDate)
                 } else {
                     // 데이터가 없어 빵수증을 발급할 수 없을 때
                     NoRecipt()
@@ -83,15 +76,20 @@ struct ReceiptMain: View {
             
         }
         .background(.backLighter)
-        .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+             Text("빵수증")
+                    .font(.navigation)
+                    .kerning(-0.4)
+                    .foregroundStyle(.typo100)
+            }
+        }
     }
 }
 
 
 // 기간 내 빵수증을 발급할 데이터가 있을 때 (아직 발급 안했을 때)
-struct StartMakeReceipt: View {
-    @ObservedObject var homeViewModel: HomeViewModel
-    
+struct StartMakeReceipt: View { 
     var selectedDate: DateRange
     
     var body: some View {
@@ -99,7 +97,7 @@ struct StartMakeReceipt: View {
             TwoLineDivider()
             
             NavigationLink {
-                RankingBooks(homeViewModel: homeViewModel, selectedDate: selectedDate)
+                RankingBooks(selectedDate: selectedDate)
             } label: {
                 EmptyBox(width: 294,
                          height: 305,

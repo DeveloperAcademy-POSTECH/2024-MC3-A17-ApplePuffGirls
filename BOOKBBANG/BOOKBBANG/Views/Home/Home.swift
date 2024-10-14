@@ -10,11 +10,13 @@ import CoreData
 
 struct Home: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    @ObservedObject var settingViewModel: SettingViewModel
     @ObservedObject var detailBookViewModel: DetailBookViewModel
     
     @FetchRequest(entity: Phrase.entity(), sortDescriptors: [])
     private var phrases: FetchedResults<Phrase>
+    
+    @FetchRequest(entity: Clip.entity(), sortDescriptors: [])
+    private var clips: FetchedResults<Clip>
     
     @State var todaysBread: Phrase?
     @State var selected: GroupBy = .book
@@ -23,28 +25,39 @@ struct Home: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    HomeTopBar(homeViewModel: homeViewModel)
+                    HomeTopBar()
                     
                     ScrollView {
-                        VStack(spacing: 2) {
+                        VStack(spacing: 0) {
                             TodaysBread()
-                            VStack(spacing: 2) {
-                                
+                            VStack(spacing: 0) {
                                 SegmentedBar(selected: $selected)
                                 
                                 switch selected {
                                 case .book :
                                     BookList(homeViewModel: homeViewModel)
                                 case .clip:
-                                    ClipList(detailBookViewModel: detailBookViewModel)
-                                        .environmentObject(homeViewModel)
+                                    ClipList()
                                 }
                             }
-                            .scrollIndicators(.hidden)
                             .background(RoundedRectangle(cornerRadius: 20).stroke(.typo25))
-                            .padding(.horizontal,2)
+                            .padding(.horizontal,5)
+                            
+                            if selected == .clip, clips.isEmpty {
+                                HStack {
+                                    Image(.induceAddClip)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 180)
+                                        .padding(.leading, 50)
+                                    
+                                    Spacer()
+                                }
+                            }
                         }
+                        .padding(.vertical, 5)
                     }
+                    .scrollIndicators(.hidden)
                 }
                 .background(.backLighter)
                 
@@ -69,59 +82,49 @@ struct Home: View {
                                    book: selectedBook)
                         .environmentObject(homeViewModel)
                     }
-                case .receipt:
-                    ReceiptMain(homeViewModel: homeViewModel)
-                case .setting:
-                    Setting(homeViewModel: homeViewModel)
-                case .detailClip:
-                    if let selectedClip = homeViewModel.selectedClip {
-                        DetailClip(detailBookViewModel: detailBookViewModel, clip: selectedClip)
-                            .environmentObject(homeViewModel)
-                    }
                 }
             }
-            .onAppear {
-                todaysBread = phrases.randomElement()
-            }
+        }
+        .onAppear {
+            todaysBread = phrases.randomElement()
         }
     }
-    
-    
-    struct HomeTopBar : View {
-        @ObservedObject var homeViewModel: HomeViewModel
-        
-        var body: some View {
+}
+
+struct HomeTopBar : View {
+    var body: some View {
+        HStack {
+            Image(.logo)
+                .resizable()
+                .frame(width: 44, height: 44)
+                .aspectRatio(contentMode: .fit)
+                .padding(.leading, 10)
+            
+            Spacer()
+            
             HStack {
-                Image(.logo)
-                    .resizable()
-                    .frame(width: 44, height: 44)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.leading, 10)
+                NavigationLink(destination: {
+                    ReceiptMain()
+                        .toolbarRole(.editor)
+                }, label: {
+                    Text("빵수증")
+                        .font(.system(size: 16, weight: .semibold))
+                        .padding()
+                })
                 
-                Spacer()
-                
-                HStack {
-                    Button(action: {
-                        homeViewModel.transition(to: .receipt)
-                    }, label: {
-                        Text("빵수증")
-                            .font(.system(size: 16, weight: .semibold))
-                            .padding()
-                    })
-                    
-                    Button(action: {
-                        homeViewModel.transition(to: .setting)
-                    }, label: {
-                        Text("설정")
-                            .font(.system(size: 16, weight: .semibold))
-                            .padding()
-                    })
-                }
-                .foregroundStyle(.typo100)
-                
+                NavigationLink(destination: {
+                    Setting()
+                        .toolbarRole(.editor)
+                }, label: {
+                    Text("설정")
+                        .font(.system(size: 16, weight: .semibold))
+                        .padding()
+                })
             }
-            .padding(.horizontal, 10)
-            .frame(height: 55)
+            .foregroundStyle(.typo100)
+            
         }
+        .padding(.horizontal, 15)
+        .frame(height: 55)
     }
 }

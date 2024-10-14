@@ -20,10 +20,11 @@ struct AddThoughts: View {
                                 navigationType: .chevron,
                                 title: "새로운 빵 굽기",
                                 rightTitle: "다음",
-                                onChevron: { detailBookViewModel.transition(to: .addPhrase) },
-                                onRightButton: { clickRightButton() })
+                                onChevron: { clickBackButton() },
+                                onRightButton: { clickNextButton() })
             
-            AddThoughtsProgressBar()
+            CustomProgressBar(process: $detailBookViewModel.progress, count: 4)
+            
             ScrollView {
                 VStack {
                     HStack {
@@ -104,11 +105,17 @@ struct AddThoughts: View {
         }
     }
     
-    private func clickRightButton() {
+    private func clickBackButton() {
+        detailBookViewModel.backProgress()
+        detailBookViewModel.transition(to: .addPhrase)
+    }
+    
+    private func clickNextButton() {
         phraseData.thought = thought
         phraseData.createdDate = .now
         detailBookViewModel.addPhraseData(phraseData)
         
+        detailBookViewModel.nextProgress()
         detailBookViewModel.transition(to: .addClipToPhrase)
     }
     

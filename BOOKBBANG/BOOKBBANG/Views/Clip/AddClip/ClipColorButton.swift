@@ -30,7 +30,8 @@ struct ClipColorButton: View {
               .cornerRadius(5)
               .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                  .stroke(clipData.selectedColor == Colors.allCases.firstIndex(of: color) ? Color.green : Color.clear, lineWidth: clipData.selectedColor == Colors.allCases.firstIndex(of: color) ? 2 : 0)
+                    .stroke(clipData.selectedColor == Colors.allCases.firstIndex(of: color) ? Color.greenMain100 : Color.clear,
+                            lineWidth: clipData.selectedColor == Colors.allCases.firstIndex(of: color) ? 2 : 0)
               )
           }
         }

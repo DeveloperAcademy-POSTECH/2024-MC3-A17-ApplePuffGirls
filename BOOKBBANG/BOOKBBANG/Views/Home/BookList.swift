@@ -22,6 +22,7 @@ struct BookList: View {
     
     @ObservedObject var homeViewModel: HomeViewModel
     @State var sort: SortBookBy = .recentRegister
+    @State var showDeleteAlert: Bool = false
     
     var sortedBooks: [Book] {
         switch sort {
@@ -52,10 +53,7 @@ struct BookList: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // 정렬 버튼
-            
             SortingBookPicker(sort: $sort)
-            
             
             if sortedBooks.count == 0 {
                 HStack {
@@ -65,20 +63,13 @@ struct BookList: View {
                         }
                     
                     VStack(spacing: 0) {
-                        Image(.pencil)
+                        Image(.induceAddingBook)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 140)
+                            .frame(width: 190)
                             .padding(.bottom, 4)
-                        
-                        Text("책을 추가하러 가볼까요?")
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(.typo80)
-                            .multilineTextAlignment(.center)
                     }
                     .padding(.leading, 40)
-                    
-                    Spacer()
                 }
                 .padding(.horizontal, 20)
             }
@@ -97,12 +88,42 @@ struct BookList: View {
                                 homeViewModel.selectedBook = book
                                 homeViewModel.transition(to: .detailBook)
                             }
+                            .contextMenu {
+                                Button(role: .destructive) {
+                                    
+                                    showDeleteAlert = true
+                                }
+                                label: {
+                                    Label("삭제하기", systemImage: "trash")
+                                }
+                            }
+                            .alert(Text("삭제하면 해당 책은 되돌릴 수 없습니다."), isPresented: $showDeleteAlert, actions: {
+                                alertView(book: book)
+                            }, message: { Text("책을 삭제하시겠습니까?")})
                     }
-                    
                 }
                 .padding(.horizontal, 10)
             }
         }
         .padding(.bottom, 20)
+    }
+    
+    @ViewBuilder
+    private func alertView(book: Book) -> some View {
+        Button("취소", role: .cancel) { }
+        Button("삭제하기", role: .destructive) { deleteBook(book: book) }
+    }
+    
+    private func deleteBook(book: Book) {
+        homeViewModel.transition(to: .home)
+        homeViewModel.selectedBook = nil
+        
+        viewContext.delete(book)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }

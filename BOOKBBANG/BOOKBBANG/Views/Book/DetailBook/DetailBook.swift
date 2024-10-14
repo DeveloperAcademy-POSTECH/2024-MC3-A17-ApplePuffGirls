@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct DetailBook: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var homeViewModel: HomeViewModel
     @ObservedObject var detailBookViewModel: DetailBookViewModel
-    @State private var isEditBookPresented: Bool = false
-    
     @ObservedObject var book: Book
+    
+    @State private var isEditBookPresented: Bool = false
+    @State private var showDeleteAlert: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -71,12 +73,22 @@ struct DetailBook: View {
                             else {
                                 if let phrases = phrases {
                                     ForEach(phrases, id: \.self) { phrase in
-                                        Button {
-                                            detailBookViewModel.newPhrase = phrase
-                                            detailBookViewModel.transition(to: .detailPhrase)
-                                        } label: {
+                                        NavigationLink(destination: {
+                                            DetailPhrase(phrase: phrase)
+                                        }, label: {
                                             PhraseCard(display: .detailBook, phrase: phrase)
-                                        }
+                                                .contextMenu {
+                                                    Button(role: .destructive) {
+                                                        showDeleteAlert = true
+                                                    }
+                                                    label: {
+                                                        Label("삭제하기", systemImage: "trash")
+                                                    }
+                                                }
+                                                .alert(Text("삭제하면 해당 구절은 되돌릴 수 없습니다."), isPresented: $showDeleteAlert, actions: {
+                                                    alertView(phrase: phrase)
+                                                }, message: { Text("구절을 삭제하시겠습니까?")})
+                                        })
                                     }
                                     .padding(.horizontal, 5)
                                 }
@@ -106,13 +118,24 @@ struct DetailBook: View {
                     }
                 case .addClipFinal:
                     CompleteAddingPhrase(detailBookViewModel: detailBookViewModel, book: book)
-                case .detailPhrase:
-                    if let newPhrase = detailBookViewModel.newPhrase {
-                        DetailPhrase(phrase: newPhrase)
-                            .environmentObject(detailBookViewModel)
-                    }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func alertView(phrase: Phrase) -> some View {
+        Button("취소", role: .cancel) { }
+        Button("삭제하기", role: .destructive) { deletePhrase(phrase: phrase) }
+    }
+    
+    private func deletePhrase(phrase: Phrase) {
+        viewContext.delete(phrase)
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

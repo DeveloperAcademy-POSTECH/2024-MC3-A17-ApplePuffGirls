@@ -61,6 +61,16 @@ struct AddPhraseScanner: View {
                                             onCancel: { clickRightButton() },
                                             onRightButton: { clickRightButton() })
                         
+                        HStack {
+                            Spacer()
+                            Text("저장하고 싶은 문장을 복사해주세요!")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundStyle(.typo80)
+                            Spacer()
+                        }
+                        .background(.backLighter)
+                        .frame(height: 50)
+                        
                         LiveTextView(image: photo.image)
                     }
                     .background(.backLighter)

@@ -10,11 +10,13 @@ import CoreData
 
 final class HomeViewModel: ObservableObject {
     @Published var viewStatus: HomeViewType = .home
-    // 임시객체
+    // 임시 객체
     @Published var selectedBookData: BookData? = nil
     // CoreData 연결 객체
     @Published var selectedBook: Book? = nil
     @Published var selectedClip: Clip? = nil
+    
+    @Published var progress: Int = 1
     
     func transition(to: HomeViewType) {
         DispatchQueue.main.async {
@@ -24,12 +26,26 @@ final class HomeViewModel: ObservableObject {
     
     func selectBookData(_ book: BookData) {
         self.selectedBookData = book
-        print("selectedBook: \(String(describing: selectedBookData))")
     }
     
     func selectBook(_ book: Book) {
         self.selectedBook = book
-        print("selectedBook: \(String(describing: selectedBook))")
+    }
+    
+    func nextProgress() {
+        if progress < 3 {
+            progress += 1
+        }
+    }
+    
+    func backProgress() {
+        if progress > 1 {
+            progress -= 1
+        }
+    }
+    
+    func initProgress() {
+        progress = 1
     }
 }
 
@@ -41,9 +57,4 @@ enum HomeViewType {
     case addBookFinal
     
     case detailBook
-    
-    case receipt
-    case setting
-    
-    case detailClip
 }

@@ -12,6 +12,8 @@ final class DetailBookViewModel: ObservableObject {
     @Published var newPhraseData: PhraseData? = nil
     @Published var newPhrase: Phrase? = nil
     
+    @Published var progress: Int = 1
+    
     func transition(to: DetailBookViewType) {
         DispatchQueue.main.async {
             self.viewStatus = to
@@ -28,8 +30,20 @@ final class DetailBookViewModel: ObservableObject {
         print("newPhrase: \(String(describing: newPhrase))")
     }
     
-    func deleteBook() {
-        
+    func nextProgress() {
+        if progress < 4 {
+            progress += 1
+        }
+    }
+    
+    func backProgress() {
+        if progress > 1 {
+            progress -= 1
+        }
+    }
+    
+    func initProgress() {
+        progress = 1
     }
 }
 
@@ -40,8 +54,4 @@ enum DetailBookViewType {
     case addThoughts
     case addClipToPhrase
     case addClipFinal
-    
-    case detailPhrase
-    
-    
 }

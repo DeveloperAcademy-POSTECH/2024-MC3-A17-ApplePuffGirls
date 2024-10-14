@@ -14,8 +14,8 @@ struct AddThoughtsPhraseCard: View {
         HStack(spacing: 0) {
             Text(phraseData.content)
                 .font(.bookk15)
-                .lineSpacing(20)
-                .foregroundStyle(.typo80)
+                .lineSpacing(13)
+                .foregroundStyle(.typo100)
             Spacer()
         }
         .padding(.vertical, 26)
