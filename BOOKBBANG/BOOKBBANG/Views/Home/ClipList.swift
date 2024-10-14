@@ -20,6 +20,7 @@ struct ClipList: View {
     private var books: FetchedResults<Book>
     
     @State private var showDeleteClipAlert: Bool = false
+    @State private var selectedDeleteClip: Clip?
     
     var sortedClips: [Clip] {
         switch sort {
@@ -57,6 +58,7 @@ struct ClipList: View {
                     })
                     .contextMenu {
                         Button(role: .destructive) {
+                            selectedDeleteClip = clip
                             showDeleteClipAlert = true
                         }
                         label: {
@@ -64,7 +66,9 @@ struct ClipList: View {
                         }
                     }
                     .alert(Text("삭제하면 해당 클립은 되돌릴 수 없습니다."), isPresented: $showDeleteClipAlert, actions: {
-                        alertView(clip: clip)
+                        if let clip = selectedDeleteClip {
+                            alertView(clip: clip)
+                        }
                     }, message: { Text("클립을 삭제하시겠습니까?")})
                 }
                 .padding(.horizontal, 10)
