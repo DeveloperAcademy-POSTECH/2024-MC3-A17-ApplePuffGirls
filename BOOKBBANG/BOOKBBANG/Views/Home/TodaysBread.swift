@@ -14,7 +14,7 @@ struct TodaysBread: View {
     
     @FetchRequest(entity: TodayBread.entity(), sortDescriptors: [])
     private var todayBread: FetchedResults<TodayBread>
-    
+
     var body: some View {
         VStack {
             if !todayBread.isEmpty {
@@ -27,31 +27,47 @@ struct TodaysBread: View {
                             Button {
                                 openBread()
                             } label: {
-                                    Text("눌러서 오픈 &^^!")
+                                VStack(spacing: 40) {
+                                    Image(.todaysBreadCover)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 355)
+                                    Text("터치해서 오늘의 추천빵을 확인해보세요")
+                                        .font(.phraseTop)
+                                        .foregroundStyle(.typo80)
+                                }
+                                .padding(.vertical)
+                                .frame(maxWidth: .infinity)
+                                .background(.backDarker)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(.typo25)
+                                }
                             }
                         }
+                    } else {
+                        //
+                        VStack {
+                            Image(.todaysBreadCover2)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 150)
+                            
+                            Text("빵을 추가해보세요!")
+                                .font(.phraseTop)
+                                .foregroundStyle(.typo80)
+                        }
+                        .padding(.vertical)
+                        .frame(maxWidth: .infinity)
+                        .background(.backDarker)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.typo25)
+                        }
                     }
-                }
-            } else {
-                HStack {
-                    Text("새로운 빵을 등록하고\n매일 추천 빵을 받아보세요!")
-                        .font(.bookk15)
-                        .lineSpacing(15)
-                        .foregroundStyle(.typo80)
-                    
-                    Spacer()
-                    Image(.cute)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 150)
-                }
-                .padding(.leading, 35)
-                .padding(.vertical)
-                .background(.backDarker)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.typo25)
+                    //
                 }
             }
         }
@@ -80,16 +96,16 @@ struct TodaysBread: View {
         var referenceTime: Date
         
         if !todayBread.isEmpty, let breadDate = todayBread[0].date {
-            // 만약 breadDate가 9시 이전이면 9시로, 2시 이전이면 2시로 변경, 아니면 다음 날 9시로 변경
             let year = calendar.component(.year, from: breadDate)
             let month = calendar.component(.month, from: breadDate)
             let day = calendar.component(.day, from: breadDate)
             let hour = calendar.component(.hour, from: breadDate)
             
-            if hour < 9 {
+            // 만약 breadDate가 9시 이전이면 9시로, 6시 이전이면 6시로 변경, 아니면 다음 날 9시로 변경
+            if hour > 9 {
                 referenceTime = Date(y: year, m: month, d: day, h: 9) ?? Date()
-            } else if hour < 14 {
-                referenceTime = Date(y: year, m: month, d: day, h: 14) ?? Date()
+            } else if hour > 18 {
+                referenceTime = Date(y: year, m: month, d: day, h: 18) ?? Date()
             } else {
                 referenceTime = Date(y: year, m: month, d: day+1, h: 9) ?? Date()
             }
@@ -116,8 +132,4 @@ struct TodaysBread: View {
             fatalError("Failed to save context, \(error.localizedDescription)")
         }
     }
-}
-
-#Preview {
-    TodaysBread()
 }

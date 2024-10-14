@@ -65,7 +65,7 @@ struct ReceiptMain: View {
                     ForEach(filteredReceipt) { receipt in
                         ShowReceipt(selectedDate: $selectedDate, receipt: receipt)
                     }
-                } else if isPastEndDate {
+                } else if !isPastEndDate { // 빵수증 테스트할 때 여기 느낌표만 지우고 test 해보면 됨니다.
                     // 빵수증을 제작할 기간이 아닐 때
                     NotYetReceipt()
                 } else if isExistPhrase {

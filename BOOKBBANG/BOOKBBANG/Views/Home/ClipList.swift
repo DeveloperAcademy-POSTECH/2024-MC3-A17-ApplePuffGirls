@@ -146,6 +146,7 @@ struct NewClipButton: View {
         }
         .sheet(isPresented: $showingSheet){
             AddClip()
+                .presentationDragIndicator(.visible)
         }
     }
 }
