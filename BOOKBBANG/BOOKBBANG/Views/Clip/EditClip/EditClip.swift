@@ -52,17 +52,6 @@ struct EditClip: View {
                 
                 Spacer()
             }
-            
-            Button(role: .destructive) {
-                showingAlert = true
-            } label: {
-                HStack {
-                    Text("삭제하기")
-                        .font(.addBookButton)
-                        .padding(.leading)
-                    Spacer()
-                }
-            }
         }
         .background(.backLighter)
         .onAppear {
