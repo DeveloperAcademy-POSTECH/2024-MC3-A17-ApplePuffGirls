@@ -66,7 +66,6 @@
 		B9F6F39D2C58C84300E7DD4C /* BookGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39C2C58C84300E7DD4C /* BookGenre.swift */; };
 		B9F6F39F2C58C9AD00E7DD4C /* ClipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */; };
 		C94DB7822CB81AF5004C6823 /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB7812CB81AEE004C6823 /* CustomProgressBar.swift */; };
-		C954A5612CA87B0600C1062A /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C954A5602CA87B0600C1062A /* Config.xcconfig */; };
 		C954A5652CA87E3500C1062A /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C954A5642CA87E3500C1062A /* Onboarding.swift */; };
 		C9886B512CB526F60053F585 /* OnboardingStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9886B502CB526F60053F585 /* OnboardingStart.swift */; };
 		C9DE24822CB44DBC003E318D /* OnboardingChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DE24812CB44DBC003E318D /* OnboardingChapter.swift */; };
@@ -77,7 +76,6 @@
 		D6311E3E2C665859004161C7 /* ClipsInPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E3D2C665859004161C7 /* ClipsInPhrase.swift */; };
 		D6311E402C665A36004161C7 /* SelectClips.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E3F2C665A36004161C7 /* SelectClips.swift */; };
 		D6311E422C67B808004161C7 /* ShowBreadInCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6311E412C67B808004161C7 /* ShowBreadInCard.swift */; };
-		D654DA5F2CBCDC6300C55032 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D654DA5E2CBCDC6300C55032 /* Config.xcconfig */; };
 		D6A98D902CA1A70700A48352 /* TodaysBread.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A98D8F2CA1A70700A48352 /* TodaysBread.swift */; };
 		D6DBF7632C5A4E830095CAFF /* BookList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF7582C5A4E820095CAFF /* BookList.swift */; };
 		D6DBF7652C5A4E830095CAFF /* SortingClipPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */; };
@@ -167,6 +165,7 @@
 		B97D27872C63C0B800ED490D /* EditBookInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookInfoSection.swift; sourceTree = "<group>"; };
 		B97D27892C63EE9D00ED490D /* EditBookGenreSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookGenreSection.swift; sourceTree = "<group>"; };
 		B983CA432C5E3B8E00EAFD29 /* SearchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTestView.swift; sourceTree = "<group>"; };
+		B9A54B4F2CEBA8B10083B4D0 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		B9AE117C2C5897270082C1DE /* BOOKBBANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BOOKBBANG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9AE117F2C5897270082C1DE /* BOOKBBANGApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOOKBBANGApp.swift; sourceTree = "<group>"; };
 		B9AE11832C5897280082C1DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,7 +187,6 @@
 		B9F6F39E2C58C9AD00E7DD4C /* ClipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipStyle.swift; sourceTree = "<group>"; };
 		B9F6F3A12C58CB1400E7DD4C /* BOOKBBANG.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BOOKBBANG.entitlements; sourceTree = "<group>"; };
 		C94DB7812CB81AEE004C6823 /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
-		C954A5602CA87B0600C1062A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		C954A5642CA87E3500C1062A /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		C9886B502CB526F60053F585 /* OnboardingStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStart.swift; sourceTree = "<group>"; };
 		C9DE24812CB44DBC003E318D /* OnboardingChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChapter.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 		D6311E3D2C665859004161C7 /* ClipsInPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipsInPhrase.swift; sourceTree = "<group>"; };
 		D6311E3F2C665A36004161C7 /* SelectClips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClips.swift; sourceTree = "<group>"; };
 		D6311E412C67B808004161C7 /* ShowBreadInCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBreadInCard.swift; sourceTree = "<group>"; };
-		D654DA5E2CBCDC6300C55032 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		D6A98D8F2CA1A70700A48352 /* TodaysBread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysBread.swift; sourceTree = "<group>"; };
 		D6DBF7582C5A4E820095CAFF /* BookList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookList.swift; sourceTree = "<group>"; };
 		D6DBF75A2C5A4E820095CAFF /* SortingClipPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingClipPicker.swift; sourceTree = "<group>"; };
@@ -612,8 +609,7 @@
 				B977DF0A2C58AA4E00EC0186 /* Models */,
 				B9AE11832C5897280082C1DE /* Assets.xcassets */,
 				B9AE11852C5897280082C1DE /* Preview Content */,
-				C954A5602CA87B0600C1062A /* Config.xcconfig */,
-				D654DA5E2CBCDC6300C55032 /* Config.xcconfig */,
+				B9A54B4F2CEBA8B10083B4D0 /* Config.xcconfig */,
 			);
 			path = BOOKBBANG;
 			sourceTree = "<group>";
@@ -779,8 +775,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C954A5612CA87B0600C1062A /* Config.xcconfig in Resources */,
-				D654DA5F2CBCDC6300C55032 /* Config.xcconfig in Resources */,
+				B9A54B502CEBA8B10083B4D0 /* Config.xcconfig in Resources */,
 				B9AE11872C5897280082C1DE /* Preview Assets.xcassets in Resources */,
 				B910CC282C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
 				B9AE11842C5897280082C1DE /* Assets.xcassets in Resources */,
@@ -791,6 +786,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A54B512CEBA8B10083B4D0 /* Config.xcconfig in Resources */,
 				B910CC292C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9A54B522CEBA8B10083B4D0 /* Config.xcconfig in Resources */,
 				B910CC2A2C5903A5000FFAA7 /* 부크크명조_얇은글씨.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1058,7 +1055,7 @@
 		};
 		B9AE11A62C5897280082C1DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C954A5602CA87B0600C1062A /* Config.xcconfig */;
+			baseConfigurationReference = B9A54B4F2CEBA8B10083B4D0 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1101,7 +1098,7 @@
 		};
 		B9AE11A72C5897280082C1DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C954A5602CA87B0600C1062A /* Config.xcconfig */;
+			baseConfigurationReference = B9A54B4F2CEBA8B10083B4D0 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
