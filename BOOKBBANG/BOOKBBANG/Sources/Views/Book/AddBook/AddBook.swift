@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddBook: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var homeViewModel: HomeViewModel
     @State var selectedGenre: BookGenre = .etc
     @State var selectedDate: Date = Date()
 
@@ -24,8 +23,6 @@ struct AddBook: View {
                                 onChevron: { clickBackButton() },
                                 onRightButton: { clickRightButton() })
             
-            CustomProgressBar(process: $homeViewModel.progress, count: 3)
-                .padding(.bottom, 28)
             
             VStack(spacing: 0) {
                 HeaderSection(title: "책에 대한 정보를 작성해주세요",
@@ -71,41 +68,41 @@ struct AddBook: View {
         .background(.backLighter)
     }
     
-    private func clickBackButton() {
-        homeViewModel.backProgress()
-        homeViewModel.transition(to: .searchBook)
-    }
+//    private func clickBackButton() {
+//        homeViewModel.backProgress()
+//        homeViewModel.transition(to: .searchBook)
+//    }
     
-    private func saveBookDetails() {
-        bookData.genre = selectedGenre.description
-        bookData.readDate = selectedDate
-        homeViewModel.selectBookData(bookData)
-    }
-    
-    private func clickRightButton() {
-        homeViewModel.nextProgress()
-        saveBookDetails()
-        homeViewModel.selectBookData(bookData)
-        
-        let newBook = Book(context: viewContext)
-        newBook.name = homeViewModel.selectedBookData?.title
-        newBook.author = homeViewModel.selectedBookData?.authors
-        newBook.thumbnail = homeViewModel.selectedBookData?.thumbnail
-        
-        newBook.publishedDate = homeViewModel.selectedBookData?.publishedDate
-        newBook.publisher = homeViewModel.selectedBookData?.publisher
-        
-        newBook.genre = homeViewModel.selectedBookData?.genre
-        newBook.readDate = homeViewModel.selectedBookData?.readDate
-        newBook.registerDate = homeViewModel.selectedBookData?.registerDate
-        
-        homeViewModel.selectBook(newBook)
-        do {
-            try viewContext.save()
-        } catch {
-            fatalError("Failed to save context, \(error.localizedDescription)")
-        }
-        
-        homeViewModel.transition(to: .addBookFinal)
-    }
+//    private func saveBookDetails() {
+//        bookData.genre = selectedGenre.description
+//        bookData.readDate = selectedDate
+//        homeViewModel.selectBookData(bookData)
+//    }
+//    
+//    private func clickRightButton() {
+//        homeViewModel.nextProgress()
+//        saveBookDetails()
+//        homeViewModel.selectBookData(bookData)
+//        
+//        let newBook = Book(context: viewContext)
+//        newBook.name = homeViewModel.selectedBookData?.title
+//        newBook.author = homeViewModel.selectedBookData?.authors
+//        newBook.thumbnail = homeViewModel.selectedBookData?.thumbnail
+//        
+//        newBook.publishedDate = homeViewModel.selectedBookData?.publishedDate
+//        newBook.publisher = homeViewModel.selectedBookData?.publisher
+//        
+//        newBook.genre = homeViewModel.selectedBookData?.genre
+//        newBook.readDate = homeViewModel.selectedBookData?.readDate
+//        newBook.registerDate = homeViewModel.selectedBookData?.registerDate
+//        
+//        homeViewModel.selectBook(newBook)
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            fatalError("Failed to save context, \(error.localizedDescription)")
+//        }
+//        
+//        homeViewModel.transition(to: .addBookFinal)
+//    }
 }
